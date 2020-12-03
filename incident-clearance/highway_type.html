@@ -79,97 +79,94 @@
 	    height: 80px;
 	    background-color: white;
     }  
-
+	#div-i95 {position: relative; left: 470px; top: 0px; height: 40px; width: 40px; z-index: 200;}
+	#div-i495 {position: relative; left: 435px; top: 10px; height: 40px; width: 49px; z-index: 200; }
+	#div-i695 {position: relative; left: 535px; top: 60px; height: 40px; width: 49px; z-index: 200; }
+	#div-i270 {position: relative; left: 349px; top: 29px; height: 40px; width: 50px; z-index: 200; }
+	#div-i70 {position: relative; left: 395px; top: 70px; height: 40px; width: 40px; z-index: 200; }
+	#div-us29 {position: relative; left: 430px; top: 0px; height: 40px; width: 40px; z-index: 200;}
 </style>
+
+<script>
+	function selectRoad(road){
+		let roads = ['i95', 'i495', 'i695', 'i270', 'i70', 'us29'];
+		var img = document.getElementById(road);
+		
+		if(img.getAttribute('selected') == 'false'){
+			roads.forEach((hwy) => { //Unselects all other roads
+				document.getElementById(hwy).src='images/' + hwy + '.png';
+				document.getElementById(hwy).setAttribute('selected', 'false');
+			});
+
+			img.src='images/' + road + '_selected.png';
+			img.setAttribute('selected', 'true');
+		}
+		else{
+			img.src='images/' + road + '.png';
+			img.setAttribute('selected', 'false');
+		}
+	}
+
+</script>
 
 <body>
 <div class="ui container" id="container">
 	<div class="ui gird" id="grid-size">
 	    <div class="one column row"  id="row1-size">
-		    <div class="column">
-
-		    </div>
 	    </div>
 	    <div class="one column row" id="row2-size">
-		    <div class="column" id="column-size">
-		        <p id="label">Choose a Highway:</p>				
-		    </div>
-	        <div class="two column row" id="row4-size">
-		        <div class="column" id="column-size">
-			        <div class="ui form">
-				        <div class="inline fields">
-						
-					        <div class="field" id="choice">
-						        <div class="ui radio checkbox">
-							        <input name="frequency" type="radio" value="I-95" required> 
-							        <label>I-95</label>
-						        </div>
-					        </div>
-					        <div class="field" id="choice">
-						        <div class="ui radio checkbox">
-							        <input name="frequency" type="radio" value="I-495" required> 
-							        <label>I-495</label>
-						        </div>
-					        </div>
-					        <div class="field" id="choice">
-						        <div class="ui radio checkbox">
-							        <input name="frequency" type="radio" value="I-695" required> 
-							        <label>I-695</label>
-						        </div>
-					        </div>
-					        <div class="field" id="choice">
-						        <div class="ui radio checkbox">
-							        <input name="frequency" type="radio" value="I-270" required> 
-							        <label>I-270</label>
-						        </div>
-							</div>
-					        <div class="field" id="choice">
-						        <div class="ui radio checkbox">
-							        <input name="frequency" type="radio" value="I-70" required> 
-							        <label>I-70</label>
-						        </div>
-							</div>
-					        <div class="field" id="choice">
-						        <div class="ui radio checkbox">
-							        <input name="frequency" type="radio" value="US-29" required> 
-							        <label>US-29</label>
-						        </div>
-							</div>							
-				        </div>
-			        </div>
-		        </div>					
-		    </div>				
-				
+			<div id='div-i70'>
+				<img src='images/i70.png' id='i70' height = '40px' onclick="selectRoad(this.id)" selected='false'>
+			</div>
+			<div id='div-i695'>
+				<img src='images/i695.png' id='i695' height = '40px' onclick="selectRoad(this.id)" selected='false'>
+			</div>
+			<div id='div-i270'>
+				<img src='images/i270.png' id='i270'height = '40px' onclick="selectRoad(this.id)" selected='false'>
+			</div>
+			<div id='div-i95'>
+				<img src='images/i95.png' id='i95' height = '40px' onclick="selectRoad(this.id)" selected='false'>
+			</div>
+			<div id='div-us29'>
+				<img src='images/us29.png' id='us29' height = '40px' onclick="selectRoad(this.id)" selected='false'>
+			</div>
+			<div id='div-i495'>
+				<img src='images/i495.png' id='i495' height = '40px' onclick="selectRoad(this.id)" selected='false'>
+			</div>
 	    </div>
 
-        <div class="column" id="button-row">
+		<div class="column" id="button-row">
 		    <div class="one column row" id="button-row"> 
-			    <button class="ui right floated blue button" id="myButton">Next</button>
+			    <button class="ui right floated blue button" id="Next" onclick='nextPage()'>Next</button>
 			    <script type="text/javascript">
-                    $(document).ready(function () {
-                        $("#myButton").click(function () {
-                            var road = $("input[type=radio]:checked").val();
-
-							if (road == 'I-95') {
-								parent.location = 'tab.html?' + road;
-                            } else if (road == 'I-495') {
-								parent.location = 'tab.html?' + road;
-                            } else if (road == 'I-695') {
-								parent.location = 'tab.html?' + road;
-                            } else if (road == 'I-270') {
-								parent.location = 'tab.html?' + road;
-                            } else if (road == 'I-70') {
-								parent.location = 'tab.html?' + road;
-                            } else if (road == 'US-29') {
-								parent.location = 'tab.html?' + road;
-                            } else{
-								alert("Please select a highway.");
+					function nextPage() {
+						let roads = ['i95', 'i495', 'i695', 'i270', 'i70', 'us29'];
+						var selected_road;
+						roads.forEach((hwy) => {
+							if(document.getElementById(hwy).getAttribute('selected') == 'true'){
+								selected_road = hwy;
 							}
-                        });
-                    });
+						});
+
+						if (selected_road == 'i95') {
+							parent.location = 'tab.html?I-95';
+						} else if (selected_road == 'i495') {
+							parent.location = 'tab.html?I-495';
+						} else if (selected_road == 'i695') {
+							parent.location = 'tab.html?I-695';
+						} else if (selected_road == 'i270') {
+							parent.location = 'tab.html?I-270';;
+						} else if (selected_road == 'i70') {
+							parent.location = 'tab.html?I-70';
+						} else if (selected_road == 'us29') {
+							parent.location = 'tab.html?US-29';
+						} else{
+							alert("Please select a highway.");
+						}
+					}
 			    </script>
 		    </div>	
-		</div>			
+		</div>				
 	</div>
 </div>
 
