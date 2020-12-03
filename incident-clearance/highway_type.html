@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js">
+	</script>
+	<link href="semantic/dist/semantic.min.css" rel="stylesheet" type="text/css">
+	<script src="semantic/dist/semantic.min.js">
+	</script>
+	<title>highway type</title>
+	<link href="semantic/dist/components/reset.css" rel="stylesheet" type="text/css">
+	<link href="semantic/dist/components/site.css" rel="stylesheet" type="text/css">
+	<link href="semantic/dist/components/container.css" rel="stylesheet" type="text/css">
+	<link href="semantic/dist/components/divider.css" rel="stylesheet" type="text/css">
+	<link href="semantic/dist/components/header.css" rel="stylesheet" type="text/css">
+	<link href="semantic/dist/components/grid.css" rel="stylesheet" type="text/css">
+	<link href="css/highway_type.css" rel="stylesheet" type="text/css">
+</head>
+
+<style>
+    body{
+        background-color: #d1d2d3;
+    }
+	
+    #summary {
+	    color: #ff0800;
+    }
+    #container {
+		width: 800px;
+		height: 600px;
+
+		border-style: solid;
+		border-color: #6186aa;
+		border-width: 25px 5px 5px 5px;		   
+    }
+
+    #highway_pic img {
+	      width: auto;
+	      height: 100%;
+    }
+    #row1-size {
+	    width: 790x;
+	    height: 40px;
+	    background-color: white;
+    }
+    #row2-size {
+	    width: 790px;
+	    height: 450px;
+	
+	    background: url("images/highway.gif") no-repeat scroll center top/ 100% 100%; 
+    }
+    #column-size {
+	    width: 400px;
+	    height: 40px;
+    }
+    #row3-size {
+	    width: 400px;
+	    height: 50px;
+    }
+    #row4-size {
+	    width: 400px;
+	    height: 50px;
+    }
+    #grid-size {
+	    width: 790px;
+	    height: 570px;
+    }
+    #label {
+	    padding: 175px 20px 35px 20px;;
+    }
+    #choice {
+	    padding: 200px 20px 35px 10px;
+    }
+    #choice2 {
+	    padding: 10px 20px 35px 10px;
+    }
+    #button-row {
+	    width:790px;
+	    height: 80px;
+	    background-color: white;
+    }  
+
+</style>
+
+<body>
+<div class="ui container" id="container">
+	<div class="ui gird" id="grid-size">
+	    <div class="one column row"  id="row1-size">
+		    <div class="column">
+
+		    </div>
+	    </div>
+	    <div class="one column row" id="row2-size">
+		    <div class="column" id="column-size">
+		        <p id="label">Choose a Highway:</p>				
+		    </div>
+	        <div class="two column row" id="row4-size">
+		        <div class="column" id="column-size">
+			        <div class="ui form">
+				        <div class="inline fields">
+						
+					        <div class="field" id="choice">
+						        <div class="ui radio checkbox">
+							        <input name="frequency" type="radio" value="I-95" required> 
+							        <label>I-95</label>
+						        </div>
+					        </div>
+					        <div class="field" id="choice">
+						        <div class="ui radio checkbox">
+							        <input name="frequency" type="radio" value="I-495" required> 
+							        <label>I-495</label>
+						        </div>
+					        </div>
+					        <div class="field" id="choice">
+						        <div class="ui radio checkbox">
+							        <input name="frequency" type="radio" value="I-695" required> 
+							        <label>I-695</label>
+						        </div>
+					        </div>
+					        <div class="field" id="choice">
+						        <div class="ui radio checkbox">
+							        <input name="frequency" type="radio" value="I-270" required> 
+							        <label>I-270</label>
+						        </div>
+							</div>
+					        <div class="field" id="choice">
+						        <div class="ui radio checkbox">
+							        <input name="frequency" type="radio" value="I-70" required> 
+							        <label>I-70</label>
+						        </div>
+							</div>
+					        <div class="field" id="choice">
+						        <div class="ui radio checkbox">
+							        <input name="frequency" type="radio" value="US-29" required> 
+							        <label>US-29</label>
+						        </div>
+							</div>							
+				        </div>
+			        </div>
+		        </div>					
+		    </div>				
+				
+	    </div>
+
+        <div class="column" id="button-row">
+		    <div class="one column row" id="button-row"> 
+			    <button class="ui right floated blue button" id="myButton">Next</button>
+			    <script type="text/javascript">
+                    $(document).ready(function () {
+                        $("#myButton").click(function () {
+                            var road = $("input[type=radio]:checked").val();
+
+							if (road == 'I-95') {
+								parent.location = 'tab.html?' + road;
+                            } else if (road == 'I-495') {
+								parent.location = 'tab.html?' + road;
+                            } else if (road == 'I-695') {
+								parent.location = 'tab.html?' + road;
+                            } else if (road == 'I-270') {
+								parent.location = 'tab.html?' + road;
+                            } else if (road == 'I-70') {
+								parent.location = 'tab.html?' + road;
+                            } else if (road == 'US-29') {
+								parent.location = 'tab.html?' + road;
+                            } else{
+								alert("Please select a highway.");
+							}
+                        });
+                    });
+			    </script>
+		    </div>	
+		</div>			
+	</div>
+</div>
+
+	
+</body>
+</html>
