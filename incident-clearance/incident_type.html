@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="lib/jquery.min.js"></script>
+	<script src="lib/jquery.flot.min.js"></script>
+	<script src="lib/jquery.flot.categories.min.js"></script>
+	<link href="semantic/dist/semantic.min.css" rel="stylesheet" type="text/css">
+	<script src="semantic/dist/semantic.min.js"></script>
+	<title>incident type</title>
+	<link href="semantic/dist/components/reset.css" rel="stylesheet" type="text/css">
+	<link href="semantic/dist/components/site.css" rel="stylesheet" type="text/css">
+	<link href="semantic/dist/components/container.css" rel="stylesheet" type="text/css">
+	<link href="semantic/dist/components/divider.css" rel="stylesheet" type="text/css">
+	<link href="semantic/dist/components/header.css" rel="stylesheet" type="text/css">
+	<link href="semantic/dist/components/grid.css" rel="stylesheet" type="text/css">
+	<!-- <link href="css/highway_type.css" rel="stylesheet" type="text/css"> -->
+	<style>
+	                        
+	#container {
+	   width:800px;
+	   height:600px;                     
+	          }    
+	#choice1 {
+	   padding: 100px 100px 10px 150px;
+	}
+	#choice2 {
+	   padding: 100px 150px 10px 100px;
+	}
+	#checkbox-size {
+	   width:780px;
+	   height:200px;   
+	}
+	#tab-size {
+	   width:380px;
+	   height:240px;
+	   
+	}
+	#button-row {
+	   width:780px;
+	   height:36px;
+	   
+	}   
+	#button-size {
+	   width: 800px;
+	   height:40px;  
+   }
+	#estimation {
+		width: 300px;
+		height:200px;
+	}
+         
+	</style>
+</head>
+<body>
+	<div class="ui container" id="container">
+		<div class="ui grid" id="container">
+			<div class="one column row" id="checkbox-size">
+				<div class="column">
+					<div class="ui form">
+						<div class="inline fields">
+							<div class="field" id="choice1">
+								<div class="ui radio checkbox">
+									<input name="frequency" type="radio"> 
+									<label>Collision incident</label>
+								</div>
+							</div>
+							<div class="field" id="choice2">
+								<div class="ui radio checkbox">
+									<input name="frequency" type="radio"> 
+									<label>Non-collision incident</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="column" id="button-size">
+				<div class="one column row" id="button-row">
+					<button class="ui right floated blue button" id="myButton">Next</button> 
+					<script type="text/javascript">
+	        document.getElementById("myButton").onclick = function () {
+					                       
+				location.href = "tab.html";					   
+										  
+			};
+			 $(document).ready(function(){
+				<!-- $("#checkbox-size input").click(function(){ -->
+					<!-- var incident = $(this).parent().find("label").text(); -->
+					<!-- $("#summary").text(incident); -->
+					<!-- console.log(incident); -->
+					<!-- var new_summary = $("#summary").append(incident); -->
+					 <!-- document.getElementById("summary").src = new_summary; -->
+					 
+				<!-- }); -->
+				$("#checkbox-size input").click(updateSum);
+				$("#checkbox-size input").click(updateTime);
+				
+				});
+			
+			function updateSum(){
+				var sumBox = document.getElementById("summary");
+				var incident = $(this).parent().find("label").text();
+				sumBox.value = sumBox.value + $("#summary").text(incident);
+				//console.log(sumBox.value); 
+			    localStorage.setItem("sumBox", incident);
+				//console.log(localStorage.setItem("sumBox", incident));
+			}
+				
+				
+							
+			function updateTime() {
+				var currPos = $(this).parent().find("label").text();
+				//console.log(currPos);
+				if (currPos == "Collision incident"){
+					$("#estimation #time_line").text("Average CT = 40 mins");
+				}
+
+			};
+				
+					</script>
+				</div>
+			</div>
+			<div class="two column row">
+				<div class="column">
+					<div class="ui segment" id="tab-size">
+						<div class="ui top attached tabular menu">
+							<div class="item">
+								Summary
+							</div>
+						</div>
+						<p id="summary"></p>
+					</div>
+				</div>
+				<div class="column">
+					<div class="ui segment" id="tab-size">
+						<div class="ui top attached tabular menu">
+							<div class="item">
+								Estimated Time
+							</div>
+						</div>
+						<div id="estimation">
+<svg width="350px" height="150px">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L0,6 L9,3 z" fill="#f00" />
+    </marker>
+	
+    <marker id="Circle" markerWidth="10" markerHeight="10"
+       refX="5" refY="5" orient="auto">
+       <circle cx="5" cy="5" r="2" fill="dodgerblue"/>
+    </marker>
+    <marker id="Square" markerWidth="10" markerHeight="10"
+        refX="0" refY="3" orient="auto">
+        <path d="M 5,1 L 9,5 5,9 1,5 z" fill="#6a9100"/>
+	</marker>	
+  </defs>
+
+  <line x1="0" y1="20" x2="60" y2="20" stroke="#000" stroke-width="2" marker-start= "url(#arrow)" marker-end= "url(#Circle)"/>
+  <text x="45" y="35">30min</text>
+  <line x1="60" y1="20" x2="120" y2="20" stroke="#000" stroke-width="2" marker-end= "url(#Circle)"/>
+  <text x="105" y="35">60min</text>
+  <line x1="120" y1="20" x2="180" y2="20" stroke="#000" stroke-width="2" />
+  <line x1="180" y1="20" x2="240" y2="20" stroke="#000" stroke-width="2" marker-end= "url(#Circle)"/>
+  <text x="225" y="35">120min</text>
+  <line x1="240" y1="20" x2="300" y2="20" stroke="#000" stroke-width="2" marker-end= "url(#arrow)"/>
+  
+  <line x1="20" y1="60" x2="100" y2="60" stroke="red" stroke-width="15" />
+  <text x="40" y="65" fill="white" font-size="13px">10~50</text>
+  <text x="110" y="65" fill="red" font-size="13px">60%</text>
+  <line x1="20" y1="85" x2="120" y2="85" stroke="red" stroke-width="15" />
+  <text x="40" y="90" fill="white" font-size="13px">10~60</text> 
+  <text x="130" y="90" fill="red" font-size="13px">70%</text>
+  <line x1="20" y1="110" x2="170" y2="110" stroke="red" stroke-width="15" />
+  <text x="40" y="115" fill="white" font-size="13px">10~85</text> 
+  <text x="180" y="115" fill="red" font-size="13px">80%</text>
+  
+  <text x="180" y="140" fill="red" font-size="13px" id="time_line">Average CT = 45 mins</text>
+   
+  
+  
+</svg>						
+						
+						</div>						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Flot Line Graph</title>
+ 
+<style type="text/css">
+body { font-family: Verdana, Arial, sans-serif; font-size: 12px; }
+#placeholder { width: 450px; height: 200px; }
+</style>
+ 
+<!--[if lte IE 8]><script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/excanvas.min.js"></script><![endif]-->
+<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.min.js"></script>
+ 
+<script type="text/javascript">
+$(function() {
+  var canvas = $('canvas')[0];
+  var ctx = canvas.getContext('2d');
+
+  var w = canvas.width = 700;
+  var h = canvas.height = 400;
+  with(ctx) {
+    fillStyle = '#000';
+    fillRect(0, 0, w, h);
+    fill();
+    beginPath();
+    lineWidth = 2;
+    strokeStyle = '#f00';
+    moveTo(w/7, h/2);
+    lineTo(6*w/7, h/2);
+    stroke();
+    for(var i = 0;i <= 3; i++) {
+      beginPath();
+      strokeStyle = '#0f0';
+      lineWidth = 2;
+      moveTo(w/2 + i * 20, h/2 - 20);
+      lineTo(w/2 + i * 20, h/2 + 20);
+      fillStyle = '#ff0';
+      fillText(i, (w/2 + i * 20 )- 5, h/2 + 35);
+      if(!i) {
+        lineWidth = 4;
+        strokeStyle = '#f0f';
+      }
+      fill();
+      stroke();
+    }
+  }
+});
+
+</script>
+ 
+<svg width="600px" height="100px">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#f00" />
+    </marker>
+           <marker id="Circle" markerWidth="10" markerHeight="10"
+               refX="5" refY="5" orient="auto">
+         <circle cx="5" cy="5" r="2" fill="dodgerblue"/>
+       </marker>
+ 
+  </defs>
+
+  <line x1="0" y1="20" x2="60" y2="20" stroke="#000" stroke-width="2" marker-end= "url(#Circle)"/>
+   <line x1="60" y1="20" x2="120" y2="20" stroke="#000" stroke-width="2" marker-end= "url(#Circle)"/>
+   <line x1="120" y1="20" x2="180" y2="20" stroke="#000" stroke-width="2" marker-end= "url(#Circle)"/>
+  <line x1="180" y1="20" x2="240" y2="20" stroke="#000" stroke-width="2" marker-end= "url(#Circle)"/>
+  <line x1="240" y1="20" x2="300" y2="20" stroke="#000" stroke-width="2" marker-end= "url(#arrow)"/>
+  
+  <text x="45" y="35">30min</text>
+</svg>
+
+</body>
+</html>
