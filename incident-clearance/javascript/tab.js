@@ -547,114 +547,114 @@ function updateSum(){
 	}
 		
 		//pavement
-    else if (curr == 'Dry'){
+	else if (curr == 'Dry'){
 		pavement = curr;
 		dry = 1;
 		model['pavement_condition'] = 'Dry pavement condition';
 		$("#Save-8").removeAttr("disabled");
-    }
-    else if (curr == 'Wet'){
+	}
+	else if (curr == 'Wet'){
 		pavement = curr;
 		wet = 1;
 		model['pavement_condition'] = 'Wet pavement condition';
 		$("#Save-8").removeAttr("disabled");
-    }
-    else if (curr == 'Snow/Ice'){
+	}
+	else if (curr == 'Snow/Ice'){
 		pavement = curr;
 		snow = 1;
 		model['pavement_condition'] = 'Snow/Ice pavement condition';
 		$("#Save-8").removeAttr("disabled");
-    }
-    else if (curr == 'Chemical wet'){
+	}
+	else if (curr == 'Chemical wet'){
 		pavement = curr;
 		model['pavement_condition'] = 'Chemical wet pavement condition';
 		$("#Save-8").removeAttr("disabled");
-    }
-    else if(curr == 'Unspecified'){
+	}
+	else if(curr == 'Unspecified'){
 		pavement = curr;
 		unspecified = 1;
 		model['pavement_condition'] = 'Unspecified condition';
 		$("#Save-8").removeAttr("disabled");
-    }
-    //location
-    else if (curr == "Prince George's"){
+	}
+	//location
+	else if (curr == "Prince George's"){
 		location_choice = curr;
 		model['location'] = location_choice;
 		$("#Save-10").removeAttr("disabled");
-    }
-    else if (curr == 'Howard'){
+	}
+	else if (curr == 'Howard'){
 		location_choice = curr;
 		model['location'] = location_choice;
 		$("#Save-10").removeAttr("disabled");
-    }
-    else if (curr == 'Baltimore city'){
+	}
+	else if (curr == 'Baltimore city'){
 		location_choice = curr;
 		bc = 1;
 		model['location'] = location_choice;
 		$("#Save-10").removeAttr("disabled");
-    }
-    else if (curr == 'Baltimore'){
+	}
+	else if (curr == 'Baltimore'){
 		location_choice = curr;
 		model['location'] = location_choice;
 		$("#Save-10").removeAttr("disabled");
-    }
-    else if (curr == 'Harford'){
+	}
+	else if (curr == 'Harford'){
 		location_choice = curr;
 		harford = 1
 		model['location'] = location_choice;
 		$("#Save-10").removeAttr("disabled");
-    }
-    else if (curr == 'Cecil'){
+	}
+	else if (curr == 'Cecil'){
 		location_choice = curr;
 		cecil = 1;
 		model['location'] = location_choice;
 		$("#Save-10").removeAttr("disabled");
-    }
+	}
 
-    aux_lane = document.getElementById("b1").checked;
-    console.log(aux_lane);		
-    if (aux_lane == true){
-	    model['detail_blockage_1'] = 'An Auxiliary lane blocked';
-	    $("#Save-4").removeAttr("disabled");
-    }
-    else if(aux_lane == false){
-	    model['detail_blockage_1'] = null;
-    }
-    tunnel_lane = document.getElementById("b2").checked;
-    console.log(tunnel_lane);		
-    if (tunnel_lane == true){
-	    model['detail_blockage_2'] = 'A lane in TUNNEL blocked';
-	    $("#Save-4").removeAttr("disabled");
-    }
-    else if(tunnel_lane == false){
-	    model['detail_blockage_2'] = null;
-    }
-    toll_lane = document.getElementById("b3").checked;
-    console.log(toll_lane);		
-    if (toll_lane == true){
-	    model['detail_blockage_3'] = 'A lane in TOLL area blocked';
-	    $("#Save-4").removeAttr("disabled");
-    }
-    else if(toll_lane == false){
-	    model['detail_blockage_3'] = null;
-    }
+	aux_lane = document.getElementById("b1").checked;
+	console.log(aux_lane);		
+	if (aux_lane == true){
+		model['detail_blockage_1'] = 'An Auxiliary lane blocked';
+		$("#Save-4").removeAttr("disabled");
+	}
+	else if(aux_lane == false){
+		model['detail_blockage_1'] = null;
+	}
+	tunnel_lane = document.getElementById("b2").checked;
+	console.log(tunnel_lane);		
+	if (tunnel_lane == true){
+		model['detail_blockage_2'] = 'A lane in TUNNEL blocked';
+		$("#Save-4").removeAttr("disabled");
+	}
+	else if(tunnel_lane == false){
+		model['detail_blockage_2'] = null;
+	}
+	toll_lane = document.getElementById("b3").checked;
+	console.log(toll_lane);		
+	if (toll_lane == true){
+		model['detail_blockage_3'] = 'A lane in TOLL area blocked';
+		$("#Save-4").removeAttr("disabled");
+	}
+	else if(toll_lane == false){
+		model['detail_blockage_3'] = null;
+	}
 	
-    // hazmat
-    hazmat = document.getElementById("haz").checked;
-    console.log(hazmat);
-    if (hazmat == true){
-	    model['hazmat_condition'] = 'Hazmat material related';
-	    $("#Save-8").removeAttr("disabled");
-    }
-    else if(hazmat == false){
-	    model['hazmat_condition'] = null;
-	    //$("#Save-8").removeAttr("disabled");
-    }
+	// hazmat
+	hazmat = document.getElementById("haz").checked;
+	console.log(hazmat);
+	if (hazmat == true){
+		model['hazmat_condition'] = 'Hazmat material related';
+		$("#Save-8").removeAttr("disabled");
+	}
+	else if(hazmat == false){
+		model['hazmat_condition'] = null;
+		//$("#Save-8").removeAttr("disabled");
+	}
 }
 
 function updateSum2(){
 	travel_drop = document.getElementById("t3_1").value;
-    // var curr_drop = dropdown.options[dropdown.selectedIndex].value;
+	// var curr_drop = dropdown.options[dropdown.selectedIndex].value;
 	console.log(travel_drop);
 	if (travel_drop == 0){
 	    model['number_travel'] = null;
@@ -2245,7 +2245,7 @@ function updateTime(){
 							}
 							if(checkresult == 'CPI1-2'){
 								if((weekend == 'Weekend') && (involved_car_s == 'over ')){checkresult = 'CPI1-3';}
-								else if(hazmat == true || num_tow==1 || num_bus>0){checkresult = 'CPI1-3';}
+								else if(hazmat == true || num_tow>1 || num_bus>0){checkresult = 'CPI1-3';}
 								else if((pavement == 'Snow/Ice') || (num_truck > 1) || (num_responder > 7) || (center == 'AOC')){checkresult = 'CPI1-3';}
 								else if(num_tow == 0 || num_truck == 0){checkresult = 'CPI1-2';}
 								else if(num_total<3 || center=='TOC3'){checkresult = 'CPI1-2';}
