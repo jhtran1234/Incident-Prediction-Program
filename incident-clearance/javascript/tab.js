@@ -2238,7 +2238,7 @@ function updateTime(){
 							if(checkresult == 'CPI1-0'){
 								if(num_tow > 0){checkresult = 'CPI1-2';}
 								else if(num_total > 3){checkresult = 'CPI1-2';}
-								else if(((hour == 'AM-peak') || (hour == 'PM-peak')) && num_total > 2){checkresult = 'CPI1-1';}
+								else if(((hour == 'AM-peak') || (hour == 'PM-peak')) && num_total > 2){checkresult = 'CPI1-2';}
 								else if(((hour != 'AM-peak') && (hour != 'PM-peak')) && first_responder=='POLICE'){checkresult = 'CPI1-2';}
 								else if(first_responder == 'FIREBOARD'){checkresult = 'CPI1-1';}
 								else{checkresult = 'CPI1-1';}
