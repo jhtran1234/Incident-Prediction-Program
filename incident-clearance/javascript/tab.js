@@ -644,7 +644,7 @@ function updateSum(){
 	console.log(hazmat);
 	if (hazmat == true){
 		model['hazmat_condition'] = 'Hazmat material related';
-		$("#Save-8").removeAttr("disabled");
+		//$("#Save-8").removeAttr("disabled");
 	}
 	else if(hazmat == false){
 		model['hazmat_condition'] = null;
@@ -1747,9 +1747,9 @@ function updateTime(){
 							
 					}
 					else if(model['number_travel']=='2 Travel lanes blocked'){
-						drawSVG1(30, 120, 60, 130, "15~60", "60%");
-						drawSVG2(30, 130, 60, 140, "15~65", "70%");
-						drawSVG3(30, 180, 60, 190, "15~90", "80%");
+						drawSVG1(30, 120, 57, 130, "15~60", "60%");
+						drawSVG2(30, 130, 62, 140, "15~65", "70%");
+						drawSVG3(30, 180, 87, 190, "15~90", "80%");
 						drawSVG4("Average CT = 43 mins");
 					}
 					else if((model['number_travel']=='3 Travel lanes blocked') || (model['number_travel']=='4 Travel lanes blocked') 
@@ -1762,9 +1762,9 @@ function updateTime(){
 				}
 					
 				else if(model['collision']=='Property Damage only'){
-					drawSVG1(20, 100, 40, 110, "10~50", "60%");
-					drawSVG2(10, 110, 40, 120, "5~55", "70%");
-					drawSVG3(10, 120, 40, 130, "5~60", "80%");
+					drawSVG1(20, 100, 42, 110, "10~50", "60%");
+					drawSVG2(10, 110, 45, 120, "5~55", "70%");
+					drawSVG3(10, 120, 50, 130, "5~60", "80%");
 					drawSVG4("Average CT = 33 mins");	
 						
 					if(model['number_travel']=='1 Travel lane blocked'){
@@ -2703,9 +2703,9 @@ function updateTime(){
 			drawSVG4("Average CT = 40 mins");
 				
 			if(model['blockage']=='Travel lane blockage'){
-				drawSVG1(20, 100, 40, 110, "10~50", "60%");
-				drawSVG2(20, 120, 40, 130, "10~60", "70%");
-				drawSVG3(20, 170, 40, 180, "10~85", "80%");
+				drawSVG1(20, 100, 42, 110, "10~50", "60%");
+				drawSVG2(20, 120, 52, 130, "10~60", "70%");
+				drawSVG3(20, 170, 67, 180, "10~85", "80%");
 				drawSVG4("Average CT = 45 mins");
 					
 				if(model['collision']=='Fatality'){
@@ -2716,21 +2716,21 @@ function updateTime(){
 				}
 
 				else if(model['collision']=='Personal Injury'){
-					drawSVG1(30, 120, 50, 130, "15~60", "60%");
-					drawSVG2(30, 140, 50, 150, "15~70", "70%");
-					drawSVG3(30, 190, 50, 200, "15~95", "80%");
+					drawSVG1(30, 120, 57, 130, "15~60", "60%");
+					drawSVG2(30, 140, 67, 150, "15~70", "70%");
+					drawSVG3(30, 190, 92, 200, "15~95", "80%");
 					drawSVG4("Average CT = 50 mins");
 									
 					if(model['number_travel']=='1 Travel lane blocked'){
-						drawSVG1(30, 110, 50, 120, "15~55", "60%");
-						drawSVG2(30, 130, 50, 140, "15~65", "70%");
-						drawSVG3(20, 140, 40, 150, "10~70", "80%");
+						drawSVG1(30, 110, 52, 120, "15~55", "60%");
+						drawSVG2(30, 130, 62, 140, "15~65", "70%");
+						drawSVG3(20, 140, 62, 150, "10~70", "80%");
 						drawSVG4("Average CT = 45 mins");
 					}
 					else if(model['number_travel']=='2 Travel lanes blocked'){
-						drawSVG1(40, 140, 60, 150, "20~70", "60%");
-						drawSVG2(40, 170, 60, 180, "20~85", "70%");
-						drawSVG3(30, 180, 50, 190, "15~90", "80%");
+						drawSVG1(40, 140, 72, 150, "20~70", "60%");
+						drawSVG2(40, 170, 87, 180, "20~85", "70%");
+						drawSVG3(30, 180, 87, 190, "15~90", "80%");
 						drawSVG4("Average CT = 55 mins");
 					}
 					else if((model['number_travel']=='3 Travel lanes blocked') || (model['number_travel']=='4 Travel lanes blocked') 
@@ -2749,15 +2749,15 @@ function updateTime(){
 					drawSVG4("Average CT = 35 mins");	
 						
 					if(model['number_travel']=='1 Travel lane blocked'){
-						drawSVG1(20, 80, 40, 90, "10~40", "60%");
-						drawSVG2(20, 100, 40, 110, "10~50", "70%");
-						drawSVG3(20, 160, 40, 170, "10~80", "80%");
+						drawSVG1(20, 80, 32, 90, "10~40", "60%");
+						drawSVG2(20, 100, 42, 110, "10~50", "70%");
+						drawSVG3(20, 160, 72, 170, "10~80", "80%");
 						drawSVG4("Average CT = 35 mins");
 					}
 					else if(model['number_travel']=='2 Travel lanes blocked'){
-						drawSVG1(30, 140, 50, 150, "15~70", "60%");
-						drawSVG2(30, 200, 50, 210, "15~100", "70%");
-						drawSVG3(20, 220, 40, 230, "10~110", "80%");
+						drawSVG1(30, 140, 67, 150, "15~70", "60%");
+						drawSVG2(30, 200, 94, 210, "15~100", "70%");
+						drawSVG3(20, 220, 99, 230, "10~110", "80%");
 						drawSVG4("Average CT = 45 mins");
 					}
 					else if((model['number_travel']=='3 Travel lanes blocked') || (model['number_travel']=='4 Travel lanes blocked') 
@@ -3292,7 +3292,7 @@ function activeNext(){
         $("#Next-4").removeAttr("disabled");
 	}
 	else if(this.id == 'Save-5'){
-		if(road == "I-695"){moreInfoNeeded_updateTime();} //Indicates more info is needed.
+		if(road == "I-695" || road == "I-70" || road == "US-29"){moreInfoNeeded_updateTime();} //Indicates more info is needed.
 
 		if (document.getElementById("dropbox1s").value != ' ' && num_car == 0){
 			alert("At least one vehicle should be involved when a situation is specified for a type.");
@@ -3314,7 +3314,7 @@ function activeNext(){
 		}
 	}
 	else if(this.id == 'Save-6'){
-		if(road == "I-695"){moreInfoNeeded_updateTime();}
+		if(road == "I-695" || road == "I-70" || road == "US-29"){moreInfoNeeded_updateTime();}
 
 		var responder_type;
 		if (model['responder'] == 'First responder: CHART' && (responder_type = "chart") && num_chart > 0) {
@@ -3343,15 +3343,15 @@ function activeNext(){
 		}
 	}
 	else if(this.id == 'Save-7'){
-		if(road == "I-695"){moreInfoNeeded_updateTime();}
+		if(road == "I-695" || road == "I-70" || road == "US-29"){moreInfoNeeded_updateTime();}
         $("#Next-7").removeAttr("disabled");
 	}
 	else if(this.id == 'Save-8'){
-		if(road == "I-695"){moreInfoNeeded_updateTime();}
+		if(road == "I-695" || road == "I-70" || road == "US-29"){moreInfoNeeded_updateTime();}
         $("#Next-8").removeAttr("disabled");
 	}
 	else if(this.id == 'Save-9'){
-		if(road == "I-695"){moreInfoNeeded_updateTime();}
+		if(road == "I-695" || road == "I-70" || road == "US-29"){moreInfoNeeded_updateTime();}
         $("#Next-9").removeAttr("disabled");
 	}
 	else if(this.id == 'Save-10' || this.id == 'Save-10_495' || this.id == 'Save-10_695' 
