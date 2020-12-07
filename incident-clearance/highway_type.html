@@ -88,9 +88,9 @@
 </style>
 
 <script>
-	function selectRoad(road){
+	function selectRoad(road_selected){
 		let roads = ['i95', 'i495', 'i695', 'i270', 'i70', 'us29'];
-		var img = document.getElementById(road);
+		var img = document.getElementById(road_selected);
 		
 		if(img.getAttribute('selected') == 'false'){
 			roads.forEach((hwy) => { //Unselects all other roads
@@ -98,40 +98,47 @@
 				document.getElementById(hwy).setAttribute('selected', 'false');
 			});
 
-			img.src='images/' + road + '_selected.png';
+			img.src='images/' + road_selected + '_selected.png';
 			img.setAttribute('selected', 'true');
+
+			document.getElementById('selected_img').src='images/' + road_selected + '.png';
 		}
 		else{
-			img.src='images/' + road + '.png';
+			img.src='images/' + road_selected + '.png';
 			img.setAttribute('selected', 'false');
+			document.getElementById('selected_img').src='';
 		}
 	}
-
 </script>
 
 <body>
 <div class="ui container" id="container">
 	<div class="ui gird" id="grid-size">
 	    <div class="one column row"  id="row1-size">
+			<p style="font-size:25px;">Please select a highway by clicking on one of the buttons below:</p>
 	    </div>
 	    <div class="one column row" id="row2-size">
 			<div id='div-i70'>
-				<img src='images/i70.png' id='i70' height = '40px' onclick="selectRoad(this.id)" selected='false'>
+				<img src='images/i70.png' id='i70' height='40px' onclick="selectRoad(this.id)" selected='false'>
 			</div>
 			<div id='div-i695'>
-				<img src='images/i695.png' id='i695' height = '40px' onclick="selectRoad(this.id)" selected='false'>
+				<img src='images/i695.png' id='i695' height='40px' onclick="selectRoad(this.id)" selected='false'>
 			</div>
 			<div id='div-i270'>
-				<img src='images/i270.png' id='i270'height = '40px' onclick="selectRoad(this.id)" selected='false'>
+				<img src='images/i270.png' id='i270'height='40px' onclick="selectRoad(this.id)" selected='false'>
 			</div>
 			<div id='div-i95'>
-				<img src='images/i95.png' id='i95' height = '40px' onclick="selectRoad(this.id)" selected='false'>
+				<img src='images/i95.png' id='i95' height='40px' onclick="selectRoad(this.id)" selected='false'>
 			</div>
 			<div id='div-us29'>
-				<img src='images/us29.png' id='us29' height = '40px' onclick="selectRoad(this.id)" selected='false'>
+				<img src='images/us29.png' id='us29' height='40px' onclick="selectRoad(this.id)" selected='false'>
 			</div>
 			<div id='div-i495'>
-				<img src='images/i495.png' id='i495' height = '40px' onclick="selectRoad(this.id)" selected='false'>
+				<img src='images/i495.png' id='i495' height='40px' onclick="selectRoad(this.id)" selected='false'>
+			</div>
+			<div>
+				<p style="font-size:20px;">Selected Highway:</p>
+				<img src='' id='selected_img' height='40px' selected='false'>
 			</div>
 	    </div>
 
