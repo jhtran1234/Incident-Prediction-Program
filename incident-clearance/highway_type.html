@@ -78,18 +78,20 @@
 	    width:790px;
 	    height: 80px;
 	    background-color: white;
-    }  
-	#div-i95 {position: relative; left: 470px; top: 0px; height: 40px; width: 40px; z-index: 200;}
-	#div-i495 {position: relative; left: 435px; top: 10px; height: 40px; width: 49px; z-index: 200;}
-	#div-i695 {position: relative; left: 535px; top: 60px; height: 40px; width: 49px; z-index: 200;}
-	#div-i270 {position: relative; left: 349px; top: 29px; height: 40px; width: 50px; z-index: 200;}
-	#div-i70 {position: relative; left: 395px; top: 70px; height: 40px; width: 40px; z-index: 200;}
-	#div-us29 {position: relative; left: 430px; top: 0px; height: 40px; width: 40px; z-index: 200;}
+    }
+	#div-i95 {position: relative; display: inline; left: 268px; top: 110px; height: 40px; width: 40px; z-index: 200;}
+	#div-i495 {position: relative; display: inline; left: 295px; top: 200px; height: 40px; width: 49px; z-index: 200;}
+	#div-i695 {position: relative; display: inline; left: 285px; top: 95px; height: 40px; width: 49px; z-index: 200;}
+	#div-i270 {position: relative; display: inline; left: 352px; top: 90px; height: 40px; width: 50px; z-index: 200;}
+	#div-i70 {position: relative; display: inline; left: 354px; top: 70px; height: 40px; width: 40px; z-index: 200;}
+	#div-us29 {position: relative; display: inline; left: 319px; top: 130px; height: 40px; width: 40px; z-index: 200;}
+	#div-others {position: relative; display: inline; left: 175px; top: 275px; height: 40px; width: 57px; z-index: 200;}
+	#div-selected {position: relative; top: 200px; width: 175px; z-index: 200;}
 </style>
 
 <script>
 	function selectRoad(road_selected){
-		let roads = ['i95', 'i495', 'i695', 'i270', 'i70', 'us29'];
+		let roads = ['i95', 'i495', 'i695', 'i270', 'i70', 'us29', 'others'];
 		var img = document.getElementById(road_selected);
 		
 		if(img.getAttribute('selected') == 'false'){
@@ -102,11 +104,16 @@
 			img.setAttribute('selected', 'true');
 
 			document.getElementById('selected_img').src='images/' + road_selected + '.png';
+
+			if(img.getAttribute('id') != 'others'){
+				document.getElementById('Next').disabled = false;
+			}
 		}
 		else{
 			img.src='images/' + road_selected + '.png';
 			img.setAttribute('selected', 'false');
 			document.getElementById('selected_img').src='';
+			document.getElementById('Next').disabled = true;
 		}
 	}
 </script>
@@ -118,17 +125,11 @@
 			<p style="font-size:25px;">Please select a highway by clicking on one of the buttons below:</p>
 	    </div>
 	    <div class="one column row" id="row2-size">
-			<div id='div-i70'>
-				<img src='images/i70.png' id='i70' height='40px' onclick="selectRoad(this.id)" selected='false'>
-			</div>
-			<div id='div-i695'>
-				<img src='images/i695.png' id='i695' height='40px' onclick="selectRoad(this.id)" selected='false'>
-			</div>
 			<div id='div-i270'>
 				<img src='images/i270.png' id='i270'height='40px' onclick="selectRoad(this.id)" selected='false'>
 			</div>
-			<div id='div-i95'>
-				<img src='images/i95.png' id='i95' height='40px' onclick="selectRoad(this.id)" selected='false'>
+			<div id='div-i70'>
+				<img src='images/i70.png' id='i70' height='40px' onclick="selectRoad(this.id)" selected='false'>
 			</div>
 			<div id='div-us29'>
 				<img src='images/us29.png' id='us29' height='40px' onclick="selectRoad(this.id)" selected='false'>
@@ -136,18 +137,29 @@
 			<div id='div-i495'>
 				<img src='images/i495.png' id='i495' height='40px' onclick="selectRoad(this.id)" selected='false'>
 			</div>
-			<div>
-				<p style="font-size:20px;">Selected Highway:</p>
+			<div id='div-i95'>
+				<img src='images/i95.png' id='i95' height='40px' onclick="selectRoad(this.id)" selected='false'>
+			</div>
+			<div id='div-i695'>
+				<img src='images/i695.png' id='i695' height='40px' onclick="selectRoad(this.id)" selected='false'>
+			</div>
+			<div id='div-others'>
+				<img src='images/others.png' id='others' height='40px' onclick="selectRoad(this.id)" selected='false'>
+			</div>
+			<div id='div-selected'>
+				<div>
+					<p style="font-size:20px;">Selected Highway:</p>
+				</div>
 				<img src='' id='selected_img' height='40px' selected='false'>
 			</div>
 	    </div>
 
 		<div class="column" id="button-row">
 		    <div class="one column row" id="button-row"> 
-			    <button class="ui right floated blue button" id="Next" onclick='nextPage()'>Next</button>
+			    <button class="ui right floated blue button" id="Next" onclick='nextPage()' disabled>Next</button>
 			    <script type="text/javascript">
 					function nextPage() {
-						let roads = ['i95', 'i495', 'i695', 'i270', 'i70', 'us29'];
+						let roads = ['i95', 'i495', 'i695', 'i270', 'i70', 'us29', 'others'];
 						var selected_road;
 						roads.forEach((hwy) => {
 							if(document.getElementById(hwy).getAttribute('selected') == 'true'){
@@ -162,11 +174,13 @@
 						} else if (selected_road == 'i695') {
 							parent.location = 'tab.html?I-695';
 						} else if (selected_road == 'i270') {
-							parent.location = 'tab.html?I-270';;
+							parent.location = 'tab.html?I-270';
 						} else if (selected_road == 'i70') {
 							parent.location = 'tab.html?I-70';
 						} else if (selected_road == 'us29') {
 							parent.location = 'tab.html?US-29';
+						} else if (selected_road == 'others') {
+							alert("Please select a highway.");
 						} else{
 							alert("Please select a highway.");
 						}
