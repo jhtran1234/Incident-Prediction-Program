@@ -95,7 +95,9 @@
 		var img = document.getElementById(road_selected);
 		
 		if(img.getAttribute('selected') == 'false'){
-			roads.forEach((hwy) => { //Unselects all other roads
+
+			//Ensures all other highways are unselected
+			roads.forEach((hwy) => {
 				document.getElementById(hwy).src='images/' + hwy + '.png';
 				document.getElementById(hwy).setAttribute('selected', 'false');
 			});
@@ -105,8 +107,12 @@
 
 			document.getElementById('selected_img').src='images/' + road_selected + '.png';
 
+			//Diables Next button when others is selected
 			if(img.getAttribute('id') != 'others'){
 				document.getElementById('Next').disabled = false;
+			}
+			else{
+				document.getElementById('Next').disabled = true;
 			}
 		}
 		else{
@@ -180,7 +186,7 @@
 						} else if (selected_road == 'us29') {
 							parent.location = 'tab.html?US-29';
 						} else if (selected_road == 'others') {
-							alert("Please select a highway.");
+							alert("The Other Highways button is currently unavailable. Please select a highway.");
 						} else{
 							alert("Please select a highway.");
 						}
