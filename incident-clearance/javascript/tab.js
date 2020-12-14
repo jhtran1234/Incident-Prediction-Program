@@ -2654,9 +2654,9 @@ function updateTime(){
 		if(model['incident']=='Collision incident'){
 			drawSVG1(20, 90, 37, 100, "10~45", "60%");
 			drawSVG2(20, 110, 47, 120, "10~55", "70%");
-			drawSVG3(20, 180, 85, 190, "10~90", "80%");
+			drawSVG3(20, 180, 82, 190, "10~90", "80%");
 			drawSVG4("Average CT = 40 mins");
-				
+
 			if(model['blockage']=='Travel lane blockage'){
 				drawSVG1(20, 100, 42, 110, "10~50", "60%");
 				drawSVG2(20, 120, 52, 130, "10~60", "70%");
@@ -2668,7 +2668,6 @@ function updateTime(){
 					drawSVG3(120, 300, 130, 300, "60~360", "80%");
 					drawSVG4("Average CT = 235 mins");
 				}
-
 				else if(model['collision']=='Personal Injury'){
 					drawSVG1(30, 120, 57, 130, "15~60", "60%");
 					drawSVG2(30, 140, 67, 150, "15~70", "70%");
@@ -2935,7 +2934,6 @@ function updateTime(){
 				drawSVG3(0, 0, 0, 0, "", "");
 				drawSVG4("Average CT = 110 mins");
 			}
-
 			else {
 				if (model['incident'] == 'Collision incident') {
 					if(model['blockage']=='Travel lane blockage'){
@@ -3430,7 +3428,7 @@ function CPI1_case4() {
 		drawSVG1(240, 300, 252, 300, ">=120", "85%");
 		drawSVG2(0, 0, 0, 0, "", "");
 		drawSVG3(0, 0, 0, 0, "", "");
-		drawSVG4("Average CT = 134 mins"); //mean not given
+		drawSVG4("Average CT = >=120 mins"); //mean not given
 	}
 	else {
 		drawSVG1(240, 300, 180, 300, ">=120", "75%");
@@ -3769,7 +3767,7 @@ function CPD1_case4() {
 		drawSVG1(240, 300, 252, 300, ">=120", "100%");
 		drawSVG2(0, 0, 0, 0, "", "");
 		drawSVG3(0, 0, 0, 0, "", "");
-		drawSVG4("Average CT = 270 mins"); //mean not given
+		drawSVG4("Average CT = >=120 mins"); //mean not given
 	}
 	else {
 		drawSVG1(240, 300, 250, 300, ">=120", "60%");
@@ -3898,7 +3896,7 @@ function CPD2_case4() {
 		drawSVG1(240, 300, 252, 300, ">=120", "100%");
 		drawSVG2(0, 0, 0, 0, "", "");
 		drawSVG3(0, 0, 0, 0, "", "");
-		drawSVG4("Average CT = 164 mins"); //mean not given
+		drawSVG4("Average CT = >=120 mins"); //mean not given
 	}
 	else {
 		drawSVG1(240, 300, 250, 300, ">=120", "100%");
