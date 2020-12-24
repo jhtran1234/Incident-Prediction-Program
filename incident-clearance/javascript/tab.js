@@ -2499,7 +2499,7 @@ function updateTime(){
 			if (model['incident'] == 'Collision incident') {
 				if(model['blockage']=='Travel lane blockage'){
 					if(model['collision']=='Fatality'){
-						if((num_total > 2) && (num_medical > 0)){CF_case2();}
+						if((num_total > 1) && (num_medical > 0)){CF_case2();}
 						else{CF_case1();}
 					}
 					else if(model['collision']=='Personal Injury'){
@@ -2508,7 +2508,7 @@ function updateTime(){
 							if(checkresult == 'CPI1-0'){
 								if(((hour != 'AM-peak') && (hour != 'PM-peak')) && first_responder == 'POLICE'){checkresult = 'CPI1-2';}
 								else if(first_responder == 'FIREBOARD'){checkresult = 'CPI1-1';}
-								else if((center=='TOC4' && num_responder>2) || num_truck>0){checkresult = 'CPI1-2';}
+								else if((center=='SOC' && num_responder>2) || num_truck>0){checkresult = 'CPI1-2';}
 								else if(aux_lane == true){checkresult = 'CPI1-2';}
 								else{checkresult = 'CPI1-1';}
 							}
