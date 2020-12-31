@@ -26,7 +26,7 @@ var percent_txt_3;
 var txtElem3 = document.createElementNS('http://www.w3.org/2000/svg','text');
 var last_line;
 
-//global variables will be used in other functions				
+//global variables will be used in other functions
 var travel_drop;
 var shoulder_drop;
 var total_lane;
@@ -2253,7 +2253,7 @@ function updateTime(){
 							checkresult = 'CPD1-0';
 							if(checkresult == 'CPD1-0'){
 								if(num_tow>0 && num_fireboard>0){checkresult = 'CPD1-2';}
-								else if(num_chart>1 && num_pickup>1){checkresult = 'CPD1-2';}
+								else if(num_chart>1 && num_pickup>0){checkresult = 'CPD1-2';}
 								else if(num_tow>0 && first_responder == 'POLICE'){checkresult = 'CPD1-2';}
 								else if(num_chart>2 && first_responder=='CHART'){checkresult = 'CPD1-2';}
 								else if(num_chart>2 || (num_responder>4 && pavement == 'Wet')){checkresult = 'CPD1-2';}
@@ -3522,9 +3522,9 @@ function CPI2_case3() {
 		drawSVG4("Average CT = 67 mins");
 	}
 	else if (road == "US-29") {
-		drawSVG1(140, 230, 122, 200, "70~115", "60%");
-		drawSVG2(130, 240, 119, 210, "65~120", "70%");
-		drawSVG3(130, 260, 114, 210, "65~130", "80%");
+		drawSVG1(140, 230, 164, 200, "70~115", "60%");
+		drawSVG2(130, 240, 164, 210, "65~120", "70%");
+		drawSVG3(130, 260, 174, 210, "65~130", "80%");
 		drawSVG4("Average CT = 94 mins");
 	}
 	else {
@@ -4014,7 +4014,7 @@ function CF_case1(){
 	if (road == "I-495"){
 		drawSVG1(60, 126, 75, 136, "100~210", "50%");
 		drawSVG2(0, 0, 0, 0, "", "");
-	drawSVG3(0, 0, 0, 0, "", "");
+		drawSVG3(0, 0, 0, 0, "", "");
 		drawSVG4("Average CT = 100 mins");
 	}
 	else if (road == "I-695"){
@@ -4066,7 +4066,7 @@ function CF_case2(){
 		drawSVG4("Average CT = 543 mins");
 	}
 	else if (road == "US-29"){
-		drawSVG1(0, 120, 42, 130, ">=200", "100%");
+		drawSVG1(120, 300, 180, 300, ">=200", "100%");
 		drawSVG2(0, 0, 0, 0, "", "");
 		drawSVG3(0, 0, 0, 0, "", "");
 		drawSVG4("Average CT = 333 mins");
