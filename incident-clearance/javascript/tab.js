@@ -249,10 +249,8 @@ $(document).ready(function(){
 		 $('.ui.menu').find('.item').tab('change tab', '2');
 		
 	});	
-	$("#Next-11").click(function(){ //Handles Next button after a Non-Collision Incident
-		radioValue4 = $("input[name='type']:checked").val();
-		console.log(radioValue4);
-	});
+	//$("#Next-11").click(function(){ //Handles Next button after a Non-Collision Incident
+	//});
 	
 	//iv tab's next button
 	$("#Next-5").click(function(){
@@ -3225,6 +3223,14 @@ function drawSVG4(average_time){
 }
 
 function activeNext(){
+	var more_info = (road == "I-695" || road == "I-70" || road == "US-29"); //Boolean whether or not "More info needed" message is displayed
+	var all_info = false;
+	if(model['incident']!= null && model["involved_veh"]!= null && model["responder"]!= null && model["center_choice"]!= null &&
+		model["pavement_condition"]!=null && model["hour_time"]!= null && model["location"]!=null){
+		more_info = false;
+		all_info = true;
+	}
+	
 	if(this.id == 'Save-1'){
 		$("#Next-1").removeAttr("disabled");
 	}
@@ -3238,7 +3244,9 @@ function activeNext(){
 		$("#Next-4").removeAttr("disabled");
 	}
 	else if(this.id == 'Save-5'){
-		if(road == "I-695" || road == "I-70" || road == "US-29"){moreInfoNeeded_updateTime();} //Indicates more info is needed.
+		$("#boxheader").text("Estimated Clearance Time");
+		if(more_info){moreInfoNeeded_updateTime();} //Indicates more info is needed.
+		if(all_info){$("#boxheader").text("All information has been recorded.");}
 
 		if (document.getElementById("dropbox1s").value != ' ' && num_car == 0){
 			alert("At least one vehicle should be involved when a situation is specified for a type.");
@@ -3260,7 +3268,9 @@ function activeNext(){
 		}
 	}
 	else if(this.id == 'Save-6'){
-		if(road == "I-695" || road == "I-70" || road == "US-29"){moreInfoNeeded_updateTime();}
+		$("#boxheader").text("Estimated Clearance Time");
+		if(more_info){moreInfoNeeded_updateTime();}
+		if(all_info){$("#boxheader").text("All information has been recorded.");}
 
 		var responder_type;
 		if (model['responder'] == 'First responder: CHART' && (responder_type = "chart") && num_chart > 0) {
@@ -3289,23 +3299,33 @@ function activeNext(){
 		}
 	}
 	else if(this.id == 'Save-7'){
-		if(road == "I-695" || road == "I-70" || road == "US-29"){moreInfoNeeded_updateTime();}
+		$("#boxheader").text("Estimated Clearance Time");
+		if(more_info){moreInfoNeeded_updateTime();}
+		if(all_info){$("#boxheader").text("All information has been recorded.");}
 		$("#Next-7").removeAttr("disabled");
 	}
 	else if(this.id == 'Save-8'){
-		if(road == "I-695" || road == "I-70" || road == "US-29"){moreInfoNeeded_updateTime();}
+		$("#boxheader").text("Estimated Clearance Time");
+		if(more_info){moreInfoNeeded_updateTime();}
+		if(all_info){$("#boxheader").text("All information has been recorded.");}
 		$("#Next-8").removeAttr("disabled");
 	}
 	else if(this.id == 'Save-9'){
-		if(road == "I-695" || road == "I-70" || road == "US-29"){moreInfoNeeded_updateTime();}
+		$("#boxheader").text("Estimated Clearance Time");
+		if(more_info){moreInfoNeeded_updateTime();}
+		if(all_info){$("#boxheader").text("All information has been recorded.");}
 		$("#Next-9").removeAttr("disabled");
 	}
 	else if(this.id == 'Save-10' || this.id == 'Save-10_495' || this.id == 'Save-10_695' 
 		|| this.id == 'Save-10_270' || this.id == 'Save-10_70' || this.id == 'Save-10_29'){
 		$("#boxheader").text("Estimated Clearance Time");
+		if(more_info){moreInfoNeeded_updateTime();}
+		if(all_info){$("#boxheader").text("All information has been recorded.");}
 	}
 	else if(this.id == 'Save-11'){
-		$("#Next-11").removeAttr("disabled");
+		//$("#Next-11").removeAttr("disabled");
+		radioValue4 = $("input[name='type']:checked").val();
+		console.log(radioValue4);
 	}
 }
 
@@ -4120,5 +4140,5 @@ function moreInfoNeeded_updateTime(){
 	$("#second_stop").text("60min");
 	$("#fourth_stop").text("120min");
 
-	$("#boxheader").text("More information needed for estimation.");
+	$("#boxheader").text("More information is needed for accurate estimation.");
 }
