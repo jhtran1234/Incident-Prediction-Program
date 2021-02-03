@@ -288,7 +288,6 @@
 			height: 32px;
 		}
 
-
 		#t2 {
 			padding-left: 80px;
 		}
@@ -405,6 +404,7 @@
 				<div class="item" data-tab="6">
 					Time
 				</div>
+				<!--A different location tab with different map will appear with different hwy choices-->
 				<div class="item" data-tab="7" id="location_95" style="display: none">
 					Location
 				</div>
@@ -457,7 +457,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="ui bottom attached tab segment" data-tab="1-1">
 				<div class="ui grid">
 					<div class="one column row" id="checkbox-size">
@@ -499,7 +499,6 @@
 							<img src="images/incidenttype_1.png" id="t2">
 							<img src="images/incidenttype_2.png">
 							<img src="images/incidenttype_3.png">
-				
 						</div>
 						<div class="ui form">
 							<div class="inline fields">
@@ -1486,34 +1485,34 @@
 						    </div>
 						    <div id="estimation">
 							    <svg height="150px" width="350px" id="map">
-							    <defs>
-								    <marker id="arrow" markerheight="10" markerunits="userSpaceOnUse" markerwidth="10" orient="auto" refx="0" refy="3">
-									    <path d="M0,0 L0,6 L9,3 z" fill="#f00"></path>
-								    </marker>
-								    <marker id="Circle" markerheight="10" markerwidth="10" orient="auto" refx="5" refy="5">
-									    <circle cx="5" cy="5" fill="dodgerblue" r="2"></circle>
-								    </marker>
-								    <marker id="Square" markerheight="10" markerwidth="10" orient="auto" refx="0" refy="3">
-									    <path d="M 5,1 L 9,5 5,9 1,5 z" fill="#6a9100"></path>
-								    </marker>
-							    </defs>
-							    <line marker-end="url(#Circle)" marker-start="url(#arrow)" stroke="#000" stroke-width="2" x1="0" x2="60" y1="20" y2="20"></line>
-							    <text x="45" y="35" id="first_stop">
-								    30min
-							    </text>
-							    <line marker-end="url(#Circle)" stroke="#000" stroke-width="2" x1="60" x2="120" y1="20" y2="20"></line>
-							    <text x="105" y="35" id="second_stop">
-								    60min
-							    </text>
-							    <line stroke="#000" stroke-width="2" x1="120" x2="180" y1="20" y2="20"></line>
-							    <line marker-end="url(#Circle)" stroke="#000" stroke-width="2" x1="180" x2="240" y1="20" y2="20"></line>
-							    <text x="225" y="35" id="fourth_stop">
-									120min
-								</text>
-								<line marker-end="url(#arrow)" stroke="#000" stroke-width="2" x1="240" x2="300" y1="20" y2="20"></line>	
-								<line stroke="red" stroke-width="15"></line>
+									<defs>
+										<marker id="arrow" markerheight="10" markerunits="userSpaceOnUse" markerwidth="10" orient="auto" refx="0" refy="3">
+											<path d="M0,0 L0,6 L9,3 z" fill="#f00"></path>
+										</marker>
+										<marker id="Circle" markerheight="10" markerwidth="10" orient="auto" refx="5" refy="5">
+											<circle cx="5" cy="5" fill="dodgerblue" r="2"></circle>
+										</marker>
+										<marker id="Square" markerheight="10" markerwidth="10" orient="auto" refx="0" refy="3">
+											<path d="M 5,1 L 9,5 5,9 1,5 z" fill="#6a9100"></path>
+										</marker>
+									</defs>
+									<line marker-end="url(#Circle)" marker-start="url(#arrow)" stroke="#000" stroke-width="2" x1="0" x2="60" y1="20" y2="20"></line>
+									<text x="45" y="35" id="first_stop">
+										30min
+									</text>
+									<line marker-end="url(#Circle)" stroke="#000" stroke-width="2" x1="60" x2="120" y1="20" y2="20"></line>
+									<text x="105" y="35" id="second_stop">
+										60min
+									</text>
+									<line stroke="#000" stroke-width="2" x1="120" x2="180" y1="20" y2="20"></line>
+									<line marker-end="url(#Circle)" stroke="#000" stroke-width="2" x1="180" x2="240" y1="20" y2="20"></line>
+									<text x="225" y="35" id="fourth_stop">
+										120min
+									</text>
+									<line marker-end="url(#arrow)" stroke="#000" stroke-width="2" x1="240" x2="300" y1="20" y2="20"></line>	
+									<line stroke="red" stroke-width="15"></line>
+								</svg>
 							</div>
-							</svg>
 						</div>
 					</div>
 				</div>

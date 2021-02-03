@@ -3256,7 +3256,7 @@ function drawSVG4(average_time){
 
 function activeNext(){
 	var more_info = (road == "I-695" || road == "I-70" || road == "US-29"); //Boolean whether or not "More info needed" message is displayed
-	var all_info = false;
+	var all_info = false; //Indicates if all information has been collected in the model
 	if(model['incident']!= null && model["involved_veh"]!= null && model["responder"]!= null && model["center_choice"]!= null &&
 		model["pavement_condition"]!=null && model["hour_time"]!= null && model["location"]!=null){
 		more_info = false;
@@ -3361,6 +3361,7 @@ function activeNext(){
 	}
 }
 
+// Below are most of the display cases for CPI, CPD and Fatalities
 function CPI1_case1() {
 	if (road == "I-495") {
 		drawSVG1(20, 60, 22, 70, "10~30", "60%");

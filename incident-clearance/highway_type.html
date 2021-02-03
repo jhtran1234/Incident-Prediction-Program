@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+	<!--This page prompts a user to select a highway and then directs the user to the right page for estimations-->
 <head>
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js">
@@ -79,6 +80,8 @@
 	    height: 80px;
 	    background-color: white;
     }
+
+	/*These are for the highway selection buttons and their proper map placement*/
 	#div-i95 {position: relative; display: inline; left: 268px; top: 110px; height: 40px; width: 40px; z-index: 200;}
 	#div-i495 {position: relative; display: inline; left: 295px; top: 200px; height: 40px; width: 49px; z-index: 200;}
 	#div-i695 {position: relative; display: inline; left: 285px; top: 95px; height: 40px; width: 49px; z-index: 200;}
@@ -96,7 +99,7 @@
 		
 		if(img.getAttribute('selected') == 'false'){
 
-			//Ensures all other highways are unselected
+			//Ensures all other highways are unselected when a new one is selected
 			roads.forEach((hwy) => {
 				document.getElementById(hwy).src='images/' + hwy + '.png';
 				document.getElementById(hwy).setAttribute('selected', 'false');
@@ -107,7 +110,7 @@
 
 			document.getElementById('selected_img').src='images/' + road_selected + '.png';
 
-			//Diables Next button when others is selected
+			//Diables Next button when others is selected -- we do not have an "others" option yet
 			if(img.getAttribute('id') != 'others'){
 				document.getElementById('Next').disabled = false;
 			}
@@ -161,7 +164,7 @@
 	    </div>
 
 		<div class="column" id="button-row">
-		    <div class="one column row" id="button-row"> 
+		    <div class="one column row" id="button-row">
 			    <button class="ui right floated blue button" id="Next" onclick='nextPage()' disabled>Next</button>
 			    <script type="text/javascript">
 					function nextPage() {
@@ -173,6 +176,7 @@
 							}
 						});
 
+						//Appends road name to the end of the URL so the next HTML page can give estimations for the correct road
 						if (selected_road == 'i95') {
 							parent.location = 'tab.html?I-95';
 						} else if (selected_road == 'i495') {
