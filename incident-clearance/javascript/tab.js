@@ -4172,5 +4172,5 @@ function moreInfoNeeded_updateTime(){
 	$("#second_stop").text("60min");
 	$("#fourth_stop").text("120min");
 
-	$("#boxheader").text("More information is needed for accurate estimation.");
+	$("#boxheader").text("More inputs are needed for accurate estimation.");
 }
