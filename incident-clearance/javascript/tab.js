@@ -1278,7 +1278,6 @@ function printTime(){
 //### updates the time whenever factors entered into the model
 // activated whenever a radio button is selected, dropdown selected, or checkbox clicked
 function updateTime(){
-	alert('hi');
 	//first label
 	newLine_1.setAttribute('id','line1');
 	newLine_1.setAttribute('stroke','red');
