@@ -389,6 +389,8 @@ $(document).ready(function(){
 	});
 });
 
+//### function out of use
+/*
 function showPopup(){
 	$( "#dialog-2" ).empty();
 	$( "#dialog-2" ).append('The estimated CT is the final output.');
@@ -408,6 +410,7 @@ function showPopup(){
 	});
 }
 
+//### function out of use
 function showprob(){
 	$( "#dialog-2" ).empty();
 	$( "#dialog-2" ).append(prob);
@@ -425,10 +428,11 @@ function showprob(){
 			}
 		}	
 	});
-}
+}*/
 
+//### updates the model whenever a radio button is selected
 function updateSum(){
-	var curr = $(this).parent().find("label").text();
+	var curr = $(this).parent().find("label").text(); //### current working parameter - all radio buttons direct here
 	if(curr == 'Collision incident'){
 		model['incident'] = curr;
 		$("#Save-1").removeAttr("disabled");
@@ -674,6 +678,7 @@ function updateSum(){
 	}
 }
 
+//### updates the model whenever a dropdown option is selected
 function updateSum2(){
 	travel_drop = document.getElementById("t3_1").value;
 	console.log(travel_drop);
@@ -1131,14 +1136,15 @@ function getDate(){
 			model['weekend_time'] = weekend;		
 		}
 
-		//Consult for federal holidays https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/
-		//Careful to consider that some holidays have floating days, and others have observed days when they fall on weekends
+		// Consult for federal holidays https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/
+		// Careful to consider that some holidays have floating days, and others have observed days when they fall on weekends
 		if(((month == '01')&&(day == '01')) || ((month == '01')&&(day == '02')) || ((month == '07')&&(day == '04')) || ((month == '11')&&(day == '11')) || ((month == '12')&&(day == '25'))){
 			nonholiday = 1;
 			nonholiday_sh = 0;
 			console.log(nonholiday);
 			model['holiday_time'] = 'Holiday';
 		}
+		//### holidays below are floating days and are observed on different days each year
 		else if((year == '2020') && (((month == '01')&&(day == '20')) || ((month == '02')&&(day == '17')) || ((month == '05')&&(day == '25')) || ((month == '07')&&(day == '03')) || ((month == '09')&&(day == '07')) || ((month == '10')&&(day == '12')) || ((month == '11')&&(day == '11')) || ((month == '11')&&(day == '26')))){
 			nonholiday = 1;
 			nonholiday_sh = 0;
@@ -1269,7 +1275,10 @@ function printTime(){
 	$("#map").append(txtElem3);
 }
 
+//### updates the time whenever factors entered into the model
+// activated whenever a radio button is selected, dropdown selected, or checkbox clicked
 function updateTime(){
+	alert('hi');
 	//first label
 	newLine_1.setAttribute('id','line1');
 	newLine_1.setAttribute('stroke','red');
@@ -1328,6 +1337,11 @@ function updateTime(){
 	txtElem3.setAttributeNS(null,"x",180);
 	txtElem3.setAttributeNS(null,"y",140);
 
+	//###
+	/* the core model starts here
+	*  the conditions below are checked when users select the incident type, 
+	*  no. of impacted lanes, and after all factors have been entered
+	*/
 	if(road=='I-495'){
 		if(model['incident']=='Collision incident'){
 			drawSVG1(10, 80, 27, 90, "5~40", "60%");
