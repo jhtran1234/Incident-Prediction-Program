@@ -3268,10 +3268,10 @@ function drawSVG4(average_time){
 }
 
 function activeNext(){
-	var more_info = (road == "I-695" || road == "I-70" || road == "US-29"); //Boolean whether or not "More info needed" message is displayed
-	var all_info = false; //Indicates if all information has been collected in the model
+	var more_info = (road == "I-695" || road == "I-70" || road == "US-29"); // Boolean whether or not "More info needed" message is displayed
+	var all_info = false; // Indicates if all information has been collected in the model
 	if(model['incident']!= null && model["involved_veh"]!= null && model["responder"]!= null && model["center_choice"]!= null &&
-		model["pavement_condition"]!=null && model["hour_time"]!= null && model["location"]!=null){
+		model["pavement_condition"]!=null && model["hour_time"]!= null && (model["location"] != null || model['exit'] != null)){
 		more_info = false;
 		all_info = true;
 	}
@@ -3290,7 +3290,7 @@ function activeNext(){
 	}
 	else if(this.id == 'Save-5'){
 		$("#boxheader").text("Estimated Clearance Time");
-		if(more_info){moreInfoNeeded_updateTime();} //Indicates more info is needed.
+		if(more_info){moreInfoNeeded_updateTime();} // Indicates more info is needed.
 		if(all_info){$("#boxheader").text("All information has been recorded.");}
 
 		if (document.getElementById("dropbox1s").value != ' ' && num_car == 0){
