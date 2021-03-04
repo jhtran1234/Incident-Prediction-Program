@@ -3281,7 +3281,7 @@ function drawSVG4(average_time){
 }
 
 function activeNext(){
-	var more_info = (road == "I-695" || road == "I-70" || road == "US-29"); // Boolean whether or not "More info needed" message is displayed
+	var more_info = true; // Boolean whether or not "More info needed" message is displayed
 	var all_info = false; // Indicates if all information has been collected in the model
 	if(model['incident']!= null && model["involved_veh"]!= null && model["responder"]!= null && model["center_choice"]!= null &&
 		model["pavement_condition"]!=null && model["hour_time"]!= null && (model["location"] != null || model['exit'] != null)){
