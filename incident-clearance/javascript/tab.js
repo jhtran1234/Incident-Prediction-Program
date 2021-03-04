@@ -1286,12 +1286,14 @@ function updateTime(){
 	newLine_1.setAttribute('y2','60');
 							
 	txtElem_1.setAttributeNS(null,"id","text1");
-	txtElem_1.setAttributeNS(null,"font-size","13px");
+	txtElem_1.setAttributeNS(null,"font-size","15px");
+	txtElem_1.setAttributeNS(null,"font-weight","bold");
 	txtElem_1.setAttributeNS(null,"fill",'black');
 	txtElem_1.setAttributeNS(null,"y",65);
 				
 	txtElem2_1.setAttributeNS(null,"id","text2");
-	txtElem2_1.setAttributeNS(null,"font-size","10px");
+	txtElem2_1.setAttributeNS(null,"font-size","15px");
+	txtElem2_1.setAttributeNS(null,"font-weight","bold");
 	txtElem2_1.setAttributeNS(null,"fill",'red');
 	txtElem2_1.setAttributeNS(null,"y",65);
 	//second label
@@ -1303,12 +1305,14 @@ function updateTime(){
 	newLine_2.setAttribute('y2','85');
 
 	txtElem_2.setAttributeNS(null,"id","text1_2");
-	txtElem_2.setAttributeNS(null,"font-size","13px");
+	txtElem_2.setAttributeNS(null,"font-size","15px");
+	txtElem_2.setAttributeNS(null,"font-weight","bold");
 	txtElem_2.setAttributeNS(null,"fill",'black');
 	txtElem_2.setAttributeNS(null,"y",90);
 
 	txtElem2_2.setAttributeNS(null,"id","text2_2");
-	txtElem2_2.setAttributeNS(null,"font-size","10px");
+	txtElem2_2.setAttributeNS(null,"font-size","15px");
+	txtElem2_2.setAttributeNS(null,"font-weight","bold");
 	txtElem2_2.setAttributeNS(null,"fill",'red');
 	txtElem2_2.setAttributeNS(null,"y",90);	
 	//third label
@@ -1320,12 +1324,14 @@ function updateTime(){
 	newLine_3.setAttribute('y2','110');
 
 	txtElem_3.setAttributeNS(null,"id","text1_3");
-	txtElem_3.setAttributeNS(null,"font-size","13px");
+	txtElem_3.setAttributeNS(null,"font-size","15px");
+	txtElem_3.setAttributeNS(null,"font-weight","bold");
 	txtElem_3.setAttributeNS(null,"fill",'black');
 	txtElem_3.setAttributeNS(null,"y",115);
 				
 	txtElem2_3.setAttributeNS(null,"id","text2_3");
-	txtElem2_3.setAttributeNS(null,"font-size","10px");
+	txtElem2_3.setAttributeNS(null,"font-size","15px");
+	txtElem2_3.setAttributeNS(null,"font-weight","bold");
 	txtElem2_3.setAttributeNS(null,"fill",'red');
 	txtElem2_3.setAttributeNS(null,"y",115);
 	//average time line

@@ -386,42 +386,42 @@
 	<div class="ui container" id="container">
 		<div class="ui top attached segment incident-info" id="form-size">
 			<div class="ui top attached tabular menu">
-				<div class="item active" data-tab="1">
+				<div class="item active" data-tab="1" style="font-size: 14px;"><b>
 					Type
-				</div>
-				<div class="item" data-tab="2">
+				</b></div>
+				<div class="item" data-tab="2" style="font-size: 14px;"><b>
 					Involved Vehicles
-				</div>
-				<div class="item" data-tab="3">
+				</b></div>
+				<div class="item" data-tab="3" style="font-size: 14px;"><b>
 					Responder
-				</div>
-				<div class="item" data-tab="4">
+				</b></div>
+				<div class="item" data-tab="4" style="font-size: 14px;"><b>
 					Center
-				</div>
-				<div class="item" data-tab="5">
+				</b></div>
+				<div class="item" data-tab="5" style="font-size: 14px;"><b>
 					Pavement &amp; Hazmat
-				</div>
-				<div class="item" data-tab="6">
+				</b></div>
+				<div class="item" data-tab="6" style="font-size: 14px;"><b>
 					Time
-				</div>
+				</b></div>
 				<!--A different location tab with different map will appear with different hwy choices-->
-				<div class="item" data-tab="7" id="location_95" style="display: none">
-					Location
+				<div class="item" data-tab="7" id="location_95" style="display: none; font-size: 14px;">
+					<b>Location</b>
 				</div>
-				<div class="item" data-tab="8" id="location_495" style="display: none">
-					Location
+				<div class="item" data-tab="8" id="location_495" style="display: none; font-size: 14px;">
+					<b>Location</b>
 				</div>
-				<div class="item" data-tab="9" id="location_695" style="display: none">
-					Location
+				<div class="item" data-tab="9" id="location_695" style="display: none; font-size: 14px;">
+					<b>Location</b>
 				</div>
-				<div class="item" data-tab="10" id="location_270" style="display: none">
-					Location
+				<div class="item" data-tab="10" id="location_270" style="display: none; font-size: 14px;">
+					<b>Location</b>
 				</div>
-				<div class="item" data-tab="11" id="location_70" style="display: none">
-					Location
+				<div class="item" data-tab="11" id="location_70" style="display: none; font-size: 14px;">
+					<b>Location</b>
 				</div>
-				<div class="item" data-tab="12" id="location_29" style="display: none">
-					Location
+				<div class="item" data-tab="12" id="location_29" style="display: none; font-size: 14px;">
+					<b>Location</b>
 				</div>
 			</div>
 			<div class="ui bottom attached tab segment active" data-tab="1">
@@ -432,12 +432,12 @@
 								<div class="inline fields">
 									<div class="field" id="choice1">
 										<div class="ui radio checkbox">
-											<input name="incident" type="radio" value="collision"> <label class="type">Collision incident</label>
+											<input name="incident" type="radio" value="collision"> <label class="type" style="font-size: 18px;"><b>Collision incident</b></label>
 										</div>
 									</div>
 									<div class="field" id="choice2">
 										<div class="ui radio checkbox">
-											<input name="incident" type="radio" value="non"> <label class="type">Non-Collision incident</label>
+											<input name="incident" type="radio" value="non"> <label class="type" style="font-size: 18px;"><b>Non-Collision incident</b></label>
 										</div>
 									</div>
 								</div>
@@ -466,12 +466,12 @@
 								<div class="inline fields">
 									<div class="field" id="choice1">
 										<div class="ui radio checkbox">
-											<input name="blockage" type="radio" value="travel"> <label class="type">Travel lane blockage</label>
+											<input name="blockage" type="radio" value="travel"> <label class="type" style="font-size: 18px;"><b>Travel lane blockage</b></label>
 										</div>
 									</div>
 									<div class="field" id="choice2">
 										<div class="ui radio checkbox">
-											<input name="blockage" type="radio" value="shoulder"> <label class="type">Shoulder only blockage</label>
+											<input name="blockage" type="radio" value="shoulder"> <label class="type" style="font-size: 18px;"><b>Shoulder only blockage</b></label>
 										</div>
 									</div>
 								</div>
@@ -504,17 +504,17 @@
 							<div class="inline fields">
 								<div class="field" id="t2_1">
 									<div class="ui radio checkbox">
-										<input name="collision" type="radio" value="fatality"> <label>Fatality</label>											
+										<input name="collision" type="radio" value="fatality" style="font-size: 18px;"> <label><b>Fatality</b></label>
 									</div>
 								</div>
 								<div class="field" id="t2_2">
 									<div class="ui radio checkbox">
-										<input name="collision" type="radio" value="personal"> <label>Personal Injury</label>											
+										<input name="collision" type="radio" value="personal" style="font-size: 18px;"> <label><b>Personal Injury</b></label>
 									</div>
 								</div>
 								<div class="field" id="t2_3">
 									<div class="ui radio checkbox">
-										<input name="collision" type="radio" value="property"> <label>Property Damage only</label>											
+										<input name="collision" type="radio" value="property" style="font-size: 18px;"> <label><b>Property Damage only</b></label>
 									</div>
 								</div>
 							</div>
@@ -545,7 +545,7 @@
 							<div class="ui form">
 								<div class="grouped fields">
 									<div class="field" id="d2">
-										<label for="t3_1" style="float:right;padding-right:120px;padding-top:10px;"># of blocked TRAVEL lanes</label>
+										<label for="t3_1" style="float:right;padding-right:120px;padding-top:10px; font-size: 14px;"><b># of blocked TRAVEL lanes</b></label>
 										<select class="ui dropdown" id="t3_1">
 											<option value="0">0</option>
 											<option value="1">1</option>
@@ -556,7 +556,7 @@
 										</select>
 									</div>
 									<div class="field" id="d2">
-										<label for="t3_2" style="float:right;padding-right:127px;padding-top:10px;"># of blocked SHOULDERs</label>
+										<label for="t3_2" style="float:right;padding-right:127px;padding-top:10px; font-size: 14px;"><b># of blocked SHOULDERs</b></label>
 										<select class="ui dropdown" id="t3_2">
 											<option value="0">0</option>
 											<option value="1">1</option>
@@ -568,20 +568,20 @@
 									</div>
 									<div class="field" id="d2">
 										<div class="ui checkbox">
-											<input type="checkbox" name="blockage_detail" value="auxiliary" id="b1">
-											<label>An Auxiliary lane blocked</label>
+											<input type="checkbox" name="blockage_detail" value="auxiliary" id="b1" style="font-size: 18px;">
+											<label><b>An Auxiliary lane blocked</b></label>
 										</div>
 									</div>
 									<div class="field" id="d2">
 										<div class="ui checkbox">
-											<input type="checkbox" name="blockage_detail" value="tunnel" id="b2">
-											<label>A lane in TUNNEL blocked</label>
+											<input type="checkbox" name="blockage_detail" value="tunnel" id="b2" style="font-size: 18px;">
+											<label><b>A lane in TUNNEL blocked</b></label>
 										</div>
 									</div>
 									<div class="field" id="d2">
 										<div class="ui checkbox">
-											<input type="checkbox" name="blockage_detail" value="toll" id="b3">
-											<label>A lane in TOLL blocked</label>
+											<input type="checkbox" name="blockage_detail" value="toll" id="b3" style="font-size: 18px;">
+											<label><b>A lane in TOLL blocked</b></label>
 										</div>
 									</div>
 								</div>
@@ -869,7 +869,7 @@
 			<div class="ui bottom attached tab segment" data-tab="3">
 				<div class="ui grid">
 					<div class="one column row" id="checkbox-size">
-					<p style="font-weight:bold;">First Responder and # of responders</p>
+					<p style="font-weight:bold; font-size: 18px;">First Responder and # of responders</p>
                         <div class="thumbnail_responder">
                             <img src="images/responder_1.jpg">
 					        <img src="images/responder_2.jpg">
@@ -882,7 +882,7 @@
 						    <div class="inline fields">
 							    <div class="field" id="responder-chart">
 								    <div class="ui radio checkbox" >
-									    <input name="frequency" type="radio" value="CHART"> <label>CHART</label>
+									    <input name="frequency" type="radio" value="CHART"> <label><b>CHART</b></label>
 									    <select class="ui dropdown" id="dropdown_responder_1">
 										    <option value=" ">0</option>
 										    <option value="1 CHART unit ">1</option>
@@ -899,7 +899,7 @@
 							    </div>
 							    <div class="field" id="responder-police">
 								    <div class="ui radio checkbox">
-									    <input name="frequency" type="radio" value="POLICE"> <label>POLICE</label>
+									    <input name="frequency" type="radio" value="POLICE"> <label><b>POLICE</b></label>
 									    <select class="ui dropdown" id="dropdown_responder_2">
 										    <option value=" ">0</option>
 										    <option value="1 POLICE unit ">1</option>
@@ -916,7 +916,7 @@
 							    </div>
 							    <div class="field" id="responder-tow">
 								    <div class="ui radio checkbox">
-									    <input name="frequency" type="radio" value="TOW"> <label>TOW</label>
+									    <input name="frequency" type="radio" value="TOW"> <label><b>TOW</b></label>
 									    <select class="ui dropdown" id="dropdown_responder_3">
 										    <option value=" ">0</option>
 										    <option value="1 TOW unit ">1</option>
@@ -933,7 +933,7 @@
 							    </div>
 							    <div class="field" id="responder-fireboard">
 								    <div class="ui radio checkbox" >
-									    <input name="frequency" type="radio" value="FIREBOARD"> <label>FIREBOARD</label>
+									    <input name="frequency" type="radio" value="FIREBOARD"> <label><b>FIREBOARD</b></label>
 									    <select class="ui dropdown" id="dropdown_fireboard">
 										    <option value=" ">0</option>
 										    <option value="1 FIREBOARD unit ">1</option>
@@ -950,7 +950,7 @@
 							    </div>
 							    <div class="field" id="responder-medical">
 								    <div class="ui radio checkbox">
-									    <input name="frequency" type="radio" value="MEDICAL"> <label>MEDICAL</label>
+									    <input name="frequency" type="radio" value="MEDICAL"> <label><b>MEDICAL</b></label>
 									    <select class="ui dropdown" id="dropdown_responder_5">
 										    <option value=" ">0</option>
 										    <option value="1 MEDICAL unit ">1</option>
@@ -967,7 +967,7 @@
 							    </div>
 							    <div class="field" id="responder-other">
 								    <div class="ui radio checkbox">
-									    <input name="frequency" type="radio" value="OTHERS"> <label>OTHERS</label>
+									    <input name="frequency" type="radio" value="OTHERS"> <label><b>OTHERS</b></label>
 									    <select class="ui dropdown" id="dropdown_responder_6">
 										    <option value=" ">0</option>
 										    <option value="1 Other unit ">1</option>
@@ -1002,42 +1002,42 @@
 			<div class="ui bottom attached tab segment" data-tab="4">
 				<div class="ui grid">
 					<div class="one column row" id="checkbox-size">
-						<p style="font-weight:bold;">Select an operation center.</p>
+						<p style="font-weight:bold; font-size: 18px;">Select an operation center.</p>
 						<div class="ui form">
 							<div class="inline fields" id="center-choice-line">
 								<div class="field">
 									<div class="ui radio checkbox" >
-										<input name="frequency" type="radio"> <label>AOC</label>
+										<input name="frequency" type="radio"> <label style="font-size: 20px;"><b>AOC</b></label>
 									</div>
 								</div>
 								<div class="field">
 									<div class="ui radio checkbox">
-										<input name="frequency" type="radio"> <label>SOC</label>											
+										<input name="frequency" type="radio"> <label style="font-size: 20px;"><b>SOC</b></label>											
 									</div>
 								</div>
 								<div class="field">
 									<div class="ui radio checkbox">
-										<input name="frequency" type="radio"> <label>TOC3</label>											
+										<input name="frequency" type="radio"> <label style="font-size: 20px;"><b>TOC3</b></label>											
 									</div>
 								</div>
 								<div class="field">
 									<div class="ui radio checkbox">
-										<input name="frequency" type="radio"> <label>TOC4</label>
+										<input name="frequency" type="radio"> <label style="font-size: 20px;"><b>TOC4</b></label>
 									</div>
 								</div>
 								<div class="field">
 									<div class="ui radio checkbox">
-										<input name="frequency" type="radio"> <label>TOC5</label>
+										<input name="frequency" type="radio"> <label style="font-size: 20px;"><b>TOC5</b></label>
 									</div>
 								</div>
 								<div class="field">
 									<div class="ui radio checkbox">
-										<input name="frequency" type="radio"> <label>TOC7</label>
+										<input name="frequency" type="radio"> <label style="font-size: 20px;"><b>TOC7</b></label>
 									</div>
 								</div>
 								<div class="field">
 									<div class="ui radio checkbox">
-										<input name="frequency" type="radio"> <label>Other</label>
+										<input name="frequency" type="radio"> <label style="font-size: 20px;"><b>Other</b></label>
 									</div>
 								</div>
 							</div>
@@ -1060,7 +1060,7 @@
 			<div class="ui bottom attached tab segment" data-tab="5">
 				<div class="ui grid">
 					<div class="one column row" id="checkbox-size">
-						<p style="font-weight:bold;">Please indicate the pavement condition and whether hazmat is involved.</p>
+						<p style="font-weight:bold; font-size: 18px;">Please indicate the pavement condition and whether hazmat is involved.</p>
 						<div class="thumbnail_pavement">
 							<img src="images/ph1.png" id="ph1">
 							<img src="images/ph2.png" id="ph2">
@@ -1075,33 +1075,33 @@
 							<div class="inline fields">
 								<div class="field">
 									<div class="ui radio checkbox">
-										<input name="frequency" type="radio"> <label>Dry</label>
+										<input name="frequency" type="radio"> <label style="font-size: 19px;"><b>Dry</b></label>
 									</div>
 								</div>
 								<div class="field">
 									<div class="ui radio checkbox">
-										<input name="frequency" type="radio"> <label>Wet</label>											
+										<input name="frequency" type="radio"> <label style="font-size: 19px;"><b>Wet</b></label>											
 									</div>
 								</div>
 								<div class="field">
 									<div class="ui radio checkbox">
-										<input name="frequency" type="radio"> <label>Snow/Ice</label>											
+										<input name="frequency" type="radio"> <label style="font-size: 19px;"><b>Snow/Ice</b></label>											
 									</div>
 								</div>
 								<div class="field">
 									<div class="ui radio checkbox" style="margin-right:20px;">
-										<input name="frequency" type="radio"> <label>Chemical wet</label>
+										<input name="frequency" type="radio"> <label style="font-size: 19px;"><b>Chemical wet</b></label>
 									</div>
 								</div>	
 								<div class="field">
 									<div class="ui radio checkbox" style="margin-right:40px;">
-										<input name="frequency" type="radio"> <label>Unspecified</label>
+										<input name="frequency" type="radio"> <label style="font-size: 19px;"><b>Unspecified</b></label>
 									</div>
 								</div>
 
 								<div class="field">
 									<div class="ui checkbox" style="margin-left:10px;">
-										<input type="checkbox" name="example" id="haz"><label>Hazmat</label>
+										<input type="checkbox" name="example" id="haz"><label style="font-size: 19px;"><b>Hazmat</b></label>
 									</div>
 								</div>	
 							</div>
@@ -1468,7 +1468,7 @@
 				    <div class="column">
 					    <div class="ui segment"  id="tab-size" style="background-color:#fcf4cc;">
 						    <div class="ui top attached tabular menu">
-							    <div class="item" style="font-size:15px; font-weight:bold;">
+							    <div class="item" style="font-size:18px; font-weight:bold;">
 								    Summary
 							    </div>
 						    </div>
@@ -1479,7 +1479,7 @@
 				    <div class="column">
 					    <div class="ui segment" id="tab-size"  style="background-color:#fcf4cc;">
 						    <div class="ui top attached tabular menu">
-							    <div class="item" style="font-size:15px; font-weight:bold;">
+							    <div class="item" style="font-size:18px; font-weight:bold;">
 								    <h id="boxheader">Estimated Clearance Time</h>
 							    </div>
 						    </div>
@@ -1497,16 +1497,16 @@
 										</marker>
 									</defs>
 									<line marker-end="url(#Circle)" marker-start="url(#arrow)" stroke="#000" stroke-width="2" x1="0" x2="60" y1="20" y2="20"></line>
-									<text x="45" y="35" id="first_stop">
+									<text x="45" y="35" id="first_stop" style="font-size: 15px; font-weight:bold">
 										30min
 									</text>
 									<line marker-end="url(#Circle)" stroke="#000" stroke-width="2" x1="60" x2="120" y1="20" y2="20"></line>
-									<text x="105" y="35" id="second_stop">
+									<text x="105" y="35" id="second_stop" style="font-size: 15px; font-weight:bold">
 										60min
 									</text>
 									<line stroke="#000" stroke-width="2" x1="120" x2="180" y1="20" y2="20"></line>
 									<line marker-end="url(#Circle)" stroke="#000" stroke-width="2" x1="180" x2="240" y1="20" y2="20"></line>
-									<text x="225" y="35" id="fourth_stop">
+									<text x="225" y="35" id="fourth_stop" style="font-size: 15px; font-weight:bold">
 										120min
 									</text>
 									<line marker-end="url(#arrow)" stroke="#000" stroke-width="2" x1="240" x2="300" y1="20" y2="20"></line>	
