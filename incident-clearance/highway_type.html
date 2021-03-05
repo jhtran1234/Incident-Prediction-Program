@@ -81,7 +81,8 @@
 	    background-color: white;
     }
 
-	/*These are for the highway selection buttons and their proper map placement*/
+	/* These are for the highway selection buttons and their proper map placement */
+	/* This section is used for proper button placements when I-270 is readded to the program
 	#div-i95 {position: relative; display: inline; left: 268px; top: 110px; height: 40px; width: 40px; z-index: 200;}
 	#div-i495 {position: relative; display: inline; left: 295px; top: 200px; height: 40px; width: 49px; z-index: 200;}
 	#div-i695 {position: relative; display: inline; left: 285px; top: 95px; height: 40px; width: 49px; z-index: 200;}
@@ -89,7 +90,18 @@
 	#div-i70 {position: relative; display: inline; left: 354px; top: 70px; height: 40px; width: 40px; z-index: 200;}
 	#div-us29 {position: relative; display: inline; left: 319px; top: 130px; height: 40px; width: 40px; z-index: 200;}
 	#div-others {position: relative; display: inline; left: 175px; top: 275px; height: 40px; width: 57px; z-index: 200;}
-	#div-selected {position: relative; top: 200px; width: 175px; z-index: 200;}
+	#div-selected {position: relative; top: 200px; width: 175px; z-index: 200;} */
+
+	
+	#div-i95 {position: relative; display: inline; left: 330px; top: 140px; height: 40px; width: 40px; z-index: 200;}
+	#div-i495 {position: relative; display: inline; left: 340px; top: 200px; height: 40px; width: 49px; z-index: 200;}
+	#div-i695 {position: relative; display: inline; left: 330px; top: 85px; height: 40px; width: 49px; z-index: 200;}
+	#div-i270 {position: relative; display: none; left: 352px; top: 90px; height: 40px; width: 50px; z-index: 200;}
+	#div-i70 {position: relative; display: inline; left: 395px; top: 70px; height: 40px; width: 40px; z-index: 200;}
+	#div-us29 {position: relative; display: inline; left: 380px; top: 130px; height: 40px; width: 40px; z-index: 200;}
+	#div-others {position: relative; display: inline; left: 175px; top: 275px; height: 40px; width: 57px; z-index: 200;}
+	#div-selected {position: relative; top: 200px; width: 175px; z-index: 200;} 
+	
 </style>
 
 <script>
@@ -131,7 +143,7 @@
 <div class="ui container" id="container">
 	<div class="ui gird" id="grid-size">
 	    <div class="one column row"  id="row1-size">
-			<p style="font-size:25px; font_weight:bold">Please select a highway by clicking on one of the buttons below:</p>
+			<p style="font-size:25px; font-weight:bold">Please select a highway by clicking on one of the buttons below:</p>
 	    </div>
 	    <div class="one column row" id="row2-size">
 			<div id='div-i270'>
@@ -157,7 +169,7 @@
 			</div>
 			<div id='div-selected'>
 				<div>
-					<p style="font-size:21px; font-we:bold">Selected Highway:</p>
+					<p style="font-size:21px; font-weight:bold">Selected Highway:</p>
 				</div>
 				<img src='' id='selected_img' height='40px' selected='false'>
 			</div>
