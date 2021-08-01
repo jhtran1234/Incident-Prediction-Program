@@ -121,14 +121,7 @@
 			img.setAttribute('selected', 'true');
 
 			document.getElementById('selected_img').src='images/' + road_selected + '.png';
-
-			//Diables Next button when others is selected -- we do not have an "others" option yet
-			if(img.getAttribute('id') != 'others'){
-				document.getElementById('Next').disabled = false;
-			}
-			else{
-				document.getElementById('Next').disabled = true;
-			}
+			document.getElementById('Next').disabled = false;
 		}
 		else{
 			img.src='images/' + road_selected + '.png';
