@@ -1377,14 +1377,14 @@ function updateTime(){
 					drawSVG4("Average CT = 33 mins");
 
 					if(model['number_travel']=='1 Travel lane blocked'){
-						drawSVG1(20, 80, 32, 90, "10~40", "60%");
-						drawSVG2(20, 100, 42, 110, "10~50", "70%");
+						drawSVG1(20, 80, 28, 90, "10~40", "60%");
+						drawSVG2(20, 100, 38, 110, "10~50", "70%");
 						drawSVG3(10, 120, 47, 130, "5~60", "80%");
 						drawSVG4("Average CT = 29 mins");
 					}
 					else if(model['number_travel']=='2 Travel lanes blocked'){
-						drawSVG1(20, 80, 32, 90, "10~40", "60%");
-						drawSVG2(20, 90, 37, 100, "10~45", "70%");
+						drawSVG1(20, 80, 28, 90, "10~40", "60%");
+						drawSVG2(20, 90, 33, 100, "10~45", "70%");
 						drawSVG3(10, 110, 42, 120, "5~55", "80%");
 						drawSVG4("Average CT = 32 mins");
 					}
@@ -2765,7 +2765,7 @@ function updateTime(){
 					drawSVG3(20, 190, 40, 200, "10~85", "80%");
 					drawSVG4("Average CT = 35 mins");	
 					if(model['number_travel']=='1 Travel lane blocked'){
-						drawSVG1(20, 80, 32, 90, "10~40", "60%");
+						drawSVG1(20, 80, 28, 90, "10~40", "60%");
 						drawSVG2(20, 100, 42, 110, "10~50", "70%");
 						drawSVG3(20, 160, 72, 170, "10~80", "80%");
 						drawSVG4("Average CT = 35 mins");
@@ -3546,7 +3546,7 @@ function CPI2_case1() {
 		drawSVG4("Average CT = 19 mins");
 	}
 	else if (road == "US-29") {
-		drawSVG1(20, 80, 32, 90, "10~40", "60%");
+		drawSVG1(20, 80, 28, 90, "10~40", "60%");
 		drawSVG2(10, 80, 27, 90, "5~40", "70%");
 		drawSVG3(10, 90, 32, 100, "5~45", "80%");
 		drawSVG4("Average CT = 20 mins");
@@ -3669,7 +3669,7 @@ function CPI3_case1() {
 		drawSVG4("Average CT = 19 mins");
 	}
 	else {
-		drawSVG1(20, 80, 30, 90, "10~40", "65%");
+		drawSVG1(20, 80, 28, 90, "10~40", "65%");
 		drawSVG2(10, 60, 20, 80, "5~30", "70%");
 		drawSVG3(10, 80, 25, 90, "5~40", "85%");
 		drawSVG4("Average CT = 25 mins");
