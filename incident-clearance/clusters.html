@@ -48,7 +48,7 @@
 		width: 790px;
 		height: 450px;
 	
-		background: url("images/highway.gif") no-repeat scroll center top/ 100% 100%; 
+		background: url("images/maryland.png") no-repeat scroll center top/ 100% 100%; 
 	}
 	#column-size {
 		width: 400px;
@@ -81,9 +81,16 @@
 		background-color: white;
 	}
 
+	.cluster_column {
+		vertical-align: top;
+		display: inline-block;
+		width: 390px;
+		height: 450px;
+	}
+
+
 	/* TODO */
-	#div-selected {position: relative; top: 200px; width: 175px; z-index: 200;} 
-	
+	#div-selected {position: relative; top: 100px; width: 175px; z-index: 200;} 
 </style>
 
 <script>
@@ -122,15 +129,40 @@
 			<p style="font-size:25px; font-weight:bold">Please select a highway by clicking on one of the buttons below:</p>
 		</div>
 		<div class="one column row" id="row2-size">
-            <!--TODO-->
-			<div id='div-others'>
-				<img src='images/others.png' id='others' height='40px' onclick="selectRoad(this.id)" selected='false'>
-			</div>
-			<div id='div-selected'>
-				<div>
-					<p style="font-size:21px; font-weight:bold">Selected Highway:</p>
+			<div class='cluster_column' display="inline-block">
+				<div class='cluster1'>
+					<div>
+						<p style="font-size:21px; font-weight:bold">Cluster 1:</p>
+					</div>
+					<div>
+						<img src="images/md122.png" id='md122' height='40px' onclick="selectRoad(this.id)" selected='false'>
+						<img src="images/md168.png" id='md168' height='40px' onclick="selectRoad(this.id)" selected='false'>
+						<img src="images/md702.png" id='md702' height='40px' onclick="selectRoad(this.id)" selected='false'>
+						<img src="images/md85.png" id='md85' height='40px' onclick="selectRoad(this.id)" selected='false'>
+						<img src="images/us1.png" id='us1' height='40px' onclick="selectRoad(this.id)" selected='false'>
+					</div>
 				</div>
-				<img src='' id='selected_img' height='40px' selected='false'>
+			</div>
+			<div class='cluster_column' display="inline-block">
+				<div class='cluster2'>
+					<div>
+						<p style="font-size:21px; font-weight:bold">Cluster 2:</p>
+					</div>
+					<div>
+						<img src="images/md200.png" id='md200' height='40px' onclick="selectRoad(this.id)" selected='false'>
+						<img src="images/md295.png" id='md295' height='40px' onclick="selectRoad(this.id)" selected='false'>
+						<img src="images/md648.png" id='md648' height='40px' onclick="selectRoad(this.id)" selected='false'>
+						<img src="images/i895.png" id='i895' height='40px' onclick="selectRoad(this.id)" selected='false'>
+						<img src="images/i83.png" id='i83' height='40px' onclick="selectRoad(this.id)" selected='false'>
+						<img src="images/i395.png" id='i395' height='40px' onclick="selectRoad(this.id)" selected='false'>
+					</div>
+				</div>
+				<div id='div-selected'>
+					<div>
+						<p style="font-size:21px; font-weight:bold">Selected Highway:</p>
+					</div>
+					<img src='' id='selected_img' height='40px' selected='false'>
+				</div>
 			</div>
 		</div>
 
@@ -139,9 +171,7 @@
 				<button class="ui right floated blue button" id="Next" onclick='nextPage()' disabled>Next</button>
 				<script type="text/javascript">
 					function nextPage() {
-						// TODO
-
-						let roads = ['i95', 'i495', 'i695', 'i270', 'i70', 'us29', 'others'];
+						let roads = ['md122', 'md168', 'md702', 'md85', 'us1', 'md200', 'md295', 'md648', 'i895', 'i83', 'i395'];
 						var selected_road;
 						roads.forEach((hwy) => {
 							if(document.getElementById(hwy).getAttribute('selected') == 'true'){
