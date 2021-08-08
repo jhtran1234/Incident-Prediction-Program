@@ -2778,9 +2778,9 @@ function updateTime(){
 								if(num_tow > 0){checkresult = 'CPI2-2';}
 								else if(num_responder > 4){checkresult = 'CPI2-2';}
 								else if(model['season_time'] =='Winter' || hour == 'Night time'){checkresult = 'CPI2-2';}
-								else if(num_responder > 3 /*TODO && road == 'US-1'*/){checkresult = 'CPI2-2';}
+								else if(num_responder > 3 && road == 'us1'){checkresult = 'CPI2-2';}
 								else if((model['number_travel']=='5+ Travel lanes blocked' && num_pickup > 0) || (num_truck > 0)){checkresult = 'CPI2-2';}
-								else if(shoulder_drop > 2 /*TODO && road == 'US-1'*/){checkresult = 'CPI2-2';}
+								else if(shoulder_drop > 2 && road == 'us1'){checkresult = 'CPI2-2';}
 								else if(!['AM-peak', 'PM-peak'].includes(hour) && num_chart == 0){checkresult = 'CPI2-2';}
 								else{checkresult = 'CPI2-1';}
 							}
@@ -2844,7 +2844,7 @@ function updateTime(){
 								else if((['AM-peak', 'PM-peak'].includes(hour) || num_chart > 2) && num_truck > 0){checkresult = 'CPD2-2';}
 								else if((center == "SOC" && num_responder > 3) || ['4 Travel lanes blocked', '5+ Travel lanes blocked'].includes(model['number_travel'])){checkresult = 'CPD2-2';}
 								else if(shoulder_drop > 1 && num_fireboard > 0){checkresult = 'CPD2-2';}
-								else if(num_truck > 0 || (pavement == 'Wet' && num_suv > 0)){checkresult = 'CPD2-2';} // TODO activate SUV for cluster 1
+								else if(num_truck > 0 || (pavement == 'Wet' && num_suv > 0)){checkresult = 'CPD2-2';}
 								else{checkresult = 'CPD2-1';}
 							}
 							if(checkresult == 'CPD2-2'){
@@ -2857,7 +2857,7 @@ function updateTime(){
 							if(checkresult == 'CPD2-3'){
 								if(num_tow > 1){checkresult = 'CPD2-4';}
 								else if(num_truck > 0){checkresult = 'CPD2-4';}
-								else if(model['number_travel']=='5+ Travel lanes blocked' || (model['weekend_time'] == 'Weekend'/* && road=='MD-85' TODO*/)){checkresult = 'CPD2-4';}
+								else if(model['number_travel']=='5+ Travel lanes blocked' || (model['weekend_time'] == 'Weekend' && road=='md85')){checkresult = 'CPD2-4';}
 								else{checkresult = 'CPD2-3';}
 							}
 
