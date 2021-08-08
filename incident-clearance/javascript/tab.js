@@ -4512,9 +4512,5 @@ function CF_case4(){
 }
 
 function moreInfoNeeded_updateTime(){
-	//$("#first_stop").text("30min");
-	//$("#second_stop").text("60min");
-	//$("#fourth_stop").text("120min");
-
 	$("#boxheader").text("More inputs are needed for accurate estimation.");
 }
