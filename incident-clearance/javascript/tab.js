@@ -197,6 +197,16 @@ $(document).ready(function(){
 		$("#dropdown_direction_29 select").click(updateSum2);
 		$("#dropdown_exit_29 select").click(updateSum2);
 	}
+	else if (road == "cluster1") {
+		// TODO
+
+		$("#location_95").removeAttr("style");
+	}
+	else if (road == "cluster2") {
+		// TODO
+
+		$("#location_95").removeAttr("style");
+	}
 	else{
 		$("#location_95").removeAttr("style");
 	}
@@ -333,6 +343,14 @@ $(document).ready(function(){
 		else if(road=="US-29"){
 			$('.ui.menu').find('.item').tab('change tab', '12');
 		}
+		else if(road=="cluster1"){
+			// TODO
+			$('.ui.menu').find('.item').tab('change tab', '7');
+		}
+		else if(road=="cluster2"){
+			// TODO
+			$('.ui.menu').find('.item').tab('change tab', '7');
+		}
 		else{
 			$('.ui.menu').find('.item').tab('change tab', '7');
 		}	
@@ -387,122 +405,43 @@ $(document).ready(function(){
 	$("#Back-10_29").click(function(){
 		$('.ui.menu').find('.item').tab('change tab', '6');
 	});
+	// TODO - Add cluster back button to new location tab
 });
-
-//### function out of use
-/*
-function showPopup(){
-	$( "#dialog-2" ).empty();
-	$( "#dialog-2" ).append('The estimated CT is the final output.');
-	$( "#dialog-2" ).dialog({
-		autoOpen: true, 
-
-		//modal:true,
-		draggable: true,
-		resizable: true,
-		position: ['center', 'center'],
-
-		buttons: {
-			"OK": function() {
-			$(this).dialog("close");
-			}
-		}
-	});
-}
-
-//### function out of use
-function showprob(){
-	$( "#dialog-2" ).empty();
-	$( "#dialog-2" ).append(prob);
-	$( "#dialog-2" ).dialog({
-		autoOpen: true, 
-
-		modal:true,
-		draggable: true,
-		resizable: true,
-		position: ['center', 'center'],
-
-		buttons: {
-			"OK": function() {
-			$(this).dialog("close");
-			}
-		}	
-	});
-}*/
 
 //### updates the model whenever a radio button is selected
 function updateSum(){
+	const incident = ['Collision incident', 'Non-Collision incident'];
+	const blockage = ['Travel lane blockage', 'Shoulder only blockage'];
+	const collision = ['Fatality', 'Personal Injury', 'Property Damage only']
+	const non_collision = ['Debris in Roadway', 'Disabled Vehicle', 'Vehicles on Fire', 'Emergency Roadwork', 
+		'Off-road Activity', 'Police Activity', 'Utility Problem', 'Weather Closure', 'Others'];
+	
 	var curr = $(this).parent().find("label").text(); //### current working parameter - all radio buttons direct here
-	if(curr == 'Collision incident'){
+	if(incident.includes(curr)){
 		model['incident'] = curr;
 		$("#Save-1").removeAttr("disabled");
 	}
-	else if(curr == 'Non-Collision incident'){
-		model['incident'] = curr;
-		$("#Save-1").removeAttr("disabled");
-	}
-	else if (curr == 'Travel lane blockage'){
+	else if (blockage.includes(curr)){
 		model['blockage'] = curr;
 		$("#Save-2").removeAttr("disabled");
 	}
-	else if (curr == 'Shoulder only blockage'){
-		model['blockage'] = curr;
-		$("#Save-2").removeAttr("disabled");
-	}
+
 	//type 3
-	else if (curr == 'Fatality'){
+	else if (collision.includes(curr)){
 		model['collision'] = curr;
 		$("#Save-3").removeAttr("disabled");
-	}
-	else if (curr == 'Personal Injury'){
-		model['collision'] = curr;
-		cpi = 1;
-		$("#Save-3").removeAttr("disabled");
-	}
-	else if (curr == 'Property Damage only'){
-		model['collision'] = curr;
-		cpd = 1;
-		$("#Save-3").removeAttr("disabled");
+		if(curr == 'Personal Injury'){
+			cpi = 1;
+		}
+		else if (curr == 'Property Damage only'){
+			cpd = 1;
+		}
 	}
 	//type 4 for non-collision
-	else if (curr == 'Debris in Roadway'){
-		model['collision'] = curr;
-		$("#Save-11").removeAttr("disabled");
-				
-	}
-	else if (curr == 'Disabled Vehicle'){
+	else if(non_collision.includes(curr)){
 		model['collision'] = curr;
 		$("#Save-11").removeAttr("disabled");
 	}
-	else if (curr == 'Vehicles on Fire'){
-		model['collision'] = curr;
-		$("#Save-11").removeAttr("disabled");
-	}		
-	else if (curr == 'Emergency Roadwork'){
-		model['collision'] = curr;
-		$("#Save-11").removeAttr("disabled");
-	}
-	else if (curr == 'Off-road Activity'){
-		model['collision'] = curr;
-		$("#Save-11").removeAttr("disabled");
-	}
-	else if (curr == 'Police Activity'){
-		model['collision'] = curr;
-		$("#Save-11").removeAttr("disabled");
-	}
-	else if (curr == 'Utility Problem'){
-		model['collision'] = curr;
-		$("#Save-11").removeAttr("disabled");
-				
-	}
-	else if (curr == 'Weather Closure'){
-		model['collision'] = curr;
-		$("#Save-11").removeAttr("disabled");
-	}
-	else if (curr == 'Others'){
-		model['collision'] = curr;
-		$("#Save-11").removeAttr("disabled");
-	}		
 		
 	//first responder
 	else if (curr == 'CHART'){
