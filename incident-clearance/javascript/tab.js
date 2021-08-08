@@ -2737,8 +2737,7 @@ function updateTime(){
 			}	
 		}
 
-		if(model['incident']!= null && model["involved_veh"]!= null && model["responder"]!= null && model["center_choice"]!= null &&
-		model["pavement_condition"]!=null && model["hour_time"]!= null && (model["location"]!=null || model["exit"]!=null)){
+		if(![model['incident'], model["involved_veh"], model["responder"], model["center_choice"], model["pavement_condition"], model["hour_time"]].includes(null) && (model["location"]!=null || model["exit"]!=null)){
 			if (model['incident'] == 'Collision incident') {
 				if(model['blockage']=='Travel lane blockage'){
 					if(model['collision']=='Fatality'){
