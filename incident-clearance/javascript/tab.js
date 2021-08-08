@@ -96,7 +96,6 @@ var weekend;
 var holiday;
 var nonholiday = 0;
 var nonholiday_sh = 1;
-var season;
 var timepickers;
 
 var location_choice;
@@ -111,14 +110,8 @@ var wet = 0;
 var snow = 0;
 var unspecified = 0;
 var week = 0;	
-var spring = 0;
-var summer = 0;
-var fall = 0;
-var winter = 0;	
 var daytime = 0;
 var nighttime = 0;
-//var cpi = 0; TODO - delete both
-//var cpd = 0;
 var prob;
 var popup = 0;
 var checkresult;
@@ -1001,27 +994,24 @@ function getDate(){
 		console.log(year);
 		console.log(dayOfWeek);
 
-		if ((month == '03') || (month == '04') || (month == '05')){
-			season = 'Spring';
-			spring = 1;
-			model['season_time'] = season;
+		var winter_months = ['12', '01', '02'];
+		var spring_months = ['03', '04', '05'];
+		var summer_months = ['06', '07', '08'];
+		var fall_months = ['09', '10', '11'];
+		if (winter_months.includes(month)){
+			model['season_time'] = 'Winter';
 		}
-		else if ((month == '06') || (month == '07') || (month == '08')){
-			season = 'Summer';
-			summer = 1;
-			model['season_time'] = season;
+		else if (spring_months.includes(month)){
+			model['season_time'] = 'Spring';
 		}
-		else if ((month == '09') || (month == '10') || (month == '11')){
-			season = 'Fall';
-			fall = 1;
-			model['season_time'] = season;
+		else if (summer_months.includes(month)){
+			model['season_time'] = 'Summer';
 		}
-		else if ((month == '12') || (month == '01') || (month == '02')){
-			season = 'Winter';
-			winter = 1;
-			model['season_time'] = season;
+		else if (fall_months.includes(month)){
+			model['season_time'] = 'Fall';
 		}
-		console.log(season);
+		
+		console.log(model['season_time']);
 		console.log(model);
 	
 		if((dayOfWeek == 'Monday')||(dayOfWeek == 'Tuesday')||(dayOfWeek == 'Wednesday')||(dayOfWeek == 'Thursday')||(dayOfWeek == 'Friday')){
@@ -1420,7 +1410,7 @@ function updateTime(){
 								else if((involved_car_s=='over ') && ((weekend == 'Weekend') || (num_tow > 0))){checkresult = 'CPI1-2';}
 								else if((num_total > 5) && ((hour == 'AM-peak') || (hour == 'PM-peak'))){checkresult = 'CPI1-2';}
 								else if(((hour == 'AM-peak') || (first_responder=='FIREBOARD')) && (num_police > 1)){checkresult = 'CPI1-2';}
-								else if((fall==1) && (first_responder=='FIREBOARD')){checkresult = 'CPI1-2';}
+								else if((model['season_time'] == 'Fall') && (first_responder=='FIREBOARD')){checkresult = 'CPI1-2';}
 								else if((num_truck>0) && (num_van>0)){checkresult = 'CPI1-2';}
 								else{checkresult = 'CPI1-1';}
 							}
@@ -1482,7 +1472,7 @@ function updateTime(){
 							}
 							if(checkresult == 'CPI3-2'){
 								if(num_responder>8){checkresult = 'CPI3-3';}
-								else if(((num_responder>5) || (season=='Winter') || (num_tow>1)) && (num_total>2)){checkresult = 'CPI3-3';}
+								else if(((num_responder>5) || (model['season_time'] == 'Winter') || (num_tow>1)) && (num_total>2)){checkresult = 'CPI3-3';}
 								else if((weekend=='Weekend') && (first_responder=='FIREBOARD')){checkresult = 'CPI3-3';}
 								else if((nonholiday==1) && (num_truck>0)){checkresult = 'CPI3-3';}
 								else{checkresult = 'CPI3-2';}		
@@ -1584,7 +1574,10 @@ function updateTime(){
 					}
 				}
 				else if(model['blockage']=='Shoulder only blockage'){
-					var cpi = (model['collision'] == 'Personal Injury') ? 1 : 0
+					var cpi = (model['collision'] == 'Personal Injury') ? 1 : 0;
+					var spring = (model['season_time'] == 'Spring') ? 1 : 0;
+					var summer = (model['season_time'] == 'Summer') ? 1 : 0;
+					var winter = (model['season_time'] == 'Winter') ? 1 : 0;
 					prob = 1/(1+Math.exp(-(-2.27-0.47*bc+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
 						-0.23*num_total+0.52*num_car+1.04*num_truck+0.26*num_responder+0.34*num_fireboard+0.43*num_medical-0.23*cpi
 						+0.48*spring+0.37*summer+0.54*winter+0.08*daytime+0.23*nighttime)));
@@ -1799,7 +1792,7 @@ function updateTime(){
 							if(checkresult == 'CPI1-2'){
 								if((hour == 'Night time' && num_responder > 6) || (num_total > 4)){checkresult = 'CPI1-3';}
 								else if((pavement == 'Snow/Ice') || (num_truck > 1) || (num_responder > 7) || (center == 'AOC')){checkresult = 'CPI1-3';}
-								else if((num_pickup > 0) && ((aux_lane == true) || (season == 'Winter'))){checkresult = 'CPI1-3';}
+								else if((num_pickup > 0) && ((aux_lane == true) || (model['season_time'] == 'Winter'))){checkresult = 'CPI1-3';}
 								else if((weekend == 'Weekend') && (involved_car_s == 'over ')){checkresult = 'CPI1-3';}
 								else if((num_police > 1) && (num_fireboard > 1)){checkresult = 'CPI1-3';}
 								else{checkresult = 'CPI1-2';}
@@ -1876,7 +1869,7 @@ function updateTime(){
 								else if(((hour == 'Day time') && (num_responder > 4)) || ((num_truck > 0) && (num_police > 1))){checkresult = 'CPD1-2';}
 								else if(((pavement == 'Snow/Ice') && ((num_truck > 0) || (num_responder > 3))) || ((num_total > 3) && (first_responder=='FIREBOARD'))){checkresult = 'CPD1-2';}
 								else if((center=='TOC4') && (aux_lane==false)){checkresult = 'CPD1-1';}
-								else if((season == 'Winter') && (num_pickup > 0)){checkresult = 'CPD1-2';}
+								else if((model['season_time'] == 'Winter') && (num_pickup > 0)){checkresult = 'CPD1-2';}
 								else if((num_truck > 0) && ((center=='TOC4') || (num_chart > 1))){checkresult = 'CPD1-2';}
 								else if((num_chart > 2) || ((num_responder > 4) && (pavement == 'Wet'))){checkresult = 'CPD1-2';}
 								else if((num_chart > 1) && (num_pickup > 0)){checkresult = 'CPD1-2';}
@@ -1953,7 +1946,10 @@ function updateTime(){
 					}
 				}
 				else if(model['blockage']=='Shoulder only blockage'){
-					var cpi = (model['collision'] == 'Personal Injury') ? 1 : 0
+					var cpi = (model['collision'] == 'Personal Injury') ? 1 : 0;
+					var spring = (model['season_time'] == 'Spring') ? 1 : 0;
+					var summer = (model['season_time'] == 'Summer') ? 1 : 0;
+					var winter = (model['season_time'] == 'Winter') ? 1 : 0;
 					prob = 1/(1+Math.exp(-(-2.27-0.47*bc+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
 						-0.23*num_total+0.52*num_car+1.04*num_truck+0.26*num_responder+0.34*num_fireboard+0.43*num_medical-0.23*cpi
 						+0.48*spring+0.37*summer+0.54*winter+0.08*daytime+0.23*nighttime)));
@@ -2275,7 +2271,10 @@ function updateTime(){
 					}
 				}
 				else if(model['blockage']=='Shoulder only blockage'){
-					var cpi = (model['collision'] == 'Personal Injury') ? 1 : 0
+					var cpi = (model['collision'] == 'Personal Injury') ? 1 : 0;
+					var spring = (model['season_time'] == 'Spring') ? 1 : 0;
+					var summer = (model['season_time'] == 'Summer') ? 1 : 0;
+					var winter = (model['season_time'] == 'Winter') ? 1 : 0;
 					prob = 1/(1+Math.exp(-(-2.27-0.47*bc+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
 						-0.23*num_total+0.52*num_car+1.04*num_truck+0.26*num_responder+0.34*num_fireboard+0.43*num_medical-0.23*cpi
 						+0.48*spring+0.37*summer+0.54*winter+0.08*daytime+0.23*nighttime)));
@@ -2501,7 +2500,7 @@ function updateTime(){
 								else if(model['number_travel']=='5+ Travel lanes blocked' && shoulder_drop > 1){checkresult = 'CPI2-2';}
 								else if(num_responder > 3 && involved_car_s == 'over '){checkresult = 'CPI2-2';}
 								else if(num_truck>0){checkresult = 'CPI2-2';}
-								else if(season == 'Spring' || num_tow>0){checkresult = 'CPI2-2';}
+								else if(model['season_time'] == 'Spring' || num_tow>0){checkresult = 'CPI2-2';}
 								else{checkresult = 'CPI2-1';}
 							}
 							if(checkresult == 'CPI2-2'){
@@ -2530,7 +2529,7 @@ function updateTime(){
 								if(num_total>2 && num_responder>3){checkresult = 'CPD1-2';}
 								else if(num_truck>0 && num_police>1){checkresult = 'CPD1-2';}
 								else if(pavement == 'Chemical wet' && num_police>0){checkresult = 'CPD1-2';}
-								else if((season=='Winter' && num_tow>0) || (center=='TOC3' && aux_lane==true)){checkresult = 'CPD1-2';}
+								else if((model['season_time'] =='Winter' && num_tow>0) || (center=='TOC3' && aux_lane==true)){checkresult = 'CPD1-2';}
 								else{checkresult = 'CPD1-1';}
 							}
 							if(checkresult == 'CPD1-2'){
@@ -2576,7 +2575,10 @@ function updateTime(){
 					}
 				}
 				else if(model['blockage']=='Shoulder only blockage'){
-					var cpi = (model['collision'] == 'Personal Injury') ? 1 : 0
+					var cpi = (model['collision'] == 'Personal Injury') ? 1 : 0;
+					var spring = (model['season_time'] == 'Spring') ? 1 : 0;
+					var summer = (model['season_time'] == 'Summer') ? 1 : 0;
+					var winter = (model['season_time'] == 'Winter') ? 1 : 0;
 					prob = 1/(1+Math.exp(-(-2.27-0.47*bc+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
 						-0.23*num_total+0.52*num_car+1.04*num_truck+0.26*num_responder+0.34*num_fireboard+0.43*num_medical-0.23*cpi
 						+0.48*spring+0.37*summer+0.54*winter+0.08*daytime+0.23*nighttime)));
@@ -2771,7 +2773,7 @@ function updateTime(){
 				drawSVG3(0, 0, 0, 0, "", "");
 				drawSVG4("Average CT = 160 mins");
 			}
-			else if((model['blockage']=='Travel lane blockage') && (season == 'Winter') && (weekend == 'Weekend') && (hour == 'Night time') && (model['collision'] == 'Personal Injury') && (num_truck > 0) && (num_tow > 0) && (num_responder >= 5)) {
+			else if((model['blockage']=='Travel lane blockage') && (model['season_time'] == 'Winter') && (weekend == 'Weekend') && (hour == 'Night time') && (model['collision'] == 'Personal Injury') && (num_truck > 0) && (num_tow > 0) && (num_responder >= 5)) {
 				drawSVG1(180, 260, 190, 270, "150~180", "90%");				
 				drawSVG2(160, 280, 170, 290, "140~190", "100%");
 				drawSVG3(0, 0, 0, 0, "", "");
@@ -2943,7 +2945,7 @@ function updateTime(){
 								}
 
 								if(checkresult == 'CPI1-3'){
-									if(season == 'Winter'){checkresult = 'CPI1-4';}
+									if(model['season_time'] == 'Winter'){checkresult = 'CPI1-4';}
 									else if((num_chart > 2) || (num_responder > 6)){checkresult = 'CPI1-4';}
 									else{checkresult = 'CPI1-3';}
 								}
@@ -2961,7 +2963,7 @@ function updateTime(){
 									else if(center == 'AOC'){checkresult = 'CPI2-2';}
 									else if(num_responder > 4){checkresult = 'CPI2-2';}
 									else if(pavement == 'Dry'){checkresult = 'CPI2-1';}
-									else if((season == 'Winter') || (hour == 'Night time')){checkresult = 'CPI2-2';}
+									else if((model['season_time'] == 'Winter') || (hour == 'Night time')){checkresult = 'CPI2-2';}
 									else{checkresult = 'CPI2-1';}
 								}
 								if(checkresult == 'CPI2-2'){
@@ -3063,7 +3065,7 @@ function updateTime(){
 								}
 								if(checkresult == 'CPD2-2'){
 									if(num_tow > 1){checkresult = 'CPD2-3';}
-									else if(pavement == 'Wet' && num_fireboard > 0 && ( season == 'Spring' || season == 'Summer' )){checkresult = 'CPD2-3';}
+									else if(pavement == 'Wet' && num_fireboard > 0 && (model['season_time'] == 'Spring' || model['season_time'] == 'Summer')){checkresult = 'CPD2-3';}
 									else if((num_total > 3) && (num_responder > 4)){checkresult = 'CPD2-3';}		
 									else{checkresult = 'CPD2-2';}
 								}
@@ -3107,7 +3109,10 @@ function updateTime(){
 						}
 					}
 					else if(model['blockage']=='Shoulder only blockage'){
-						var cpi = (model['collision'] == 'Personal Injury') ? 1 : 0
+						var cpi = (model['collision'] == 'Personal Injury') ? 1 : 0;
+						var spring = (model['season_time'] == 'Spring') ? 1 : 0;
+						var summer = (model['season_time'] == 'Summer') ? 1 : 0;
+						var winter = (model['season_time'] == 'Winter') ? 1 : 0;
 						prob = 1/(1+Math.exp(-(-2.27-0.47*bc+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
 							-0.23*num_total+0.52*num_car+1.04*num_truck+0.26*num_responder+0.34*num_fireboard+0.43*num_medical-0.23*cpi
 							+0.48*spring+0.37*summer+0.54*winter+0.08*daytime+0.23*nighttime)));
