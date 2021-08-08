@@ -144,7 +144,7 @@ $(document).ready(function(){
 	//IV page dropdown
 	$("#checkbox-size select").click(updateSum2);
 
-	if (road == "I-495") { // Run road-specific models for different roads
+	if (road == "i495") { // Run road-specific models for different roads
 		$("#location_495").removeAttr("style"); //Changes which location tab gets displayed based on the road
 		$("#involved_vehicles_5").removeAttr("style"); //Displays VAN vehicle for picking
 		$("#iv8").removeAttr("style"); //Displays VAN vehicle for picking
@@ -223,14 +223,12 @@ $(document).ready(function(){
 
 	var radioValue1;
 	var radioValue2;
-	var radioValue3;
-	var radioValue4;
 	
 	//next button handler	
 	$("#Next-1").click(function(){
 		radioValue1 = $("input[name='incident']:checked").val();
 		if (radioValue1 == 'collision') {
-		$.tab('change tab', '1-1');
+			$.tab('change tab', '1-1');
 		}
 		else if (radioValue1 == 'non') {
 			$.tab('change tab', '1-4');
@@ -325,7 +323,7 @@ $(document).ready(function(){
 	
 	//time tab's next button
 	$("#Next-9").click(function(){
-		if(road=="I-495"){
+		if(road=="i495"){
 			$('.ui.menu').find('.item').tab('change tab', '8');
 		}
 		else if(road=="I-695"){
@@ -798,7 +796,7 @@ function updateSum2(){
 	}
 	
 	//location page: location, direction and exit (road specific)
-	if (road == "I-495") {
+	if (road == "i495") {
 		location_choice = $("#dropdown_location_495 option:selected").text();
 		console.log(location_choice);
 
@@ -1245,7 +1243,7 @@ function updateTime(){
 	var summer = (model['season_time'] == 'Summer') ? 1 : 0;
 	var winter = (model['season_time'] == 'Winter') ? 1 : 0;
 	var week = (model['weekend_time'] == 'Weekend') ? 1 : 0;
-	if(road=='I-495'){
+	if(road=='i495'){
 		if(model['incident']=='Collision incident'){
 			drawSVG1(10, 80, 27, 90, "5~40", "60%");
 			drawSVG2(10, 100, 37, 110, "5~50", "70%");
@@ -3582,14 +3580,14 @@ function activeNext(){
 	}
 	else if(this.id == 'Save-11'){
 		//$("#Next-11").removeAttr("disabled");
-		radioValue4 = $("input[name='type']:checked").val();
+		var radioValue4 = $("input[name='type']:checked").val();
 		console.log(radioValue4);
 	}
 }
 
 // Below are most of the display cases for CPI, CPD and Fatalities
 function CPI1_case1() {
-	if (road == "I-495") {
+	if (road == "i495") {
 		drawSVG1(20, 60, 22, 70, "10~30", "60%");
 		drawSVG2(10, 60, 19, 70, "5~30", "70%");
 		drawSVG3(10, 70, 24, 80, "5~35", "80%");
@@ -3627,7 +3625,7 @@ function CPI1_case1() {
 	}
 }
 function CPI1_case2() {
-	if (road == "I-495") {
+	if (road == "i495") {
 		drawSVG1(50, 100, 57, 110, "25~50", "60%");
 		drawSVG2(40, 110, 57, 120, "20~55", "70%");
 		drawSVG3(40, 120, 62, 130, "20~60", "80%");
@@ -3665,7 +3663,7 @@ function CPI1_case2() {
 	}
 }
 function CPI1_case3() {
-	if (road == "I-495") {
+	if (road == "i495") {
 		drawSVG1(120, 170, 127, 180, "60~85", "60%");
 		drawSVG2(120, 180, 132, 190, "60~90", "70%");
 		drawSVG3(100, 200, 128, 210, "50~100", "80%");
@@ -3703,7 +3701,7 @@ function CPI1_case3() {
 	}
 }
 function CPI1_case4() {
-	if (road == "I-495") {
+	if (road == "i495") {
 		drawSVG1(240, 300, 250, 300, ">=120", "100%");
 		drawSVG2(0, 0, 0, 0, "", "");
 		drawSVG3(0, 0, 0, 0, "", "");
@@ -3742,7 +3740,7 @@ function CPI1_case4() {
 }
 
 function CPI2_case1() {
-	if (road == "I-495") {
+	if (road == "i495") {
 		drawSVG1(20, 60, 22, 70, "10~30", "60%");
 		drawSVG2(10, 60, 17, 70, "5~30", "70%");
 		drawSVG3(10, 70, 22, 80, "5~35", "80%");
@@ -3780,7 +3778,7 @@ function CPI2_case1() {
 	}
 }
 function CPI2_case2() {
-	if (road == "I-495") {
+	if (road == "i495") {
 		drawSVG1(40, 100, 52, 110, "20~50", "60%");
 		drawSVG2(30, 110, 52, 120, "15~55", "70%");
 		drawSVG3(30, 120, 57, 130, "15~60", "80%");
@@ -3818,7 +3816,7 @@ function CPI2_case2() {
 	}
 }
 function CPI2_case3() {
-	if (road == "I-495") {
+	if (road == "i495") {
 		drawSVG1(70, 210, 122, 220, "35~105", "60%");
 		drawSVG2(60, 230, 127, 240, "30~115", "70%");
 		drawSVG3(60, 250, 137, 260, "30~125", "80%");
@@ -3856,7 +3854,7 @@ function CPI2_case3() {
 	}
 }
 function CPI2_case4() {
-	if (road == "I-495") {
+	if (road == "i495") {
 		drawSVG1(240, 300, 250, 300, ">=120", "100%");
 		drawSVG2(0, 0, 0, 0, "", "");
 		drawSVG3(0, 0, 0, 0, "", "");
@@ -3895,7 +3893,7 @@ function CPI2_case4() {
 }
 
 function CPI3_case1() {
-	if (road == "I-495") {
+	if (road == "i495") {
 		drawSVG1(10, 50, 12, 60, "5~25", "60%");
 		drawSVG2(10, 60, 17, 70, "5~30", "70%");
 		drawSVG3(10, 70, 22, 80, "5~35", "80%");
@@ -3915,7 +3913,7 @@ function CPI3_case1() {
 	}
 }
 function CPI3_case2() {
-	if (road == "I-495") {
+	if (road == "i495") {
 		drawSVG1(40, 100, 52, 110, "20~50", "60%");
 		drawSVG2(40, 110, 57, 120, "20~55", "70%");
 		drawSVG3(30, 120, 57, 130, "15~60", "80%");
@@ -3935,7 +3933,7 @@ function CPI3_case2() {
 	}
 }
 function CPI3_case3() {
-	if (road == "I-495") {
+	if (road == "i495") {
 		drawSVG1(80, 210, 127, 220, "40~105", "60%");
 		drawSVG2(80, 230, 137, 240, "40~115", "70%");
 		drawSVG3(70, 230, 132, 240, "30~115", "80%");
@@ -3955,7 +3953,7 @@ function CPI3_case3() {
 	}
 }
 function CPI3_case4() {
-	if (road == "I-495") {
+	if (road == "i495") {
 		drawSVG1(240, 300, 250, 300, ">=120", "70%");
 		drawSVG2(160, 300, 212, 300, ">=80", "100%");
 		drawSVG3(0, 0, 0, 0, "", "");
@@ -3976,7 +3974,7 @@ function CPI3_case4() {
 }
 
 function CPD1_case1() {
-	if (road == "I-495") {
+	if (road == "i495") {
 		drawSVG1(10, 50, 12, 60, "5~25", "60%");
 		drawSVG2(10, 60, 17, 70, "5~30", "70%");
 		drawSVG3(10, 70, 22, 80, "5~35", "80%");
@@ -4014,7 +4012,7 @@ function CPD1_case1() {
 	}
 }
 function CPD1_case2() {
-	if (road == "I-495") {
+	if (road == "i495") {
 		drawSVG1(40, 120, 62, 130, "20~60", "60%");
 		drawSVG2(30, 130, 62, 140, "15~65", "70%");
 		drawSVG3(20, 140, 62, 150, "10~70", "80%");
@@ -4052,7 +4050,7 @@ function CPD1_case2() {
 	}
 }
 function CPD1_case3(){
-	if (road == "I-495") {
+	if (road == "i495") {
 		drawSVG1(120, 210, 147, 220, "60~105", "60%");
 		drawSVG2(120, 220, 152, 230, "60~110", "70%");
 		drawSVG3(110, 230, 152, 240, "55~115", "80%");
@@ -4090,7 +4088,7 @@ function CPD1_case3(){
 	}
 }
 function CPD1_case4() {
-	if (road == "I-495") {
+	if (road == "i495") {
 		drawSVG1(240, 300, 250, 300, ">=120", "100%");
 		drawSVG2(0, 0, 0, 0, "", "");
 		drawSVG3(0, 0, 0, 0, "", "");
@@ -4129,7 +4127,7 @@ function CPD1_case4() {
 }
 
 function CPD2_case1() {
-	if (road == "I-495") {
+	if (road == "i495") {
 		drawSVG1(10, 50, 12, 60, "5~25", "60%");
 		drawSVG2(10, 60, 17, 70, "5~30", "70%");
 		drawSVG3(10, 70, 22, 80, "5~35", "80%");
@@ -4167,7 +4165,7 @@ function CPD2_case1() {
 	}	
 }
 function CPD2_case2() {
-	if (road == "I-495") {
+	if (road == "i495") {
 		drawSVG1(40, 110, 57, 120, "20~55", "60%");
 		drawSVG2(40, 120, 62, 130, "20~60", "70%");
 		drawSVG3(30, 150, 72, 160, "15~75", "80%");
@@ -4205,7 +4203,7 @@ function CPD2_case2() {
 	}		
 }
 function CPD2_case3() {
-	if (road == "I-495") {
+	if (road == "i495") {
 		drawSVG1(120, 170, 127, 180, "60~85", "60%");
 		drawSVG2(90, 180, 117, 190, "45~90", "70%");
 		drawSVG3(90, 200, 127, 210, "45~100", "80%");
@@ -4243,7 +4241,7 @@ function CPD2_case3() {
 	}
 }
 function CPD2_case4() {
-	if (road == "I-495") {
+	if (road == "i495") {
 		drawSVG1(240, 300, 250, 300, ">=120", "80%");
 		drawSVG2(200, 300, 232, 300, ">=100", "100%");
 		drawSVG3(0, 0, 0, 0, "", "");
@@ -4282,7 +4280,7 @@ function CPD2_case4() {
 }
 
 function CPD3_case1() {
-	if (road == "I-495") {
+	if (road == "i495") {
 		drawSVG1(10, 50, 12, 60, "5~25", "60%");
 		drawSVG2(10, 60, 17, 70, "5~30", "70%");
 		drawSVG3(10, 60, 17, 70, "5~30", "80%");
@@ -4302,7 +4300,7 @@ function CPD3_case1() {
 	}
 }
 function CPD3_case2() {
-	if (road == "I-495") {
+	if (road == "i495") {
 		drawSVG1(40, 100, 52, 110, "20~50", "60%");
 		drawSVG2(40, 110, 57, 120, "20~55", "70%");
 		drawSVG3(40, 120, 62, 130, "20~60", "80%");
@@ -4322,7 +4320,7 @@ function CPD3_case2() {
 	}
 }
 function CPD3_case3() {
-	if (road == "I-495") {
+	if (road == "i495") {
 		drawSVG1(120, 190, 137, 200, "60~95", "60%");
 		drawSVG2(110, 210, 142, 220, "55~105", "70%");
 		drawSVG3(110, 240, 157, 250, "55~120", "80%");
@@ -4342,7 +4340,7 @@ function CPD3_case3() {
 	}
 }
 function CPD3_case4() {
-	if (road == "I-495") {
+	if (road == "i495") {
 		drawSVG1(240, 300, 250, 300, ">=120", "90%");
 		drawSVG2(220, 300, 242, 300, ">=110", "100%");
 		drawSVG3(0, 0, 0, 0, "", "");
@@ -4386,7 +4384,7 @@ function CF_case1(){
 	$("#second_stop").text("200min");
 	$("#fourth_stop").text("400min");
 
-	if (road == "I-495"){
+	if (road == "i495"){
 		drawSVG1(60, 126, 75, 136, "100~210", "50%");
 		drawSVG2(0, 0, 0, 0, "", "");
 		drawSVG3(0, 0, 0, 0, "", "");
@@ -4436,7 +4434,7 @@ function CF_case2(){
 	$("#second_stop").text("200min");
 	$("#fourth_stop").text("400min");
 
-	if (road == "I-495"){
+	if (road == "i495"){
 		drawSVG1(90, 126, 136, 192, "150~210", "100%");
 		drawSVG2(0, 0, 0, 0, "", "");
 		drawSVG3(0, 0, 0, 0, "", "");
@@ -4478,7 +4476,7 @@ function CF_case3(){
 	$("#second_stop").text("200min");
 	$("#fourth_stop").text("400min");
 
-	if (road == "I-495"){
+	if (road == "i495"){
 		drawSVG1(90, 156, 97, 166, "150~260", "70%");
 		drawSVG2(90, 195, 117, 205, "150~325", "80%");
 		drawSVG3(90, 252, 145, 262, "150~420", "100%");
@@ -4496,7 +4494,7 @@ function CF_case4(){
 	$("#second_stop").text("200min");
 	$("#fourth_stop").text("400min");
 
-	if (road == "I-495"){
+	if (road == "i495"){
 		drawSVG1(108, 162, 117, 172, "180~270", "100%");
 		drawSVG2(0, 0, 0, 0, "", "");
 		drawSVG3(0, 0, 0, 0, "", "");
