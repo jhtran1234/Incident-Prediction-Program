@@ -419,7 +419,7 @@ function updateSum(){
 		model['blockage'] = curr;
 		$("#Save-2").removeAttr("disabled");
 	}
-	//type 3
+	//type 3 for collision
 	else if (collision.includes(curr)){
 		model['collision'] = curr;
 		$("#Save-3").removeAttr("disabled");
@@ -1237,6 +1237,12 @@ function updateTime(){
 	*  the conditions below are checked when users select the incident type, 
 	*  no. of impacted lanes, and after all factors have been entered
 	*/
+	
+	var cpi = (model['collision'] == 'Personal Injury') ? 1 : 0;
+	var spring = (model['season_time'] == 'Spring') ? 1 : 0;
+	var summer = (model['season_time'] == 'Summer') ? 1 : 0;
+	var winter = (model['season_time'] == 'Winter') ? 1 : 0;
+	
 	if(road=='I-495'){
 		if(model['incident']=='Collision incident'){
 			drawSVG1(10, 80, 27, 90, "5~40", "60%");
@@ -1574,10 +1580,6 @@ function updateTime(){
 					}
 				}
 				else if(model['blockage']=='Shoulder only blockage'){
-					var cpi = (model['collision'] == 'Personal Injury') ? 1 : 0;
-					var spring = (model['season_time'] == 'Spring') ? 1 : 0;
-					var summer = (model['season_time'] == 'Summer') ? 1 : 0;
-					var winter = (model['season_time'] == 'Winter') ? 1 : 0;
 					prob = 1/(1+Math.exp(-(-2.27-0.47*bc+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
 						-0.23*num_total+0.52*num_car+1.04*num_truck+0.26*num_responder+0.34*num_fireboard+0.43*num_medical-0.23*cpi
 						+0.48*spring+0.37*summer+0.54*winter+0.08*daytime+0.23*nighttime)));
@@ -1946,10 +1948,6 @@ function updateTime(){
 					}
 				}
 				else if(model['blockage']=='Shoulder only blockage'){
-					var cpi = (model['collision'] == 'Personal Injury') ? 1 : 0;
-					var spring = (model['season_time'] == 'Spring') ? 1 : 0;
-					var summer = (model['season_time'] == 'Summer') ? 1 : 0;
-					var winter = (model['season_time'] == 'Winter') ? 1 : 0;
 					prob = 1/(1+Math.exp(-(-2.27-0.47*bc+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
 						-0.23*num_total+0.52*num_car+1.04*num_truck+0.26*num_responder+0.34*num_fireboard+0.43*num_medical-0.23*cpi
 						+0.48*spring+0.37*summer+0.54*winter+0.08*daytime+0.23*nighttime)));
@@ -2271,10 +2269,6 @@ function updateTime(){
 					}
 				}
 				else if(model['blockage']=='Shoulder only blockage'){
-					var cpi = (model['collision'] == 'Personal Injury') ? 1 : 0;
-					var spring = (model['season_time'] == 'Spring') ? 1 : 0;
-					var summer = (model['season_time'] == 'Summer') ? 1 : 0;
-					var winter = (model['season_time'] == 'Winter') ? 1 : 0;
 					prob = 1/(1+Math.exp(-(-2.27-0.47*bc+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
 						-0.23*num_total+0.52*num_car+1.04*num_truck+0.26*num_responder+0.34*num_fireboard+0.43*num_medical-0.23*cpi
 						+0.48*spring+0.37*summer+0.54*winter+0.08*daytime+0.23*nighttime)));
@@ -2575,10 +2569,6 @@ function updateTime(){
 					}
 				}
 				else if(model['blockage']=='Shoulder only blockage'){
-					var cpi = (model['collision'] == 'Personal Injury') ? 1 : 0;
-					var spring = (model['season_time'] == 'Spring') ? 1 : 0;
-					var summer = (model['season_time'] == 'Summer') ? 1 : 0;
-					var winter = (model['season_time'] == 'Winter') ? 1 : 0;
 					prob = 1/(1+Math.exp(-(-2.27-0.47*bc+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
 						-0.23*num_total+0.52*num_car+1.04*num_truck+0.26*num_responder+0.34*num_fireboard+0.43*num_medical-0.23*cpi
 						+0.48*spring+0.37*summer+0.54*winter+0.08*daytime+0.23*nighttime)));
@@ -3109,10 +3099,6 @@ function updateTime(){
 						}
 					}
 					else if(model['blockage']=='Shoulder only blockage'){
-						var cpi = (model['collision'] == 'Personal Injury') ? 1 : 0;
-						var spring = (model['season_time'] == 'Spring') ? 1 : 0;
-						var summer = (model['season_time'] == 'Summer') ? 1 : 0;
-						var winter = (model['season_time'] == 'Winter') ? 1 : 0;
 						prob = 1/(1+Math.exp(-(-2.27-0.47*bc+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
 							-0.23*num_total+0.52*num_car+1.04*num_truck+0.26*num_responder+0.34*num_fireboard+0.43*num_medical-0.23*cpi
 							+0.48*spring+0.37*summer+0.54*winter+0.08*daytime+0.23*nighttime)));
