@@ -2634,8 +2634,7 @@ function updateTime(){
 						drawSVG4("Average CT = 47 mins");
 
 					}
-					else if((model['number_travel']=='2 Travel lanes blocked') || (model['number_travel']=='3 Travel lanes blocked')
-					 || (model['number_travel']=='4 Travel lanes blocked') || (model['number_travel']=='5+ Travel lanes blocked')){
+					else if(['2 Travel lanes blocked', '3 Travel lanes blocked', '4 Travel lanes blocked', '5+ Travel lanes blocked'].includes(model['number_travel'])){
 						drawSVG1(30, 280, 130, 290, "15~140", "60%");
 						drawSVG2(30, 300, 140, 300, "15~150", "70%");
 						drawSVG3(10, 300, 130, 300, "10~200", "80%");
@@ -2655,8 +2654,7 @@ function updateTime(){
 						drawSVG3(10, 150, 62, 160, "5~75", "80%");
 						drawSVG4("Average CT = 29 mins");
 					}
-					else if((model['number_travel']=='2 Travel lanes blocked') || (model['number_travel']=='3 Travel lanes blocked')
-					 || (model['number_travel']=='4 Travel lanes blocked') || (model['number_travel']=='5+ Travel lanes blocked')){
+					else if(['2 Travel lanes blocked', '3 Travel lanes blocked', '4 Travel lanes blocked', '5+ Travel lanes blocked'].includes(model['number_travel'])){
 						drawSVG1(30, 160, 77, 170, "15~80", "60%");
 						drawSVG2(30, 240, 112, 250, "15~120", "70%");
 						drawSVG3(20, 300, 137, 300, "10~220", "80%");
@@ -2948,8 +2946,7 @@ function updateTime(){
 						drawSVG3(30, 180, 87, 190, "15~90", "80%");
 						drawSVG4("Average CT = 55 mins");
 					}
-					else if((model['number_travel']=='3 Travel lanes blocked') || (model['number_travel']=='4 Travel lanes blocked') 
-					|| (model['number_travel']=='5+ Travel lanes blocked')){
+					else if(['3 Travel lanes blocked', '4 Travel lanes blocked', '5+ Travel lanes blocked'].includes(model['number_travel'])){
 						drawSVG1(60, 220, 80, 230, "30~110", "60%");
 						drawSVG2(60, 300, 80, 300, "30~155", "70%");
 						drawSVG3(50, 300, 70, 300, "25~210", "80%");
@@ -2973,8 +2970,7 @@ function updateTime(){
 						drawSVG3(20, 220, 99, 230, "10~110", "80%");
 						drawSVG4("Average CT = 45 mins");
 					}
-					else if((model['number_travel']=='3 Travel lanes blocked') || (model['number_travel']=='4 Travel lanes blocked') 
-					|| (model['number_travel']=='5+ Travel lanes blocked')){
+					else if(['3 Travel lanes blocked', '4 Travel lanes blocked', '5+ Travel lanes blocked'].includes(model['number_travel'])){
 						drawSVG1(40, 180, 60, 190, "20~90", "60%");
 						drawSVG2(40, 280, 60, 290, "20~140", "70%");
 						drawSVG3(30, 280, 50, 290, "15~140", "80%");
@@ -3275,8 +3271,7 @@ function updateTime(){
 								else if(checkresult == 'CPI2-3'){CPI2_case3();}
 								else if(checkresult == 'CPI2-4'){CPI2_case4();}
 							}
-							else if((model['number_travel']=='3 Travel lanes blocked') || (model['number_travel']=='4 Travel lanes blocked') 
-							|| (model['number_travel']=='5+ Travel lanes blocked')){
+							else if(['3 Travel lanes blocked', '4 Travel lanes blocked', '5+ Travel lanes blocked'].includes(model['number_travel'])){
 								checkresult = 'CPI3-0';
 
 								if(checkresult == 'CPI3-0'){
@@ -3371,8 +3366,7 @@ function updateTime(){
 								else if(checkresult == 'CPD2-3'){CPD2_case3();}
 								else if(checkresult == 'CPD2-4'){CPD2_case4();}
 							}
-							else if((model['number_travel']=='3 Travel lanes blocked') || (model['number_travel']=='4 Travel lanes blocked') 
-							|| (model['number_travel']=='5+ Travel lanes blocked')){
+							else if(['3 Travel lanes blocked', '4 Travel lanes blocked', '5+ Travel lanes blocked'].includes(model['number_travel'])){
 								checkresult = 'CPD3-0';
 								if(checkresult == 'CPD3-0'){
 									if(num_tow > 0){checkresult = 'CPD3-2';}
