@@ -99,7 +99,7 @@ var timepickers;
 
 var location_choice;
 
-//Used for I-95 locations
+//Used for i95 locations
 var bc = 0;
 var cecil = 0;
 var harford = 0;
@@ -114,7 +114,7 @@ var prob;
 var popup = 0;
 var checkresult;
 var ninetenam = 0;
-var road = location.search.substring(1); // Represents the road being worked on. Defaults to I-95.
+var road = location.search.substring(1); // Represents the road being worked on. Defaults to i95.
 
 $(document).ready(function(){
 	// timepicker initialization
@@ -180,7 +180,7 @@ $(document).ready(function(){
 		$("#dropdown_direction_70 select").click(updateSum2);
 		$("#dropdown_exit_70 select").click(updateSum2);
 	}
-	else if (road == "US-29") {
+	else if (road == "us29") {
 		$("#location_29").removeAttr("style");
 		
 		//Location page dropdowns
@@ -335,7 +335,7 @@ $(document).ready(function(){
 		else if(road=="i70"){
 			$('.ui.menu').find('.item').tab('change tab', '11');
 		}
-		else if(road=="US-29"){
+		else if(road=="us29"){
 			$('.ui.menu').find('.item').tab('change tab', '12');
 		}
 		else if(road=="cluster1"){
@@ -499,7 +499,7 @@ function updateSum(){
 		$("#Save-8").removeAttr("disabled");
 	}
 
-	//location I-95
+	//location i95
 	else if (curr == "Prince George's"){
 		location_choice = curr;
 		model['location'] = location_choice;
@@ -924,7 +924,7 @@ function updateSum2(){
 			model['exit'] = null;
 		}
 	}
-	else if (road == "US-29") {
+	else if (road == "us29") {
 		location_choice = $("#dropdown_location_29 option:selected").text();
 		console.log(location_choice);
 
@@ -2300,7 +2300,7 @@ function updateTime(){
 			}
 		}
 	}
-	else if(road=='US-29'){
+	else if(road=='us29'){
 		if(model['incident']=='Collision incident'){
 			drawSVG1(20, 120, 49, 130, "10~60", "60%");
 			drawSVG2(10, 140, 57, 150, "5~70", "70%");
@@ -3606,7 +3606,7 @@ function CPI1_case1() {
 		drawSVG3(0, 0, 0, 0, "", "");
 		drawSVG4("Average CT = 23 mins");
 	}
-	else if (road == "US-29") {
+	else if (road == "us29") {
 		drawSVG1(10, 80, 29, 90, "5~40", "100%");
 		drawSVG2(0, 0, 0, 0, "", "");
 		drawSVG3(0, 0, 0, 0, "", "");
@@ -3644,7 +3644,7 @@ function CPI1_case2() {
 		drawSVG3(40, 160, 82, 170, "20~80", "80%");
 		drawSVG4("Average CT = 43 mins");
 	}
-	else if (road == "US-29") {
+	else if (road == "us29") {
 		drawSVG1(50, 100, 57, 110, "25~50", "60%");
 		drawSVG2(40, 110, 57, 120, "20~55", "70%");
 		drawSVG3(40, 120, 62, 130, "20~60", "80%");
@@ -3682,7 +3682,7 @@ function CPI1_case3() {
 		drawSVG3(130, 240, 161, 250, "65~120", "80%");
 		drawSVG4("Average CT = 83 mins");
 	}
-	else if (road == "US-29") {
+	else if (road == "us29") {
 		drawSVG1(120, 150, 117, 160, "60~75", "60%");
 		drawSVG2(120, 240, 159, 250, "60~120", "100%");
 		drawSVG3(0, 0, 0, 0, "", "");
@@ -3720,7 +3720,7 @@ function CPI1_case4() {
 		drawSVG3(0, 0, 0, 0, "", "");
 		drawSVG4("Average CT = >=120 mins"); //mean not given
 	}
-	else if (road == "US-29") {
+	else if (road == "us29") {
 		drawSVG1(240, 300, 250, 300, ">=120", "85%");
 		drawSVG2(0, 0, 0, 0, "", "");
 		drawSVG3(0, 0, 0, 0, "", "");
@@ -3759,7 +3759,7 @@ function CPI2_case1() {
 		drawSVG3(0, 0, 0, 0, "", "");
 		drawSVG4("Average CT = 19 mins");
 	}
-	else if (road == "US-29") {
+	else if (road == "us29") {
 		drawSVG1(20, 80, 28, 90, "10~40", "60%");
 		drawSVG2(10, 80, 27, 90, "5~40", "70%");
 		drawSVG3(10, 90, 32, 100, "5~45", "80%");
@@ -3797,7 +3797,7 @@ function CPI2_case2() {
 		drawSVG3(30, 130, 62, 140, "15~65", "80%");
 		drawSVG4("Average CT = 42 mins");
 	}
-	else if (road == "US-29") {
+	else if (road == "us29") {
 		drawSVG1(60, 110, 67, 120, "30~55", "70%");
 		drawSVG2(60, 120, 72, 130, "30~60", "80%");
 		drawSVG3(0, 0, 0, 0, "", "");
@@ -3835,7 +3835,7 @@ function CPI2_case3() {
 		drawSVG3(0, 0, 0, 0, "", "");
 		drawSVG4("Average CT = 75 mins");
 	}
-	else if (road == "US-29") {
+	else if (road == "us29") {
 		drawSVG1(120, 180, 132, 190, "60~90", "70%");
 		drawSVG2(120, 240, 159, 250, "60~120", "80%");
 		drawSVG3(0, 0, 0, 0, "", "");
@@ -3873,7 +3873,7 @@ function CPI2_case4() {
 		drawSVG3(0, 0, 0, 0, "", "");
 		drawSVG4("Average CT = 247 mins");	
 	}
-	else if (road == "US-29") {
+	else if (road == "us29") {
 		drawSVG1(240, 300, 250, 300, ">=120", "100%");
 		drawSVG2(0, 0, 0, 0, "", "");
 		drawSVG3(0, 0, 0, 0, "", "");
@@ -3993,7 +3993,7 @@ function CPD1_case1() {
 		drawSVG3(0, 0, 0, 0, "", "");
 		drawSVG4("Average CT = 20 mins");
 	}
-	else if (road == "US-29") {
+	else if (road == "us29") {
 		drawSVG1(10, 80, 27, 90, "5~40", "60%");
 		drawSVG2(10, 90, 32, 110, "5~45", "70%");
 		drawSVG3(10, 120, 47, 130, "5~60", "80%");
@@ -4031,7 +4031,7 @@ function CPD1_case2() {
 		drawSVG3(20, 140, 62, 150, "10~70", "80%");
 		drawSVG4("Average CT = 47 mins");
 	}
-	else if (road == "US-29") {
+	else if (road == "us29") {
 		drawSVG1(50, 120, 67, 130, "25~60", "60%");
 		drawSVG2(40, 120, 62, 130, "20~60", "70%");
 		drawSVG3(30, 120, 57, 130, "15~60", "80%");
@@ -4069,7 +4069,7 @@ function CPD1_case3(){
 		drawSVG3(0, 0, 0, 0, "", "");
 		drawSVG4("Average CT = 76 mins");
 	}
-	else if (road == "US-29") {
+	else if (road == "us29") {
 		drawSVG1(150, 210, 159, 220, "75~105", "60%");
 		drawSVG2(140, 220, 159, 130, "70~110", "70%");
 		drawSVG3(120, 240, 159, 150, "60~120", "80%");
@@ -4107,7 +4107,7 @@ function CPD1_case4() {
 		drawSVG3(170, 300, 237, 300, ">=85", "80%");
 		drawSVG4("Average CT = 175 mins");
 	}
-	else if (road == "US-29") {
+	else if (road == "us29") {
 		drawSVG1(240, 300, 250, 300, ">=120", "100%");
 		drawSVG2(0, 0, 0, 0, "", "");
 		drawSVG3(0, 0, 0, 0, "", "");
@@ -4146,7 +4146,7 @@ function CPD2_case1() {
 		drawSVG3(0, 0, 0, 0, "", "");
 		drawSVG4("Average CT = 19 mins");
 	}
-	else if (road == "US-29") {
+	else if (road == "us29") {
 		drawSVG1(10, 80, 27, 70, "5~40", "70%");
 		drawSVG2(10, 90, 32, 100, "5~45", "80%");
 		drawSVG3(0, 0, 0, 0, "", "");
@@ -4184,7 +4184,7 @@ function CPD2_case2() {
 		drawSVG3(50, 140, 77, 150, "25~70", "80%");
 		drawSVG4("Average CT = 48 mins");
 	}
-	else if (road == "US-29") {
+	else if (road == "us29") {
 		drawSVG1(30, 130, 62, 140, "15~65", "60%");
 		drawSVG2(30, 140, 67, 150, "15~70", "70%");
 		drawSVG3(30, 170, 82, 180, "15~85", "80%");
@@ -4222,7 +4222,7 @@ function CPD2_case3() {
 		drawSVG3(100, 230, 141, 240, "50~115", "80%");
 		drawSVG4("Average CT = 86 mins");
 	}
-	else if (road == "US-29") {
+	else if (road == "us29") {
 		drawSVG1(120, 200, 139, 210, "60~100", "60%");
 		drawSVG2(120, 210, 144, 220, "60~105", "70%");
 		drawSVG3(120, 240, 159, 250, "60~120", "80%");
@@ -4260,7 +4260,7 @@ function CPD2_case4() {
 		drawSVG3(0, 0, 0, 0, "", "");
 		drawSVG4("Average CT = 154 mins");
 	}
-	else if (road == "US-29") {
+	else if (road == "us29") {
 		drawSVG1(240, 300, 250, 300, ">=120", "100%");
 		drawSVG2(0, 0, 0, 0, "", "");
 		drawSVG3(0, 0, 0, 0, "", "");
@@ -4403,7 +4403,7 @@ function CF_case1(){
 		drawSVG3(120, 216, 140, 226, "200~360", "100%");
 		drawSVG4("Average CT = 272 mins");
 	}
-	else if (road == "US-29"){
+	else if (road == "us29"){
 		$("#first_stop").text("30min");
 		$("#second_stop").text("60min");
 		$("#fourth_stop").text("120min");
@@ -4453,7 +4453,7 @@ function CF_case2(){
 		drawSVG3(0, 0, 0, 0, "", "");
 		drawSVG4("Average CT = 543 mins");
 	}
-	else if (road == "US-29"){
+	else if (road == "us29"){
 		drawSVG1(120, 300, 180, 300, ">=200", "100%");
 		drawSVG2(0, 0, 0, 0, "", "");
 		drawSVG3(0, 0, 0, 0, "", "");
