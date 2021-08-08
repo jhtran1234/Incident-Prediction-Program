@@ -179,14 +179,13 @@
 							}
 						});
 
-						// Appends cluster to the end of the URL so the next HTML page can give estimations for the correct road
-						const cluster1 = ['md122', 'md168', 'md702', 'md85', 'us1']
-						const cluster2 = ['md200', 'md295', 'md648', 'i895', 'i83', 'i395']
-						if (cluster1.includes(selected_road)) {
-							parent.location = 'tab.html?cluster1';
-						} else if (cluster2.includes(selected_road)) {
-							parent.location = 'tab.html?cluster2';
-						} else{
+						const cluster1 = ['md122', 'md168', 'md702', 'md85', 'us1'];
+						const cluster2 = ['md200', 'md295', 'md648', 'i895', 'i83', 'i395'];
+
+						if (roads.includes(selected_road)) {
+							parent.location = 'tab.html?' + selected_road;
+						}
+						else{
 							alert("Please select a highway.");
 						}
 					}
