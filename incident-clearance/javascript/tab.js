@@ -205,6 +205,12 @@ $(document).ready(function(){
 		// TODO
 
 		$("#location_95").removeAttr("style");
+
+		$("#involved_vehicles_5").removeAttr("style"); //Displays VAN vehicle for picking
+		$("#iv8").removeAttr("style"); //Displays VAN vehicle for picking
+
+		$("#involved_vehicles_6").removeAttr("style"); //Displays SUV vehicle for picking
+		$("#iv9").removeAttr("style"); //Displays SUV vehicle for picking
 	}
 	else{
 		$("#location_95").removeAttr("style");
@@ -3074,19 +3080,28 @@ function updateTime(){
 							checkresult = 'CPI1-0';
 							if(checkresult == 'CPI1-0'){
 								if(num_tow > 0){checkresult = 'CPI1-2';}
-								else if(shoulder_drop > 0 && num_responder > 4){checkresult = 'CPI1-2';}
-								else if(!['AM-peak', 'PM-peak'].includes(hour) && first_responder == "POLICE"){checkresult = 'CPI1-2';}
-								else if(num_truck > 0 || num_motor > 0){checkresult = 'CPI1-2';}
-								else if((num_responder > 3 && model['weekend_time'] == 'Weekend') || num_van > 0){checkresult = 'CPI1-2';}
+								else if(false /*TODO lane blocked tunnel*/){checkresult = 'CPI1-2';}
+								else if(num_chart > 1 && first_responder == 'POLICE'){checkresult = 'CPI1-2';}
+								else if(num_responder > 1 && road == 'i895'){checkresult = 'CPI1-2';}
+								else if(['AM-peak', 'PM-peak'].includes(hour) && num_responder > 3){checkresult = 'CPI1-2';}
+								else if(num_total > 1 && num_responder > 4){checkresult = 'CPI1-2';}
+								else if(model['season_time'] =='Winter' && num_chart > 1){checkresult = 'CPI1-2';}
+								else if(center == "AOC" && aux_lane == true){checkresult = 'CPI1-2';}
 								else{checkresult = 'CPI1-1';}
 							}
 							if(checkresult == 'CPI1-2'){
-								if((center == "SOC" && shoulder_drop > 0) || num_pedestrian > 0){checkresult = 'CPI1-3';}
-								else if(num_tow == 0 || num_truck == 0){checkresult = 'CPI1-2';}
+								if(num_police > 1 && num_fireboard > 1){checkresult = 'CPI1-3';}
+								else if(num_truck > 0 && num_chart > 2){checkresult = 'CPI1-3';}
+								else if(num_total > 3 && num_responder > 5){checkresult = 'CPI1-3';}
+								else if((num_chart > 2 && num_pickup > 0) || num_total > 5){checkresult = 'CPI1-3';}
+								else if(first_responder == "CHART" && [involved_car_s, involved_truck_s, involved_bus_s, involved_pickup_s, involved_van_s, involved_suv_s].includes('over ')){checkresult = 'CPI1-3';}
+								else if((num_responder > 4 && num_van > 0) || (road == "md295" && first_responder == "FIREBOARD")){checkresult = 'CPI1-3';}
 								else{checkresult = 'CPI1-2';}
 							}
 							if(checkresult == 'CPI1-3'){
-								if(num_truck > 0){checkresult = 'CPI1-4';}
+								if(num_responder > 8){checkresult = 'CPI1-4';}
+								else if(num_responder < 4 || num_truck == 0){checkresult = 'CPI1-3';}
+								else if((aux_lane == true && num_responder > 4) || num_responder > 5){checkresult = 'CPI1-4';}
 								else{checkresult = 'CPI1-3';}
 							}
 
@@ -3095,31 +3110,60 @@ function updateTime(){
 							else if(checkresult == 'CPI1-3'){CPI1_case3();}
 							else if(checkresult == 'CPI1-4'){CPI1_case4();}
 						}
-						else if(['2 Travel lanes blocked', '3 Travel lanes blocked', '4 Travel lanes blocked', '5+ Travel lanes blocked'].includes(model['number_travel'])){
+						else if(model['number_travel']=='2 Travel lanes blocked'){
 							checkresult = 'CPI2-0';
 							if(checkresult == 'CPI2-0'){
 								if(num_tow > 0){checkresult = 'CPI2-2';}
 								else if(num_responder > 4){checkresult = 'CPI2-2';}
-								else if(model['season_time'] =='Winter' || hour == 'Night time'){checkresult = 'CPI2-2';}
-								else if(num_responder > 3 && road == 'us1'){checkresult = 'CPI2-2';}
-								else if((model['number_travel']=='5+ Travel lanes blocked' && num_pickup > 0) || (num_truck > 0)){checkresult = 'CPI2-2';}
-								else if(shoulder_drop > 2 && road == 'us1'){checkresult = 'CPI2-2';}
-								else if(!['AM-peak', 'PM-peak'].includes(hour) && num_chart == 0){checkresult = 'CPI2-2';}
+								else if(num_responder > 2 && first_responder == "POLICE"){checkresult = 'CPI2-2';}
+								else if(false /*TODO under review*/ ){checkresult = 'CPI2-2';}
+								else if(shoulder_drop > 0 && first_responder == "POLICE"){checkresult = 'CPI2-2';}
 								else{checkresult = 'CPI2-1';}
 							}
 							if(checkresult == 'CPI2-2'){
 								if(num_responder > 6){checkresult = 'CPI2-3';}
-								else if(hour == 'Night time' && (num_police > 1 || num_responder > 5)){checkresult = 'CPI2-3';}
-								else if(num_responder > 3 && first_responder == 'FIREBOARD'){checkresult = 'CPI2-3';}
-								else if(shoulder_drop > 2 && num_responder > 4){checkresult = 'CPI2-3';}
-								else if((num_truck > 0 && first_responder == "POLICE") || num_medical > 0 || num_bus > 0){checkresult = 'CPI2-3';}
-								else if(model['weekend_time'] == 'Weekend' && model['number_travel']=='5+ Travel lanes blocked'){checkresult = 'CPI2-3';}
+								else if((num_responder > 7 && aux_lane == true) || pavement == 'Snow/Ice'){checkresult = 'CPI2-3';}
+								else if(num_truck > 0){checkresult = 'CPI2-3';}
+								else if(shoulder_drop > 1 && (num_responder > 5 || first_responder == "FIREBOARD")){checkresult = 'CPI2-3';}
+								else if((center == "AOC" && num_pickup > 0) || aux_lane == true){checkresult = 'CPI2-3';}
+								else if(center == "SOC" && num_responder > 5){checkresult = 'CPI2-3';}
 								else{checkresult = 'CPI2-2';}
 							}
 							if(checkresult == 'CPI2-3'){
-								if(num_truck > 0){checkresult = 'CPI2-4';}
-								else if(shoulder_drop > 0 && num_chart > 1){checkresult = 'CPI2-4';}
-								else if(center == "SOC" && ['4 Travel lanes blocked', '5+ Travel lanes blocked'].includes(model['number_travel'])){checkresult = 'CPI2-4';}
+								if(num_responder > 7){checkresult = 'CPI2-4';}
+								else if((num_fireboard > 0 && pavement == 'Snow/Ice') || (num_van > 0 && hour == 'Night time')){checkresult = 'CPI2-4';}
+								else{checkresult = 'CPI2-3';}
+							}
+
+							if(checkresult == 'CPI2-1'){CPI2_case1();}
+							else if(checkresult == 'CPI2-2'){CPI2_case2();}
+							else if(checkresult == 'CPI2-3'){CPI2_case3();}
+							else if(checkresult == 'CPI2-4'){CPI2_case4();}
+						}
+						else if(['3 Travel lanes blocked', '4 Travel lanes blocked', '5+ Travel lanes blocked'].includes(model['number_travel'])){
+							checkresult = 'CPI2-0';
+							if(checkresult == 'CPI2-0'){
+								if(num_responder > 3 && aux_lane == true){checkresult = 'CPI2-2';}
+								else if(first_responder == "FIREBOARD"){checkresult = 'CPI2-2';}
+								else if(num_bus > 0 || pavement == 'Chemical wet' || num_truck > 1){checkresult = 'CPI2-2';}
+								else if(num_responder > 4){checkresult = 'CPI2-2';}
+								else if(['4 Travel lanes blocked', '5+ Travel lanes blocked'].includes(model['number_travel'])){checkresult = 'CPI2-2';}
+								else{checkresult = 'CPI2-1';}
+							}
+							if(checkresult == 'CPI2-2'){
+								if(model['holiday_time'] = 'Holiday' && num_truck > 0){checkresult = 'CPI2-3';}
+								else if(model['weekend_time'] == 'Weekend' && first_responder == "FIREBOARD"){checkresult = 'CPI2-3';}
+								else if((num_responder > 5 || num_chart > 1) && num_tow > 1){checkresult = 'CPI2-3';}
+								else if(['5+ Travel lanes blocked'].includes(model['number_travel'])){checkresult = 'CPI2-3';}
+								else if(model['weekend_time'] == 'Weekend' && num_responder > 4){checkresult = 'CPI2-3';}
+								else{checkresult = 'CPI2-2';}
+							}
+							if(checkresult == 'CPI2-3'){
+								if(num_truck > 1){checkresult = 'CPI2-4';}
+								else if(['5+ Travel lanes blocked'].includes(model['number_travel']) && num_chart > 2){checkresult = 'CPI2-4';}
+								else if(pavement == 'Wet' && ['5+ Travel lanes blocked'].includes(model['number_travel'])){checkresult = 'CPI2-4';}
+								else if(num_responder > 6){checkresult = 'CPI2-4';}
+								else if(shoulder_drop > 1){checkresult = 'CPI2-4';}
 								else{checkresult = 'CPI2-3';}
 							}
 
@@ -3158,7 +3202,38 @@ function updateTime(){
 							else if(checkresult == 'CPD1-3'){CPD1_case3();}
 							else if(checkresult == 'CPD1-4'){CPD1_case4();}
 						}
-						else if(['2 Travel lanes blocked', '3 Travel lanes blocked', '4 Travel lanes blocked', '5+ Travel lanes blocked'].includes(model['number_travel'])){
+						else if(model['number_travel']=='2 Travel lanes blocked'){
+							checkresult = 'CPD2-0';
+							if(checkresult == 'CPD2-0'){
+								if(num_tow > 0 && num_fireboard > 0){checkresult = 'CPD2-2';}
+								else if(num_truck > 0 && num_responder > 4){checkresult = 'CPD2-2';}
+								else if((hour == 'Night time' || num_responder > 4) && num_police > 1){checkresult = 'CPD2-2';}
+								else if((['AM-peak', 'PM-peak'].includes(hour) || num_chart > 2) && num_truck > 0){checkresult = 'CPD2-2';}
+								else if((center == "SOC" && num_responder > 3) || ['4 Travel lanes blocked', '5+ Travel lanes blocked'].includes(model['number_travel'])){checkresult = 'CPD2-2';}
+								else if(shoulder_drop > 1 && num_fireboard > 0){checkresult = 'CPD2-2';}
+								else if(num_truck > 0 || (pavement == 'Wet' && num_suv > 0)){checkresult = 'CPD2-2';}
+								else{checkresult = 'CPD2-1';}
+							}
+							if(checkresult == 'CPD2-2'){
+								if(num_tow > 1){checkresult = 'CPD2-3';}
+								else if(num_truck > 1){checkresult = 'CPD2-3';}
+								else if(num_total > 3 || num_responder > 4 || [involved_car_s, involved_truck_s, involved_bus_s, involved_pickup_s, involved_van_s, involved_suv_s].includes('over ')){checkresult = 'CPD2-3';}
+								else if(num_chart == 0){checkresult = 'CPD2-3';}
+								else{checkresult = 'CPD2-2';}
+							}
+							if(checkresult == 'CPD2-3'){
+								if(num_tow > 1){checkresult = 'CPD2-4';}
+								else if(num_truck > 0){checkresult = 'CPD2-4';}
+								else if(model['number_travel']=='5+ Travel lanes blocked' || (model['weekend_time'] == 'Weekend' && road=='md85')){checkresult = 'CPD2-4';}
+								else{checkresult = 'CPD2-3';}
+							}
+
+							if(checkresult == 'CPD2-1'){CPD2_case1();}
+							else if(checkresult == 'CPD2-2'){CPD2_case2();}
+							else if(checkresult == 'CPD2-3'){CPD2_case3();}
+							else if(checkresult == 'CPD2-4'){CPD2_case4();}
+						}
+						else if(['3 Travel lanes blocked', '4 Travel lanes blocked', '5+ Travel lanes blocked'].includes(model['number_travel'])){
 							checkresult = 'CPD2-0';
 							if(checkresult == 'CPD2-0'){
 								if(num_tow > 0 && num_fireboard > 0){checkresult = 'CPD2-2';}
