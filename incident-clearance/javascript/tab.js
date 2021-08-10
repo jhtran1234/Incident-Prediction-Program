@@ -3080,7 +3080,7 @@ function updateTime(){
 							checkresult = 'CPI1-0';
 							if(checkresult == 'CPI1-0'){
 								if(num_tow > 0){checkresult = 'CPI1-2';}
-								else if(false /*TODO lane blocked tunnel*/){checkresult = 'CPI1-2';}
+								else if(tunnel_lane == true){checkresult = 'CPI1-2';}
 								else if(num_chart > 1 && first_responder == 'POLICE'){checkresult = 'CPI1-2';}
 								else if(num_responder > 1 && road == 'i895'){checkresult = 'CPI1-2';}
 								else if(['AM-peak', 'PM-peak'].includes(hour) && num_responder > 3){checkresult = 'CPI1-2';}
