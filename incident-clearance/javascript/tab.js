@@ -3071,9 +3071,9 @@ function updateTime(){
 			if (model['incident'] == 'Collision incident') {
 				if(model['blockage']=='Travel lane blockage'){
 					if(model['collision']=='Fatality'){
-						if(model['weekend_time'] == 'Weekend' && center=='SOC'){CF_case2();}
-						else if(model['weekend_time'] == 'Weekday' && num_responder > 7){CF_case2();}
-						else{CF_case1();}
+						if(num_responder > 6){CF_case2();}
+						else if(num_truck > 0 || pavement == 'Snow/Ice' || num_pedestrian > 0){CF_case2();}
+						else{CF_case2();}
 					}
 					else if(model['collision']=='Personal Injury'){
 						if(model['number_travel']=='1 Travel lane blocked'){
