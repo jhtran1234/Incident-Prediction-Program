@@ -3073,7 +3073,7 @@ function updateTime(){
 					if(model['collision']=='Fatality'){
 						if(num_responder > 6){CF_case2();}
 						else if(num_truck > 0 || pavement == 'Snow/Ice' || num_pedestrian > 0){CF_case2();}
-						else{CF_case2();}
+						else{CF_case1();}
 					}
 					else if(model['collision']=='Personal Injury'){
 						if(model['number_travel']=='1 Travel lane blocked'){
@@ -3116,7 +3116,7 @@ function updateTime(){
 								if(num_tow > 0){checkresult = 'CPI2-2';}
 								else if(num_responder > 4){checkresult = 'CPI2-2';}
 								else if(num_responder > 2 && first_responder == "POLICE"){checkresult = 'CPI2-2';}
-								else if(false /*TODO under review*/ ){checkresult = 'CPI2-2';}
+								else if((center == "AOC" && (shoulder_drop > 1 && aux_lane || (shoulder_drop > 2))) || pavement == 'Snow/Ice'){checkresult = 'CPI2-2';}
 								else if(shoulder_drop > 0 && first_responder == "POLICE"){checkresult = 'CPI2-2';}
 								else{checkresult = 'CPI2-1';}
 							}
