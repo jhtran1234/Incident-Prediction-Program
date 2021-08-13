@@ -39,8 +39,8 @@ var involved_car_s;
 var involved_truck_s;
 var involved_bus_s;
 var involved_pickup_s;
-var involved_van_s; //Van only shows for 495, cluster1
-var involved_suv_s; //SUV only shows for 70, cluster1
+var involved_van_s; //Van only shows for 495, cluster1, cluster2
+var involved_suv_s; //SUV only shows for 70, cluster1, cluster2
 var involved_car;
 var involved_truck;
 var involved_bus;
