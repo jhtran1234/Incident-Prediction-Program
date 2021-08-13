@@ -117,6 +117,7 @@ var ninetenam = 0;
 var road = location.search.substring(1); // Represents the road being worked on. Defaults to i95.
 const cluster1 = ['md122', 'md168', 'md702', 'md85', 'us1'];
 const cluster2 = ['md200', 'md295', 'md648', 'i895', 'i83', 'i395'];
+const cluster3 = ['i81', 'us15', 'us301', 'us40', 'us50'];
 
 $(document).ready(function(){
 	// timepicker initialization

@@ -95,7 +95,7 @@
 
 <script>
 	function selectRoad(road_selected){
-		let roads = ['md122', 'md168', 'md702', 'md85', 'us1', 'md200', 'md295', 'md648', 'i895', 'i83', 'i395'];
+		let roads = ['md122', 'md168', 'md702', 'md85', 'us1', 'md200', 'md295', 'md648', 'i895', 'i83', 'i395', 'i81', 'us15', 'us301', 'us40', 'us50'];
 		
 		var img = document.getElementById(road_selected);
 		
@@ -143,6 +143,19 @@
 						<img src="images/md702.png" id='md702' height='40px' onclick="selectRoad(this.id)" selected='false'>
 					</div>
 				</div>
+				<div class='cluster3'>
+					<div>
+						<p style="font-size:21px; font-weight:bold">Cluster 3:</p>
+					</div>
+					<div>
+						<!-- show Interstates first, followed by US road, and MD road -->
+						<img src="images/i81.png" id='i81' height='40px' onclick="selectRoad(this.id)" selected='false'>
+						<img src="images/us15.png" id='us15' height='40px' onclick="selectRoad(this.id)" selected='false'>
+						<img src="images/us40.png" id='us40' height='40px' onclick="selectRoad(this.id)" selected='false'>
+						<img src="images/us50.png" id='us50' height='40px' onclick="selectRoad(this.id)" selected='false'>
+						<img src="images/us301.png" id='us301' height='40px' onclick="selectRoad(this.id)" selected='false'>
+					</div>
+				</div>
 			</div>
 			<div class='cluster_column' display="inline-block">
 				<div class='cluster2'>
@@ -172,17 +185,14 @@
 				<button class="ui right floated blue button" id="Next" onclick='nextPage()' disabled>Next</button>
 				<script type="text/javascript">
 					function nextPage() {
-						let roads = ['md122', 'md168', 'md702', 'md85', 'us1', 'md200', 'md295', 'md648', 'i895', 'i83', 'i395'];
+						let roads = ['md122', 'md168', 'md702', 'md85', 'us1', 'md200', 'md295', 'md648', 'i895', 'i83', 'i395', 'i81', 'us15', 'us301', 'us40', 'us50'];
 						var selected_road;
 						roads.forEach((hwy) => {
 							if(document.getElementById(hwy).getAttribute('selected') == 'true'){
 								selected_road = hwy;
 							}
 						});
-
-						const cluster1 = ['md122', 'md168', 'md702', 'md85', 'us1'];
-						const cluster2 = ['md200', 'md295', 'md648', 'i895', 'i83', 'i395'];
-
+						
 						if (roads.includes(selected_road)) {
 							parent.location = 'tab.html?' + selected_road;
 						}
