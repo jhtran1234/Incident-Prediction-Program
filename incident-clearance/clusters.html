@@ -95,7 +95,7 @@
 
 <script>
 	function selectRoad(road_selected){
-		let roads = ['md122', 'md168', 'md702', 'md85', 'us1', 'md200', 'md295', 'md648', 'i895', 'i83', 'i395', 'i81', 'us15', 'us301', 'us40', 'us50'];
+		let roads = ['md122', 'md168', 'md702', 'md85', 'us1', 'md200', 'md295', 'md648', 'i895', 'i83', 'i395', 'i81', 'us15', 'us301', 'us40', 'us50', 'i270', 'i795', 'i97', 'i195', 'i295', 'md10', 'md100', 'md3'];
 		
 		var img = document.getElementById(road_selected);
 		
@@ -148,12 +148,23 @@
 						<p style="font-size:21px; font-weight:bold">Cluster 3:</p>
 					</div>
 					<div>
-						<!-- show Interstates first, followed by US road, and MD road -->
 						<img src="images/i81.png" id='i81' height='40px' onclick="selectRoad(this.id)" selected='false'>
 						<img src="images/us15.png" id='us15' height='40px' onclick="selectRoad(this.id)" selected='false'>
 						<img src="images/us40.png" id='us40' height='40px' onclick="selectRoad(this.id)" selected='false'>
 						<img src="images/us50.png" id='us50' height='40px' onclick="selectRoad(this.id)" selected='false'>
 						<img src="images/us301.png" id='us301' height='40px' onclick="selectRoad(this.id)" selected='false'>
+					</div>
+				</div>
+				<div class='cluster5'>
+					<div>
+						<p style="font-size:21px; font-weight:bold">Cluster 5:</p>
+					</div>
+					<div>
+						<img src="images/i195.png" id='i195' height='40px' onclick="selectRoad(this.id)" selected='false'>
+						<img src="images/i295.png" id='i295' height='40px' onclick="selectRoad(this.id)" selected='false'>
+						<img src="images/md3.png" id='md3' height='40px' onclick="selectRoad(this.id)" selected='false'>
+						<img src="images/md10.png" id='md10' height='40px' onclick="selectRoad(this.id)" selected='false'>
+						<img src="images/md100.png" id='md100' height='40px' onclick="selectRoad(this.id)" selected='false'>
 					</div>
 				</div>
 			</div>
@@ -171,6 +182,16 @@
 						<img src="images/md648.png" id='md648' height='40px' onclick="selectRoad(this.id)" selected='false'>
 					</div>
 				</div>
+				<div class='cluster4'>
+					<div>
+						<p style="font-size:21px; font-weight:bold">Cluster 4:</p>
+					</div>
+					<div>
+						<img src="images/i97.png" id='i97' height='40px' onclick="selectRoad(this.id)" selected='false'>
+						<img src="images/i270.png" id='i270' height='40px' onclick="selectRoad(this.id)" selected='false'>
+						<img src="images/i795.png" id='i795' height='40px' onclick="selectRoad(this.id)" selected='false'>
+					</div>
+				</div>
 				<div id='div-selected'>
 					<div>
 						<p style="font-size:21px; font-weight:bold">Selected Highway:</p>
@@ -185,7 +206,7 @@
 				<button class="ui right floated blue button" id="Next" onclick='nextPage()' disabled>Next</button>
 				<script type="text/javascript">
 					function nextPage() {
-						let roads = ['md122', 'md168', 'md702', 'md85', 'us1', 'md200', 'md295', 'md648', 'i895', 'i83', 'i395', 'i81', 'us15', 'us301', 'us40', 'us50'];
+						let roads = ['md122', 'md168', 'md702', 'md85', 'us1', 'md200', 'md295', 'md648', 'i895', 'i83', 'i395', 'i81', 'us15', 'us301', 'us40', 'us50', 'i270', 'i795', 'i97', 'i195', 'i295', 'md10', 'md100', 'md3'];
 						var selected_road;
 						roads.forEach((hwy) => {
 							if(document.getElementById(hwy).getAttribute('selected') == 'true'){
