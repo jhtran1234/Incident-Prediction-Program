@@ -39,8 +39,8 @@ var involved_car_s;
 var involved_truck_s;
 var involved_bus_s;
 var involved_pickup_s;
-var involved_van_s; //Van only shows for 495, cluster1, cluster2
-var involved_suv_s; //SUV only shows for 70, cluster1, cluster2
+var involved_van_s; //Van only shows for 495, clusters
+var involved_suv_s; //SUV only shows for 70, clusters
 var involved_car;
 var involved_truck;
 var involved_bus;
@@ -215,6 +215,17 @@ $(document).ready(function(){
 		$("#involved_vehicles_6").removeAttr("style"); //Displays SUV vehicle for picking
 		$("#iv9").removeAttr("style"); //Displays SUV vehicle for picking
 	}
+	else if (cluster3.includes(road)) {
+		// TODO
+
+		$("#location_95").removeAttr("style");
+
+		$("#involved_vehicles_5").removeAttr("style"); //Displays VAN vehicle for picking
+		$("#iv8").removeAttr("style"); //Displays VAN vehicle for picking
+
+		$("#involved_vehicles_6").removeAttr("style"); //Displays SUV vehicle for picking
+		$("#iv9").removeAttr("style"); //Displays SUV vehicle for picking
+	}
 	else{
 		$("#location_95").removeAttr("style");
 	}
@@ -354,6 +365,10 @@ $(document).ready(function(){
 			$('.ui.menu').find('.item').tab('change tab', '7');
 		}
 		else if(cluster2.includes(road)){
+			// TODO
+			$('.ui.menu').find('.item').tab('change tab', '7');
+		}
+		else if(cluster3.includes(road)){
 			// TODO
 			$('.ui.menu').find('.item').tab('change tab', '7');
 		}
@@ -3001,6 +3016,400 @@ function updateTime(){
 				drawSVG2(10, 120, 47, 130, "5~60", "70%");
 				drawSVG3(10, 150, 62, 160, "5~75", "80%");
 				drawSVG4("Average CT = 33 mins");
+			}
+		}
+		else if(model['incident']=='Non-Collision incident'){ // build awaiting instructions
+			drawSVG1(10, 30, 40, 110, "5~15", "65%");
+			drawSVG2(10, 40, 50, 120, "5~20", "75%");
+			drawSVG3(10, 60, 70, 140, "5~30", "80%");
+			drawSVG4("Average CT = 20 mins");
+
+			if(model['collision'] == 'Debris in Roadway'){
+				drawSVG1(0, 20, 0, 30, "<10", "85%");
+				drawSVG2(0, 40, 10, 50, "<20", "90%");
+				drawSVG3(0, 60, 20, 70, "<30", "95%");
+				drawSVG4("Average CT = 5 mins");
+			}
+			else if(model['collision'] == 'Disabled Vehicle'){
+				drawSVG1(0, 30, 5, 40, "<15", "65%");
+				drawSVG2(0, 40, 10, 50, "<20", "75%");
+				drawSVG3(0, 60, 15, 70, "<30", "85%");
+				drawSVG4("Average CT = 20 mins");
+			}
+			else if(model['collision'] == 'Police Activity'){
+				drawSVG1(0, 60, 20, 70, "<30", "65%");
+				drawSVG2(0, 90, 30, 100, "<45", "80%");
+				drawSVG3(0, 120, 40, 130, "<60", "90%");
+				drawSVG4("Average CT = 30 mins");
+			}
+			else if(model['collision'] == 'Utility Problem'){
+				drawSVG1(120, 300, 180, 300, "60~240", "100%");
+				drawSVG2(0, 0, 0, 0, "", "");
+				drawSVG3(0, 0, 0, 0, "", "");
+				drawSVG4("Average CT = 160 mins");
+			}
+			else if(model['collision'] == 'Weather Closure'){
+				drawSVG1(10, 140, 30, 150, "5~70", "60%");
+				drawSVG2(10, 180, 30, 190, "5~90", "70%");
+				drawSVG3(10, 240, 30, 250, "5~120", "80%");
+				drawSVG4("Average CT = 190 mins");
+			}
+			else if(model['collision'] == 'Others'){
+				drawSVG1(0, 40, 10, 50, "<20", "65%");
+				drawSVG2(0, 60, 20, 70, "<30", "75%");
+				drawSVG3(0, 120, 40, 130, "<60", "90%");
+				drawSVG4("Average CT = 25 mins");
+			}
+
+			else if(model['collision'] == 'Vehicles on Fire'){
+				drawSVG1(10, 90, 30, 100, "5~45", "60%");
+				drawSVG2(10, 120, 30, 130, "5~60", "70%");
+				drawSVG3(10, 180, 30, 190, "5~90", "80%");
+				drawSVG4("Average CT = 45 mins");
+			}
+			else if(model['collision'] == 'Emergency Roadwork'){
+				$("#first_stop").text("100min");
+				$("#second_stop").text("200min");
+				$("#fourth_stop").text("400min");
+
+				drawSVG1(10, 95, 40 , 105, "5~160", "60%");
+				drawSVG2(10, 145, 60, 155, "5~240", "70%");
+				drawSVG3(10, 195, 80, 205, "5~330", "80%");
+				drawSVG4("Average CT = 170 mins");
+			}
+			else if(model['collision'] == 'Off-road Activity'){
+				drawSVG1(0, 60, 20, 70, "<30", "60%");
+				drawSVG2(0, 90, 20, 100, "<45", "70%");
+				drawSVG3(0, 120, 20, 130, "<60", "80%");
+				drawSVG4("Average CT = 40 mins");
+			}	
+		}
+
+		if(![model['incident'], model["involved_veh"], model["responder"], model["center_choice"], model["pavement_condition"], model["hour_time"]].includes(null) && (model["location"]!=null || model["exit"]!=null)){
+			if (model['incident'] == 'Collision incident') {
+				if(model['blockage']=='Travel lane blockage'){
+					if(model['collision']=='Fatality'){
+						if(num_responder > 6){CF_case2();}
+						else if(num_truck > 0 || pavement == 'Snow/Ice' || num_pedestrian > 0){CF_case2();}
+						else{CF_case1();}
+					}
+					else if(model['collision']=='Personal Injury'){
+						if(model['number_travel']=='1 Travel lane blocked'){
+							checkresult = 'CPI1-0';
+							if(checkresult == 'CPI1-0'){
+								if(num_tow > 0){checkresult = 'CPI1-2';}
+								else if(tunnel_lane == true){checkresult = 'CPI1-2';}
+								else if(num_chart > 1 && first_responder == 'POLICE'){checkresult = 'CPI1-2';}
+								else if(num_responder > 1 && road == 'i895'){checkresult = 'CPI1-2';}
+								else if(['AM-peak', 'PM-peak'].includes(hour) && num_responder > 3){checkresult = 'CPI1-2';}
+								else if(num_total > 1 && num_responder > 4){checkresult = 'CPI1-2';}
+								else if(model['season_time'] =='Winter' && num_chart > 1){checkresult = 'CPI1-2';}
+								else if(center == "AOC" && aux_lane == true){checkresult = 'CPI1-2';}
+								else{checkresult = 'CPI1-1';}
+							}
+							if(checkresult == 'CPI1-2'){
+								if(num_police > 1 && num_fireboard > 1){checkresult = 'CPI1-3';}
+								else if(num_truck > 0 && num_chart > 2){checkresult = 'CPI1-3';}
+								else if(num_total > 3 && num_responder > 5){checkresult = 'CPI1-3';}
+								else if((num_chart > 2 && num_pickup > 0) || num_total > 5){checkresult = 'CPI1-3';}
+								else if(first_responder == "CHART" && [involved_car_s, involved_truck_s, involved_bus_s, involved_pickup_s, involved_van_s, involved_suv_s].includes('over ')){checkresult = 'CPI1-3';}
+								else if((num_responder > 4 && num_van > 0) || (road == "md295" && first_responder == "FIREBOARD")){checkresult = 'CPI1-3';}
+								else{checkresult = 'CPI1-2';}
+							}
+							if(checkresult == 'CPI1-3'){
+								if(num_responder > 8){checkresult = 'CPI1-4';}
+								else if(num_responder < 4 || num_truck == 0){checkresult = 'CPI1-3';}
+								else if((aux_lane == true && num_responder > 4) || num_responder > 5){checkresult = 'CPI1-4';}
+								else{checkresult = 'CPI1-3';}
+							}
+
+							if(checkresult == 'CPI1-1'){CPI1_case1();}
+							else if(checkresult == 'CPI1-2'){CPI1_case2();}
+							else if(checkresult == 'CPI1-3'){CPI1_case3();}
+							else if(checkresult == 'CPI1-4'){CPI1_case4();}
+						}
+						else if(model['number_travel']=='2 Travel lanes blocked'){
+							checkresult = 'CPI2-0';
+							if(checkresult == 'CPI2-0'){
+								if(num_tow > 0){checkresult = 'CPI2-2';}
+								else if(num_responder > 4){checkresult = 'CPI2-2';}
+								else if(num_responder > 2 && first_responder == "POLICE"){checkresult = 'CPI2-2';}
+								else if((center == "AOC" && (shoulder_drop > 1 && aux_lane || (shoulder_drop > 2))) || pavement == 'Snow/Ice'){checkresult = 'CPI2-2';}
+								else if(shoulder_drop > 0 && first_responder == "POLICE"){checkresult = 'CPI2-2';}
+								else{checkresult = 'CPI2-1';}
+							}
+							if(checkresult == 'CPI2-2'){
+								if(num_responder > 6){checkresult = 'CPI2-3';}
+								else if((num_responder > 7 && aux_lane == true) || pavement == 'Snow/Ice'){checkresult = 'CPI2-3';}
+								else if(num_truck > 0){checkresult = 'CPI2-3';}
+								else if(shoulder_drop > 1 && (num_responder > 5 || first_responder == "FIREBOARD")){checkresult = 'CPI2-3';}
+								else if((center == "AOC" && num_pickup > 0) || aux_lane == true){checkresult = 'CPI2-3';}
+								else if(center == "SOC" && num_responder > 5){checkresult = 'CPI2-3';}
+								else{checkresult = 'CPI2-2';}
+							}
+							if(checkresult == 'CPI2-3'){
+								if(num_responder > 7){checkresult = 'CPI2-4';}
+								else if((num_fireboard > 0 && pavement == 'Snow/Ice') || (num_van > 0 && hour == 'Night time')){checkresult = 'CPI2-4';}
+								else{checkresult = 'CPI2-3';}
+							}
+
+							if(checkresult == 'CPI2-1'){CPI2_case1();}
+							else if(checkresult == 'CPI2-2'){CPI2_case2();}
+							else if(checkresult == 'CPI2-3'){CPI2_case3();}
+							else if(checkresult == 'CPI2-4'){CPI2_case4();}
+						}
+						else if(['3 Travel lanes blocked', '4 Travel lanes blocked', '5+ Travel lanes blocked'].includes(model['number_travel'])){
+							checkresult = 'CPI3-0';
+							if(checkresult == 'CPI3-0'){
+								if(num_responder > 3 && aux_lane == true){checkresult = 'CPI3-2';}
+								else if(first_responder == "FIREBOARD"){checkresult = 'CPI3-2';}
+								else if(num_bus > 0 || pavement == 'Chemical wet' || num_truck > 1){checkresult = 'CPI3-2';}
+								else if(num_responder > 4){checkresult = 'CPI3-2';}
+								else if(['4 Travel lanes blocked', '5+ Travel lanes blocked'].includes(model['number_travel'])){checkresult = 'CPI3-2';}
+								else{checkresult = 'CPI3-1';}
+							}
+							if(checkresult == 'CPI3-2'){
+								if(model['holiday_time'] = 'Holiday' && num_truck > 0){checkresult = 'CPI3-3';}
+								else if(model['weekend_time'] == 'Weekend' && first_responder == "FIREBOARD"){checkresult = 'CPI3-3';}
+								else if((num_responder > 5 || num_chart > 1) && num_tow > 1){checkresult = 'CPI3-3';}
+								else if(['5+ Travel lanes blocked'].includes(model['number_travel'])){checkresult = 'CPI3-3';}
+								else if(model['weekend_time'] == 'Weekend' && num_responder > 4){checkresult = 'CPI3-3';}
+								else{checkresult = 'CPI3-2';}
+							}
+							if(checkresult == 'CPI3-3'){
+								if(num_truck > 1){checkresult = 'CPI3-4';}
+								else if(['5+ Travel lanes blocked'].includes(model['number_travel']) && num_chart > 2){checkresult = 'CPI3-4';}
+								else if(pavement == 'Wet' && ['5+ Travel lanes blocked'].includes(model['number_travel'])){checkresult = 'CPI3-4';}
+								else if(num_responder > 6){checkresult = 'CPI3-4';}
+								else if(shoulder_drop > 1){checkresult = 'CPI3-4';}
+								else{checkresult = 'CPI3-3';}
+							}
+
+							if(checkresult == 'CPI3-1'){CPI3_case1();}
+							else if(checkresult == 'CPI3-2'){CPI3_case2();}
+							else if(checkresult == 'CPI3-3'){CPI3_case3();}
+							else if(checkresult == 'CPI3-4'){CPI3_case4();}
+						}
+					}
+					else if(model['collision']=='Property Damage only'){
+						if(model['number_travel']=='1 Travel lane blocked'){
+							checkresult = 'CPD1-0';
+							if(checkresult == 'CPD1-0'){
+								if(num_tow > 0 && num_fireboard > 0){checkresult = 'CPD1-2';}
+								else if(num_responder > 3 && num_tow > 0){checkresult = 'CPD1-2';}
+								else if(model['season_time'] == 'Winter' && num_pickup > 0){checkresult = 'CPD1-2';}
+								else if(num_responder > 2 && [involved_car_s, involved_truck_s, involved_bus_s, involved_pickup_s, involved_van_s, involved_suv_s].includes('over ')){checkresult = 'CPD1-2';}
+								else if(center == "AOC" && num_fireboard > 0){checkresult = 'CPD1-2';}
+								else if((road == "i83" && num_tow > 0) || (road == "i395" && num_chart > 2)){checkresult = 'CPD1-2';}
+								else if(num_truck > 0 && num_police > 1){checkresult = 'CPD1-2';}
+								else if(num_tow > 0 && num_pickup > 0){checkresult = 'CPD1-2';}
+								else if(num_truck > 1 || [involved_car_s, involved_truck_s, involved_bus_s, involved_pickup_s, involved_van_s, involved_suv_s].includes('jack ') || [involved_car_s, involved_truck_s, involved_bus_s, involved_pickup_s, involved_van_s, involved_suv_s].includes('lost ')){checkresult = 'CPD1-2';}
+								else if(toll_lane == true && num_responder > 3){checkresult = 'CPD1-2';}
+								else if(num_total > 2 && num_responder > 6){checkresult = 'CPD1-2';}
+								else{checkresult = 'CPD1-1';}
+							}
+							if(checkresult == 'CPD1-2'){
+								if(num_responder > 7){checkresult = 'CPD1-3';}
+								else if(shoulder_drop > 0 && num_responder > 6){checkresult = 'CPD1-3';}
+								else if(aux_lane == true && num_tow > 1){checkresult = 'CPD1-3';}
+								else if(num_total > 3 && num_responder > 4){checkresult = 'CPD1-3';}
+								else if(num_total > 2 && num_truck > 0){checkresult = 'CPD1-3';}
+								else if((num_chart > 1 && [involved_car_s, involved_truck_s, involved_bus_s, involved_pickup_s, involved_van_s, involved_suv_s].includes('over ')) || involved_truck_s == 'lost '){checkresult = 'CPD1-3';}
+								else if(num_truck == 0){checkresult = 'CPD1-2';}
+								else{checkresult = 'CPD1-2';}
+							}
+							if(checkresult == 'CPD1-3'){
+								if(num_chart > 2 && involved_truck_s == 'over '){checkresult = 'CPD1-4';}
+								else if(aux_lane == true && [involved_car_s, involved_truck_s, involved_bus_s, involved_pickup_s, involved_van_s, involved_suv_s].includes('over ')){checkresult = 'CPD1-4';}
+								else{checkresult = 'CPD1-3';}
+							}
+
+							if(checkresult == 'CPD1-1'){CPD1_case1();}
+							else if(checkresult == 'CPD1-2'){CPD1_case2();}
+							else if(checkresult == 'CPD1-3'){CPD1_case3();}
+							else if(checkresult == 'CPD1-4'){CPD1_case4();}
+						}
+						else if(model['number_travel']=='2 Travel lanes blocked'){
+							checkresult = 'CPD2-0';
+							if(checkresult == 'CPD2-0'){
+								if(num_tow > 0 && num_fireboard > 0){checkresult = 'CPD2-2';}
+								else if((model['weekend_time'] == 'Weekend' || num_total > 1) && num_tow > 0){checkresult = 'CPD2-2';}
+								else if(!['AM-peak', 'PM-peak'].includes(hour) && num_truck > 0){checkresult = 'CPD2-2';}
+								else if((num_tow > 0 && first_responder == "POLICE") || (pavement == 'Snow/Ice' && [involved_car_s, involved_truck_s, involved_bus_s, involved_pickup_s, involved_van_s, involved_suv_s].includes('over '))){checkresult = 'CPD2-2';}
+								else{checkresult = 'CPD2-1';}
+							}
+							if(checkresult == 'CPD2-2'){
+								if(num_truck > 1){checkresult = 'CPD2-3';}
+								else if(num_total > 3 && num_responder > 4){checkresult = 'CPD2-3';}
+								else if(num_truck > 0 && num_responder > 5){checkresult = 'CPD2-3';}
+								else if(model['weekend_time'] == 'Weekend' && hour == 'Night time' && num_total > 2 && num_tow > 0){checkresult = 'CPD2-3';}
+								else if(shoulder_drop > 0 && num_truck > 0){checkresult = 'CPD2-3';}
+								else if((center == "AOC" && num_pickup > 0) || pavement == 'Chemical wet'){checkresult = 'CPD2-3';}
+								else if(road == "md200" && num_tow > 0){checkresult = 'CPD2-3';}
+								else{checkresult = 'CPD2-2';}
+							}
+							if(checkresult == 'CPD2-3'){
+								if(num_truck > 1 || [involved_car_s, involved_truck_s, involved_bus_s, involved_pickup_s, involved_van_s, involved_suv_s].includes('jack ')){checkresult = 'CPD2-4';}
+								else if(num_truck == 0){checkresult = 'CPD2-3';}
+								else{checkresult = 'CPD2-3';}
+							}
+
+							if(checkresult == 'CPD2-1'){CPD2_case1();}
+							else if(checkresult == 'CPD2-2'){CPD2_case2();}
+							else if(checkresult == 'CPD2-3'){CPD2_case3();}
+							else if(checkresult == 'CPD2-4'){CPD2_case4();}
+						}
+						else if(['3 Travel lanes blocked', '4 Travel lanes blocked', '5+ Travel lanes blocked'].includes(model['number_travel'])){
+							checkresult = 'CPD3-0';
+							if(checkresult == 'CPD3-0'){
+								if(num_tow > 0){checkresult = 'CPD3-2';}
+								else if(num_total > 2 && num_police > 1){checkresult = 'CPD3-2';}
+								else if(shoulder_drop > 1 && num_fireboard > 0){checkresult = 'CPD3-2';}
+								else{checkresult = 'CPD3-1';}
+							}
+							if(checkresult == 'CPD3-2'){
+								if(num_tow > 1 || hazmat == true){checkresult = 'CPD3-3';}
+								else if(pavement == 'Snow/Ice' || model['holiday_time'] == 'Holiday'){checkresult = 'CPD3-3';}
+								else if(num_tow == 0 || num_fireboard == 0){checkresult = 'CPD3-3';}
+								else if([involved_car_s, involved_truck_s, involved_bus_s, involved_pickup_s, involved_van_s, involved_suv_s].includes('over ') || num_suv > 0){checkresult = 'CPD3-3';}
+								else{checkresult = 'CPD3-2';}
+							}
+							if(checkresult == 'CPD3-3'){
+								if(num_responder > 6){checkresult = 'CPD3-4';}
+								else{checkresult = 'CPD3-3';}
+							}
+
+							if(checkresult == 'CPD3-1'){CPD3_case1();}
+							else if(checkresult == 'CPD3-2'){CPD3_case2();}
+							else if(checkresult == 'CPD3-3'){CPD3_case3();}
+							else if(checkresult == 'CPD3-4'){CPD3_case4();}
+						}
+					}
+				}
+				else if(model['blockage']=='Shoulder only blockage'){
+					prob = 1/(1+Math.exp(-(-2.27-0.47*bc+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
+						-0.23*num_total+0.52*num_car+1.04*num_truck+0.26*num_responder+0.34*num_fireboard+0.43*num_medical-0.23*cpi
+						+0.48*spring+0.37*summer+0.54*winter+0.08*daytime+0.23*nighttime)));
+					console.log(prob);
+
+					if(num_tow > 0){shoulder_case2();}
+					else if(center != 'AOC'){shoulder_case1();}
+					else if(num_responder == 1 && pavement == 'Dry'){shoulder_case1();}
+					else if(shoulder_drop == 2){shoulder_case2();}
+					else if((model['collision'] == 'Personal Injury' && hour == 'AM-peak') || (model['collision'] == 'Personal Injury' && hour == 'Night time')){shoulder_case2();}
+					else if(hour == 'PM-peak'){shoulder_case1();}
+					else if(prob <= 0.4 && num_truck == 0){shoulder_case1();}
+					else if(prob > 0.5 && num_fireboard > 0){shoulder_case2();}
+					else{shoulder_case3();}
+				}
+			}
+			else if (model['incident'] == 'Non-Collision incident') {
+				if(model['collision'] == 'Vehicles on Fire'){
+					 drawSVG1(10, 90, 30, 100, "5~45", "60%");
+					 drawSVG2(10, 120, 30, 130, "5~60", "70%");
+					 drawSVG3(10, 180, 30, 190, "5~90", "80%");
+					 drawSVG4("Average CT = 45 mins");
+				}
+				else if(model['collision'] == 'Emergency Roadwork'){
+					$("#first_stop").text("100min");
+					$("#second_stop").text("200min");
+					$("#fourth_stop").text("400min");
+
+					drawSVG1(10, 95, 40 , 105, "5~160", "60%");
+					drawSVG2(10, 145, 60, 155, "5~240", "70%");
+					drawSVG3(10, 195, 80, 205, "5~330", "80%");
+					drawSVG4("Average CT = 170 mins");
+				}
+				else if(model['collision'] == 'Off-road Activity'){
+					 drawSVG1(0, 60, 20, 70, "<30", "60%");
+					 drawSVG2(0, 90, 20, 100, "<45", "70%");
+					 drawSVG3(0, 120, 20, 130, "<60", "80%");
+					 drawSVG4("Average CT = 40 mins");
+				}
+			}
+		}
+	}
+	else if(cluster3.includes(road)){
+		if(model['incident']=='Collision incident'){
+			drawSVG1(20, 120, 48, 130, "10~60", "60%");
+			drawSVG2(10, 140, 57, 150, "5~70", "70%");
+			drawSVG3(10, 190, 77, 200, "5~95", "80%");
+			drawSVG4("Average CT = 44 mins");
+
+			if(model['blockage']=='Travel lane blockage'){
+				drawSVG1(20, 150, 65, 160, "10~75", "60%");
+				drawSVG2(20, 200, 87, 210, "10~100", "70%");
+				drawSVG3(10, 280, 125, 290, "5~140", "80%");
+				drawSVG4("Average CT = 57 mins");
+
+				if(model['collision']=='Fatality'){
+					$("#first_stop").text("100min");
+					$("#second_stop").text("200min");
+					$("#fourth_stop").text("400min");
+
+					drawSVG1(87, 171, 97, 181, "145~285", "60%");
+					drawSVG2(81, 180, 99, 190, "135~300", "70%");
+					drawSVG3(78, 198, 106, 208, "130~330", "80%");
+					drawSVG4("Average CT = 221 mins");
+				}
+
+				else if(model['collision']=='Personal Injury'){
+					drawSVG1(40, 170, 83, 180, "20~85", "60%");
+					drawSVG2(30, 220, 102, 230, "15~110", "70%");
+					drawSVG3(20, 270, 122, 280, "10~135", "80%");
+					drawSVG4("Average CT = 64 mins");
+
+					if(model['number_travel']=='1 Travel lane blocked'){
+						drawSVG1(30, 120, 55, 130, "15~60", "60%");
+						drawSVG2(20, 130, 55, 140, "10~65", "70%");
+						drawSVG3(20, 150, 65, 160, "10~75", "80%");
+						drawSVG4("Average CT = 44 mins");
+					}
+					else if(model['number_travel']=='2 Travel lanes blocked'){
+						drawSVG1(50, 210, 106, 220, "25~105", "60%");
+						drawSVG2(40, 250, 121, 260, "20~125", "70%");
+						drawSVG3(30, 300, 141, 300, "15~150", "80%");
+						drawSVG4("Average CT = 73 mins");
+					}
+					else if(['3 Travel lanes blocked', '4 Travel lanes blocked', '5+ Travel lanes blocked'].includes(model['number_travel'])){
+						drawSVG1(50, 270, 136, 280, "25~135", "60%");
+						drawSVG2(40, 300, 146, 300, "20~155", "70%");
+						drawSVG3(30, 300, 141, 300, "15~175", "80%");
+						drawSVG4("Average CT = 88 mins");
+					}
+				}
+
+				else if(model['collision']=='Property Damage only'){
+					drawSVG1(20, 110, 45, 120, "10~55", "60%");
+					drawSVG2(10, 140, 57, 150, "5~70", "70%");
+					drawSVG3(10, 180, 77, 190, "5~90", "80%");
+					drawSVG4("Average CT = 43 mins");
+
+					if(model['number_travel']=='1 Travel lane blocked'){
+						drawSVG1(20, 100, 40, 110, "10~50", "60%");
+						drawSVG2(20, 110, 47, 120, "10~55", "70%");
+						drawSVG3(10, 140, 57, 150, "5~70", "80%");
+						drawSVG4("Average CT = 34 mins");
+					}
+					else if(model['number_travel']=='2 Travel lanes blocked'){
+						drawSVG1(20, 150, 65, 160, "10~75", "60%");
+						drawSVG2(20, 200, 86, 210, "10~100", "70%");
+						drawSVG3(10, 260, 125, 270, "5~130", "80%");
+						drawSVG4("Average CT = 52 mins");
+					}
+					else if(['3 Travel lanes blocked', '4 Travel lanes blocked', '5+ Travel lanes blocked'].includes(model['number_travel'])){
+						drawSVG1(30, 240, 111, 250, "15~120", "60%");
+						drawSVG2(20, 300, 136, 300, "10~165", "70%");
+						drawSVG3(20, 300, 136, 300, "10~200", "80%");
+						drawSVG4("Average CT = 94 mins");
+					}
+				}
+			}
+			else if(model['blockage']=='Shoulder only blockage'){
+				drawSVG1(10, 90, 32, 100, "5~45", "60%");
+				drawSVG2(10, 100, 37, 110, "5~50", "70%");
+				drawSVG3(10, 120, 47, 130, "5~60", "80%");
+				drawSVG4("Average CT = 28 mins");
 			}
 		}
 		else if(model['incident']=='Non-Collision incident'){ // build awaiting instructions
