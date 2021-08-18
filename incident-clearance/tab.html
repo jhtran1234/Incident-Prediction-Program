@@ -423,6 +423,9 @@
 				<div class="item" data-tab="12" id="location_29" style="display: none; font-size: 14px;">
 					<b>Location</b>
 				</div>
+				<div class="item" data-tab="13" id="location_cluster" style="display: none; font-size: 14px;">
+					<b>Location</b>
+				</div>
 			</div>
 			<div class="ui bottom attached tab segment active" data-tab="1">
 				<div class="ui grid">
@@ -1459,6 +1462,35 @@
 							<button class="ui right floated blue button" id="Save-10_29" disabled="disabled" name="save">Save</button>
 							<button class="ui right floated blue button" id="Back-10_29">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Clusters Location Tab -->
+			<div class="ui bottom attached tab segment" data-tab="13">
+				<div class="ui grid">
+					<div class="two column row" id="checkbox-size">
+						<div class="column">
+							<img src="images/dcbal.png" id="clusterimg" height="250px" style="padding-left:30px;">
+						</div>
+						<div class="column">
+							<select class="ui dropdown" id="dropdown_location_cluster" style="font-size:16px; font-weight:bold;">
+								<option value="">Location</option>
+								<option value="Washington">Washington DC Area</option>
+								<option value="Baltimore">Baltimore Area</option>
+								<option value="Other">Others</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="ui grid">	
+					<div class="column" id="button-size">
+						<div class="one column row" id="button-row">
+							<!-- <button class="ui right floated blue button" id="Next-10" disabled="disabled">Next</button>  -->
+							<button class="ui right floated blue button" id="Save-10_cluster" disabled="disabled" name="save">Save</button>
+							<button class="ui right floated blue button" id="Back-10_cluster">Back</button>
+							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
 						</div>
 					</div>
 				</div>

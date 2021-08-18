@@ -193,32 +193,8 @@ $(document).ready(function(){
 		$("#dropdown_direction_29 select").click(updateSum2);
 		$("#dropdown_exit_29 select").click(updateSum2);
 	}
-	else if (cluster1.includes(road)) {
-		// TODO
-
-		$("#location_95").removeAttr("style");
-
-		$("#involved_vehicles_5").removeAttr("style"); //Displays VAN vehicle for picking
-		$("#iv8").removeAttr("style"); //Displays VAN vehicle for picking
-
-		$("#involved_vehicles_6").removeAttr("style"); //Displays SUV vehicle for picking
-		$("#iv9").removeAttr("style"); //Displays SUV vehicle for picking
-	}
-	else if (cluster2.includes(road)) {
-		// TODO
-
-		$("#location_95").removeAttr("style");
-
-		$("#involved_vehicles_5").removeAttr("style"); //Displays VAN vehicle for picking
-		$("#iv8").removeAttr("style"); //Displays VAN vehicle for picking
-
-		$("#involved_vehicles_6").removeAttr("style"); //Displays SUV vehicle for picking
-		$("#iv9").removeAttr("style"); //Displays SUV vehicle for picking
-	}
-	else if (cluster3.includes(road)) {
-		// TODO
-
-		$("#location_95").removeAttr("style");
+	else if (cluster1.includes(road) || cluster2.includes(road) || cluster3.includes(road) || cluster4.includes(road) || cluster5.includes(road)) {
+		$("#location_cluster").removeAttr("style");
 
 		$("#involved_vehicles_5").removeAttr("style"); //Displays VAN vehicle for picking
 		$("#iv8").removeAttr("style"); //Displays VAN vehicle for picking
@@ -360,17 +336,8 @@ $(document).ready(function(){
 		else if(road=="us29"){
 			$('.ui.menu').find('.item').tab('change tab', '12');
 		}
-		else if(cluster1.includes(road)){
-			// TODO
-			$('.ui.menu').find('.item').tab('change tab', '7');
-		}
-		else if(cluster2.includes(road)){
-			// TODO
-			$('.ui.menu').find('.item').tab('change tab', '7');
-		}
-		else if(cluster3.includes(road)){
-			// TODO
-			$('.ui.menu').find('.item').tab('change tab', '7');
+		else if(cluster1.includes(road) || cluster2.includes(road) || cluster3.includes(road) || cluster4.includes(road) || cluster5.includes(road)){
+			$('.ui.menu').find('.item').tab('change tab', '13');
 		}
 		else{
 			$('.ui.menu').find('.item').tab('change tab', '7');
@@ -426,7 +393,9 @@ $(document).ready(function(){
 	$("#Back-10_29").click(function(){
 		$('.ui.menu').find('.item').tab('change tab', '6');
 	});
-	// TODO - Add cluster back button to new location tab
+	$("#Back-10_cluster").click(function(){
+		$('.ui.menu').find('.item').tab('change tab', '6');
+	});
 });
 
 //### updates the model whenever a radio button is selected
@@ -981,6 +950,26 @@ function updateSum2(){
 		else{
 			model['exit'] = null;
 		}
+	}
+	else if (cluster1.includes(road) || cluster2.includes(road) || cluster3.includes(road) || cluster4.includes(road) || cluster5.includes(road)) {
+		location_choice = $("#dropdown_location_cluster option:selected").text();
+		console.log(location_choice);
+
+		if (location_choice != "Location"){
+			model['location'] = location_choice;
+			$("#Save-10_cluster").removeAttr("disabled");
+
+			if(location_choice == "Washington DC Area"){document.getElementById("clusterimg").src = "images/DC.jpg";}
+			else if(location_choice == "Baltimore Area"){document.getElementById("clusterimg").src = "images/Baltimore.jpg";}
+			else if(location_choice == "Others"){document.getElementById("clusterimg").src = "images/dcbal.png";}
+
+		}
+		else{
+			document.getElementById("clusterimg").src = "images/dcbal.png"
+			model['location'] = null;
+		}
+		model['direction'] = null;
+		model['exit'] = null;
 	}
 	else {
 		direction = $("#dropdown_direction option:selected").text();
@@ -4388,7 +4377,7 @@ function activeNext(){
 		$("#Next-9").removeAttr("disabled");
 	}
 	else if(this.id == 'Save-10' || this.id == 'Save-10_495' || this.id == 'Save-10_695' 
-		|| this.id == 'Save-10_270' || this.id == 'Save-10_70' || this.id == 'Save-10_29'){
+		|| this.id == 'Save-10_270' || this.id == 'Save-10_70' || this.id == 'Save-10_29' || this.id == 'Save-10_cluster'){
 		$("#boxheader").text("Estimated Clearance Time");
 		if(more_info){moreInfoNeeded_updateTime();}
 		if(all_info){$("#boxheader").text("All information has been recorded.");}
