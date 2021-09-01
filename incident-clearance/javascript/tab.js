@@ -120,6 +120,7 @@ const cluster2 = ['md200', 'md295', 'md648', 'i895', 'i83', 'i395'];
 const cluster3 = ['i81', 'us15', 'us301', 'us40', 'us50'];
 const cluster4 = ['i270', 'i795', 'i97'];
 const cluster5 = ['i195', 'i295', 'md10', 'md100', 'md3'];
+const cluster6 = ['others'];
 
 $(document).ready(function(){
 	// timepicker initialization
@@ -193,7 +194,7 @@ $(document).ready(function(){
 		$("#dropdown_direction_29 select").click(updateSum2);
 		$("#dropdown_exit_29 select").click(updateSum2);
 	}
-	else if (cluster1.includes(road) || cluster2.includes(road) || cluster3.includes(road) || cluster4.includes(road) || cluster5.includes(road)) {
+	else if (cluster1.includes(road) || cluster2.includes(road) || cluster3.includes(road) || cluster4.includes(road) || cluster5.includes(road) || cluster6.includes(road)) {
 		$("#location_cluster").removeAttr("style");
 
 		$("#involved_vehicles_5").removeAttr("style"); //Displays VAN vehicle for picking
@@ -336,7 +337,7 @@ $(document).ready(function(){
 		else if(road=="us29"){
 			$('.ui.menu').find('.item').tab('change tab', '12');
 		}
-		else if(cluster1.includes(road) || cluster2.includes(road) || cluster3.includes(road) || cluster4.includes(road) || cluster5.includes(road)){
+		else if(cluster1.includes(road) || cluster2.includes(road) || cluster3.includes(road) || cluster4.includes(road) || cluster5.includes(road) || cluster6.includes(road)){
 			$('.ui.menu').find('.item').tab('change tab', '13');
 		}
 		else{
@@ -951,7 +952,7 @@ function updateSum2(){
 			model['exit'] = null;
 		}
 	}
-	else if (cluster1.includes(road) || cluster2.includes(road) || cluster3.includes(road) || cluster4.includes(road) || cluster5.includes(road)) {
+	else if (cluster1.includes(road) || cluster2.includes(road) || cluster3.includes(road) || cluster4.includes(road) || cluster5.includes(road) || cluster6.includes(road)) {
 		location_choice = $("#dropdown_location_cluster option:selected").text();
 		console.log(location_choice);
 

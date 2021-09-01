@@ -95,7 +95,7 @@
 
 <script>
 	function selectRoad(road_selected){
-		let roads = ['md122', 'md168', 'md702', 'md85', 'us1', 'md200', 'md295', 'md648', 'i895', 'i83', 'i395', 'i81', 'us15', 'us301', 'us40', 'us50', 'i270', 'i795', 'i97', 'i195', 'i295', 'md10', 'md100', 'md3'];
+		let roads = ['md122', 'md168', 'md702', 'md85', 'us1', 'md200', 'md295', 'md648', 'i895', 'i83', 'i395', 'i81', 'us15', 'us301', 'us40', 'us50', 'i270', 'i795', 'i97', 'i195', 'i295', 'md10', 'md100', 'md3', 'others'];
 		
 		var img = document.getElementById(road_selected);
 		
@@ -192,6 +192,14 @@
 						<img src="images/i795.png" id='i795' height='40px' onclick="selectRoad(this.id)" selected='false'>
 					</div>
 				</div>
+				<div class='others'>
+					<div>
+						<p style="font-size:21px; font-weight:bold">Other Highways:</p>
+					</div>
+					<div>
+						<img src="images/others.png" id='others' height='40px' onclick="selectRoad(this.id)" selected='false'>
+					</div>
+				</div>
 				<div id='div-selected'>
 					<div>
 						<p style="font-size:21px; font-weight:bold">Selected Highway:</p>
@@ -206,7 +214,7 @@
 				<button class="ui right floated blue button" id="Next" onclick='nextPage()' disabled>Next</button>
 				<script type="text/javascript">
 					function nextPage() {
-						let roads = ['md122', 'md168', 'md702', 'md85', 'us1', 'md200', 'md295', 'md648', 'i895', 'i83', 'i395', 'i81', 'us15', 'us301', 'us40', 'us50', 'i270', 'i795', 'i97', 'i195', 'i295', 'md10', 'md100', 'md3'];
+						let roads = ['md122', 'md168', 'md702', 'md85', 'us1', 'md200', 'md295', 'md648', 'i895', 'i83', 'i395', 'i81', 'us15', 'us301', 'us40', 'us50', 'i270', 'i795', 'i97', 'i195', 'i295', 'md10', 'md100', 'md3', 'others'];
 						var selected_road;
 						roads.forEach((hwy) => {
 							if(document.getElementById(hwy).getAttribute('selected') == 'true'){
