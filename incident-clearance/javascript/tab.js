@@ -1259,6 +1259,11 @@ function updateTime(){
 	var summer = (model['season_time'] == 'Summer') ? 1 : 0;
 	var winter = (model['season_time'] == 'Winter') ? 1 : 0;
 	var week = (model['weekend_time'] == 'Weekend') ? 1 : 0;
+
+	$("#first_stop").text("30min");
+	$("#second_stop").text("60min");
+	$("#fourth_stop").text("120min");
+
 	if(road=='i495'){
 		if(model['incident']=='Collision incident'){
 			drawSVG1(10, 80, 27, 90, "5~40", "60%");
@@ -4098,74 +4103,74 @@ function updateTime(){
 	}
 	else if(cluster5.includes(road)){
 		if(model['incident']=='Collision incident'){
-			drawSVG1(20, 150, 67, 160, "10~75", "60%");
-			drawSVG2(20, 190, 87, 200, "10~95", "70%");
-			drawSVG3(10, 260, 102, 270, "5~130", "80%");
-			drawSVG4("Average CT = 54 mins");
+			drawSVG1(20, 140, 58, 150, "10~70", "60%");
+			drawSVG2(10, 190, 84, 200, "5~95", "70%");
+			drawSVG3(10, 230, 102, 240, "5~115", "80%");
+			drawSVG4("Average CT = 52 mins");
 
 			if(model['blockage']=='Travel lane blockage'){
-				drawSVG1(30, 200, 93, 210, "15~100", "60%");
-				drawSVG2(20, 270, 123, 280, "10~135", "70%");
-				drawSVG3(10, 300, 133, 310, "5~165", "80%");
-				drawSVG4("Average CT = 67 mins");
+				drawSVG1(30, 210, 96, 220, "15~105", "60%");
+				drawSVG2(20, 260, 116, 270, "10~130", "70%");
+				drawSVG3(10, 300, 133, 310, "5~160", "80%");
+				drawSVG4("Average CT = 69 mins");
 
 				if(model['collision']=='Fatality'){
 					$("#first_stop").text("100min");
 					$("#second_stop").text("200min");
 					$("#fourth_stop").text("400min");
 
-					drawSVG1(54, 114, 59, 124, "90~190", "60%");
-					drawSVG2(45, 117, 56, 127, "75~195", "70%");
-					drawSVG3(24, 123, 49, 133, "40~205", "80%");
-					drawSVG4("Average CT = 136 mins");
+					drawSVG1(69, 144, 77, 154, "115~240", "60%");
+					drawSVG2(63, 180, 92, 190, "105~300", "70%");
+					drawSVG3(63, 219, 111, 229, "105~365", "80%");
+					drawSVG4("Average CT = 203 mins");
 				}
 
 				else if(model['collision']=='Personal Injury'){
-					drawSVG1(30, 250, 118, 260, "15~125", "60%");
-					drawSVG2(30, 280, 133, 290, "15~140", "70%");
-					drawSVG3(20, 300, 138, 310, "10~185", "80%");
-					drawSVG4("Average CT = 77 mins");
+					drawSVG1(30, 180, 83, 190, "15~90", "60%");
+					drawSVG2(30, 210, 95, 220, "15~105", "70%");
+					drawSVG3(20, 230, 100, 240, "10~115", "80%");
+					drawSVG4("Average CT = 61 mins");
 
 					if(model['number_travel']=='1 Travel lane blocked'){
-						drawSVG1(30, 100, 43, 110, "15~50", "60%");
-						drawSVG2(30, 160, 73, 170, "15~80", "70%");
+						drawSVG1(30, 140, 63, 150, "15~70", "60%");
+						drawSVG2(20, 150, 68, 160, "10~75", "70%");
 						drawSVG3(20, 220, 97, 230, "10~110", "80%");
-						drawSVG4("Average CT = 47 mins");
+						drawSVG4("Average CT = 51 mins");
 
 					}
 					else if(['2 Travel lanes blocked', '3 Travel lanes blocked', '4 Travel lanes blocked', '5+ Travel lanes blocked'].includes(model['number_travel'])){
-						drawSVG1(30, 280, 130, 290, "15~140", "60%");
-						drawSVG2(30, 300, 140, 310, "15~150", "70%");
-						drawSVG3(10, 300, 130, 310, "10~200", "80%");
-						drawSVG4("Average CT = 85 mins");
+						drawSVG1(50, 200, 100, 210, "25~100", "60%");
+						drawSVG2(40, 220, 105, 230, "20~110", "70%");
+						drawSVG3(30, 240, 110, 250, "15~120", "80%");
+						drawSVG4("Average CT = 68 mins");
 					}
 				}
 
 				else if(model['collision']=='Property Damage only'){
-					drawSVG1(20, 110, 45, 120, "10~55", "60%");
-					drawSVG2(10, 160, 68, 170, "5~80", "70%");
-					drawSVG3(10, 190, 83, 200, "5~85", "80%");
-					drawSVG4("Average CT = 48 mins");
+					drawSVG1(20, 130, 53, 140, "10~65", "60%");
+					drawSVG2(10, 180, 77, 190, "5~90", "70%");
+					drawSVG3(10, 230, 102, 240, "5~115", "80%");
+					drawSVG4("Average CT = 53 mins");
 
 					if(model['number_travel']=='1 Travel lane blocked'){
-						drawSVG1(10, 80, 27, 90, "5~40", "60%");
-						drawSVG2(10, 100, 37, 110, "5~50", "70%");
-						drawSVG3(10, 150, 62, 160, "5~75", "80%");
-						drawSVG4("Average CT = 29 mins");
+						drawSVG1(20, 90, 33, 100, "10~45", "60%");
+						drawSVG2(10, 130, 52, 140, "5~65", "70%");
+						drawSVG3(10, 180, 77, 190, "5~90", "80%");
+						drawSVG4("Average CT = 42 mins");
 					}
 					else if(['2 Travel lanes blocked', '3 Travel lanes blocked', '4 Travel lanes blocked', '5+ Travel lanes blocked'].includes(model['number_travel'])){
-						drawSVG1(30, 160, 77, 170, "15~80", "60%");
-						drawSVG2(30, 240, 112, 250, "15~120", "70%");
-						drawSVG3(20, 300, 137, 310, "10~220", "80%");
-						drawSVG4("Average CT = 83 mins");
+						drawSVG1(20, 260, 115, 270, "10~130", "60%");
+						drawSVG2(20, 290, 130, 300, "10~145", "70%");
+						drawSVG3(10, 300, 130, 310, "5~155", "80%");
+						drawSVG4("Average CT = 78 mins");
 					}
 				}
 			}
 			else if(model['blockage']=='Shoulder only blockage'){
-				drawSVG1(20, 110, 45, 120, "10~55", "60%");
-				drawSVG2(20, 130, 55, 140, "10~65", "70%");
-				drawSVG3(10, 190, 82, 200, "5~95", "80%");
-				drawSVG4("Average CT = 39 mins");
+				drawSVG1(10, 70, 23, 80, "5~35", "60%");
+				drawSVG2(10, 80, 28, 90, "5~40", "70%");
+				drawSVG3(0, 0, 0, 0, "", "");
+				drawSVG4("Average CT = 22 mins");
 			}
 		}
 		else if(model['incident']=='Non-Collision incident'){ // build awaiting instructions
@@ -5254,8 +5259,8 @@ function CPI1_case3() {
 		drawSVG4("Average CT = 72 mins");
 	}
 	else if (cluster5.includes(road)) {
-		drawSVG1(70, 150, 86, 160, "35~75", "60%");
-		drawSVG2(60, 170, 91, 180, "30~85", "70%");
+		drawSVG1(70, 150, 88, 160, "35~75", "60%");
+		drawSVG2(60, 170, 93, 180, "30~85", "70%");
 		drawSVG3(60, 260, 133, 270, "30~130", "80%");
 		drawSVG4("Average CT = 70 mins");
 	}
