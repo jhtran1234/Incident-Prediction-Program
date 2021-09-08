@@ -4457,7 +4457,7 @@ function updateTime(){
 					}
 					else if(model['number_travel']=='2 Travel lanes blocked'){
 						drawSVG1(18, 105, 36, 115, "30~175", "60%");
-						drawSVG2(9, 126, 42, 136, "25~210", "70%");
+						drawSVG2(15, 126, 42, 136, "25~210", "70%");
 						drawSVG3(12, 162, 61, 172, "20~270", "80%");
 						drawSVG4("Average CT = 120 mins");
 					}
