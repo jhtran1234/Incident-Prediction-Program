@@ -3129,7 +3129,7 @@ function updateTime(){
 								if(num_tow > 0){checkresult = 'CPI2-2';}
 								else if(num_responder > 4){checkresult = 'CPI2-2';}
 								else if(num_responder > 2 && first_responder == "POLICE"){checkresult = 'CPI2-2';}
-								else if((center == "AOC" && (shoulder_drop > 1 && aux_lane || (shoulder_drop > 2))) || pavement == 'Snow/Ice'){checkresult = 'CPI2-2';}
+								else if((center == "AOC" && total_lane > 2) || pavement == 'Snow/Ice'){checkresult = 'CPI2-2';}
 								else if(shoulder_drop > 0 && first_responder == "POLICE"){checkresult = 'CPI2-2';}
 								else{checkresult = 'CPI2-1';}
 							}
@@ -3265,7 +3265,7 @@ function updateTime(){
 							if(checkresult == 'CPD3-2'){
 								if(num_tow > 1 || hazmat == true){checkresult = 'CPD3-3';}
 								else if(pavement == 'Snow/Ice' || model['holiday_time'] == 'Holiday'){checkresult = 'CPD3-3';}
-								else if(num_tow == 0 || num_fireboard == 0){checkresult = 'CPD3-3';}
+								else if(num_tow == 0 || num_fireboard == 0){checkresult = 'CPD3-2';}
 								else if([involved_car_s, involved_truck_s, involved_bus_s, involved_pickup_s, involved_van_s, involved_suv_s].includes('over ') || num_suv > 0){checkresult = 'CPD3-3';}
 								else{checkresult = 'CPD3-2';}
 							}
