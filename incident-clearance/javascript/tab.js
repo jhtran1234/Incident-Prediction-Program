@@ -3561,7 +3561,7 @@ function updateTime(){
 								if(num_responder > 4){checkresult = 'CPI3-2';}
 								else if((['3 Travel lanes blocked'].includes(model['number_travel'] && (aux_lane || shoulder_drop > 0)) || ['4 Travel lanes blocked', '5+ Travel lanes blocked'].includes(model['number_travel']))){checkresult = 'CPI3-2';}
 								else if(num_responder > 3 || aux_lane == true){checkresult = 'CPI3-2';}
-								else if(num_tow > 1 || [involved_car_s, involved_truck_s, involved_bus_s, involved_pickup_s, involved_van_s, involved_suv_s].includes('jack ') || [involved_car_s, involved_truck_s, involved_bus_s, involved_pickup_s, involved_van_s, involved_suv_s].includes('over ') || [involved_car_s, involved_truck_s, involved_bus_s, involved_pickup_s, involved_van_s, involved_suv_s].includes('lost ')){checkresult = 'CPI3-2';}
+								else if(num_tow > 0 || [involved_car_s, involved_truck_s, involved_bus_s, involved_pickup_s, involved_van_s, involved_suv_s].includes('jack ') || [involved_car_s, involved_truck_s, involved_bus_s, involved_pickup_s, involved_van_s, involved_suv_s].includes('over ') || [involved_car_s, involved_truck_s, involved_bus_s, involved_pickup_s, involved_van_s, involved_suv_s].includes('lost ')){checkresult = 'CPI3-2';}
 								else if(num_police > 1 || num_responder > 5){checkresult = 'CPI3-2';}
 								else if(road == 'us301' || num_total > 4){checkresult = 'CPI3-2';}
 								else{checkresult = 'CPI3-1';}
