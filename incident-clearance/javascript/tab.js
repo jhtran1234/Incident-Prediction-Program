@@ -3905,7 +3905,7 @@ function updateTime(){
 								else{checkresult = 'CPI1-1';}
 							}
 							if(checkresult == 'CPI1-2'){
-								if(num_medical > 0 && involved_truck_s == 'lost '){checkresult = 'CPI1-3';}
+								if(num_medical > 0 || involved_truck_s == 'lost '){checkresult = 'CPI1-3';}
 								else if((hour == 'Night time' && num_responder > 6) || num_total > 4){checkresult = 'CPI1-3';}
 								else if(num_chart > 2 && ['PM-peak', 'Night time'].includes(hour)){checkresult = 'CPI1-3';}
 								else if((shoulder_drop > 1 && pavement == 'Wet') || (num_truck > 0 && first_responder == "FIREBOARD")){checkresult = 'CPI1-3';}
@@ -4017,7 +4017,7 @@ function updateTime(){
 								else{checkresult = 'CPD2-1';}
 							}
 							if(checkresult == 'CPD2-2'){
-								if(num_truck > 1 && num_responder > 5){checkresult = 'CPD2-3';}
+								if(num_truck > 0 && num_responder > 5){checkresult = 'CPD2-3';}
 								else if(pavement == 'Snow/Ice' || pavement == 'Chemical wet'){checkresult = 'CPD2-3';}
 								else if(num_bus > 0 || hazmat == true || (num_responder > 4 && model['weekend_time'] == 'Weekend')){checkresult = 'CPD2-3';}
 								else{checkresult = 'CPD2-2';}
@@ -4036,7 +4036,7 @@ function updateTime(){
 							checkresult = 'CPD3-0';
 							if(checkresult == 'CPD3-0'){
 								if(num_tow > 0){checkresult = 'CPD3-2';}
-								else if(num_chart > 1 && first_responder == 'FIREBOARD'){checkresult = 'CPD3-2';}
+								else if(num_chart > 1 && num_fireboard > 0){checkresult = 'CPD3-2';}
 								else{checkresult = 'CPD3-1';}
 							}
 							if(checkresult == 'CPD3-2'){
