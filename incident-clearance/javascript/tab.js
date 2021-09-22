@@ -168,14 +168,14 @@ $(document).ready(function(){
 		$("#dropdown_direction_695 select").click(updateSum2);
 		$("#dropdown_exit_695 select").click(updateSum2);
 	}
-	else if (road == "i270") {
+	/*else if (road == "i270") {
 		$("#location_270").removeAttr("style");
 		
 		//Location page dropdowns
 		$("#dropdown_location_270 select").click(updateSum2);
 		$("#dropdown_direction_270 select").click(updateSum2);
 		$("#dropdown_exit_270 select").click(updateSum2);
-	}
+	}*/
 	else if (road == "i70") {
 		$("#location_70").removeAttr("style");
 		$("#involved_vehicles_6").removeAttr("style"); //Displays SUV vehicle for picking
@@ -328,9 +328,9 @@ $(document).ready(function(){
 		else if(road=="i695"){
 			$('.ui.menu').find('.item').tab('change tab', '9');
 		}
-		else if(road=="i270"){
+		/*else if(road=="i270"){
 			$('.ui.menu').find('.item').tab('change tab', '10');
-		}
+		}*/
 		else if(road=="i70"){
 			$('.ui.menu').find('.item').tab('change tab', '11');
 		}
@@ -856,7 +856,7 @@ function updateSum2(){
 			model['exit'] = null;
 		}
 	}
-	else if (road == "i270") {
+	/*else if (road == "i270") {
 		location_choice = $("#dropdown_location_270 option:selected").text();
 		console.log(location_choice);
 
@@ -887,7 +887,7 @@ function updateSum2(){
 		else{
 			model['exit'] = null;
 		}
-	}
+	}*/
 	else if (road == "i70") {
 		location_choice = $("#dropdown_location_70 option:selected").text();
 		console.log(location_choice);
