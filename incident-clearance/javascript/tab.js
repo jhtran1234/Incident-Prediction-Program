@@ -143,7 +143,7 @@ $(document).ready(function(){
 		}
 	});
 	$( "#datepicker" ).val($.datepicker.formatDate("mm-dd-yy", new Date()));
-	//tab could be mouseover
+	// tab could be mouseover
 	$('.incident-info .menu .item').tab();
 	 
 	getDate();
@@ -155,7 +155,7 @@ $(document).ready(function(){
 	$("#checkbox-size select#t3_1").click(updateSum2);
 	$("#checkbox-size select#t3_2").click(updateSum2);
 	
-	//IV page dropdown
+	// IV page dropdown
 	$("#checkbox-size select").click(updateSum2);
 
 	if (road == "i495") { // Run road-specific models for different roads
@@ -189,7 +189,7 @@ $(document).ready(function(){
 		$("#involved_vehicles_6").removeAttr("style"); //Displays SUV vehicle for picking
 		$("#iv9").removeAttr("style"); //Displays SUV vehicle for picking
 		
-		//Location page dropdowns
+		// Location page dropdowns
 		$("#dropdown_location_70 select").click(updateSum2);
 		$("#dropdown_direction_70 select").click(updateSum2);
 		$("#dropdown_exit_70 select").click(updateSum2);
@@ -197,7 +197,7 @@ $(document).ready(function(){
 	else if (road == "us29") {
 		$("#location_29").removeAttr("style");
 		
-		//Location page dropdowns
+		// Location page dropdowns
 		$("#dropdown_location_29 select").click(updateSum2);
 		$("#dropdown_direction_29 select").click(updateSum2);
 		$("#dropdown_exit_29 select").click(updateSum2);
@@ -206,7 +206,7 @@ $(document).ready(function(){
 		$("#location_cluster").removeAttr("style");
 
 		$("#involved_vehicles_5").removeAttr("style"); //Displays VAN vehicle
-		$("#iv8").removeAttr("style");king
+		$("#iv8").removeAttr("style");
 
 		$("#involved_vehicles_6").removeAttr("style"); //Displays SUV vehicle
 		$("#iv9").removeAttr("style");
@@ -215,7 +215,7 @@ $(document).ready(function(){
 		$("#location_95").removeAttr("style");
 	}
 
-	//IV page dropdown
+	// IV page dropdown
 	$("#checkbox-size select").click(updateTime);
 
 	// click radiocheck and update the estimated time
@@ -231,7 +231,7 @@ $(document).ready(function(){
 	var radioValue1;
 	var radioValue2;
 	
-	//next button handler	
+	// next button handler	
 	$("#Next-1").click(function(){
 		radioValue1 = $("input[name='incident']:checked").val();
 		if (radioValue1 == 'collision') {
@@ -289,7 +289,7 @@ $(document).ready(function(){
 		}
 	});
 
-	//responder tab's next button
+	// responder tab's next button
 	$("#Next-6").click(function(){
 		var responder_type;
 		if (model['responder'] == 'First responder: CHART' && (responder_type = "chart") && num_chart > 0) {
@@ -318,17 +318,17 @@ $(document).ready(function(){
 		}
 	});
 	
-	//center tab's next button
+	// center tab's next button
 	$("#Next-7").click(function(){
 		$('.ui.menu').find('.item').tab('change tab', '5');
 	});
 	
-	//p&h tab's next button
+	// p&h tab's next button
 	$("#Next-8").click(function(){
 		$('.ui.menu').find('.item').tab('change tab', '6');
 	});	
 	
-	//time tab's next button
+	// time tab's next button
 	$("#Next-9").click(function(){
 		if(road=="i495"){
 			$('.ui.menu').find('.item').tab('change tab', '8');
@@ -353,7 +353,7 @@ $(document).ready(function(){
 		}	
 	});
 
-	//back button handler
+	// back button handler
 	$("#Back-2").click(function(){
 		$.tab('change tab', '1');
 		$("#Save-1").attr("disabled");
