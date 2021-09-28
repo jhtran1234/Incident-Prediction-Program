@@ -31,12 +31,10 @@ var travel_drop;
 var shoulder_drop;
 var total_lane;
 
-// boolean vars to show blockage
 var aux_lane;
 var tunnel_lane;
 var toll_lane;
 
-// vars to indicate state of vehicles
 var involved_car_s;
 var involved_truck_s;
 var involved_bus_s;
@@ -116,13 +114,7 @@ var prob;
 var popup = 0;
 var checkresult;
 var ninetenam = 0;
-
-// Represents the road being worked on
-// in this program, null road defaults to I-95
-var road = location.search.substring(1); 
-
-// Lists to dictate which road belongs to which cluster.
-// Usage will look like cluster1.includes(road_name)
+var road = location.search.substring(1); // Represents the road being worked on. Defaults to i95.
 const cluster1 = ['md122', 'md168', 'md702', 'md85', 'us1'];
 const cluster2 = ['md200', 'md295', 'md648', 'i895', 'i83', 'i395'];
 const cluster3 = ['i81', 'us15', 'us301', 'us40', 'us50'];
@@ -205,11 +197,11 @@ $(document).ready(function(){
 	else if (cluster1.includes(road) || cluster2.includes(road) || cluster3.includes(road) || cluster4.includes(road) || cluster5.includes(road) || cluster6.includes(road)) {
 		$("#location_cluster").removeAttr("style");
 
-		$("#involved_vehicles_5").removeAttr("style"); //Displays VAN vehicle
-		$("#iv8").removeAttr("style");king
+		$("#involved_vehicles_5").removeAttr("style"); //Displays VAN vehicle for picking
+		$("#iv8").removeAttr("style"); //Displays VAN vehicle for picking
 
-		$("#involved_vehicles_6").removeAttr("style"); //Displays SUV vehicle
-		$("#iv9").removeAttr("style");
+		$("#involved_vehicles_6").removeAttr("style"); //Displays SUV vehicle for picking
+		$("#iv9").removeAttr("style"); //Displays SUV vehicle for picking
 	}
 	else{
 		$("#location_95").removeAttr("style");
@@ -407,9 +399,8 @@ $(document).ready(function(){
 	});
 });
 
-// updates the model whenever a radio button is selected
+//### updates the model whenever a radio button is selected
 function updateSum(){
-	// Lists to match valid responses against
 	const incident = ['Collision incident', 'Non-Collision incident'];
 	const blockage = ['Travel lane blockage', 'Shoulder only blockage'];
 	const collision = ['Fatality', 'Personal Injury', 'Property Damage only']
@@ -417,7 +408,7 @@ function updateSum(){
 		'Off-road Activity', 'Police Activity', 'Utility Problem', 'Weather Closure', 'Others'];
 	const center_choice = ['AOC', 'SOC', 'Other', 'TOC3', 'TOC4', 'TOC5', 'TOC7'];
 	
-	var curr = $(this).parent().find("label").text(); // current working parameter - all radio buttons direct here
+	var curr = $(this).parent().find("label").text(); //### current working parameter - all radio buttons direct here
 	if(incident.includes(curr)){
 		model['incident'] = curr;
 		$("#Save-1").removeAttr("disabled");
@@ -578,7 +569,7 @@ function updateSum(){
 	}
 }
 
-// updates the model whenever a dropdown option is selected
+//### updates the model whenever a dropdown option is selected
 function updateSum2(){
 	travel_drop = document.getElementById("t3_1").value;
 	console.log(travel_drop);
@@ -1058,7 +1049,7 @@ function getDate(){
 			console.log(nonholiday);
 			model['holiday_time'] = 'Holiday';
 		}
-		// holidays below are floating days and are observed on different days each year
+		//### holidays below are floating days and are observed on different days each year
 		else if((year == '2020') && (((month == '01')&&(day == '20')) || ((month == '02')&&(day == '17')) || ((month == '05')&&(day == '25')) || ((month == '07')&&(day == '03')) || ((month == '09')&&(day == '07')) || ((month == '10')&&(day == '12')) || ((month == '11')&&(day == '11')) || ((month == '11')&&(day == '26')))){
 			nonholiday = 1;
 			nonholiday_sh = 0;
@@ -1189,7 +1180,7 @@ function printTime(){
 	$("#map").append(txtElem3);
 }
 
-// updates the time whenever factors entered into the model
+//### updates the time whenever factors entered into the model
 // activated whenever a radio button is selected, dropdown selected, or checkbox clicked
 function updateTime(){
 	//first label
@@ -1256,6 +1247,7 @@ function updateTime(){
 	txtElem3.setAttributeNS(null,"x",180);
 	txtElem3.setAttributeNS(null,"y",140);
 
+	//###
 	/* the core model starts here
 	*  the conditions below are checked when users select the incident type, 
 	*  no. of impacted lanes, and after all factors have been entered
