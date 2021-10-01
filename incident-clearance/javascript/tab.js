@@ -4756,7 +4756,7 @@ function updateTime(){
 								else if(shoulder_drop > 1 && num_fireboard > 0){checkresult = 'CPD2-2';}
 								else if(num_truck > 0 && num_responder > 4){checkresult = 'CPD2-2';}
 								else if(pavement == 'Snow/Ice' || pavement == 'Chemical wet' || involved_truck_s == 'jack ' || num_responder > 6){checkresult = 'CPD2-2';}
-								else if((hour = 'Night time' || num_responder > 4) && num_police > 1){checkresult = 'CPD2-2';}
+								else if((hour == 'Night time' || num_responder > 4) && num_police > 1){checkresult = 'CPD2-2';}
 								else if(num_truck > 0 || (pavement == 'Wet' && num_suv > 0)){checkresult = 'CPD2-2';}
 								else if((num_total > 2 || aux_lane == true) && num_tow > 0){checkresult = 'CPD2-2';}
 								else if((num_tow > 0 && first_responder == 'POLICE') || (pavement == 'Snow/Ice' && [involved_car_s, involved_truck_s, involved_bus_s, involved_pickup_s, involved_van_s, involved_suv_s].includes('over '))){checkresult = 'CPD2-2';}
