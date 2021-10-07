@@ -41,8 +41,8 @@ var involved_car_s;
 var involved_truck_s;
 var involved_bus_s;
 var involved_pickup_s;
-var involved_van_s; //Van only shows for 495, clusters
-var involved_suv_s; //SUV only shows for 70, clusters
+var involved_van_s; // Van only shows for 495, clusters; this var is only in use for those roads
+var involved_suv_s; // SUV only shows for 70, clusters; this var is only in use for those roads
 var involved_car;
 var involved_truck;
 var involved_bus;
@@ -101,8 +101,8 @@ var timepickers;
 
 var location_choice;
 
-//Used for i95 locations
-var bc = 0;
+// Used for i95 locations
+var baltimoreCity = 0;
 var cecil = 0;
 var harford = 0;
 
@@ -158,7 +158,8 @@ $(document).ready(function(){
 	// IV page dropdown
 	$("#checkbox-size select").click(updateSum2);
 
-	if (road == "i495") { // Run road-specific models for different roads
+	// displays different vehicles and location pages for different roads
+	if (road == "i495") {
 		$("#location_495").removeAttr("style"); //Changes which location tab gets displayed based on the road
 		$("#involved_vehicles_5").removeAttr("style"); //Displays VAN vehicle for picking
 		$("#iv8").removeAttr("style"); //Displays VAN vehicle for picking
@@ -264,7 +265,7 @@ $(document).ready(function(){
 	//$("#Next-11").click(function(){ //Handles Next button after a Non-Collision Incident
 	//});
 	
-	//iv tab's next button
+	// iv tab's next button
 	$("#Next-5").click(function(){
 		if (document.getElementById("dropbox1s").value != ' ' && num_car == 0){
 			alert("At least one vehicle should be involved when a situation is specified for a type.");
@@ -289,7 +290,10 @@ $(document).ready(function(){
 		}
 	});
 
-	// responder tab's next button
+	/* 
+	 * Responder tab's next button
+	 * Ensures that if a first responder is selected, the number of vehicles is > 0
+	 */
 	$("#Next-6").click(function(){
 		var responder_type;
 		if (model['responder'] == 'First responder: CHART' && (responder_type = "chart") && num_chart > 0) {
@@ -426,17 +430,17 @@ function updateSum(){
 		model['blockage'] = curr;
 		$("#Save-2").removeAttr("disabled");
 	}
-	//type 3 for collision
+	// type 3 for collision
 	else if (collision.includes(curr)){
 		model['collision'] = curr;
 		$("#Save-3").removeAttr("disabled");
 	}
-	//type 4 for non-collision
+	// type 4 for non-collision
 	else if(non_collision.includes(curr)){
 		model['collision'] = curr;
 		$("#Save-11").removeAttr("disabled");
 	}
-	//first responder
+	// first responder
 	else if (curr == 'CHART'){
 		first_responder = curr;
 		model['responder'] = 'First responder: CHART';
@@ -517,7 +521,7 @@ function updateSum(){
 	}
 	else if (curr == 'Baltimore city'){
 		location_choice = curr;
-		bc = 1;
+		baltimoreCity = 1;
 		model['location'] = location_choice;
 		$("#Save-10").removeAttr("disabled");
 	}
@@ -1164,27 +1168,27 @@ function printSum(){
 	}
 }
 	
-function printTime(){		
-	//print timeline updates
-	//print first label
+// prints timeline updates
+function printTime(){
+	// print first label
 	txtElem_1.appendChild(inside_txt_1);
 	txtElem2_1.appendChild(percent_txt_1);
 	$("#map").append(newLine_1);
 	$("#map").append(txtElem_1);
 	$("#map").append(txtElem2_1);
-	//print second label
+	// print second label
 	txtElem_2.appendChild(inside_txt_2);
 	txtElem2_2.appendChild(percent_txt_2);
 	$("#map").append(newLine_2);
 	$("#map").append(txtElem_2);
 	$("#map").append(txtElem2_2);
-	//print third label
+	// print third label
 	txtElem_3.appendChild(inside_txt_3);
 	txtElem2_3.appendChild(percent_txt_3);
 	$("#map").append(newLine_3);
 	$("#map").append(txtElem_3);
 	$("#map").append(txtElem2_3);
-	//print average time line
+	// print average time line
 	txtElem3.appendChild(last_line);
 	$("#map").append(txtElem3);
 }
@@ -1192,7 +1196,7 @@ function printTime(){
 // updates the time whenever factors entered into the model
 // activated whenever a radio button is selected, dropdown selected, or checkbox clicked
 function updateTime(){
-	//first label
+	// first label
 	newLine_1.setAttribute('id','line1');
 	newLine_1.setAttribute('stroke','red');
 	newLine_1.setAttribute('stroke-width','15');
@@ -1210,7 +1214,7 @@ function updateTime(){
 	txtElem2_1.setAttributeNS(null,"font-weight","bold");
 	txtElem2_1.setAttributeNS(null,"fill",'red');
 	txtElem2_1.setAttributeNS(null,"y",65);
-	//second label
+	// second label
 	console.log(newLine_2);
 	newLine_2.setAttribute('id','line2');
 	newLine_2.setAttribute('stroke','red');
@@ -1229,7 +1233,7 @@ function updateTime(){
 	txtElem2_2.setAttributeNS(null,"font-weight","bold");
 	txtElem2_2.setAttributeNS(null,"fill",'red');
 	txtElem2_2.setAttributeNS(null,"y",90);	
-	//third label
+	// third label
 	console.log(newLine_3);
 	newLine_3.setAttribute('id','line3');
 	newLine_3.setAttribute('stroke','red');
@@ -1248,7 +1252,7 @@ function updateTime(){
 	txtElem2_3.setAttributeNS(null,"font-weight","bold");
 	txtElem2_3.setAttributeNS(null,"fill",'red');
 	txtElem2_3.setAttributeNS(null,"y",115);
-	//average time line
+	// average time line
 	txtElem3.setAttributeNS(null,"id","text3");
 	txtElem3.setAttributeNS(null,"font-size","15px");
 	txtElem3.setAttributeNS(null,"font-weight","bold");
@@ -1256,11 +1260,13 @@ function updateTime(){
 	txtElem3.setAttributeNS(null,"x",180);
 	txtElem3.setAttributeNS(null,"y",140);
 
-	/* the core model starts here
-	*  the conditions below are checked when users select the incident type, 
-	*  no. of impacted lanes, and after all factors have been entered
+	/* 
+	* the core model starts here
+	* the conditions below are checked when users select the incident type, 
+	* no. of impacted lanes, and after all factors have been entered
+	* 
 	*/
-	
+
 	// Populating values for probability calculation
 	var cpi = (model['collision'] == 'Personal Injury') ? 1 : 0;
 	var spring = (model['season_time'] == 'Spring') ? 1 : 0;
@@ -1605,7 +1611,7 @@ function updateTime(){
 					}
 				}
 				else if(model['blockage']=='Shoulder only blockage'){
-					prob = 1/(1+Math.exp(-(-2.27-0.47*bc+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
+					prob = 1/(1+Math.exp(-(-2.27-0.47*baltimoreCity+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
 						-0.23*num_total+0.52*num_car+1.04*num_truck+0.26*num_responder+0.34*num_fireboard+0.43*num_medical-0.23*cpi
 						+0.48*spring+0.37*summer+0.54*winter+0.08*daytime+0.23*nighttime)));
 					console.log(prob);
@@ -1970,7 +1976,7 @@ function updateTime(){
 					}
 				}
 				else if(model['blockage']=='Shoulder only blockage'){
-					prob = 1/(1+Math.exp(-(-2.27-0.47*bc+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
+					prob = 1/(1+Math.exp(-(-2.27-0.47*baltimoreCity+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
 						-0.23*num_total+0.52*num_car+1.04*num_truck+0.26*num_responder+0.34*num_fireboard+0.43*num_medical-0.23*cpi
 						+0.48*spring+0.37*summer+0.54*winter+0.08*daytime+0.23*nighttime)));
 					console.log(prob);
@@ -2287,7 +2293,7 @@ function updateTime(){
 					}
 				}
 				else if(model['blockage']=='Shoulder only blockage'){
-					prob = 1/(1+Math.exp(-(-2.27-0.47*bc+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
+					prob = 1/(1+Math.exp(-(-2.27-0.47*baltimoreCity+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
 						-0.23*num_total+0.52*num_car+1.04*num_truck+0.26*num_responder+0.34*num_fireboard+0.43*num_medical-0.23*cpi
 						+0.48*spring+0.37*summer+0.54*winter+0.08*daytime+0.23*nighttime)));
 					console.log(prob);
@@ -2583,7 +2589,7 @@ function updateTime(){
 					}
 				}
 				else if(model['blockage']=='Shoulder only blockage'){
-					prob = 1/(1+Math.exp(-(-2.27-0.47*bc+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
+					prob = 1/(1+Math.exp(-(-2.27-0.47*baltimoreCity+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
 						-0.23*num_total+0.52*num_car+1.04*num_truck+0.26*num_responder+0.34*num_fireboard+0.43*num_medical-0.23*cpi
 						+0.48*spring+0.37*summer+0.54*winter+0.08*daytime+0.23*nighttime)));
 					console.log(prob);
@@ -2895,7 +2901,7 @@ function updateTime(){
 					}
 				}
 				else if(model['blockage']=='Shoulder only blockage'){
-					prob = 1/(1+Math.exp(-(-2.27-0.47*bc+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
+					prob = 1/(1+Math.exp(-(-2.27-0.47*baltimoreCity+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
 						-0.23*num_total+0.52*num_car+1.04*num_truck+0.26*num_responder+0.34*num_fireboard+0.43*num_medical-0.23*cpi
 						+0.48*spring+0.37*summer+0.54*winter+0.08*daytime+0.23*nighttime)));
 					console.log(prob);
@@ -3290,7 +3296,7 @@ function updateTime(){
 					}
 				}
 				else if(model['blockage']=='Shoulder only blockage'){
-					prob = 1/(1+Math.exp(-(-2.27-0.47*bc+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
+					prob = 1/(1+Math.exp(-(-2.27-0.47*baltimoreCity+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
 						-0.23*num_total+0.52*num_car+1.04*num_truck+0.26*num_responder+0.34*num_fireboard+0.43*num_medical-0.23*cpi
 						+0.48*spring+0.37*summer+0.54*winter+0.08*daytime+0.23*nighttime)));
 					console.log(prob);
@@ -3702,7 +3708,7 @@ function updateTime(){
 					}
 				}
 				else if(model['blockage']=='Shoulder only blockage'){
-					prob = 1/(1+Math.exp(-(-2.27-0.47*bc+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
+					prob = 1/(1+Math.exp(-(-2.27-0.47*baltimoreCity+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
 						-0.23*num_total+0.52*num_car+1.04*num_truck+0.26*num_responder+0.34*num_fireboard+0.43*num_medical-0.23*cpi
 						+0.48*spring+0.37*summer+0.54*winter+0.08*daytime+0.23*nighttime)));
 					console.log(prob);
@@ -4067,7 +4073,7 @@ function updateTime(){
 					}
 				}
 				else if(model['blockage']=='Shoulder only blockage'){
-					prob = 1/(1+Math.exp(-(-2.27-0.47*bc+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
+					prob = 1/(1+Math.exp(-(-2.27-0.47*baltimoreCity+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
 						-0.23*num_total+0.52*num_car+1.04*num_truck+0.26*num_responder+0.34*num_fireboard+0.43*num_medical-0.23*cpi
 						+0.48*spring+0.37*summer+0.54*winter+0.08*daytime+0.23*nighttime)));
 					console.log(prob);
@@ -4372,7 +4378,7 @@ function updateTime(){
 					}
 				}
 				else if(model['blockage']=='Shoulder only blockage'){
-					prob = 1/(1+Math.exp(-(-2.27-0.47*bc+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
+					prob = 1/(1+Math.exp(-(-2.27-0.47*baltimoreCity+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
 						-0.23*num_total+0.52*num_car+1.04*num_truck+0.26*num_responder+0.34*num_fireboard+0.43*num_medical-0.23*cpi
 						+0.48*spring+0.37*summer+0.54*winter+0.08*daytime+0.23*nighttime)));
 					console.log(prob);
@@ -4822,7 +4828,7 @@ function updateTime(){
 					}
 				}
 				else if(model['blockage']=='Shoulder only blockage'){
-					prob = 1/(1+Math.exp(-(-2.27-0.47*bc+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
+					prob = 1/(1+Math.exp(-(-2.27-0.47*baltimoreCity+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
 						-0.23*num_total+0.52*num_car+1.04*num_truck+0.26*num_responder+0.34*num_fireboard+0.43*num_medical-0.23*cpi
 						+0.48*spring+0.37*summer+0.54*winter+0.08*daytime+0.23*nighttime)));
 					console.log(prob);
@@ -5348,7 +5354,7 @@ function updateTime(){
 						}
 					}
 					else if(model['blockage']=='Shoulder only blockage'){
-						prob = 1/(1+Math.exp(-(-2.27-0.47*bc+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
+						prob = 1/(1+Math.exp(-(-2.27-0.47*baltimoreCity+0.07*cecil-0.28*harford+0.41*dry+0.98*snow+0.33*unspecified+0.84*wet-0.38*week+0.3*nonholiday_sh
 							-0.23*num_total+0.52*num_car+1.04*num_truck+0.26*num_responder+0.34*num_fireboard+0.43*num_medical-0.23*cpi
 							+0.48*spring+0.37*summer+0.54*winter+0.08*daytime+0.23*nighttime)));
 						console.log(prob);
@@ -5434,6 +5440,10 @@ function drawSVG4(average_time){
 	last_line = document.createTextNode(average_time);
 }
 
+/* 
+ * Performs checks to ensure all input conditions are met
+ * Activates the next buttons after the save buttons are clicked
+ */
 function activeNext(){
 	var more_info = true; // Boolean whether or not "More info needed" message is displayed
 	var all_info = false; // Indicates if all information has been collected in the model
@@ -5541,7 +5551,10 @@ function activeNext(){
 	}
 }
 
-// Below are most of the display cases for CPI, CPD and Fatalities
+/* 
+ * Below are the display cases for CPI, CPD and Fatalities
+ * Cases are determined in the "updateTime()" function and then routed here for display to the screen
+ */
 function CPI1_case1() {
 	if (road == "i495") {
 		drawSVG1(20, 60, 22, 70, "10~30", "60%");
