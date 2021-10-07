@@ -539,17 +539,9 @@ function updateSum2(){
 	else if (travel_drop == 1){
 		model['number_travel'] = "1 Travel lane blocked";
 		$("#Save-4").removeAttr("disabled");
-	}		
-	else if (travel_drop == 2){
-		model['number_travel'] = "2 Travel lanes blocked";
-		$("#Save-4").removeAttr("disabled");
-	}	
-	else if (travel_drop == 3){
-		model['number_travel'] = "3 Travel lanes blocked";
-		$("#Save-4").removeAttr("disabled");
 	}
-	else if (travel_drop == 4){
-		model['number_travel'] = "4 Travel lanes blocked";
+	else if (travel_drop >= 2 && travel_drop <= 4){
+		model['number_travel'] = travel_drop + " Travel lanes blocked";
 		$("#Save-4").removeAttr("disabled");
 	}
 	else {
@@ -567,23 +559,15 @@ function updateSum2(){
 		model['number_shoulder'] = "1 Shoulder lane blocked";
 		$("#Save-4").removeAttr("disabled");
 	}
-	else if (shoulder_drop == 2){
-		model['number_shoulder'] = "2 Shoulder lanes blocked";
-		$("#Save-4").removeAttr("disabled");
-	}
-	else if (shoulder_drop == 3){
-		model['number_shoulder'] = "3 Shoulder lanes blocked";
-		$("#Save-4").removeAttr("disabled");
-	}
-	else if (shoulder_drop == 4){
-		model['number_shoulder'] = "4 Shoulder lanes blocked";
+	else if (shoulder_drop >= 2 && shoulder_drop <= 4){
+		model['number_shoulder'] = shoulder_drop + " Shoulder lanes blocked";
 		$("#Save-4").removeAttr("disabled");
 	}
 	else if (shoulder_drop == '5'){
 		model['number_shoulder'] = "5+ Shoulder lanes blocked";
 		$("#Save-4").removeAttr("disabled");
 	}
-		
+	
 	total_lane = Number(travel_drop) + Number(shoulder_drop);
 	console.log(total_lane);
 	// IV page
