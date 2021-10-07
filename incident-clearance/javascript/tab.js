@@ -106,10 +106,6 @@ var baltimoreCity = 0;
 var cecil = 0;
 var harford = 0;
 
-var dry = 0;
-var wet = 0;
-var snow = 0;
-var unspecified = 0;
 var daytime = 0;
 var nighttime = 0;
 var prob;
@@ -148,7 +144,6 @@ $(document).ready(function(){
 	 
 	getDate();
 	my_getTime();
-
 	
 	// click radiocheck and update the summary
 	$("#checkbox-size input").click(updateSum);
@@ -419,9 +414,9 @@ function updateSum(){
 	const collision = ['Fatality', 'Personal Injury', 'Property Damage only']
 	const non_collision = ['Debris in Roadway', 'Disabled Vehicle', 'Vehicles on Fire', 'Emergency Roadwork', 
 		'Off-road Activity', 'Police Activity', 'Utility Problem', 'Weather Closure', 'Others'];
-
 	const responder = {'CHART':num_chart, 'POLICE':num_police, 'TOW':num_tow, 'FIREBOARD':num_fireboard, 'MEDICAL':num_medical, 'OTHERS':num_others};
 	const center_choice = ['AOC', 'SOC', 'Other', 'TOC3', 'TOC4', 'TOC5', 'TOC7'];
+	const pavement_choice = ['Dry', 'Wet', 'Snow/Ice', 'Chemical wet', 'Unspecified'];
 	
 	var curr = $(this).parent().find("label").text(); // current working parameter - all radio buttons direct here
 	if(incident.includes(curr)){
@@ -455,36 +450,11 @@ function updateSum(){
 		$("#Save-7").removeAttr("disabled");
 	}
 	// pavement
-	else if (curr == 'Dry'){
+	else if (pavement_choice.includes(curr)){
 		pavement = curr;
-		dry = 1;
-		model['pavement_condition'] = 'Dry pavement condition';
+		model['pavement_condition'] = curr + ' pavement condition';
 		$("#Save-8").removeAttr("disabled");
 	}
-	else if (curr == 'Wet'){
-		pavement = curr;
-		wet = 1;
-		model['pavement_condition'] = 'Wet pavement condition';
-		$("#Save-8").removeAttr("disabled");
-	}
-	else if (curr == 'Snow/Ice'){
-		pavement = curr;
-		snow = 1;
-		model['pavement_condition'] = 'Snow/Ice pavement condition';
-		$("#Save-8").removeAttr("disabled");
-	}
-	else if (curr == 'Chemical wet'){
-		pavement = curr;
-		model['pavement_condition'] = 'Chemical wet pavement condition';
-		$("#Save-8").removeAttr("disabled");
-	}
-	else if(curr == 'Unspecified'){
-		pavement = curr;
-		unspecified = 1;
-		model['pavement_condition'] = 'Unspecified condition';
-		$("#Save-8").removeAttr("disabled");
-	}
-
 	// location i95
 	else if (curr == "Prince George's"){
 		location_choice = curr;
@@ -618,12 +588,11 @@ function updateSum2(){
 	console.log(total_lane);
 	// IV page
 	
-	
 	if (involved_car != ' '){
-			model['involved_veh'] += involved_car;
-			if (involved_car_s != ' '){model['involved_veh'] += '(:' + involved_car_s + ') ';}
-		}
-		else{involved_car_s = ' '}
+		model['involved_veh'] += involved_car;
+		if (involved_car_s != ' '){model['involved_veh'] += '(:' + involved_car_s + ') ';}
+	}
+	else{involved_car_s = ' '}
 	
 	involved_car = document.getElementById("dropbox1").value;
 	console.log(involved_car);	
@@ -1250,6 +1219,10 @@ function updateTime(){
 	var summer = (model['season_time'] == 'Summer') ? 1 : 0;
 	var winter = (model['season_time'] == 'Winter') ? 1 : 0;
 	var week = (model['weekend_time'] == 'Weekend') ? 1 : 0;
+	var dry = (model['pavement_condition'] == 'Dry pavement condition') ? 1 : 0;
+	var wet = (model['pavement_condition'] == 'Wet pavement condition') ? 1 : 0;
+	var snow = (model['pavement_condition'] == 'Snow/Ice pavement condition') ? 1 : 0;
+	var unspecified = (model['pavement_condition'] == 'Unspecified pavement condition') ? 1 : 0;
 
 	$("#first_stop").text("30min");
 	$("#second_stop").text("60min");
