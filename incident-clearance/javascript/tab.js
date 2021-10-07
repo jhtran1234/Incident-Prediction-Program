@@ -668,7 +668,6 @@ function updateSum2(){
 			model['involved_veh'] += involved_suv;
 			if (involved_suv_s != ' '){model['involved_veh'] += '(:' + involved_suv_s + ') ';}
 		}
-
 		if (involved_pedestrian != ' '){model['involved_veh'] += involved_pedestrian;}
 		if (involved_cyclist != ' '){model['involved_veh'] += involved_cyclist;}
 		if (involved_motor != ' '){model['involved_veh'] += involved_motor;}
