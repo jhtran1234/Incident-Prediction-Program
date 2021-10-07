@@ -637,7 +637,7 @@ function updateSum2(){
 	num_total = num_car + num_truck + num_bus + num_pickup + num_van + num_suv + num_pedestrian + num_cyclist + num_motor;
 	console.log(num_total);
 	
-	if ((involved_car == ' ') && (involved_truck == ' ') && (involved_bus == ' ') && (involved_pickup == ' ') && (involved_van == ' ') && (involved_suv == ' ') && (involved_pedestrian == ' ') && (involved_cyclist == ' ') && (involved_motor == ' ')){
+	if (involved_car+involved_truck+involved_bus+involved_pickup+involved_van+involved_suv+involved_pedestrian+involved_cyclist+involved_motor == '         '){
 		model['involved_veh'] = null;
 	}
 	else{
