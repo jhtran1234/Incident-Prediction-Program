@@ -4,29 +4,29 @@ var model = {"incident": null,"blockage": null,"collision":null, "detail_blockag
  "number_travel":null,"number_shoulder":null, "involved_veh": null, "responder": null, "responder_number": null, "center_choice": null,
  "pavement_condition":null, "hazmat_condition":null, "season_time": null, "hour_time": null, "weekend_time":null, "holiday_time":null, "location":null, "direction":null,
  "exit":null};
-//first label initialization
+// first label initialization
 var newLine_1 = document.createElementNS('http://www.w3.org/2000/svg','line');
 var txtElem_1 = document.createElementNS('http://www.w3.org/2000/svg','text');
 var txtElem2_1 = document.createElementNS('http://www.w3.org/2000/svg','text');
 var inside_txt_1;
 var percent_txt_1;
-//second label initialization
+// second label initialization
 var newLine_2 = document.createElementNS('http://www.w3.org/2000/svg','line');
 var txtElem_2 = document.createElementNS('http://www.w3.org/2000/svg','text');
 var txtElem2_2 = document.createElementNS('http://www.w3.org/2000/svg','text');
 var inside_txt_2;
 var percent_txt_2;
-//third label initialization
+// third label initialization
 var newLine_3 = document.createElementNS('http://www.w3.org/2000/svg','line');
 var txtElem_3 = document.createElementNS('http://www.w3.org/2000/svg','text');
 var txtElem2_3 = document.createElementNS('http://www.w3.org/2000/svg','text');
 var inside_txt_3;
 var percent_txt_3;
-//average time line initialization
+// average time line initialization
 var txtElem3 = document.createElementNS('http://www.w3.org/2000/svg','text');
 var last_line;
 
-//global variables will be used in other functions
+// global variables will be used in other functions
 var travel_drop;
 var shoulder_drop;
 var total_lane;
@@ -160,9 +160,9 @@ $(document).ready(function(){
 
 	// displays different vehicles and location pages for different roads
 	if (road == "i495") {
-		$("#location_495").removeAttr("style"); //Changes which location tab gets displayed based on the road
-		$("#involved_vehicles_5").removeAttr("style"); //Displays VAN vehicle for picking
-		$("#iv8").removeAttr("style"); //Displays VAN vehicle for picking
+		$("#location_495").removeAttr("style"); // Changes which location tab gets displayed based on the road
+		$("#involved_vehicles_5").removeAttr("style"); // Displays VAN vehicle for picking
+		$("#iv8").removeAttr("style"); // Displays VAN vehicle for picking
 		
 		// Location page dropdowns
 		$("#dropdown_location_495 select").click(updateSum2);
@@ -172,7 +172,7 @@ $(document).ready(function(){
 	else if(road == "i695"){
 		$("#location_695").removeAttr("style");
 		
-		//Location page dropdowns
+		// Location page dropdowns
 		$("#dropdown_location_695 select").click(updateSum2);
 		$("#dropdown_direction_695 select").click(updateSum2);
 		$("#dropdown_exit_695 select").click(updateSum2);
@@ -180,15 +180,15 @@ $(document).ready(function(){
 	/*else if (road == "i270") {
 		$("#location_270").removeAttr("style");
 		
-		//Location page dropdowns
+		// Location page dropdowns
 		$("#dropdown_location_270 select").click(updateSum2);
 		$("#dropdown_direction_270 select").click(updateSum2);
 		$("#dropdown_exit_270 select").click(updateSum2);
 	}*/
 	else if (road == "i70") {
 		$("#location_70").removeAttr("style");
-		$("#involved_vehicles_6").removeAttr("style"); //Displays SUV vehicle for picking
-		$("#iv9").removeAttr("style"); //Displays SUV vehicle for picking
+		$("#involved_vehicles_6").removeAttr("style"); // Displays SUV vehicle for picking
+		$("#iv9").removeAttr("style"); // Displays SUV vehicle for picking
 		
 		// Location page dropdowns
 		$("#dropdown_location_70 select").click(updateSum2);
@@ -203,13 +203,13 @@ $(document).ready(function(){
 		$("#dropdown_direction_29 select").click(updateSum2);
 		$("#dropdown_exit_29 select").click(updateSum2);
 	}
-	else if (cluster1.includes(road) || cluster2.includes(road) || cluster3.includes(road) || cluster4.includes(road) || cluster5.includes(road) || cluster6.includes(road)) {
+	else if (cluster1.concat(cluster2, cluster3, cluster4, cluster5, cluster6).includes(road)) {
 		$("#location_cluster").removeAttr("style");
 
-		$("#involved_vehicles_5").removeAttr("style"); //Displays VAN vehicle
+		$("#involved_vehicles_5").removeAttr("style"); // Displays VAN vehicle
 		$("#iv8").removeAttr("style");
 
-		$("#involved_vehicles_6").removeAttr("style"); //Displays SUV vehicle
+		$("#involved_vehicles_6").removeAttr("style"); // Displays SUV vehicle
 		$("#iv9").removeAttr("style");
 	}
 	else{
@@ -246,7 +246,7 @@ $(document).ready(function(){
 	$("#Next-2").click(function(){
 		radioValue2 = $("input[name='blockage']:checked").val();
 		if (radioValue2 == 'travel') {
-			//change the content within the same tab
+			// change the content within the same tab
 			$.tab('change tab', '1-2');
 		}
 		if (radioValue2 == 'shoulder') {
@@ -262,8 +262,8 @@ $(document).ready(function(){
 		 $('.ui.menu').find('.item').tab('change tab', '2');
 		
 	});	
-	//$("#Next-11").click(function(){ //Handles Next button after a Non-Collision Incident
-	//});
+	// $("#Next-11").click(function(){ // Handles Next button after a Non-Collision Incident
+	// });
 	
 	// iv tab's next button
 	$("#Next-5").click(function(){
@@ -419,6 +419,8 @@ function updateSum(){
 	const collision = ['Fatality', 'Personal Injury', 'Property Damage only']
 	const non_collision = ['Debris in Roadway', 'Disabled Vehicle', 'Vehicles on Fire', 'Emergency Roadwork', 
 		'Off-road Activity', 'Police Activity', 'Utility Problem', 'Weather Closure', 'Others'];
+
+	const responder = {'CHART':num_chart, 'POLICE':num_police, 'TOW':num_tow, 'FIREBOARD':num_fireboard, 'MEDICAL':num_medical, 'OTHERS':num_others};
 	const center_choice = ['AOC', 'SOC', 'Other', 'TOC3', 'TOC4', 'TOC5', 'TOC7'];
 	
 	var curr = $(this).parent().find("label").text(); // current working parameter - all radio buttons direct here
@@ -440,44 +442,19 @@ function updateSum(){
 		model['collision'] = curr;
 		$("#Save-11").removeAttr("disabled");
 	}
-	// first responder
-	else if (curr == 'CHART'){
+	else if (Object.keys(responder).includes(curr)){
 		first_responder = curr;
-		model['responder'] = 'First responder: CHART';
-		if(Number(num_chart) > 0){$("#Save-6").removeAttr("disabled");}
+		if (curr == 'OTHERS'){model['responder'] = 'First responder: Others';}
+		else{model['responder'] = 'First responder: ' + curr;}
+		if(Number(responder[curr]) > 0){$("#Save-6").removeAttr("disabled");}
 	}
-	else if (curr == 'POLICE'){
-		first_responder = curr;
-		model['responder'] = 'First responder: POLICE';
-		if(Number(num_police) > 0){$("#Save-6").removeAttr("disabled");}
-	}
-	else if (curr == 'TOW'){
-		first_responder = curr;
-		model['responder'] = 'First responder: TOW';
-		if(Number(num_tow) > 0){$("#Save-6").removeAttr("disabled");}
-	}
-	else if (curr == 'FIREBOARD'){
-		first_responder = curr;
-		model['responder'] = 'First responder: FIREBOARD';
-		if(Number(num_fireboard) > 0){$("#Save-6").removeAttr("disabled");}
-	}
-	else if (curr == 'MEDICAL'){
-		first_responder = curr;
-		model['responder'] = 'First responder: MEDICAL';
-		if(Number(num_medical) > 0){$("#Save-6").removeAttr("disabled");}
-	}
-	else if (curr == 'OTHERS'){
-		first_responder = curr;
-		model['responder'] = 'First responder: Others';
-		if(Number(num_others) > 0){$("#Save-6").removeAttr("disabled");}
-	}
-	//center
+	// center
 	else if (center_choice.includes(curr)){
 		center = curr;
 		model['center_choice'] = center;
 		$("#Save-7").removeAttr("disabled");
 	}
-	//pavement
+	// pavement
 	else if (curr == 'Dry'){
 		pavement = curr;
 		dry = 1;
@@ -508,7 +485,7 @@ function updateSum(){
 		$("#Save-8").removeAttr("disabled");
 	}
 
-	//location i95
+	// location i95
 	else if (curr == "Prince George's"){
 		location_choice = curr;
 		model['location'] = location_choice;
@@ -571,7 +548,7 @@ function updateSum(){
 		model['detail_blockage_3'] = null;
 	}
 	
-	//hazmat
+	// hazmat
 	hazmat = document.getElementById("haz").checked;
 	console.log(hazmat);
 	if (hazmat == true){
@@ -639,7 +616,7 @@ function updateSum2(){
 		
 	total_lane = Number(travel_drop) + Number(shoulder_drop);
 	console.log(total_lane);
-	//IV page
+	// IV page
 	
 	
 	if (involved_car != ' '){
@@ -745,7 +722,7 @@ function updateSum2(){
 		model['involved_veh'] += 'involved';
 	}
 	
-	//Responder page
+	// Responder page
 	chart_value = document.getElementById("dropdown_responder_1").value;
 	console.log(chart_value);	
 	police_value = document.getElementById("dropdown_responder_2").value;
@@ -804,7 +781,7 @@ function updateSum2(){
 		model['responder_number'] = null;
 	}
 	
-	//location page: location, direction and exit (road specific)
+	// location page: location, direction and exit (road specific)
 	if (road == "i495") {
 		location_choice = $("#dropdown_location_495 option:selected").text();
 		console.log(location_choice);
@@ -1010,9 +987,9 @@ function updateSum2(){
 }
 
 function getDate(){
-	//selecting the button and adding a click event
+	// selecting the button and adding a click event
 	$("#Save-9").click(function() {
-		//alerting the value inside the textbox
+		// alerting the value inside the textbox
 		var raw_date = $("#datepicker").datepicker("getDate");
 		date = ($.datepicker.formatDate("mm/dd/yy", raw_date));
 		console.log(date);
@@ -1054,7 +1031,7 @@ function getDate(){
 		console.log(model['weekend_time']);
 		console.log(model);
 
-		// Consult for federal holidays https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/
+		// Consult for federal holidays https:// www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/
 		// Careful to consider that some holidays have floating days, and others have observed days when they fall on weekends
 		if(((month == '01')&&(day == '01')) || ((month == '01')&&(day == '02')) || ((month == '07')&&(day == '04')) || ((month == '11')&&(day == '11')) || ((month == '12')&&(day == '25'))){
 			nonholiday = 1;
@@ -1159,7 +1136,7 @@ function my_getTime(){
 }	
 
 function printSum(){
-//print summary updates
+// print summary updates
 	$("#summary").empty();
 	for (var key in model){
 		if(model[key] != null){
@@ -1804,7 +1781,7 @@ function updateTime(){
 		if(model['incident']!= null && model["involved_veh"]!= null && model["responder"]!= null && model["center_choice"]!= null &&
 		model["pavement_condition"]!=null && model["hour_time"]!= null && (model["location"]!=null || model["exit"]!=null)){
 			if (model['incident'] == 'Collision incident') {
-				if(model['blockage']=='Travel lane blockage'){ //For CF Cases, only 1 and 2 exist for i695
+				if(model['blockage']=='Travel lane blockage'){ // For CF Cases, only 1 and 2 exist for i695
 					if(model['collision']=='Fatality'){
 						if((model['weekend_time'] == 'Weekend') && (num_total > 2)){CF_case2();}
 						else{CF_case1();}
@@ -2091,7 +2068,7 @@ function updateTime(){
 				drawSVG4("Average CT = 32 mins");
 			}
 		}
-		else if(model['incident']=='Non-Collision incident'){ //build awaiting instructions
+		else if(model['incident']=='Non-Collision incident'){ // build awaiting instructions
 			drawSVG1(10, 30, 40, 110, "5~15", "65%");
 			drawSVG2(10, 40, 50, 120, "5~20", "75%");
 			drawSVG3(10, 60, 70, 140, "5~30", "80%");
@@ -2407,7 +2384,7 @@ function updateTime(){
 				drawSVG4("Average CT = 42 mins");
 			}
 		}
-		else if(model['incident']=='Non-Collision incident'){ //build awaiting instructions
+		else if(model['incident']=='Non-Collision incident'){ // build awaiting instructions
 			drawSVG1(10, 30, 40, 110, "5~15", "65%");
 			drawSVG2(10, 40, 50, 120, "5~20", "75%");
 			drawSVG3(10, 60, 70, 140, "5~30", "80%");
@@ -4883,8 +4860,8 @@ function updateTime(){
 				drawSVG3(20, 170, 67, 180, "10~85", "80%");
 				drawSVG4("Average CT = 45 mins");
 				if(model['collision']=='Fatality'){
-					drawSVG1(290, 300, 230, 310, "150~270", "60%");
-					drawSVG2(240, 300, 180, 310, "120~300", "70%");
+					drawSVG1(290, 300, 220, 310, "150~270", "60%");
+					drawSVG2(240, 300, 170, 310, "120~300", "70%");
 					drawSVG3(120, 300, 130, 310, "60~360", "80%");
 					drawSVG4("Average CT = 235 mins");
 				}
@@ -5400,7 +5377,7 @@ function updateTime(){
 	}
 }
 
-//Used to draw the labels in the bottom right corner
+// Used to draw the labels in the bottom right corner
 function drawSVG1(x1, x2, txt1_x, txt2_x, txt1, txt2){
 	$("#line1").remove();
 	newLine_1.setAttribute('x1',x1);
@@ -5435,7 +5412,7 @@ function drawSVG3(x1, x2, txt1_x, txt2_x, txt1, txt2){
 	percent_txt_3 = document.createTextNode(txt2);
 }
 function drawSVG4(average_time){
-	//update average time line
+	// update average time line
 	$("#text3").empty();
 	last_line = document.createTextNode(average_time);
 }
@@ -5545,7 +5522,7 @@ function activeNext(){
 		if(all_info){$("#boxheader").text("All information has been recorded.");}
 	}
 	else if(this.id == 'Save-11'){
-		//$("#Next-11").removeAttr("disabled");
+		// $("#Next-11").removeAttr("disabled");
 		var radioValue4 = $("input[name='type']:checked").val();
 		console.log(radioValue4);
 	}
@@ -5776,13 +5753,13 @@ function CPI1_case4() {
 		drawSVG1(240, 300, 250, 310, ">=120", "100%");
 		drawSVG2(0, 0, 0, 0, "", "");
 		drawSVG3(0, 0, 0, 0, "", "");
-		drawSVG4("Average CT = >=120 mins"); //mean not given
+		drawSVG4("Average CT = >=120 mins"); // mean not given
 	}
 	else if (road == "us29") {
 		drawSVG1(240, 300, 250, 310, ">=120", "85%");
 		drawSVG2(0, 0, 0, 0, "", "");
 		drawSVG3(0, 0, 0, 0, "", "");
-		drawSVG4("Average CT = >=120 mins"); //mean not given
+		drawSVG4("Average CT = >=120 mins"); // mean not given
 	}
 	else if (cluster1.includes(road)) {
 		drawSVG1(240, 300, 250, 310, ">=120", "70%");
