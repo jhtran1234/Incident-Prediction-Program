@@ -155,7 +155,6 @@ $(document).ready(function(){
 
 	// displays different vehicles and location pages for different roads
 	if (road == "i495") {
-		$("#location_495").removeAttr("style"); // Changes which location tab gets displayed based on the road
 		$("#involved_vehicles_5").removeAttr("style"); // Displays VAN vehicle for picking
 		$("#iv8").removeAttr("style"); // Displays VAN vehicle for picking
 		
@@ -165,23 +164,18 @@ $(document).ready(function(){
 		$("#dropdown_exit_495 select").click(updateSum2);
 	}
 	else if(road == "i695"){
-		$("#location_695").removeAttr("style");
-		
 		// Location page dropdowns
 		$("#dropdown_location_695 select").click(updateSum2);
 		$("#dropdown_direction_695 select").click(updateSum2);
 		$("#dropdown_exit_695 select").click(updateSum2);
 	}
 	/*else if (road == "i270") {
-		$("#location_270").removeAttr("style");
-		
 		// Location page dropdowns
 		$("#dropdown_location_270 select").click(updateSum2);
 		$("#dropdown_direction_270 select").click(updateSum2);
 		$("#dropdown_exit_270 select").click(updateSum2);
 	}*/
 	else if (road == "i70") {
-		$("#location_70").removeAttr("style");
 		$("#involved_vehicles_6").removeAttr("style"); // Displays SUV vehicle for picking
 		$("#iv9").removeAttr("style"); // Displays SUV vehicle for picking
 		
@@ -191,16 +185,12 @@ $(document).ready(function(){
 		$("#dropdown_exit_70 select").click(updateSum2);
 	}
 	else if (road == "us29") {
-		$("#location_29").removeAttr("style");
-		
 		// Location page dropdowns
 		$("#dropdown_location_29 select").click(updateSum2);
 		$("#dropdown_direction_29 select").click(updateSum2);
 		$("#dropdown_exit_29 select").click(updateSum2);
 	}
 	else if (cluster1.concat(cluster2, cluster3, cluster4, cluster5, cluster6).includes(road)) {
-		$("#location_cluster").removeAttr("style");
-
 		$("#involved_vehicles_5").removeAttr("style"); // Displays VAN vehicle
 		$("#iv8").removeAttr("style");
 
@@ -208,7 +198,6 @@ $(document).ready(function(){
 		$("#iv9").removeAttr("style");
 	}
 	else{
-		$("#location_95").removeAttr("style");
 	}
 
 	// IV page dropdown
@@ -5397,6 +5386,34 @@ function activeNext(){
 	}
 	else if(this.id == 'Save-4'){
 		$("#Next-4").removeAttr("disabled");
+
+		// enables the tabs after the Next-4 button is selected to ensure that all
+		// qualities are entered from the first tab
+		document.getElementById("data_tab_2").style = "font-size: 14px;";
+		document.getElementById("data_tab_3").style = "font-size: 14px;";
+		document.getElementById("data_tab_4").style = "font-size: 14px;";
+		document.getElementById("data_tab_5").style = "font-size: 14px;";
+		document.getElementById("data_tab_6").style = "font-size: 14px;";
+
+		// displays different vehicles and location pages for different roads
+		if (road == "i495") {
+			document.getElementById("location_495").style = "font-size: 14px;";
+		}
+		else if(road == "i695"){
+			document.getElementById("location_695").style = "font-size: 14px;";
+		}
+		else if (road == "i70") {
+			document.getElementById("location_70").style = "font-size: 14px;";
+		}
+		else if (road == "us29") {
+			document.getElementById("location_29").style = "font-size: 14px;";
+		}
+		else if (cluster1.concat(cluster2, cluster3, cluster4, cluster5, cluster6).includes(road)) {
+			document.getElementById("location_cluster").style = "font-size: 14px;";
+		}
+		else{
+			document.getElementById("location_95").style = "font-size: 14px;";
+		}
 	}
 	else if(this.id == 'Save-5'){
 		$("#boxheader").text("Estimated Clearance Time");
@@ -7137,7 +7154,7 @@ function CF_case4(){
 	$("#fourth_stop").text("400min");
 
 	if (road == "i495"){
-		drawSVG1(108, 162, 117, 172, "180~270", "100%");
+		drawSVG1(108, 162, 105, 180, "180~270", "100%");
 		drawSVG2(0, 0, 0, 0, "", "");
 		drawSVG3(0, 0, 0, 0, "", "");
 		drawSVG4("Average CT = 200 mins");
