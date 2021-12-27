@@ -4,9 +4,9 @@
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<script type="text/javascript" src="lib/wickedpicker.min.js"></script>
 	<link rel="stylesheet" href="css/wickedpicker.css">
 	
@@ -68,7 +68,7 @@
 
 			background-position: 50% 50%;
 			background-repeat:   no-repeat;
-			background-size:     cover;
+			background-size:	 cover;
 		}
 
 		.thumbnail_incident img {
@@ -160,7 +160,7 @@
 			padding: 0px 20px 5px 30px;
 		}
 		#iv9 {
-			padding: 0px 20px 5px 30px;
+			padding: 0px 0px 0px 0px;
 		}
 
 		#responder-tow {
@@ -386,22 +386,22 @@
 	<div class="ui container" id="container">
 		<div class="ui top attached segment incident-info" id="form-size">
 			<div class="ui top attached tabular menu">
-				<div class="item active" data-tab="1" style="font-size: 14px;"><b>
+				<div class="item active" data-tab="1" id="data_tab_1" style="font-size: 14px;"><b>
 					Type
 				</b></div>
-				<div class="item" data-tab="2" style="font-size: 14px;"><b>
+				<div class="item" data-tab="2" id="data_tab_2" style="display: none; font-size: 14px;"><b>
 					Involved Vehicles
 				</b></div>
-				<div class="item" data-tab="3" style="font-size: 14px;"><b>
+				<div class="item" data-tab="3" id="data_tab_3" style="display: none; font-size: 14px;"><b>
 					Responder
 				</b></div>
-				<div class="item" data-tab="4" style="font-size: 14px;"><b>
+				<div class="item" data-tab="4" id="data_tab_4" style="display: none; font-size: 14px;"><b>
 					Center
 				</b></div>
-				<div class="item" data-tab="5" style="font-size: 14px;"><b>
+				<div class="item" data-tab="5" id="data_tab_5" style="display: none; font-size: 14px;"><b>
 					Pavement &amp; Hazmat
 				</b></div>
-				<div class="item" data-tab="6" style="font-size: 14px;"><b>
+				<div class="item" data-tab="6" id="data_tab_6" style="display: none; font-size: 14px;"><b>
 					Time
 				</b></div>
 				<!--A different location tab with different map will appear with different hwy choices-->
@@ -421,6 +421,9 @@
 					<b>Location</b>
 				</div>
 				<div class="item" data-tab="12" id="location_29" style="display: none; font-size: 14px;">
+					<b>Location</b>
+				</div>
+				<div class="item" data-tab="13" id="location_cluster" style="display: none; font-size: 14px;">
 					<b>Location</b>
 				</div>
 			</div>
@@ -672,172 +675,154 @@
 							<button class="ui right floated blue button" id="Save-11" disabled="disabled" name="save">Save</button> 
 							<button class="ui right floated blue button" id="Back-11">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
-				        </div>
-			        </div>
-			    </div>
+						</div>
+					</div>
+				</div>
 			</div>
 
 			<div class="ui bottom attached tab segment" data-tab="2">
 				<div class="ui grid">
 					<div class="one column row" id="checkbox-size">
-                        <div class="thumbnail_iv">
-                            <img src="images/pc.png" id="iv1"> 
-					        <img src="images/truck.png" id="iv2">
-					        <img src="images/bus.png" id="iv3">
-					        <img src="images/pickup.jpg" id="iv7">
-					        <img src="images/van.png" id="iv8" style="display: none">
-					        <img src="images/suv.png" id="iv9" style="display: none">
-                        </div>
+						<div class="thumbnail_iv">
+							<img src="images/pc.png" id="iv1"> 
+							<img src="images/truck.png" id="iv2">
+							<img src="images/bus.png" id="iv3">
+							<img src="images/pickup.jpg" id="iv7">
+							<img src="images/van.png" id="iv8" style="display: none">
+						</div>
 
-			            <div class="ui form">
-				            <div class="inline fields" id="involved_vehicles">								
-					            <div class="field" id="involved_vehicles_1">
-					                <!-- <label for="dropbox">Select:</label> -->
-					                <label style="font-size: 18px;">Car</label><br>
-					                <select class="ui dropdown" id="dropbox1"> 
-						                <option value=" ">0</option>
-						                <option value="1 Car ">1</option>
-						                <option value="2 Cars ">2</option>
-						                <option value="3 Cars ">3</option>
-						                <option value="4 Cars ">4</option>
-						                <option value="5 Cars ">5</option>
-						                <option value="6+ Cars ">6</option>
-					                </select>
+						<div class="ui form">
+							<div class="inline fields" id="involved_vehicles">								
+								<div class="field" id="involved_vehicles_1">
+									<!-- <label for="dropbox">Select:</label> -->
+									<label style="font-size: 18px;">Car</label><br>
+									<select class="ui dropdown" id="dropbox1"> 
+										<option value=" ">0</option>
+										<option value="1 Car ">1</option>
+										<option value="2 Cars ">2</option>
+										<option value="3 Cars ">3</option>
+										<option value="4 Cars ">4</option>
+										<option value="5 Cars ">5</option>
+										<option value="6+ Cars ">6</option>
+									</select>
 											
-					                <select class="ui dropdown" id="dropbox1s"> 
-						                <option value=" ">None</option>
-						                <option value="jack ">Jack-knifed</option>
-						                <option value="over ">Overturned</option>
-						                <option value="lost ">Lost Load</option>											  
-					                </select>					</div>
-                                <div class="field" id="involved_vehicles_2">
-                                    <label style="font-size: 18px;">Truck</label><br>
-                                    <select class="ui dropdown" id="dropbox2">
-                                        <option value=" ">0</option>
-                                        <option value="1 Truck ">1</option>
-                                        <option value="2 Trucks ">2</option>
-                                        <option value="3 Trucks ">3</option>
-                                        <option value="4 Trucks ">4</option>
-                                        <option value="5 Trucks ">5</option>
-                                        <option value="6+ Trucks ">6</option>
-                                    </select>
-                                        
-                                    <select class="ui dropdown" id="dropbox2s">
-                                        <option value=" ">None</option>
-                                        <option value="jack ">Jack-knifed</option>
-                                        <option value="over ">Overturned</option>
-                                        <option value="lost ">Lost Load</option>
-					                </select>											
-					            </div>
-					            <div class="field" id="involved_vehicles_3">
-                                    <label style="font-size: 18px;">Bus</label><br>
-                                    <select class="ui dropdown" id="dropbox3">
-                                        <option value=" ">0</option>
-                                        <option value="1 Bus ">1</option>
-                                        <option value="2 Buses ">2</option>
-                                        <option value="3 Buses ">3</option>
-                                        <option value="4 Buses ">4</option>
-                                        <option value="5 Buses ">5</option>
-                                        <option value="6+ Buses ">6</option>
-                                    </select>
+									<select class="ui dropdown" id="dropbox1s"> 
+										<option value=" ">None</option>
+										<option value="jack ">Jack-knifed</option>
+										<option value="over ">Overturned</option>
+										<option value="lost ">Lost Load</option>											  
+									</select>					</div>
+								<div class="field" id="involved_vehicles_2">
+									<label style="font-size: 18px;">Truck</label><br>
+									<select class="ui dropdown" id="dropbox2">
+										<option value=" ">0</option>
+										<option value="1 Truck ">1</option>
+										<option value="2 Trucks ">2</option>
+										<option value="3 Trucks ">3</option>
+										<option value="4 Trucks ">4</option>
+										<option value="5 Trucks ">5</option>
+										<option value="6+ Trucks ">6</option>
+									</select>
+										
+									<select class="ui dropdown" id="dropbox2s">
+										<option value=" ">None</option>
+										<option value="jack ">Jack-knifed</option>
+										<option value="over ">Overturned</option>
+										<option value="lost ">Lost Load</option>
+									</select>											
+								</div>
+								<div class="field" id="involved_vehicles_3">
+									<label style="font-size: 18px;">Bus</label><br>
+									<select class="ui dropdown" id="dropbox3">
+										<option value=" ">0</option>
+										<option value="1 Bus ">1</option>
+										<option value="2 Buses ">2</option>
+										<option value="3 Buses ">3</option>
+										<option value="4 Buses ">4</option>
+										<option value="5 Buses ">5</option>
+										<option value="6+ Buses ">6</option>
+									</select>
 
-                                    <select class="ui dropdown" id="dropbox3s">
-                                        <option value=" ">None</option>
-                                        <option value="jack ">Jack-knifed</option>
-                                        <option value="over ">Overturned</option>
-                                        <option value="lost ">Lost Load</option>
-                                    </select>
-                                </div>
-					            <div class="field" id="involved_vehicles_4">
-                                    <label style="font-size: 18px;">Pickup</label><br>
-                                    <select class="ui dropdown" id="dropbox7">
-                                        <option value=" ">0</option>
-                                        <option value="1 Pickup ">1</option>
-                                        <option value="2 Pickups ">2</option>
-                                        <option value="3 Pickups ">3</option>
-                                        <option value="4 Pickups ">4</option>
-                                        <option value="5 Pickups ">5</option>
-                                        <option value="6+ Pickups ">6</option>
-                                    </select>
-                                    <select class="ui dropdown" id="dropbox7s">
-                                        <option value=" ">None</option>
-                                        <option value="jack ">Jack-knifed</option>
-                                        <option value="over ">Overturned</option>
-                                        <option value="lost ">Lost Load</option>
-                                    </select>
-                                </div>
-					            <div class="field" id="involved_vehicles_5" style="display: none">
-                                    <label style="font-size: 18px;">Van</label><br>
-                                    <select class="ui dropdown" id="dropbox8">
-                                        <option value=" ">0</option>
-                                        <option value="1 Van ">1</option>
-                                        <option value="2 Vans ">2</option>
-                                        <option value="3 Vans ">3</option>
-                                        <option value="4 Vans ">4</option>
-                                        <option value="5 Vans ">5</option>
-                                        <option value="6+ Vans ">6</option>
-                                    </select>
-                                    <select class="ui dropdown" id="dropbox8s">
-                                        <option value=" ">None</option>
-                                        <option value="jack ">Jack-knifed</option>
-                                        <option value="over ">Overturned</option>
-                                        <option value="lost ">Lost Load</option>
-                                    </select>
-                                </div>
-					            <div class="field" id="involved_vehicles_6" style="display: none">
-                                    <label style="font-size: 18px;">SUV</label><br>
-                                    <select class="ui dropdown" id="dropbox9">
-                                        <option value=" ">0</option>
-                                        <option value="1 SUV ">1</option>
-                                        <option value="2 SUVs ">2</option>
-                                        <option value="3 SUVs ">3</option>
-                                        <option value="4 SUVs ">4</option>
-                                        <option value="5 SUVs ">5</option>
-                                        <option value="6+ SUVs ">6</option>
-                                    </select>
-                                    <select class="ui dropdown" id="dropbox9s">
-                                        <option value=" ">None</option>
-                                        <option value="jack ">Jack-knifed</option>
-                                        <option value="over ">Overturned</option>
-                                        <option value="lost ">Lost Load</option>
-                                    </select>
-                                </div>							
-				            </div>
-			            </div>	
+									<select class="ui dropdown" id="dropbox3s">
+										<option value=" ">None</option>
+										<option value="jack ">Jack-knifed</option>
+										<option value="over ">Overturned</option>
+										<option value="lost ">Lost Load</option>
+									</select>
+								</div>
+								<div class="field" id="involved_vehicles_4">
+									<label style="font-size: 18px;">Pickup</label><br>
+									<select class="ui dropdown" id="dropbox7">
+										<option value=" ">0</option>
+										<option value="1 Pickup ">1</option>
+										<option value="2 Pickups ">2</option>
+										<option value="3 Pickups ">3</option>
+										<option value="4 Pickups ">4</option>
+										<option value="5 Pickups ">5</option>
+										<option value="6+ Pickups ">6</option>
+									</select>
+									<select class="ui dropdown" id="dropbox7s">
+										<option value=" ">None</option>
+										<option value="jack ">Jack-knifed</option>
+										<option value="over ">Overturned</option>
+										<option value="lost ">Lost Load</option>
+									</select>
+								</div>
+								<div class="field" id="involved_vehicles_5" style="display: none">
+									<label style="font-size: 18px;">Van</label><br>
+									<select class="ui dropdown" id="dropbox8">
+										<option value=" ">0</option>
+										<option value="1 Van ">1</option>
+										<option value="2 Vans ">2</option>
+										<option value="3 Vans ">3</option>
+										<option value="4 Vans ">4</option>
+										<option value="5 Vans ">5</option>
+										<option value="6+ Vans ">6</option>
+									</select>
+									<select class="ui dropdown" id="dropbox8s">
+										<option value=" ">None</option>
+										<option value="jack ">Jack-knifed</option>
+										<option value="over ">Overturned</option>
+										<option value="lost ">Lost Load</option>
+									</select>
+								</div>							
+							</div>
+						</div>	
 
-                        <div class="thumbnail_iv_2">
-				            <img src="images/ped.png" id="iv4">
-				            <img src="images/cyclist.png" id="iv5">
-				            <img src="images/motor.png" id="iv6">
-                        </div>
+						<div class="thumbnail_iv_2">
+							<img src="images/ped.png" id="iv4">
+							<img src="images/cyclist.png" id="iv5">
+							<img src="images/motor.png" id="iv6">
+							<img src="images/suv.png" id="iv9" style="display: none">
+						</div>
 							
-			            <div class="ui form">
-				            <div class="inline fields" id="involved_vehicles">
-					            <div class="field" id="involved_vehicles_1">
-							        <label style="font-size: 18px;">Pedestrian</label><br>
-							        <select class="ui dropdown" id="dropbox4"> 
-								        <option value=" ">0</option>
-								        <option value="1 Pedestrian ">1</option>
-								        <option value="2 Pedestrians ">2</option>
-								        <option value="3 Pedestrians ">3</option>
-								        <option value="4 Pedestrians ">4</option>
-								        <option value="5 Pedestrians ">5</option>
-								        <option value="6+ Pedestrians ">6</option>
-							        </select>
-					            </div>
-					            <div class="field" id="involved_vehicles_2">
-							        <label style="font-size: 18px;">Cyclist</label><br>
-							        <select class="ui dropdown" id="dropbox5"> 
-								        <option value=" ">0</option>
-								        <option value="1 Cyclist ">1</option>
-								        <option value="2 Cyclists ">2</option>
-								        <option value="3 Cyclists ">3</option>
-								        <option value="4 Cyclists ">4</option>
-								        <option value="5 Cyclists ">5</option>
-								        <option value="6+ Cyclists ">6</option>
-							        </select>											
-					            </div>
-					            <div class="field" id="involved_vehicles_3">
+						<div class="ui form">
+							<div class="inline fields" id="involved_vehicles">
+								<div class="field" id="involved_vehicles_1">
+									<label style="font-size: 18px;">Pedestrian</label><br>
+									<select class="ui dropdown" id="dropbox4"> 
+										<option value=" ">0</option>
+										<option value="1 Pedestrian ">1</option>
+										<option value="2 Pedestrians ">2</option>
+										<option value="3 Pedestrians ">3</option>
+										<option value="4 Pedestrians ">4</option>
+										<option value="5 Pedestrians ">5</option>
+										<option value="6+ Pedestrians ">6</option>
+									</select>
+								</div>
+								<div class="field" id="involved_vehicles_2">
+									<label style="font-size: 18px;">Cyclist</label><br>
+									<select class="ui dropdown" id="dropbox5"> 
+										<option value=" ">0</option>
+										<option value="1 Cyclist ">1</option>
+										<option value="2 Cyclists ">2</option>
+										<option value="3 Cyclists ">3</option>
+										<option value="4 Cyclists ">4</option>
+										<option value="5 Cyclists ">5</option>
+										<option value="6+ Cyclists ">6</option>
+									</select>											
+								</div>
+								<div class="field" id="involved_vehicles_3">
 									<label style="font-size: 18px;">Motorcyclist</label><br>
 									<select class="ui dropdown" id="dropbox6"> 
 										<option value=" ">0</option>
@@ -848,142 +833,160 @@
 										<option value="5 Motorcyclists ">5</option>
 										<option value="6+ Motorcyclists ">6</option>
 									</select>
-					            </div>
-				            </div>
-			            </div>
-		            </div>
-	            </div>	
-	            <div class="ui grid">
-				    <div class="column" id="button-size">
-					    <div class="one column row" id="button-row">
-						    <button class="ui right floated blue button" id="Next-5" disabled="disabled" name="next">Next</button> 
-						    <button class="ui right floated blue button" id="Save-5" disabled="disabled" name="save">Save</button>
-						    <button class="ui right floated blue button" id="Back-5">Back</button>
-						    <button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
-					    </div>
-				    </div>
+								</div>
+								<div class="field" id="involved_vehicles_6" style="display: none">
+									<label style="font-size: 18px;">SUV</label><br>
+									<select class="ui dropdown" id="dropbox9">
+										<option value=" ">0</option>
+										<option value="1 SUV ">1</option>
+										<option value="2 SUVs ">2</option>
+										<option value="3 SUVs ">3</option>
+										<option value="4 SUVs ">4</option>
+										<option value="5 SUVs ">5</option>
+										<option value="6+ SUVs ">6</option>
+									</select>
+									<select class="ui dropdown" id="dropbox9s">
+										<option value=" ">None</option>
+										<option value="jack ">Jack-knifed</option>
+										<option value="over ">Overturned</option>
+										<option value="lost ">Lost Load</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+				<div class="ui grid">
+					<div class="column" id="button-size">
+						<div class="one column row" id="button-row">
+							<button class="ui right floated blue button" id="Next-5" disabled="disabled" name="next">Next</button> 
+							<button class="ui right floated blue button" id="Save-5" disabled="disabled" name="save">Save</button>
+							<button class="ui right floated blue button" id="Back-5">Back</button>
+							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
+						</div>
+					</div>
 
-			    </div>
-		    </div>
+				</div>
+			</div>
 			
 			<div class="ui bottom attached tab segment" data-tab="3">
 				<div class="ui grid">
 					<div class="one column row" id="checkbox-size">
 					<p style="font-weight:bold; font-size: 18px;">First Responder and # of responders</p>
-                        <div class="thumbnail_responder">
-                            <img src="images/responder_1.jpg">
-					        <img src="images/responder_2.jpg">
-					        <img src="images/responder_3.gif">
-					        <img src="images/responder_4.jpg">
-					        <img src="images/responder_5.jpg">	
-					        <img src="images/responder_6.png">
-                        </div>
-					    <div class="ui form">
-						    <div class="inline fields">
-							    <div class="field" id="responder-chart">
-								    <div class="ui radio checkbox" >
-									    <input name="frequency" type="radio" value="CHART"> <label style="padding-left: 0.5cm; font-size: 18px;"><b>CHART</b></label>
-									    <select class="ui dropdown" id="dropdown_responder_1">
-										    <option value=" ">0</option>
-										    <option value="1 CHART unit ">1</option>
-										    <option value="2 CHART units ">2</option>
-										    <option value="3 CHART units ">3</option>
-										    <option value="4 CHART units ">4</option>
-										    <option value="5 CHART units ">5</option>
-										    <option value="6 CHART units ">6</option>
-										    <option value="7 CHART units ">7</option>
-										    <option value="8 CHART units ">8</option>
-										    <option value="9+ CHART units ">9</option>
-									    </select>
-								    </div>
-							    </div>
-							    <div class="field" id="responder-police">
-								    <div class="ui radio checkbox">
-									    <input name="frequency" type="radio" value="POLICE"> <label style="padding-left: 0.5cm; font-size: 18px;"><b>POLICE</b></label>
-									    <select class="ui dropdown" id="dropdown_responder_2">
-										    <option value=" ">0</option>
-										    <option value="1 POLICE unit ">1</option>
-										    <option value="2 POLICE units ">2</option>
-										    <option value="3 POLICE units ">3</option>
-										    <option value="4 POLICE units ">4</option>
-										    <option value="5 POLICE units ">5</option>
-										    <option value="6 POLICE units ">6</option>
-										    <option value="7 POLICE units ">7</option>
-										    <option value="8 POLICE units ">8</option>
-										    <option value="9+ POLICE units ">9</option>
-									    </select>											
-								    </div>
-							    </div>
-							    <div class="field" id="responder-tow">
-								    <div class="ui radio checkbox">
-									    <input name="frequency" type="radio" value="TOW"> <label style="padding-left: 0.5cm; font-size: 18px;"><b>TOW</b></label>
-									    <select class="ui dropdown" id="dropdown_responder_3">
-										    <option value=" ">0</option>
-										    <option value="1 TOW unit ">1</option>
-										    <option value="2 TOW units ">2</option>
-										    <option value="3 TOW units ">3</option>
-										    <option value="4 TOW units ">4</option>
-										    <option value="5 TOW units ">5</option>
-										    <option value="6 TOW units ">6</option>
-										    <option value="7 TOW units ">7</option>
-										    <option value="8 TOW units ">8</option>
-										    <option value="9+ TOW units ">9</option>
-									    </select>											
-								    </div>
-							    </div>
-							    <div class="field" id="responder-fireboard">
-								    <div class="ui radio checkbox" >
-									    <input name="frequency" type="radio" value="FIREBOARD"> <label style="padding-left: 0.5cm; font-size: 18px;"><b>FIREBOARD</b></label>
-									    <select class="ui dropdown" id="dropdown_fireboard">
-										    <option value=" ">0</option>
-										    <option value="1 FIREBOARD unit ">1</option>
-										    <option value="2 FIREBOARD units ">2</option>
-										    <option value="3 FIREBOARD units ">3</option>
-										    <option value="4 FIREBOARD units ">4</option>
-										    <option value="5 FIREBOARD units ">5</option>
-										    <option value="6 FIREBOARD units ">6</option>
-										    <option value="7 FIREBOARD units ">7</option>
-										    <option value="8 FIREBOARD units ">8</option>
-										    <option value="9+ FIREBOARD units ">9</option>
-									    </select>
-								    </div>
-							    </div>
-							    <div class="field" id="responder-medical">
-								    <div class="ui radio checkbox">
-									    <input name="frequency" type="radio" value="MEDICAL"> <label style="padding-left: 0.5cm; font-size: 18px;"><b>MEDICAL</b></label>
-									    <select class="ui dropdown" id="dropdown_responder_5">
-										    <option value=" ">0</option>
-										    <option value="1 MEDICAL unit ">1</option>
-										    <option value="2 MEDICAL units ">2</option>
-										    <option value="3 MEDICAL units ">3</option>
-										    <option value="4 MEDICAL units ">4</option>
-										    <option value="5 MEDICAL units ">5</option>
-										    <option value="6 MEDICAL units ">6</option>
-										    <option value="7 MEDICAL units ">7</option>
-										    <option value="8 MEDICAL units ">8</option>
-										    <option value="9+ MEDICAL units ">9</option>
-									    </select>
-								    </div>
-							    </div>
-							    <div class="field" id="responder-other">
-								    <div class="ui radio checkbox">
-									    <input name="frequency" type="radio" value="OTHERS"> <label style="padding-left: 0.5cm; font-size: 18px;"><b>OTHERS</b></label>
-									    <select class="ui dropdown" id="dropdown_responder_6">
-										    <option value=" ">0</option>
-										    <option value="1 Other unit ">1</option>
-										    <option value="2 Other units ">2</option>
-										    <option value="3 Other units ">3</option>
-										    <option value="4 Other units ">4</option>
-										    <option value="5 Other units ">5</option>
-										    <option value="6 Other units ">6</option>
-										    <option value="7 Other units ">7</option>
-										    <option value="8 Other units ">8</option>
-										    <option value="9+ Other units ">9</option>
-									    </select>
-								    </div>
-							    </div>
-						    </div>
-					    </div>
+						<div class="thumbnail_responder">
+							<img src="images/responder_1.jpg">
+							<img src="images/responder_2.jpg">
+							<img src="images/responder_3.gif">
+							<img src="images/responder_4.jpg">
+							<img src="images/responder_5.jpg">	
+							<img src="images/responder_6.png">
+						</div>
+						<div class="ui form">
+							<div class="inline fields">
+								<div class="field" id="responder-chart">
+									<div class="ui radio checkbox" >
+										<input name="frequency" type="radio" value="CHART"> <label style="padding-left: 0.5cm; font-size: 18px;"><b>CHART</b></label>
+										<select class="ui dropdown" id="dropdown_responder_1">
+											<option value=" ">0</option>
+											<option value="1 CHART unit ">1</option>
+											<option value="2 CHART units ">2</option>
+											<option value="3 CHART units ">3</option>
+											<option value="4 CHART units ">4</option>
+											<option value="5 CHART units ">5</option>
+											<option value="6 CHART units ">6</option>
+											<option value="7 CHART units ">7</option>
+											<option value="8 CHART units ">8</option>
+											<option value="9+ CHART units ">9</option>
+										</select>
+									</div>
+								</div>
+								<div class="field" id="responder-police">
+									<div class="ui radio checkbox">
+										<input name="frequency" type="radio" value="POLICE"> <label style="padding-left: 0.5cm; font-size: 18px;"><b>POLICE</b></label>
+										<select class="ui dropdown" id="dropdown_responder_2">
+											<option value=" ">0</option>
+											<option value="1 POLICE unit ">1</option>
+											<option value="2 POLICE units ">2</option>
+											<option value="3 POLICE units ">3</option>
+											<option value="4 POLICE units ">4</option>
+											<option value="5 POLICE units ">5</option>
+											<option value="6 POLICE units ">6</option>
+											<option value="7 POLICE units ">7</option>
+											<option value="8 POLICE units ">8</option>
+											<option value="9+ POLICE units ">9</option>
+										</select>											
+									</div>
+								</div>
+								<div class="field" id="responder-tow">
+									<div class="ui radio checkbox">
+										<input name="frequency" type="radio" value="TOW"> <label style="padding-left: 0.5cm; font-size: 18px;"><b>TOW</b></label>
+										<select class="ui dropdown" id="dropdown_responder_3">
+											<option value=" ">0</option>
+											<option value="1 TOW unit ">1</option>
+											<option value="2 TOW units ">2</option>
+											<option value="3 TOW units ">3</option>
+											<option value="4 TOW units ">4</option>
+											<option value="5 TOW units ">5</option>
+											<option value="6 TOW units ">6</option>
+											<option value="7 TOW units ">7</option>
+											<option value="8 TOW units ">8</option>
+											<option value="9+ TOW units ">9</option>
+										</select>
+									</div>
+								</div>
+								<div class="field" id="responder-fireboard">
+									<div class="ui radio checkbox" >
+										<input name="frequency" type="radio" value="FIREBOARD"> <label style="padding-left: 0.5cm; font-size: 18px;"><b>FIREBOARD</b></label>
+										<select class="ui dropdown" id="dropdown_fireboard">
+											<option value=" ">0</option>
+											<option value="1 FIREBOARD unit ">1</option>
+											<option value="2 FIREBOARD units ">2</option>
+											<option value="3 FIREBOARD units ">3</option>
+											<option value="4 FIREBOARD units ">4</option>
+											<option value="5 FIREBOARD units ">5</option>
+											<option value="6 FIREBOARD units ">6</option>
+											<option value="7 FIREBOARD units ">7</option>
+											<option value="8 FIREBOARD units ">8</option>
+											<option value="9+ FIREBOARD units ">9</option>
+										</select>
+									</div>
+								</div>
+								<div class="field" id="responder-medical">
+									<div class="ui radio checkbox">
+										<input name="frequency" type="radio" value="MEDICAL"> <label style="padding-left: 0.5cm; font-size: 18px;"><b>MEDICAL</b></label>
+										<select class="ui dropdown" id="dropdown_responder_5">
+											<option value=" ">0</option>
+											<option value="1 MEDICAL unit ">1</option>
+											<option value="2 MEDICAL units ">2</option>
+											<option value="3 MEDICAL units ">3</option>
+											<option value="4 MEDICAL units ">4</option>
+											<option value="5 MEDICAL units ">5</option>
+											<option value="6 MEDICAL units ">6</option>
+											<option value="7 MEDICAL units ">7</option>
+											<option value="8 MEDICAL units ">8</option>
+											<option value="9+ MEDICAL units ">9</option>
+										</select>
+									</div>
+								</div>
+								<div class="field" id="responder-other">
+									<div class="ui radio checkbox">
+										<input name="frequency" type="radio" value="OTHERS"> <label style="padding-left: 0.5cm; font-size: 18px;"><b>OTHERS</b></label>
+										<select class="ui dropdown" id="dropdown_responder_6">
+											<option value=" ">0</option>
+											<option value="1 Other unit ">1</option>
+											<option value="2 Other units ">2</option>
+											<option value="3 Other units ">3</option>
+											<option value="4 Other units ">4</option>
+											<option value="5 Other units ">5</option>
+											<option value="6 Other units ">6</option>
+											<option value="7 Other units ">7</option>
+											<option value="8 Other units ">8</option>
+											<option value="9+ Other units ">9</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="ui grid">	
@@ -991,7 +994,7 @@
 						<div class="one column row" id="button-row">
 							<button class="ui right floated blue button" id="Next-6" disabled="disabled" name="next">Next</button> 
 							<button class="ui right floated blue button" id="Save-6" disabled="disabled" name="save">Save</button>
-						    <button class="ui right floated blue button" id="Back-6">Back</button>
+							<button class="ui right floated blue button" id="Back-6">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
 						</div>
 					</div>
@@ -1050,7 +1053,7 @@
 						<div class="one column row" id="button-row">
 							<button class="ui right floated blue button" id="Next-7" disabled="disabled" name="next">Next</button> 
 							<button class="ui right floated blue button" id="Save-7" disabled="disabled" name="save">Save</button>
-						    <button class="ui right floated blue button" id="Back-7">Back</button>
+							<button class="ui right floated blue button" id="Back-7">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
 						</div>
 					</div>
@@ -1113,7 +1116,7 @@
 						<div class="one column row" id="button-row">
 							<button class="ui right floated blue button" id="Next-8" disabled="disabled" name="next">Next</button>
 							<button class="ui right floated blue button" id="Save-8" disabled="disabled" name="save">Save</button>
-						    <button class="ui right floated blue button" id="Back-8">Back</button>
+							<button class="ui right floated blue button" id="Back-8">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button>
 						</div>
 					</div>
@@ -1135,7 +1138,7 @@
 						<div class="one column row" id="button-row">
 							<button class="ui right floated blue button" id="Next-9" disabled="disabled" name="next">Next</button> 
 							<button class="ui right floated blue button" id="Save-9"  name="save">Save</button>
-						    <button class="ui right floated blue button" id="Back-9">Back</button>
+							<button class="ui right floated blue button" id="Back-9">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
 						</div>
 					</div>
@@ -1211,7 +1214,7 @@
 						<div class="one column row" id="button-row">
 							<!-- <button class="ui right floated blue button" id="Next-10" disabled="disabled">Next</button>  -->
 							<button class="ui right floated blue button" id="Save-10" disabled="disabled" name="save">Save</button>
-						    <button class="ui right floated blue button" id="Back-10">Back</button>
+							<button class="ui right floated blue button" id="Back-10">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
 						</div>
 					</div>
@@ -1257,7 +1260,7 @@
 						<div class="one column row" id="button-row">
 							<!-- <button class="ui right floated blue button" id="Next-10" disabled="disabled">Next</button>  -->
 							<button class="ui right floated blue button" id="Save-10_495" disabled="disabled" name="save">Save</button>
-						    <button class="ui right floated blue button" id="Back-10_495">Back</button>
+							<button class="ui right floated blue button" id="Back-10_495">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
 						</div>
 					</div>
@@ -1304,7 +1307,7 @@
 						<div class="one column row" id="button-row">
 							<!-- <button class="ui right floated blue button" id="Next-10" disabled="disabled">Next</button>  -->
 							<button class="ui right floated blue button" id="Save-10_695" disabled="disabled" name="save">Save</button>
-						    <button class="ui right floated blue button" id="Back-10_695">Back</button>
+							<button class="ui right floated blue button" id="Back-10_695">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
 						</div>
 					</div>
@@ -1317,10 +1320,10 @@
 						<div class="">
 							<img src="images/location_map_270.png" width="745px"> 
 						</div>		
-					    <div class = "ui form" id="exit_form">
-						    <label for="dropdown_location" style="padding-left:75px;">
-							    <!-- Location <br> -->
-							    <select class="ui dropdown" id="dropdown_location_270" style="font-size:16px; font-weight:bold;">
+						<div class = "ui form" id="exit_form">
+							<label for="dropdown_location" style="padding-left:75px;">
+								<!-- Location <br> -->
+								<select class="ui dropdown" id="dropdown_location_270" style="font-size:16px; font-weight:bold;">
 									<option value="">Location</option>
 									<option value="Frederick">Frederick</option>
 									<option value="Urbana">Urbana</option>
@@ -1335,27 +1338,27 @@
 									<option value="Noinfo">No Information</option>
 								</select>
 							</label>
-						    <label for="dropdown_direction">
-							    <!-- Direction <br> -->
-							    <select class="ui dropdown" id="dropdown_direction_270" style="font-size:16px; font-weight:bold;">
-								    <option value="">Direction</option>
-								    <option value="North">North</option>
-								    <option value="South">South</option>
-								    <option value="Noinfo">No Information</option>
-							    </select> 
-						    </label>
-						    <label for="dropdown_exit">
-							    <!-- Exit<br> -->
-							    <select class="ui dropdown" id="dropdown_exit_270" style="font-size:16px; font-weight:bold;">
-								    <option value="">Exit</option>
-								    <option value="ExitXX">Exit XX</option>
-								    <option value="ExitYY">Exit YY</option>
-								    <option value="ExitZZ">Exit ZZ</option>
-								    <option value="Exitothers">Other Exits</option>									
+							<label for="dropdown_direction">
+								<!-- Direction <br> -->
+								<select class="ui dropdown" id="dropdown_direction_270" style="font-size:16px; font-weight:bold;">
+									<option value="">Direction</option>
+									<option value="North">North</option>
+									<option value="South">South</option>
+									<option value="Noinfo">No Information</option>
+								</select> 
+							</label>
+							<label for="dropdown_exit">
+								<!-- Exit<br> -->
+								<select class="ui dropdown" id="dropdown_exit_270" style="font-size:16px; font-weight:bold;">
+									<option value="">Exit</option>
+									<option value="ExitXX">Exit XX</option>
+									<option value="ExitYY">Exit YY</option>
+									<option value="ExitZZ">Exit ZZ</option>
+									<option value="Exitothers">Other Exits</option>									
 									
-							    </select>
-						    </label>
-					    </div>
+								</select>
+							</label>
+						</div>
 					</div>
 				</div>
 				<div class="ui grid">	
@@ -1363,7 +1366,7 @@
 						<div class="one column row" id="button-row">
 							<!-- <button class="ui right floated blue button" id="Next-10" disabled="disabled">Next</button>  -->
 							<button class="ui right floated blue button" id="Save-10_270" disabled="disabled" name="save">Save</button>
-						    <button class="ui right floated blue button" id="Back-10_270">Back</button>
+							<button class="ui right floated blue button" id="Back-10_270">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
 						</div>
 					</div>
@@ -1391,19 +1394,19 @@
 									<option value="East">East</option>
 									<option value="West">West</option>
 									<option value="Noinfo">No Information</option>
-							    </select>
-						    </label>
-						    <label for="dropdown_exit">
-							    <!-- Exit <br> -->
-							    <select class="ui dropdown" id="dropdown_exit_70" style="font-size:16px; font-weight:bold;">
-								    <option value="">Exit</option>
-								    <option value="Exit1">Exits 1-52: West of Frederick</option>
-								    <option value="Exit53">Exits 53-76: East of Frederick</option>
-								    <option value="Exit80">Exits 80-94: System 1</option>
-								    <option value="Exitothers">Other Exits</option>
-							    </select>
-						    </label>
-					    </div>
+								</select>
+							</label>
+							<label for="dropdown_exit">
+								<!-- Exit <br> -->
+								<select class="ui dropdown" id="dropdown_exit_70" style="font-size:16px; font-weight:bold;">
+									<option value="">Exit</option>
+									<option value="Exit1">Exits 1-52: West of Frederick</option>
+									<option value="Exit53">Exits 53-76: East of Frederick</option>
+									<option value="Exit80">Exits 80-94: System 1</option>
+									<option value="Exitothers">Other Exits</option>
+								</select>
+							</label>
+						</div>
 					</div>
 				</div>
 				<div class="ui grid">
@@ -1411,7 +1414,7 @@
 						<div class="one column row" id="button-row">
 							<!-- <button class="ui right floated blue button" id="Next-10" disabled="disabled">Next</button>  -->
 							<button class="ui right floated blue button" id="Save-10_70" disabled="disabled" name="save">Save</button>
-						    <button class="ui right floated blue button" id="Back-10_70">Back</button>
+							<button class="ui right floated blue button" id="Back-10_70">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button>
 						</div>
 					</div>
@@ -1424,32 +1427,32 @@
 						<div class="">
 							<img src="images/location_map_29.png" width="745px">
 						</div>
-					    <div class = "ui form" id="exit_form">
-						    <label for="dropdown_location" style="padding-left:75px;" >
-							    <!-- Location <br> -->
-							    <select class="ui dropdown" id="dropdown_location_29" style="font-size:16px; font-weight:bold;">
+						<div class = "ui form" id="exit_form">
+							<label for="dropdown_location" style="padding-left:75px;" >
+								<!-- Location <br> -->
+								<select class="ui dropdown" id="dropdown_location_29" style="font-size:16px; font-weight:bold;">
 									<option value="">Location</option>
 									<option value="Noinfo">No Information</option>
 								</select>
 							</label>
-						    <label for="dropdown_direction">
-							    <!-- Direction <br> -->
-							    <select class="ui dropdown" id="dropdown_direction_29" style="font-size:16px; font-weight:bold;">
-								    <option value="">Direction</option>
-								    <option value="North">North</option>
-								    <option value="South">South</option>
-								    <option value="Noinfo">No Information</option>
-							    </select>
-						    </label>
-						    <label for="dropdown_exit">
-							    <!-- Exit <br> -->
-							    <select class="ui dropdown" id="dropdown_exit_29" style="font-size:16px; font-weight:bold;">
-								    <option value="">Exit</option>
-								    <option value="Exit13">Exits 13-25</option>
-								    <option value="Exitothers">Other Exits</option>
-							    </select>
-						    </label>
-					    </div>
+							<label for="dropdown_direction">
+								<!-- Direction <br> -->
+								<select class="ui dropdown" id="dropdown_direction_29" style="font-size:16px; font-weight:bold;">
+									<option value="">Direction</option>
+									<option value="North">North</option>
+									<option value="South">South</option>
+									<option value="Noinfo">No Information</option>
+								</select>
+							</label>
+							<label for="dropdown_exit">
+								<!-- Exit <br> -->
+								<select class="ui dropdown" id="dropdown_exit_29" style="font-size:16px; font-weight:bold;">
+									<option value="">Exit</option>
+									<option value="Exit13">Exits 13-25</option>
+									<option value="Exitothers">Other Exits</option>
+								</select>
+							</label>
+						</div>
 					</div>
 				</div>
 				<div class="ui grid">
@@ -1457,34 +1460,63 @@
 						<div class="one column row" id="button-row">
 							<!-- <button class="ui right floated blue button" id="Next-10" disabled="disabled">Next</button>  -->
 							<button class="ui right floated blue button" id="Save-10_29" disabled="disabled" name="save">Save</button>
-						    <button class="ui right floated blue button" id="Back-10_29">Back</button>
+							<button class="ui right floated blue button" id="Back-10_29">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button>
 						</div>
 					</div>
 				</div>
 			</div>
-		    <div class="ui grid">
-			    <div class="two column row" id="row-size">
-				    <div class="column">
-					    <div class="ui segment"  id="tab-size" style="background-color:#fcf4cc;">
-						    <div class="ui top attached tabular menu">
-							    <div class="item" style="font-size:20px; font-weight:bold;">
-								    Summary
-							    </div>
-						    </div>
-						    <div id="summary" style="height:80%; overflow-y:auto;">
-						    </div>
-					    </div>
-				    </div>
-				    <div class="column">
-					    <div class="ui segment" id="tab-size"  style="background-color:#fcf4cc;">
-						    <div class="ui top attached tabular menu">
-							    <div class="item" style="font-size:16px; font-weight:bold; padding-left:1px">
-								    <h id="boxheader">Estimated Clearance Time</h>
-							    </div>
-						    </div>
-						    <div id="estimation">
-							    <svg height="150px" width="350px" id="map">
+			<!-- Clusters Location Tab -->
+			<div class="ui bottom attached tab segment" data-tab="13">
+				<div class="ui grid">
+					<div class="two column row" id="checkbox-size">
+						<div class="column">
+							<img src="images/dcbal.png" id="clusterimg" height="250px" style="padding-left:30px;">
+						</div>
+						<div class="column">
+							<select class="ui dropdown" id="dropdown_location_cluster" style="font-size:16px; font-weight:bold;">
+								<option value="">Location</option>
+								<option value="Washington">Washington DC Area</option>
+								<option value="Baltimore">Baltimore Area</option>
+								<option value="Other">Others</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="ui grid">	
+					<div class="column" id="button-size">
+						<div class="one column row" id="button-row">
+							<!-- <button class="ui right floated blue button" id="Next-10" disabled="disabled">Next</button>  -->
+							<button class="ui right floated blue button" id="Save-10_cluster" disabled="disabled" name="save">Save</button>
+							<button class="ui right floated blue button" id="Back-10_cluster">Back</button>
+							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="ui grid">
+				<div class="two column row" id="row-size">
+					<div class="column">
+						<div class="ui segment"  id="tab-size" style="background-color:#fcf4cc;">
+							<div class="ui top attached tabular menu">
+								<div class="item" style="font-size:20px; font-weight:bold;">
+									Summary
+								</div>
+							</div>
+							<div id="summary" style="height:80%; overflow-y:auto;">
+							</div>
+						</div>
+					</div>
+					<div class="column">
+						<div class="ui segment" id="tab-size"  style="background-color:#fcf4cc;">
+							<div class="ui top attached tabular menu">
+								<div class="item" style="font-size:16px; font-weight:bold; padding-left:1px">
+									<h id="boxheader">Estimated Clearance Time</h>
+								</div>
+							</div>
+							<div id="estimation">
+								<svg height="150px" width="350px" id="map">
 									<defs>
 										<marker id="arrow" markerheight="10" markerunits="userSpaceOnUse" markerwidth="10" orient="auto" refx="0" refy="3">
 											<path d="M0,0 L0,6 L9,3 z" fill="#f00"></path>

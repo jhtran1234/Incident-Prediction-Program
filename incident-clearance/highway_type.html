@@ -19,67 +19,67 @@
 </head>
 
 <style>
-    body{
-        background-color: #d1d2d3;
-    }
+	body{
+		background-color: #d1d2d3;
+	}
 	
-    #summary {
-	    color: #ff0800;
-    }
-    #container {
+	#summary {
+		color: #ff0800;
+	}
+	#container {
 		width: 800px;
 		height: 600px;
 
 		border-style: solid;
 		border-color: #6186aa;
 		border-width: 25px 5px 5px 5px;		   
-    }
+	}
 
-    #highway_pic img {
-	      width: auto;
-	      height: 100%;
-    }
-    #row1-size {
-	    width: 790x;
-	    height: 40px;
-	    background-color: white;
-    }
-    #row2-size {
-	    width: 790px;
-	    height: 450px;
+	#highway_pic img {
+		  width: auto;
+		  height: 100%;
+	}
+	#row1-size {
+		width: 790x;
+		height: 40px;
+		background-color: white;
+	}
+	#row2-size {
+		width: 790px;
+		height: 450px;
 	
-	    background: url("images/highway.gif") no-repeat scroll center top/ 100% 100%; 
-    }
-    #column-size {
-	    width: 400px;
-	    height: 40px;
-    }
-    #row3-size {
-	    width: 400px;
-	    height: 50px;
-    }
-    #row4-size {
-	    width: 400px;
-	    height: 50px;
-    }
-    #grid-size {
-	    width: 790px;
-	    height: 570px;
-    }
-    #label {
-	    padding: 175px 20px 35px 20px;
-    }
-    #choice {
-	    padding: 200px 20px 35px 10px;
-    }
-    #choice2 {
-	    padding: 10px 20px 35px 10px;
-    }
-    #button-row {
-	    width:790px;
-	    height: 80px;
-	    background-color: white;
-    }
+		background: url("images/highway.gif") no-repeat scroll center top/ 100% 100%; 
+	}
+	#column-size {
+		width: 400px;
+		height: 40px;
+	}
+	#row3-size {
+		width: 400px;
+		height: 50px;
+	}
+	#row4-size {
+		width: 400px;
+		height: 50px;
+	}
+	#grid-size {
+		width: 790px;
+		height: 570px;
+	}
+	#label {
+		padding: 175px 20px 35px 20px;
+	}
+	#choice {
+		padding: 200px 20px 35px 10px;
+	}
+	#choice2 {
+		padding: 10px 20px 35px 10px;
+	}
+	#button-row {
+		width:790px;
+		height: 80px;
+		background-color: white;
+	}
 
 	/* These are for the highway selection buttons and their proper map placement */
 	/* This section is used for proper button placements when I-270 is readded to the program
@@ -121,14 +121,7 @@
 			img.setAttribute('selected', 'true');
 
 			document.getElementById('selected_img').src='images/' + road_selected + '.png';
-
-			//Diables Next button when others is selected -- we do not have an "others" option yet
-			if(img.getAttribute('id') != 'others'){
-				document.getElementById('Next').disabled = false;
-			}
-			else{
-				document.getElementById('Next').disabled = true;
-			}
+			document.getElementById('Next').disabled = false;
 		}
 		else{
 			img.src='images/' + road_selected + '.png';
@@ -142,12 +135,12 @@
 <body>
 <div class="ui container" id="container">
 	<div class="ui gird" id="grid-size">
-	    <div class="one column row"  id="row1-size">
+		<div class="one column row"  id="row1-size">
 			<p style="font-size:25px; font-weight:bold">Please select a highway by clicking on one of the buttons below:</p>
-	    </div>
-	    <div class="one column row" id="row2-size">
+		</div>
+		<div class="one column row" id="row2-size">
 			<div id='div-i270'>
-				<img src='images/i270.png' id='i270'height='40px' onclick="selectRoad(this.id)" selected='false'>
+				<img src='images/i270.png' id='i270' height='40px' onclick="selectRoad(this.id)" selected='false'>
 			</div>
 			<div id='div-i70'>
 				<img src='images/i70.png' id='i70' height='40px' onclick="selectRoad(this.id)" selected='false'>
@@ -173,12 +166,12 @@
 				</div>
 				<img src='' id='selected_img' height='40px' selected='false'>
 			</div>
-	    </div>
+		</div>
 
 		<div class="column" id="button-row">
-		    <div class="one column row" id="button-row">
-			    <button class="ui right floated blue button" id="Next" onclick='nextPage()' disabled>Next</button>
-			    <script type="text/javascript">
+			<div class="one column row" id="button-row">
+				<button class="ui right floated blue button" id="Next" onclick='nextPage()' disabled>Next</button>
+				<script type="text/javascript">
 					function nextPage() {
 						let roads = ['i95', 'i495', 'i695', 'i270', 'i70', 'us29', 'others'];
 						var selected_road;
@@ -189,26 +182,18 @@
 						});
 
 						//Appends road name to the end of the URL so the next HTML page can give estimations for the correct road
-						if (selected_road == 'i95') {
-							parent.location = 'tab.html?I-95';
-						} else if (selected_road == 'i495') {
-							parent.location = 'tab.html?I-495';
-						} else if (selected_road == 'i695') {
-							parent.location = 'tab.html?I-695';
-						} else if (selected_road == 'i270') {
-							parent.location = 'tab.html?I-270';
-						} else if (selected_road == 'i70') {
-							parent.location = 'tab.html?I-70';
-						} else if (selected_road == 'us29') {
-							parent.location = 'tab.html?US-29';
-						} else if (selected_road == 'others') {
-							alert("The Other Highways button is currently unavailable. Please select a highway.");
-						} else{
+						if (selected_road == 'others') {
+							parent.location = 'clusters.html';
+						}
+						else if (roads.includes(selected_road)) {
+							parent.location = 'tab.html?' + selected_road;
+						}
+						else{
 							alert("Please select a highway.");
 						}
 					}
-			    </script>
-		    </div>	
+				</script>
+			</div>	
 		</div>				
 	</div>
 </div>
