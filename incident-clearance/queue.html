@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<script type="text/javascript" src="lib/wickedpicker.min.js"></script>
+	<link rel="stylesheet" href="css/wickedpicker.css">
+	
+	<link href="semantic/dist/semantic.min.css" rel="stylesheet" type="text/css">
+	<script src="semantic/dist/semantic.min.js"></script>
+	<script src="javascript/queue.js"></script> <!--tab.js is the script that runs in the background-->
+	
+	<link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
+
+	<!--[if lte IE 8]>
+	<script src="html5.js" type="text/javascript"></script>
+	<![endif]-->
+
+	<style>
+		body{
+			background-color: #d1d2d3;
+		}
+		#container {
+			width:800px;
+			height:600px; 
+			border-style: solid;
+			border-color: #6186aa;
+			border-width: 25px 5px 5px 5px;
+		}
+		#form-size {
+			width: 790px;
+			height: 570px;
+		}
+		#estimation {
+			width: 300px;
+			height: 200px;
+		}
+		#checkbox-size {
+			width: 780px;
+			height: 425px;
+		}
+		#tab-size {
+			width: 365px;
+			height: 225px;
+		}
+
+		label.type {
+			width: 180px;
+		}
+		.field {
+			position: relative;
+			float: left;
+			width:  135px;
+			height: 100px;
+
+			background-position: 50% 50%;
+			background-repeat:   no-repeat;
+			background-size:	 cover;
+		}
+		#ph6 {
+			padding-left: 35px;
+		}
+		#row-size {
+			width: 750px;
+			height: 200px;
+		}
+
+		.item {
+			font-size: 16px;
+		}
+
+				
+		#color-bar {
+			width: 50%;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.text {
+			font-family: Cambria;
+			font-size: 14px;
+			text-align: center;
+		}
+
+		.tab_label {
+			font-family: Cambria;
+			font-size: 24px;
+			text-align: center;
+			margin-top: 0px !important;
+			margin-bottom: 0px !important;
+			font-weight: bold;
+		}
+
+		#radio-label1  {
+			font-family: Cambria;
+			font-size: 20px;
+		}
+
+		#radio_label3, #radio_label4 {
+			font-family: Cambria;
+			font-size: 16px;
+		}
+
+		#data_source_radio1, #data_source_radio2 { 
+     		transform: scale(1.76923077);
+			margin-left: 245px;
+			margin-right: 20px;
+			margin-top: 20px;
+ 		}
+
+		#historical_radio1, #historical_radio2 {
+     		transform: scale(1.23076923);
+			margin-left: 285px;
+			margin-right: 20px;
+			margin-top: 20px;
+		}
+		
+		#secondary_radios {
+			display: none;
+		}
+
+		#historical_description {
+			display: none;
+		}
+
+		#historical_label {
+			display: none;
+		}
+
+		#speed_label {
+			display: none;
+		}
+
+		.input_row:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+		.input_column {
+			float: left;
+			width: 33.33%;
+			text-align: center;
+			font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif !important;
+			font-size: 14px;
+		}
+		.input_label, .input_unit {
+			margin-top: 9px !important;
+			margin-bottom: 9px !important;
+		}
+		.input_label_two_line {
+			margin-top: 0px !important;
+			margin-bottom: 0px !important;
+		}
+
+		.display_row:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+		.display_column_L {
+			float: left;
+			width: 40%;
+		}
+		.display_column_R {
+			float: left;
+			width: 60%;
+		}
+		.result_table {
+			margin-top: 40%;
+  			border: 1px solid black;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		td {
+			border: 1px solid black;
+			text-align: center;
+		}
+
+	</style>
+	<title>Incident Clearance Time Prediction Program</title>
+</head>
+<body>
+	<div class="ui container" id="container">
+		<div class="ui top attached segment incident-info" id="form-size">
+			<div class="ui top attached tabular menu">
+				<div class="item active" data-tab="1" id="data_tab_1"><b>
+					Data Source Selection
+				</b></div>
+				<div class="item" data-tab="2" id="data_tab_2"><b>
+					Input of Related Data
+				</b></div>
+				<div class="item" data-tab="3" id="data_tab_3"><b>
+					Predicted Queue Length
+				</b></div>
+			</div>
+			<div class="ui bottom attached tab segment active" data-tab="1">
+				<div class="ui grid">
+					<div class="one column row" id="checkbox-size">
+						<div class="ui form">
+							<p class="tab_label">Data Source Selection</p>
+							<img src="images/md color bar.png" id="color-bar">
+							<p class="text">If real-time detector data (i.e., real-time flow rate) is available, such information is preferred. If not, two additional options, applying the historical volume or applying real-time speed, are provided.</p>
+							<input type="radio" id="data_source_radio1" name="data_source" value="with">
+							<label id="radio-label1" for="with">With real-time detector data</label><br>
+							<input type="radio" id="data_source_radio2" name="data_source" value="without">
+							<label id="radio-label1" for="without">Without real-time detector data</label><br>
+							<div id="secondary_radios">
+								<input type="radio" id="historical_radio1" name="historical" value="historical">
+								<label id="radio_label3" for="historical">Apply historical volume</label><br>
+								<input type="radio" id="historical_radio2" name="historical" value="real-time">
+								<label id="radio_label4" for="real-time">Apply real-time speed</label><br>
+							</div>
+						</div>
+					</div>
+				</div>	
+				<div class="ui grid">
+					<div class="column" id="button-size">
+						<div class="one column row" id="button-row">
+							<button class="ui right floated blue button" id="Next-1" disabled name="next">Next</button>
+							<button class="ui right floated blue button" id="Save-1" disabled name="save">Save</button>
+							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="ui bottom attached tab segment" data-tab="2">
+				<div class="ui grid">
+					<div class="one column row" id="checkbox-size">
+						<div class="ui form">
+							<p class="tab_label" id="real_time_label">With real-time detector data</p>
+							<p class="tab_label" id="historical_label">Without real-time detector data - Historical Volume</p>
+							<p class="tab_label" id="speed_label">Without real-time detector data - Speed data</p>
+							<img src="images/md color bar.png" id="color-bar">
+							<p class="text" id="historical_description">Link for historical data: https://maps.roads.maryland.gov/itms_public/</p>
+							</br>
+							<div id="real_time_inputs">
+								<div class="input_row">
+									<div class="input_column">
+										<p class="input_label_two_line">Flow rate per lane of the unaffected upstream segment</p>
+									</div>
+									<div class="input_column">
+										<input id="duration" type="number">
+									</div>
+									<div class="input_column">
+										<p class="input_unit">veh/hr/ln</p>
+									</div>
+								</div></br>
+							</div>
+							<div id="historical_inputs">
+								<div class="input_row">
+									<div class="input_column">
+										<p class="input_label_two_line">Historical volume of the unaffected upstream segment</p>
+									</div>
+									<div class="input_column">
+										<input id="duration" type="number">
+									</div>
+									<div class="input_column">
+										<p class="input_unit">veh/hr</p>
+									</div>
+								</div></br>
+							</div>
+							<div id="speed_inputs">
+								<div class="input_row">
+									<div class="input_column">
+										<p class="input_label_two_line">Speed of the unaffected upstream segment</p>
+									</div>
+									<div class="input_column">
+										<input id="duration" type="number">
+									</div>
+									<div class="input_column">
+										<p class="input_unit">mph</p>
+									</div>
+								</div></br>
+								<div class="input_row">
+									<div class="input_column">
+										<p class="input_label_two_line">Peak hour (hourly volume > 800 veh/hr)</p>
+									</div>
+									<div class="input_column">
+										<td>
+											<input type="radio" id="peak" name="peak" value="yes">Yes
+											<input type="radio" id="peak" name="peak" value="no">No
+										</td>
+									</div>
+									<div class="input_column">
+									</div>
+								</div></br>
+							</div>
+
+							<div class="input_row">
+								<div class="input_column">
+									<p class="input_label">Incident duration (minutes)</p>
+								</div>
+								<div class="input_column">
+									<input id="duration" type="number">
+								</div>
+								<div class="input_column">
+									<p class="input_unit">minutes</p>
+								</div>
+							</div></br>
+							<div class="input_row">
+								<div class="input_column">
+									<p class="input_label">Total number of lanes</p>
+								</div>
+								<div class="input_column">
+									<input id="lanes" type="number">
+								</div>
+								<div class="input_column">
+								</div>
+							</div></br>
+							<div class="input_row">
+								<div class="input_column">
+									<p class="input_label">Number of open lanes</p>
+								</div>
+								<div class="input_column">
+									<input id="duration" type="number">
+								</div>
+								<div class="input_column">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+				<div class="ui grid">
+					<div class="column" id="button-size">
+						<div class="one column row" id="button-row">
+							<button class="ui right floated blue button" id="Next-2" disabled name="next">Next</button>
+							<button class="ui right floated blue button" id="Save-2" disabled name="save">Save</button>
+							<button class="ui right floated blue button" id="Back-2">Back</button>
+							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
+						</div>
+					</div>
+
+				</div>
+			</div>
+			
+			<div class="ui bottom attached tab segment" data-tab="3">
+				<div class="ui grid">
+					<div class="one column row" id="checkbox-size">
+						<div class="ui form">
+							<p class="tab_label">Predicted Queue Length</p>
+							<img src="images/md color bar.png" id="color-bar">
+							<div class="display_row">
+								<div class="display_column_L">
+									<table class="result_table">
+										<tr>
+											<td>Flow rate per lane (veh/hr/ln)</td>
+										</tr>
+										<tr>
+											<td>0</td>
+										</tr>
+										<tr>
+											<td>Incident duration (mins)</td>
+										</tr>
+										<tr>
+											<td>0</td>
+										</tr>
+										<tr>
+											<td>Total Number of lanes</td>
+										</tr>
+										<tr>
+											<td>0</td>
+										</tr>
+										<tr>
+											<td>Number of blocked lanes</td>
+										</tr>
+										<tr>
+											<td>0</td>
+										</tr>
+									</table>
+								</div>
+								<div class="display_column_R">
+									<p>test</p>
+								</div>
+							</div>
+						</div>	
+					</div>
+				</div>	
+				<div class="ui grid">
+					<div class="column" id="button-size">
+						<div class="one column row" id="button-row">
+							<button class="ui right floated blue button" id="Save-3" disabled name="save">Save</button>
+							<button class="ui right floated blue button" id="Back-3" disabled>Back</button>
+							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!--
+			<div class="ui grid">
+				<div class="two column row" id="row-size">
+					<div class="column">
+						<div class="ui segment"  id="tab-size" style="background-color:#fcf4cc;">
+							<div class="ui top attached tabular menu">
+								<div class="item" style="font-size:20px; font-weight:bold;">
+									Summary
+								</div>
+							</div>
+							<div id="summary" style="height:80%; overflow-y:auto;">
+							</div>
+						</div>
+					</div>
+					<div class="column">
+						<div class="ui segment" id="tab-size"  style="background-color:#fcf4cc;">
+							<div class="ui top attached tabular menu">
+								<div class="item" style="font-size:16px; font-weight:bold; padding-left:1px">
+									<h id="boxheader">Estimated Clearance Time</h>
+								</div>
+							</div>
+							<div id="estimation">
+								<svg height="150px" width="350px" id="map">
+									<defs>
+										<marker id="arrow" markerheight="10" markerunits="userSpaceOnUse" markerwidth="10" orient="auto" refx="0" refy="3">
+											<path d="M0,0 L0,6 L9,3 z" fill="#f00"></path>
+										</marker>
+										<marker id="Circle" markerheight="10" markerwidth="10" orient="auto" refx="5" refy="5">
+											<circle cx="5" cy="5" fill="dodgerblue" r="2"></circle>
+										</marker>
+										<marker id="Square" markerheight="10" markerwidth="10" orient="auto" refx="0" refy="3">
+											<path d="M 5,1 L 9,5 5,9 1,5 z" fill="#6a9100"></path>
+										</marker>
+									</defs>
+									<line marker-end="url(#Circle)" marker-start="url(#arrow)" stroke="#000" stroke-width="2" x1="0" x2="60" y1="20" y2="20"></line>
+									<text x="45" y="35" id="first_stop" style="font-size: 15px; font-weight:bold">
+										30min
+									</text>
+									<line marker-end="url(#Circle)" stroke="#000" stroke-width="2" x1="60" x2="120" y1="20" y2="20"></line>
+									<text x="105" y="35" id="second_stop" style="font-size: 15px; font-weight:bold">
+										60min
+									</text>
+									<line stroke="#000" stroke-width="2" x1="120" x2="180" y1="20" y2="20"></line>
+									<line marker-end="url(#Circle)" stroke="#000" stroke-width="2" x1="180" x2="240" y1="20" y2="20"></line>
+									<text x="225" y="35" id="fourth_stop" style="font-size: 15px; font-weight:bold">
+										120min
+									</text>
+									<line marker-end="url(#arrow)" stroke="#000" stroke-width="2" x1="240" x2="300" y1="20" y2="20"></line>	
+									<line stroke="red" stroke-width="15" style="font-size: 17px"></line>
+								</svg>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>-->
+		</div>
+	</div>
+	
+	<div id = "dialog-2"></div>
+	
+</body>
+</html>
