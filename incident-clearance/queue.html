@@ -37,7 +37,10 @@
 		}
 		#estimation {
 			width: 300px;
-			height: 200px;
+			height: 300px;
+			margin-left: 50px;
+			margin-top: 50px;
+			background-color:#fcf4cc;
 		}
 		#checkbox-size {
 			width: 780px;
@@ -124,15 +127,17 @@
 			display: none;
 		}
 
-		#historical_description {
+		#real_time_label {
 			display: none;
 		}
-
 		#historical_label {
 			display: none;
 		}
-
 		#speed_label {
+			display: none;
+		}
+
+		#historical_description {
 			display: none;
 		}
 
@@ -157,6 +162,16 @@
 			margin-bottom: 0px !important;
 		}
 
+		#real_time_inputs {
+			display: none;
+		}
+		#historical_inputs {
+			display: none;
+		}
+		#speed_inputs {
+			display: none;
+		}
+
 		.display_row:after {
 			content: "";
 			display: table;
@@ -171,6 +186,7 @@
 			width: 60%;
 		}
 		.result_table {
+			background-color:#fcf4cc;
 			margin-top: 40%;
   			border: 1px solid black;
 			margin-left: auto;
@@ -246,7 +262,7 @@
 										<p class="input_label_two_line">Flow rate per lane of the unaffected upstream segment</p>
 									</div>
 									<div class="input_column">
-										<input id="duration" type="number">
+										<input id="flow" type="number">
 									</div>
 									<div class="input_column">
 										<p class="input_unit">veh/hr/ln</p>
@@ -259,7 +275,7 @@
 										<p class="input_label_two_line">Historical volume of the unaffected upstream segment</p>
 									</div>
 									<div class="input_column">
-										<input id="duration" type="number">
+										<input id="volume" type="number">
 									</div>
 									<div class="input_column">
 										<p class="input_unit">veh/hr</p>
@@ -272,7 +288,7 @@
 										<p class="input_label_two_line">Speed of the unaffected upstream segment</p>
 									</div>
 									<div class="input_column">
-										<input id="duration" type="number">
+										<input id="speed" type="number">
 									</div>
 									<div class="input_column">
 										<p class="input_unit">mph</p>
@@ -284,8 +300,8 @@
 									</div>
 									<div class="input_column">
 										<td>
-											<input type="radio" id="peak" name="peak" value="yes">Yes
-											<input type="radio" id="peak" name="peak" value="no">No
+											<input type="radio" id="peak" name="peak" value="Yes">Yes
+											<input type="radio" id="peak" name="peak" value="No">No
 										</td>
 									</div>
 									<div class="input_column">
@@ -319,7 +335,7 @@
 									<p class="input_label">Number of open lanes</p>
 								</div>
 								<div class="input_column">
-									<input id="duration" type="number">
+									<input id="open" type="number">
 								</div>
 								<div class="input_column">
 								</div>
@@ -376,7 +392,11 @@
 									</table>
 								</div>
 								<div class="display_column_R">
-									<p>test</p>
+									<div id='estimation'>
+										<svg height="300px" width="300px" id="map">
+											<text id="Header" font-size="15px" font-weight="bold" fill="red" x="50%" y ="10%" dominant-baseline="middle" text-anchor="middle">Mean Queue Length = 2.13 mi</text>
+										</svg>
+									</div>
 								</div>
 							</div>
 						</div>	
@@ -450,8 +470,5 @@
 			</div>-->
 		</div>
 	</div>
-	
-	<div id = "dialog-2"></div>
-	
 </body>
 </html>

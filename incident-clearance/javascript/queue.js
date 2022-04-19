@@ -1,6 +1,6 @@
 "use strict";
 
-var model = {"real-time": null, "historical": null, "flow_rate":null, "duration":null, "lanes":null, "open_lanes":null, "historical_volume":null, "speed_upstream":null, "peak_hour": null};
+var model = {"real-time":null, "historical":false, "flow_rate":null, "duration":null, "lanes":null, "open_lanes":null, "historical_volume":null, "speed_upstream":null, "peak_hour": null};
 
 // first label initialization
 var newLine_1 = document.createElementNS('http://www.w3.org/2000/svg','line');
@@ -22,26 +22,8 @@ var inside_txt_3;
 var percent_txt_3;
 // average time line initialization
 var txtElem3 = document.createElementNS('http://www.w3.org/2000/svg','text');
-var timepickers;
-
 
 $(document).ready(function(){
-	// timepicker initialization
-	timepickers = $('.timepicker').wickedpicker();
-	// datepicker with day of week
-	$("#datepicker").datepicker({
-		defaultDate: new Date(),
-		onSelect: function(dateText, inst) {
-			var date = $.datepicker.parseDate(inst.settings.dateFormat || $.datepicker._defaults.dateFormat, dateText, inst.settings);
-			var dateText = $.datepicker.formatDate("DD", date, inst.settings);
-			$("p.name").text(dateText); // Just the day of week
-		}
-	});
-	$( "#datepicker" ).val($.datepicker.formatDate("mm-dd-yy", new Date()));
-	 
-	getDate();
-	my_getTime();
-
 	$('#data_source_radio1').click(function() {
 		$("#secondary_radios").hide();
 		$("#Save-1").removeAttr("disabled");
@@ -54,48 +36,88 @@ $(document).ready(function(){
 		}
 	});
 	$('#secondary_radios').click(function() {
-		$("#Save-1").removeAttr("disabled");
+		if($('#historical_radio1').prop('checked') || $('#historical_radio2').prop('checked')){
+			$("#Save-1").removeAttr("disabled");
+		}
 	});
-
-	//$("button[name='save']").click(printSum);
-	//$("button[name='save']").click(printTime);
 	
+	$("input").change(function() {
+		if(document.getElementById("duration").value > 0 &&
+		document.getElementById("lanes").value > 0 &&
+		document.getElementById("open").value > 0 &&
+		(!model['real-time'] || document.getElementById("flow").value > 0) &&
+		(!(!model['real-time'] && model['historical']) || document.getElementById("volume").value > 0) &&
+		(!(!model['real-time'] && !model['historical']) || (document.getElementById("speed").value > 0 && getRadioValue(document.getElementsByName('peak')) != null))) {
+			$("#Save-2").removeAttr("disabled");
+		}
+		else {
+			document.getElementById("Save-2").disabled = true;
+		}
+	});
 
 	$("#Save-1").click(function(){
 		$("#Next-1").removeAttr("disabled");
 		data_source_radio1
 		if($('#data_source_radio1').prop('checked')){
 			model['real-time'] = true;
+			$('#real_time_label').show();
+			$('#real_time_inputs').show();
+			
+			$('#historical_label').hide();
+			$('#historical_inputs').hide();
+			$('#historical_description').hide();
+			$('#speed_label').hide();
+			$('#speed_inputs').hide();
 		}
 		else if($('#data_source_radio2').prop('checked')){
 			if($('#historical_radio1').prop('checked')){
 				model['real-time'] = false;
 				model['historical'] = true;
+				$('#historical_label').show();
+				$('#historical_inputs').show();
+				$('#historical_description').show();
+
+				$('#real_time_label').hide();
+				$('#real_time_inputs').hide();
+				$('#speed_label').hide();
+				$('#speed_inputs').hide();
 			}
 			else if($('#historical_radio2').prop('checked')){
 				model['real-time'] = false;
 				model['historical'] = false;
+				$('#speed_label').show();
+				$('#speed_inputs').show();
+
+				$('#real_time_label').hide();
+				$('#real_time_inputs').hide();
+				$('#historical_label').hide();
+				$('#historical_inputs').hide();
+				$('#historical_description').hide();
 			}
 			else{
-				alert("Error, please reselect data source.")
+				alert("Error, please reselect data source.");
+				document.getElementById("Save-1").disabled = true;
+				document.getElementById("Next-1").disabled = true;
 			}
 		}
 		else{
-			alert("Error, please reselect data source.")
+			alert("Error, please reselect data source.");
+			document.getElementById("Save-1").disabled = true;
+			document.getElementById("Next-1").disabled = true;
 		}
 	});
 	$("#Save-2").click(function(){
 		$("#Next-2").removeAttr("disabled");
+
+		calculateResults(document);
 	});
 	$("#Save-3").click(function(){
-		$("#Next-3").removeAttr("disabled");
 	});
 
 	// next button handler	
 	$("#Next-1").click(function(){
 		$('.ui.menu').find('.item').tab('change tab', '2');
 	});
-
 	$("#Next-2").click(function(){
 		$('.ui.menu').find('.item').tab('change tab', '3');
 	});
@@ -109,153 +131,59 @@ $(document).ready(function(){
 	});
 });
 
-function getDate(){
-	// selecting the button and adding a click event
-	$("#Save-9").click(function() {
-		// alerting the value inside the textbox
-		var raw_date = $("#datepicker").datepicker("getDate");
-		date = ($.datepicker.formatDate("mm/dd/yy", raw_date));
-		console.log(date);
-		month = ($.datepicker.formatDate("mm", raw_date));
-		day = ($.datepicker.formatDate("dd", raw_date));
-		year = ($.datepicker.formatDate("yy", raw_date));
-		dayOfWeek = ($.datepicker.formatDate("DD", raw_date));
-		console.log(month);
-		console.log(day);
-		console.log(year);
-		console.log(dayOfWeek);
-
-		var winter_months = ['12', '01', '02'];
-		var spring_months = ['03', '04', '05'];
-		var summer_months = ['06', '07', '08'];
-		var fall_months = ['09', '10', '11'];
-		if (winter_months.includes(month)){
-			model['season_time'] = 'Winter';
+function getRadioValue(radios){
+	for(var i = 0; i < radios.length; i++) {
+		if(radios[i].type="radio") {
+			if(radios[i].checked){
+				return radios[i].value;
+			}
 		}
-		else if (spring_months.includes(month)){
-			model['season_time'] = 'Spring';
-		}
-		else if (summer_months.includes(month)){
-			model['season_time'] = 'Summer';
-		}
-		else if (fall_months.includes(month)){
-			model['season_time'] = 'Fall';
-		}
-		
-		console.log(model['season_time']);
-		console.log(model);
-	
-		if(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'].includes(dayOfWeek)){
-			model['weekend_time'] = 'Weekday';
-		}
-		else if(['Saturday', 'Sunday'].includes(dayOfWeek)){
-			model['weekend_time'] = 'Weekend';		
-		}
-		console.log(model['weekend_time']);
-		console.log(model);
-
-		// Consult for federal holidays https:// www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/
-		// Careful to consider that some holidays have floating days, and others have observed days when they fall on weekends
-		if(((month == '01')&&(day == '01')) || ((month == '01')&&(day == '02')) || ((month == '07')&&(day == '04')) || ((month == '11')&&(day == '11')) || ((month == '12')&&(day == '25'))){
-			nonholiday = 1;
-			nonholiday_sh = 0;
-			console.log(nonholiday);
-			model['holiday_time'] = 'Holiday';
-		}
-		// holidays below are floating days and are observed on different days each year
-		else if((year == '2020') && (((month == '01')&&(day == '20')) || ((month == '02')&&(day == '17')) || ((month == '05')&&(day == '25')) || ((month == '07')&&(day == '03')) || ((month == '09')&&(day == '07')) || ((month == '10')&&(day == '12')) || ((month == '11')&&(day == '11')) || ((month == '11')&&(day == '26')))){
-			nonholiday = 1;
-			nonholiday_sh = 0;
-			console.log(nonholiday);
-			model['holiday_time'] = 'Holiday';
-		}
-		else if((year == '2021') && (((month == '01')&&(day == '18')) || ((month == '02')&&(day == '15')) || ((month == '05')&&(day == '31')) || ((month == '07')&&(day == '05')) || ((month == '09')&&(day == '06')) || ((month == '10')&&(day == '11')) || ((month == '11')&&(day == '11')) || ((month == '11')&&(day == '25')) || ((month == '12')&&(day == '24')) || ((month == '12')&&(day == '31')))){
-			nonholiday = 1;
-			nonholiday_sh = 0;
-			console.log(nonholiday);
-			model['holiday_time'] = 'Holiday';
-		}
-		else if((year == '2022') && (((month == '01')&&(day == '17')) || ((month == '02')&&(day == '21')) || ((month == '05')&&(day == '30')) || ((month == '09')&&(day == '05')) || ((month == '10')&&(day == '10')) || ((month == '11')&&(day == '11')) || ((month == '11')&&(day == '24')) || ((month == '12')&&(day == '26')))){
-			nonholiday = 1;
-			nonholiday_sh = 0;
-			console.log(nonholiday);
-			model['holiday_time'] = 'Holiday';
-		}
-		else if((year == '2023') && (((month == '01')&&(day == '16')) || ((month == '02')&&(day == '20')) || ((month == '05')&&(day == '29')) || ((month == '09')&&(day == '04')) || ((month == '10')&&(day == '09')) || ((month == '11')&&(day == '10')) || ((month == '11')&&(day == '23')))){
-			nonholiday = 1;
-			nonholiday_sh = 0;
-			console.log(nonholiday);
-			model['holiday_time'] = 'Holiday';
-		}
-		else{
-			nonholiday = 0;
-			nonholiday_sh = 1;
-			console.log(nonholiday);
-			model['holiday_time'] = null;
-		}
-	});
-}
-	
-function my_getTime(){
-	$("#Save-9").click(function() {
-	var time = timepickers.wickedpicker('time');	
-	time = time.replace(" ", "");
-	time = date +' ' + time;
-	var curr_hour = new Date(time).getHours();
-	console.log(curr_hour);
-	num_hour = curr_hour
-	
-	var curr_min = new Date(time).getMinutes();
-	console.log(curr_min);
-	
-	console.log(model['weekend_time']);
-	if(model['weekend_time'] == 'Weekday'){
-		if ((curr_hour >= 7 ) && (curr_hour < 10)){
-			hour = 'AM-peak';
-			nighttime = 0;
-			model['hour_time'] = hour;
-			if((curr_hour >= 9) && (curr_hour < 10)){
-				ninetenam = 1;
-			}			
-		}
-		else if ((curr_hour >= 10 ) && (curr_hour < 16)){
-			hour = 'Day time';
-			daytime = 1;
-			nighttime = 0;
-			model['hour_time'] = hour;
-		}
-		else if ((curr_hour >= 16 ) && (curr_hour < 19)){
-			hour = 'PM-peak';
-			model['hour_time'] = hour;
-		}
-		else {
-			hour = 'Night time';
-			daytime = 0;
-			nighttime = 1;
-			model['hour_time'] = hour;
-		}	
-		console.log(time);
 	}
-	else if(model['weekend_time'] == 'Weekend'){
-		if((curr_hour >= 7 ) && (curr_hour < 19)){
-			hour = 'Day time';
-			daytime = 1;
-			nighttime = 0;
-			model['hour_time'] = hour;
-			if((curr_hour >= 9) && (curr_hour < 10)){
-				ninetenam = 1;
-			}			
+	return null;
+}
+
+function calculateResults(document) {
+	let I = document.getElementById('duration').value;
+	let OL = document.getElementById('open').value;
+	let L = document.getElementById('lanes').value;
+	let V = null;
+	if(model['real-time']) {
+		V = document.getElementById('flow').value;
+	}
+	else if(model['historical']){
+		V = document.getElementById('volume').value / L;
+	}
+	else if(!model['historical']) {
+		V = document.getElementById('speed').value;
+		let V_upper, V_lower;
+		let peak = getRadioValue(document.getElementsByName('peak')) == 'Yes' ? true : false;
+
+		if(V < 48) {
+			V_upper = 2.6660 * V * Math.log(Math.pow(2*75/V, 1/0.09)-1) - 107.583
+			V_lower = 2.1844 * V * Math.log(Math.pow(2*75/V, 1/0.09)-1) - 7.583
 		}
-		else{
-			hour = 'Night time';
-			daytime = 0;
-			nighttime = 1;
-			model['hour_time'] = hour;
+		else if(V > 48 && peak) {
+			V_upper = Math.min(2000, 800+(70-V)*(1200/(70-58.1)));
+			V_lower = Math.max(200, 200+(70-V)*(1800/(70-41.9)));
 		}
-	}	
-	
-	console.log(ninetenam);
-	});
+		else if(V > 48) {
+			V_upper = 435;
+			V_lower = 435;
+		}
+
+		if (V >= 42 && V <= 48 && peak){
+			V_upper = 1400;
+			V_lower = 1400;
+		}
+		else if (V >= 42 && V <= 48) {
+			V_upper = 400;
+			V_lower = 400;
+		}
+
+		V = (V_upper + V_lower) / 2;
+	}
+	let Q = ((4.5*V*I-8100*OL*I/L)/(1-0.000045*V)) * (1+1/(8100-4.5*V)) * 4.5*V;
+	let mean = Math.exp(-19.867) * Math.pow(Q, 0.215) * Math.pow(L*V, 0.932) * Math.pow(I*V, 0.556) * Math.pow(I/OL, 0.479) * Math.pow(V/OL, 1.641);
 }
 
 // Used to draw the labels in the bottom right corner
