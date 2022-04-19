@@ -22,6 +22,7 @@ var inside_txt_3;
 var percent_txt_3;
 // average time line initialization
 var txtElem3 = document.createElementNS('http://www.w3.org/2000/svg','text');
+var header_line;
 
 $(document).ready(function(){
 	$('#data_source_radio1').click(function() {
@@ -57,7 +58,6 @@ $(document).ready(function(){
 
 	$("#Save-1").click(function(){
 		$("#Next-1").removeAttr("disabled");
-		data_source_radio1
 		if($('#data_source_radio1').prop('checked')){
 			model['real-time'] = true;
 			$('#real_time_label').show();
@@ -68,6 +68,8 @@ $(document).ready(function(){
 			$('#historical_description').hide();
 			$('#speed_label').hide();
 			$('#speed_inputs').hide();
+
+			document.getElementById('result_type_label').innerText = "Flow rate per lane (veh/hr/ln)";
 		}
 		else if($('#data_source_radio2').prop('checked')){
 			if($('#historical_radio1').prop('checked')){
@@ -81,6 +83,8 @@ $(document).ready(function(){
 				$('#real_time_inputs').hide();
 				$('#speed_label').hide();
 				$('#speed_inputs').hide();
+
+				document.getElementById('result_type_label').innerText = "Historical volume (veh/hr)";
 			}
 			else if($('#historical_radio2').prop('checked')){
 				model['real-time'] = false;
@@ -93,6 +97,8 @@ $(document).ready(function(){
 				$('#historical_label').hide();
 				$('#historical_inputs').hide();
 				$('#historical_description').hide();
+				
+				document.getElementById('result_type_label').innerText = "Speed (mph), Peak hour";
 			}
 			else{
 				alert("Error, please reselect data source.");
@@ -111,14 +117,13 @@ $(document).ready(function(){
 
 		calculateResults(document);
 	});
-	$("#Save-3").click(function(){
-	});
 
 	// next button handler	
 	$("#Next-1").click(function(){
 		$('.ui.menu').find('.item').tab('change tab', '2');
 	});
 	$("#Next-2").click(function(){
+		printResults();
 		$('.ui.menu').find('.item').tab('change tab', '3');
 	});
 
@@ -144,17 +149,27 @@ function getRadioValue(radios){
 
 function calculateResults(document) {
 	let I = document.getElementById('duration').value;
+	document.getElementById("result_label_duration").innerText = I;
+
 	let OL = document.getElementById('open').value;
+
 	let L = document.getElementById('lanes').value;
+	document.getElementById("result_label_lanes").innerText = L;
+	document.getElementById("result_label_blocked").innerText = Math.max(L - OL, 0);
+
 	let V = null;
 	if(model['real-time']) {
 		V = document.getElementById('flow').value;
+		document.getElementById("result_label_A").innerText = V;
 	}
 	else if(model['historical']){
 		V = document.getElementById('volume').value / L;
+		document.getElementById("result_label_A").innerText = document.getElementById('volume').value;
 	}
 	else if(!model['historical']) {
 		V = document.getElementById('speed').value;
+		document.getElementById("result_label_A").innerText = V + ", " + getRadioValue(document.getElementsByName('peak'));
+
 		let V_upper, V_lower;
 		let peak = getRadioValue(document.getElementsByName('peak')) == 'Yes' ? true : false;
 
@@ -184,44 +199,135 @@ function calculateResults(document) {
 	}
 	let Q = ((4.5*V*I-8100*OL*I/L)/(1-0.000045*V)) * (1+1/(8100-4.5*V)) * 4.5*V;
 	let mean = Math.exp(-19.867) * Math.pow(Q, 0.215) * Math.pow(L*V, 0.932) * Math.pow(I*V, 0.556) * Math.pow(I/OL, 0.479) * Math.pow(V/OL, 1.641);
+
+	draw_mean(mean);
+	drawSVG1(mean);
+	drawSVG2(mean);
+	drawSVG3(mean);
+}
+
+function printResults(){
+	// first label
+	newLine_1.setAttribute('id','line1');
+	newLine_1.setAttribute('stroke','red');
+	newLine_1.setAttribute('stroke-width','15');
+	newLine_1.setAttribute('y1','60');
+	newLine_1.setAttribute('y2','60');
+							
+	txtElem_1.setAttributeNS(null,"id","text1");
+	txtElem_1.setAttributeNS(null,"font-size","15px");
+	txtElem_1.setAttributeNS(null,"font-weight","bold");
+	txtElem_1.setAttributeNS(null,"fill",'black');
+	txtElem_1.setAttributeNS(null,"y",65);
+				
+	txtElem2_1.setAttributeNS(null,"id","text2");
+	txtElem2_1.setAttributeNS(null,"font-size","15px");
+	txtElem2_1.setAttributeNS(null,"font-weight","bold");
+	txtElem2_1.setAttributeNS(null,"fill",'red');
+	txtElem2_1.setAttributeNS(null,"y",65);
+	// second label
+	console.log(newLine_2);
+	newLine_2.setAttribute('id','line2');
+	newLine_2.setAttribute('stroke','red');
+	newLine_2.setAttribute('stroke-width','15');
+	newLine_2.setAttribute('y1','85');
+	newLine_2.setAttribute('y2','85');
+
+	txtElem_2.setAttributeNS(null,"id","text1_2");
+	txtElem_2.setAttributeNS(null,"font-size","15px");
+	txtElem_2.setAttributeNS(null,"font-weight","bold");
+	txtElem_2.setAttributeNS(null,"fill",'black');
+	txtElem_2.setAttributeNS(null,"y",90);
+
+	txtElem2_2.setAttributeNS(null,"id","text2_2");
+	txtElem2_2.setAttributeNS(null,"font-size","15px");
+	txtElem2_2.setAttributeNS(null,"font-weight","bold");
+	txtElem2_2.setAttributeNS(null,"fill",'red');
+	txtElem2_2.setAttributeNS(null,"y",90);	
+	// third label
+	console.log(newLine_3);
+	newLine_3.setAttribute('id','line3');
+	newLine_3.setAttribute('stroke','red');
+	newLine_3.setAttribute('stroke-width','15');
+	newLine_3.setAttribute('y1','110');
+	newLine_3.setAttribute('y2','110');
+
+	txtElem_3.setAttributeNS(null,"id","text1_3");
+	txtElem_3.setAttributeNS(null,"font-size","15px");
+	txtElem_3.setAttributeNS(null,"font-weight","bold");
+	txtElem_3.setAttributeNS(null,"fill",'black');
+	txtElem_3.setAttributeNS(null,"y",115);
+				
+	txtElem2_3.setAttributeNS(null,"id","text2_3");
+	txtElem2_3.setAttributeNS(null,"font-size","15px");
+	txtElem2_3.setAttributeNS(null,"font-weight","bold");
+	txtElem2_3.setAttributeNS(null,"fill",'red');
+	txtElem2_3.setAttributeNS(null,"y",115);
+
+	txtElem_1.appendChild(inside_txt_1);
+	txtElem2_1.appendChild(percent_txt_1);
+	$("#map").append(newLine_1);
+	$("#map").append(txtElem_1);
+	$("#map").append(txtElem2_1);
+	// print second label
+	txtElem_2.appendChild(inside_txt_2);
+	txtElem2_2.appendChild(percent_txt_2);
+	$("#map").append(newLine_2);
+	$("#map").append(txtElem_2);
+	$("#map").append(txtElem2_2);
+	// print third label
+	txtElem_3.appendChild(inside_txt_3);
+	txtElem2_3.appendChild(percent_txt_3);
+	$("#map").append(newLine_3);
+	$("#map").append(txtElem_3);
+	$("#map").append(txtElem2_3);
+}
+
+function draw_mean(average_mean){
+	$("#Header").empty();
+	document.getElementById('Header').textContent = 'Mean Queue Length = ' + average_mean;
 }
 
 // Used to draw the labels in the bottom right corner
-function drawSVG1(x1, x2, txt1_x, txt2_x, txt1, txt2){
+function drawSVG1(mean){
+	let x1 = Math.max(mean - (1.282*430.4808), 0) * 50;
+	let x2 = Math.min(mean + (1.282*430.4808), 6) * 50;
+	
 	$("#line1").remove();
 	newLine_1.setAttribute('x1',x1);
 	newLine_1.setAttribute('x2',x2);
-	txtElem_1.setAttributeNS(null,"x",txt1_x);
-	txtElem2_1.setAttributeNS(null,"x",txt2_x);
+	txtElem_1.setAttributeNS(null,"x", x1);
+	txtElem2_1.setAttributeNS(null,"x", 300);
 	$("#text1").empty();
 	$("#text2").empty();
-	inside_txt_1 = document.createTextNode(txt1);
-	percent_txt_1 = document.createTextNode(txt2);
+	inside_txt_1 = document.createTextNode(Math.max(mean - (1.282*430.4808), 0) + '~' + mean + (1.282*430.4808));
+	percent_txt_1 = document.createTextNode("80%");
 }
-function drawSVG2(x1, x2, txt1_x, txt2_x, txt1, txt2){
+function drawSVG2(mean){
+	let x1 = Math.max(mean - (1.645*430.4808), 0) * 50;
+	let x2 = Math.min(mean + (1.645*430.4808), 6) * 50;
+
 	$("#line2").remove();
 	newLine_2.setAttribute('x1',x1);
-	newLine_2.setAttribute('x2', x2);
-	txtElem_2.setAttributeNS(null,"x",txt1_x);
-	txtElem2_2.setAttributeNS(null,"x",txt2_x);
+	newLine_2.setAttribute('x2',x2);
+	txtElem_2.setAttributeNS(null,"x", x1);
+	txtElem2_2.setAttributeNS(null,"x", 300);
 	$("#text1_2").empty();
 	$("#text2_2").empty();
-	inside_txt_2 = document.createTextNode(txt1);
-	percent_txt_2 = document.createTextNode(txt2);
+	inside_txt_2 = document.createTextNode(Math.max(mean - (1.645*430.4808), 0) + '~' + mean + (1.645*430.4808));
+	percent_txt_2 = document.createTextNode("90%");
 }
-function drawSVG3(x1, x2, txt1_x, txt2_x, txt1, txt2){
+function drawSVG3(mean){
+	let x1 = Math.max(mean - (1.960*430.4808), 0) * 50;
+	let x2 = Math.min(mean + (1.960*430.4808), 6) * 50;
+
 	$("#line3").remove();
-	newLine_3.setAttribute('x1', x1);
-	newLine_3.setAttribute('x2', x2);
-	txtElem_3.setAttributeNS(null,"x",txt1_x);
-	txtElem2_3.setAttributeNS(null,"x",txt2_x);
+	newLine_3.setAttribute('x1',x1);
+	newLine_3.setAttribute('x2',x2);
+	txtElem_3.setAttributeNS(null,"x", x1);
+	txtElem2_3.setAttributeNS(null,"x", 300);
 	$("#text1_3").empty();
 	$("#text2_3").empty();
-	inside_txt_3 = document.createTextNode(txt1);
-	percent_txt_3 = document.createTextNode(txt2);
-}
-function drawSVG4(average_time){
-	// update average time line
-	$("#text3").empty();
-	last_line = document.createTextNode(average_time);
+	inside_txt_3 = document.createTextNode(Math.max(mean - (1.960*430.4808), 0) + '~' + mean + (1.960*430.4808));
+	percent_txt_3 = document.createTextNode("95%");
 }

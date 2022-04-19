@@ -35,13 +35,6 @@
 			width: 790px;
 			height: 570px;
 		}
-		#estimation {
-			width: 300px;
-			height: 300px;
-			margin-left: 50px;
-			margin-top: 50px;
-			background-color:#fcf4cc;
-		}
 		#checkbox-size {
 			width: 780px;
 			height: 425px;
@@ -53,19 +46,6 @@
 
 		label.type {
 			width: 180px;
-		}
-		.field {
-			position: relative;
-			float: left;
-			width:  135px;
-			height: 100px;
-
-			background-position: 50% 50%;
-			background-repeat:   no-repeat;
-			background-size:	 cover;
-		}
-		#ph6 {
-			padding-left: 35px;
 		}
 		#row-size {
 			width: 750px;
@@ -195,10 +175,21 @@
 		td {
 			border: 1px solid black;
 			text-align: center;
+			font-size: 15px;
+		}
+
+		#map {
+			width: 300px;
+			height: 300px;
+			margin-left: 50px;
+			margin-top: 50px;
+			border: 1px solid rgba(34,36,38,.15);
+			border-radius: 2.285rem;
+			background-color:#fcf4cc;
 		}
 
 	</style>
-	<title>Incident Clearance Time Prediction Program</title>
+	<title>Incident Queue Length Prediction Program</title>
 </head>
 <body>
 	<div class="ui container" id="container">
@@ -366,37 +357,35 @@
 								<div class="display_column_L">
 									<table class="result_table">
 										<tr>
-											<td>Flow rate per lane (veh/hr/ln)</td>
+											<td id='result_type_label'>Flow rate per lane (veh/hr/ln)</td>
 										</tr>
 										<tr>
-											<td>0</td>
+											<td id="result_label_A">0</td>
 										</tr>
 										<tr>
 											<td>Incident duration (mins)</td>
 										</tr>
 										<tr>
-											<td>0</td>
+											<td id="result_label_duration">0</td>
 										</tr>
 										<tr>
 											<td>Total Number of lanes</td>
 										</tr>
 										<tr>
-											<td>0</td>
+											<td id="result_label_lanes">0</td>
 										</tr>
 										<tr>
 											<td>Number of blocked lanes</td>
 										</tr>
 										<tr>
-											<td>0</td>
+											<td id="result_label_blocked">0</td>
 										</tr>
 									</table>
 								</div>
 								<div class="display_column_R">
-									<div id='estimation'>
-										<svg height="300px" width="300px" id="map">
-											<text id="Header" font-size="15px" font-weight="bold" fill="red" x="50%" y ="10%" dominant-baseline="middle" text-anchor="middle">Mean Queue Length = 2.13 mi</text>
-										</svg>
-									</div>
+									<svg height="300px" width="300px" id="map">
+										<text id="Header" font-size="15px" font-weight="bold" fill="red" x="50%" y ="10%" dominant-baseline="middle" text-anchor="middle">Mean Queue Length</text>
+									</svg>
 								</div>
 							</div>
 						</div>	
@@ -405,7 +394,6 @@
 				<div class="ui grid">
 					<div class="column" id="button-size">
 						<div class="one column row" id="button-row">
-							<button class="ui right floated blue button" id="Save-3" disabled name="save">Save</button>
 							<button class="ui right floated blue button" id="Back-3" disabled>Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
 						</div>
@@ -413,61 +401,6 @@
 
 				</div>
 			</div>
-			<!--
-			<div class="ui grid">
-				<div class="two column row" id="row-size">
-					<div class="column">
-						<div class="ui segment"  id="tab-size" style="background-color:#fcf4cc;">
-							<div class="ui top attached tabular menu">
-								<div class="item" style="font-size:20px; font-weight:bold;">
-									Summary
-								</div>
-							</div>
-							<div id="summary" style="height:80%; overflow-y:auto;">
-							</div>
-						</div>
-					</div>
-					<div class="column">
-						<div class="ui segment" id="tab-size"  style="background-color:#fcf4cc;">
-							<div class="ui top attached tabular menu">
-								<div class="item" style="font-size:16px; font-weight:bold; padding-left:1px">
-									<h id="boxheader">Estimated Clearance Time</h>
-								</div>
-							</div>
-							<div id="estimation">
-								<svg height="150px" width="350px" id="map">
-									<defs>
-										<marker id="arrow" markerheight="10" markerunits="userSpaceOnUse" markerwidth="10" orient="auto" refx="0" refy="3">
-											<path d="M0,0 L0,6 L9,3 z" fill="#f00"></path>
-										</marker>
-										<marker id="Circle" markerheight="10" markerwidth="10" orient="auto" refx="5" refy="5">
-											<circle cx="5" cy="5" fill="dodgerblue" r="2"></circle>
-										</marker>
-										<marker id="Square" markerheight="10" markerwidth="10" orient="auto" refx="0" refy="3">
-											<path d="M 5,1 L 9,5 5,9 1,5 z" fill="#6a9100"></path>
-										</marker>
-									</defs>
-									<line marker-end="url(#Circle)" marker-start="url(#arrow)" stroke="#000" stroke-width="2" x1="0" x2="60" y1="20" y2="20"></line>
-									<text x="45" y="35" id="first_stop" style="font-size: 15px; font-weight:bold">
-										30min
-									</text>
-									<line marker-end="url(#Circle)" stroke="#000" stroke-width="2" x1="60" x2="120" y1="20" y2="20"></line>
-									<text x="105" y="35" id="second_stop" style="font-size: 15px; font-weight:bold">
-										60min
-									</text>
-									<line stroke="#000" stroke-width="2" x1="120" x2="180" y1="20" y2="20"></line>
-									<line marker-end="url(#Circle)" stroke="#000" stroke-width="2" x1="180" x2="240" y1="20" y2="20"></line>
-									<text x="225" y="35" id="fourth_stop" style="font-size: 15px; font-weight:bold">
-										120min
-									</text>
-									<line marker-end="url(#arrow)" stroke="#000" stroke-width="2" x1="240" x2="300" y1="20" y2="20"></line>	
-									<line stroke="red" stroke-width="15" style="font-size: 17px"></line>
-								</svg>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>-->
 		</div>
 	</div>
 </body>
