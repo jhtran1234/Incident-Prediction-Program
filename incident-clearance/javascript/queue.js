@@ -23,6 +23,7 @@ var percent_txt_3;
 // average time line initialization
 var txtElem3 = document.createElementNS('http://www.w3.org/2000/svg','text');
 var header_line;
+const meters_to_miles = 0.000621371192;
 
 $(document).ready(function(){
 	$('#data_source_radio1').click(function() {
@@ -58,6 +59,10 @@ $(document).ready(function(){
 
 	$("#Save-1").click(function(){
 		$("#Next-1").removeAttr("disabled");
+
+		document.getElementById('result_type_label_B').style.display = 'none';
+		document.getElementById('result_label_B').style.display = 'none';
+
 		if($('#data_source_radio1').prop('checked')){
 			model['real-time'] = true;
 			$('#real_time_label').show();
@@ -173,7 +178,7 @@ function calculateResults(document) {
 		let V_upper, V_lower;
 		let peak = getRadioValue(document.getElementsByName('peak')) == 'Yes' ? true : false;
 
-		if(V < 48) {
+		if(V < 42) {
 			V_upper = 2.6660 * V * Math.log(Math.pow(2*75/V, 1/0.09)-1) - 107.583
 			V_lower = 2.1844 * V * Math.log(Math.pow(2*75/V, 1/0.09)-1) - 7.583
 		}
@@ -196,9 +201,19 @@ function calculateResults(document) {
 		}
 
 		V = (V_upper + V_lower) / 2;
+		
+		document.getElementById("result_type_label_B").innerText = 'Estimated flow rate per lane (veh/hr/ln)';
+		document.getElementById("result_label_B").innerText = (V*100).toFixed()/100;;
+		document.getElementById('result_type_label_B').style.display = 'block';
+		document.getElementById('result_label_B').style.display = 'block';
 	}
-	let Q = ((4.5*V*I-8100*OL*I/L)/(1-0.000045*V)) * (1+1/(8100-4.5*V)) * 4.5*V;
-	let mean = Math.exp(-19.867) * Math.pow(Q, 0.215) * Math.pow(L*V, 0.932) * Math.pow(I*V, 0.556) * Math.pow(I/OL, 0.479) * Math.pow(V/OL, 1.641);
+
+	let q = (3*V*I/40 - 135*OL*I/L)/(1-9*V/200000)
+	let T = (q/(2200-V))/4.5;
+	let Q = q + 4.5*T*V;
+	
+	let mean = Math.exp(-19.8674) * Math.pow(Q, 0.2154) * Math.pow(L*V, 0.9320) * Math.pow(I*V, 0.5562) * Math.pow(I/OL, 0.4795) * Math.pow(V/OL, 1.6407);
+	mean = mean * meters_to_miles;
 
 	draw_mean(mean);
 	drawSVG1(mean);
@@ -285,49 +300,63 @@ function printResults(){
 
 function draw_mean(average_mean){
 	$("#Header").empty();
-	document.getElementById('Header').textContent = 'Mean Queue Length = ' + average_mean;
+	
+	average_mean = (average_mean*100).toFixed()/100;
+	document.getElementById('Header').textContent = 'Mean Queue Length = ' + average_mean + ' miles';
 }
 
 // Used to draw the labels in the bottom right corner
 function drawSVG1(mean){
-	let x1 = Math.max(mean - (1.282*430.4808), 0) * 50;
-	let x2 = Math.min(mean + (1.282*430.4808), 6) * 50;
+	let min_bound = Math.max(mean - (1.282*430.4808*meters_to_miles), 0);
+	min_bound = (min_bound*100).toFixed()/100;
+	let max_bound = mean + (1.282*430.4808*meters_to_miles);
+	max_bound = (max_bound*100).toFixed()/100;
+	let x1 = min_bound * 50;
+	let x2 = Math.min(max_bound, 6) * 50;
 	
 	$("#line1").remove();
 	newLine_1.setAttribute('x1',x1);
 	newLine_1.setAttribute('x2',x2);
-	txtElem_1.setAttributeNS(null,"x", x1);
+	txtElem_1.setAttributeNS(null,"x", 10);
 	txtElem2_1.setAttributeNS(null,"x", 300);
 	$("#text1").empty();
 	$("#text2").empty();
-	inside_txt_1 = document.createTextNode(Math.max(mean - (1.282*430.4808), 0) + '~' + mean + (1.282*430.4808));
+	inside_txt_1 = document.createTextNode(min_bound + '~' + max_bound);
 	percent_txt_1 = document.createTextNode("80%");
 }
 function drawSVG2(mean){
-	let x1 = Math.max(mean - (1.645*430.4808), 0) * 50;
-	let x2 = Math.min(mean + (1.645*430.4808), 6) * 50;
+	let min_bound = Math.max(mean - (1.645*430.4808*meters_to_miles), 0);
+	min_bound = (min_bound*100).toFixed()/100;
+	let max_bound = mean + (1.645*430.4808*meters_to_miles);
+	max_bound = (max_bound*100).toFixed()/100;
+	let x1 = min_bound * 50;
+	let x2 = Math.min(max_bound, 6) * 50;
 
 	$("#line2").remove();
 	newLine_2.setAttribute('x1',x1);
 	newLine_2.setAttribute('x2',x2);
-	txtElem_2.setAttributeNS(null,"x", x1);
+	txtElem_2.setAttributeNS(null,"x", 10);
 	txtElem2_2.setAttributeNS(null,"x", 300);
 	$("#text1_2").empty();
 	$("#text2_2").empty();
-	inside_txt_2 = document.createTextNode(Math.max(mean - (1.645*430.4808), 0) + '~' + mean + (1.645*430.4808));
+	inside_txt_2 = document.createTextNode(min_bound + '~' + max_bound);
 	percent_txt_2 = document.createTextNode("90%");
 }
 function drawSVG3(mean){
-	let x1 = Math.max(mean - (1.960*430.4808), 0) * 50;
-	let x2 = Math.min(mean + (1.960*430.4808), 6) * 50;
+	let min_bound = Math.max(mean - (1.960*430.4808*meters_to_miles), 0);
+	min_bound = (min_bound*100).toFixed()/100;
+	let max_bound = mean + (1.960*430.4808*meters_to_miles);
+	max_bound = (max_bound*100).toFixed()/100;
+	let x1 = min_bound * 50;
+	let x2 = Math.min(max_bound, 6) * 50;
 
 	$("#line3").remove();
 	newLine_3.setAttribute('x1',x1);
 	newLine_3.setAttribute('x2',x2);
-	txtElem_3.setAttributeNS(null,"x", x1);
+	txtElem_3.setAttributeNS(null,"x", 10);
 	txtElem2_3.setAttributeNS(null,"x", 300);
 	$("#text1_3").empty();
 	$("#text2_3").empty();
-	inside_txt_3 = document.createTextNode(Math.max(mean - (1.960*430.4808), 0) + '~' + mean + (1.960*430.4808));
+	inside_txt_3 = document.createTextNode(min_bound + '~' + max_bound);
 	percent_txt_3 = document.createTextNode("95%");
 }
