@@ -166,10 +166,12 @@ function calculateResults(document) {
 	if(model['real-time']) {
 		V = document.getElementById('flow').value;
 		document.getElementById("result_label_A").innerText = V;
+		document.getElementById('result_table').style.marginTop = '15%';
 	}
 	else if(model['historical']){
 		V = document.getElementById('volume').value / L;
 		document.getElementById("result_label_A").innerText = document.getElementById('volume').value;
+		document.getElementById('result_table').style.marginTop = '15%';
 	}
 	else if(!model['historical']) {
 		V = document.getElementById('speed').value;
@@ -206,6 +208,7 @@ function calculateResults(document) {
 		document.getElementById("result_label_B").innerText = (V*100).toFixed()/100;;
 		document.getElementById('result_type_label_B').style.display = 'block';
 		document.getElementById('result_label_B').style.display = 'block';
+		document.getElementById('result_table').style.marginTop = '3%';
 	}
 
 	let q = (3*V*I/40 - 135*OL*I/L)/(1-9*V/200000)
@@ -321,7 +324,7 @@ function drawSVG1(mean){
 	txtElem2_1.setAttributeNS(null,"x", 300);
 	$("#text1").empty();
 	$("#text2").empty();
-	inside_txt_1 = document.createTextNode(min_bound + '~' + max_bound);
+	inside_txt_1 = document.createTextNode(min_bound + '~' + max_bound + "mi");
 	percent_txt_1 = document.createTextNode("80%");
 }
 function drawSVG2(mean){
@@ -339,7 +342,7 @@ function drawSVG2(mean){
 	txtElem2_2.setAttributeNS(null,"x", 300);
 	$("#text1_2").empty();
 	$("#text2_2").empty();
-	inside_txt_2 = document.createTextNode(min_bound + '~' + max_bound);
+	inside_txt_2 = document.createTextNode(min_bound + '~' + max_bound + "mi");
 	percent_txt_2 = document.createTextNode("90%");
 }
 function drawSVG3(mean){
@@ -357,6 +360,6 @@ function drawSVG3(mean){
 	txtElem2_3.setAttributeNS(null,"x", 300);
 	$("#text1_3").empty();
 	$("#text2_3").empty();
-	inside_txt_3 = document.createTextNode(min_bound + '~' + max_bound);
+	inside_txt_3 = document.createTextNode(min_bound + '~' + max_bound + "mi");
 	percent_txt_3 = document.createTextNode("95%");
 }

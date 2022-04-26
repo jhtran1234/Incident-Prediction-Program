@@ -55,7 +55,6 @@
 		.item {
 			font-size: 16px;
 		}
-
 				
 		#color-bar {
 			width: 50%;
@@ -65,13 +64,13 @@
 		}
 
 		.text {
-			font-family: Cambria;
 			font-size: 14px;
 			text-align: center;
+			margin-left: 45px !important;
+			margin-right: 45px !important;
 		}
 
 		.tab_label {
-			font-family: Cambria;
 			font-size: 24px;
 			text-align: center;
 			margin-top: 0px !important;
@@ -80,29 +79,33 @@
 		}
 
 		#radio-label1  {
-			font-family: Cambria;
-			font-size: 20px;
+			font-size: 25px;
 		}
 
 		#radio_label3, #radio_label4 {
-			font-family: Cambria;
-			font-size: 16px;
+			font-size: 20px;
 		}
 
 		#data_source_radio1, #data_source_radio2 { 
-     		transform: scale(1.76923077);
-			margin-left: 245px;
+     		transform: scale(1.92307692308);
+			margin-left: 190px;
 			margin-right: 20px;
-			margin-top: 20px;
+			margin-top: 50px;
  		}
 
 		#historical_radio1, #historical_radio2 {
-     		transform: scale(1.23076923);
-			margin-left: 285px;
+			transform: scale(1.53846153846);
+			margin-left: 245px;
 			margin-right: 20px;
-			margin-top: 20px;
+			margin-top: 25px;
 		}
 		
+		#peak {
+			transform: scale(1.53846153846);
+			margin-right: 10px;
+			margin-top: 13.572px;
+		}
+
 		#secondary_radios {
 			display: none;
 		}
@@ -126,12 +129,25 @@
 			display: table;
 			clear: both;
 		}
-		.input_column {
+
+		.input_column_L, .input_column_M, .input_column_R {
 			float: left;
-			width: 33.33%;
 			text-align: center;
-			font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif !important;
-			font-size: 14px;
+			font-size: 20px;
+		}
+		.input_column_L {
+			width: 50%;
+		}
+		.input_column_M {
+			width: 30%;
+		}
+		.input_column_R {
+			width: 20%;
+		}
+
+		.input_label, .input_unit, .input_label_two_line {
+			margin-left: 20px;
+			margin-right: 20px;
 		}
 		.input_label, .input_unit {
 			margin-top: 9px !important;
@@ -167,15 +183,16 @@
 		}
 		.result_table {
 			background-color:#fcf4cc;
-			margin-top: 40%;
-  			border: 1px solid black;
+			margin-top: 15%;
 			margin-left: auto;
 			margin-right: auto;
 		}
 		td {
-			border: 1px solid black;
+			border: 3px solid black;
 			text-align: center;
 			font-size: 18px;
+			padding-top: 8px;
+			padding-bottom: 8px;
 		}
 
 		#result_type_label_B, #result_label_B {
@@ -201,13 +218,13 @@
 	<div class="ui container" id="container">
 		<div class="ui top attached segment incident-info" id="form-size">
 			<div class="ui top attached tabular menu">
-				<div class="item active" data-tab="1" id="data_tab_1"><b>
+				<div class="item active" data-tab="1" id="data_tab_1" style="padding-left: 47.192px; padding-right: 47.192px;"><b>
 					Data Source Selection
 				</b></div>
-				<div class="item" data-tab="2" id="data_tab_2"><b>
+				<div class="item" data-tab="2" id="data_tab_2" style="padding-left: 49.205px; padding-right: 49.205px;"><b>
 					Input of Related Data
 				</b></div>
-				<div class="item" data-tab="3" id="data_tab_3"><b>
+				<div class="item" data-tab="3" id="data_tab_3" style="padding-left: 38.923666px; padding-right: 38.923666px;"><b>
 					Predicted Queue Length
 				</b></div>
 			</div>
@@ -221,7 +238,7 @@
 							<input type="radio" id="data_source_radio1" name="data_source" value="with">
 							<label id="radio-label1" for="with">With real-time detector data</label><br>
 							<input type="radio" id="data_source_radio2" name="data_source" value="without">
-							<label id="radio-label1" for="without">Without real-time detector data</label><br>
+							<label id="radio-label1" for="without">Without real-time detector data</label><br><br>
 							<div id="secondary_radios">
 								<input type="radio" id="historical_radio1" name="historical" value="historical">
 								<label id="radio_label3" for="historical">Apply historical volume</label><br>
@@ -251,90 +268,89 @@
 							<p class="tab_label" id="historical_label">Without real-time detector data - Historical Volume</p>
 							<p class="tab_label" id="speed_label">Without real-time detector data - Speed data</p>
 							<img src="images/md color bar.png" id="color-bar">
-							<p class="text" id="historical_description">Link for historical data: https://maps.roads.maryland.gov/itms_public/</p>
+							<p class="text" id="historical_description">Link for historical data: <a target="_blank" href="https://maps.roads.maryland.gov/itms_public/">https://maps.roads.maryland.gov/itms_public/</a></p>
 							</br>
 							<div id="real_time_inputs">
 								<div class="input_row">
-									<div class="input_column">
+									<div class="input_column_L">
 										<p class="input_label_two_line">Flow rate per lane of the unaffected upstream segment</p>
 									</div>
-									<div class="input_column">
+									<div class="input_column_M">
 										<input id="flow" type="number">
 									</div>
-									<div class="input_column">
+									<div class="input_column_R">
 										<p class="input_unit">veh/hr/ln</p>
 									</div>
 								</div></br>
 							</div>
 							<div id="historical_inputs">
 								<div class="input_row">
-									<div class="input_column">
+									<div class="input_column_L">
 										<p class="input_label_two_line">Historical volume of the unaffected upstream segment</p>
 									</div>
-									<div class="input_column">
+									<div class="input_column_M">
 										<input id="volume" type="number">
 									</div>
-									<div class="input_column">
+									<div class="input_column_R">
 										<p class="input_unit">veh/hr</p>
 									</div>
 								</div></br>
 							</div>
 							<div id="speed_inputs">
 								<div class="input_row">
-									<div class="input_column">
-										<p class="input_label_two_line">Speed of the unaffected upstream segment</p>
+									<div class="input_column_L">
+										<p class="input_label_two_line">Peak hour (hourly volume > 800 veh/hr)</p>
 									</div>
-									<div class="input_column">
-										<input id="speed" type="number">
+									<div class="input_column_M">
+										<td>
+											<input type="radio" id="peak" name="peak" value="Yes">Yes
+											<input type="radio" id="peak" name="peak" value="No" style="margin-left: 30px;">No
+										</td>
 									</div>
-									<div class="input_column">
-										<p class="input_unit">mph</p>
+									<div class="input_column_R">
 									</div>
 								</div></br>
 								<div class="input_row">
-									<div class="input_column">
-										<p class="input_label_two_line">Peak hour (hourly volume > 800 veh/hr)</p>
+									<div class="input_column_L">
+										<p class="input_label_two_line">Speed of the unaffected upstream segment</p>
 									</div>
-									<div class="input_column">
-										<td>
-											<input type="radio" id="peak" name="peak" value="Yes">Yes
-											<input type="radio" id="peak" name="peak" value="No">No
-										</td>
+									<div class="input_column_M">
+										<input id="speed" type="number">
 									</div>
-									<div class="input_column">
+									<div class="input_column_R">
+										<p class="input_unit">mph</p>
 									</div>
 								</div></br>
 							</div>
-
 							<div class="input_row">
-								<div class="input_column">
+								<div class="input_column_L">
 									<p class="input_label">Incident duration (minutes)</p>
 								</div>
-								<div class="input_column">
+								<div class="input_column_M">
 									<input id="duration" type="number">
 								</div>
-								<div class="input_column">
+								<div class="input_column_R">
 									<p class="input_unit">minutes</p>
 								</div>
 							</div></br>
 							<div class="input_row">
-								<div class="input_column">
+								<div class="input_column_L">
 									<p class="input_label">Total number of lanes</p>
 								</div>
-								<div class="input_column">
+								<div class="input_column_M">
 									<input id="lanes" type="number">
 								</div>
-								<div class="input_column">
+								<div class="input_column_R">
 								</div>
 							</div></br>
 							<div class="input_row">
-								<div class="input_column">
+								<div class="input_column_L">
 									<p class="input_label">Number of open lanes</p>
 								</div>
-								<div class="input_column">
+								<div class="input_column_M">
 									<input id="open" type="number">
 								</div>
-								<div class="input_column">
+								<div class="input_column_R">
 								</div>
 							</div>
 						</div>
@@ -361,33 +377,33 @@
 							<img src="images/md color bar.png" id="color-bar">
 							<div class="display_row">
 								<div class="display_column_L">
-									<table class="result_table">
+									<table class="result_table" id = 'result_table'>
 										<tr>
-											<td id='result_type_label'>Flow rate per lane (veh/hr/ln)</td>
+											<td style='font-weight:bold;' id='result_type_label'>Flow rate per lane (veh/hr/ln)</td>
 										</tr>
 										<tr>
 											<td id="result_label_A">0</td>
 										</tr>
 										<tr>
-											<td id='result_type_label_B'></td>
+											<td style='font-weight:bold;' id='result_type_label_B'></td>
 										</tr>
 										<tr>
 											<td id="result_label_B"></td>
 										</tr>
 										<tr>
-											<td>Incident duration (mins)</td>
+											<td style='font-weight:bold;'>Incident duration (mins)</td>
 										</tr>
 										<tr>
 											<td id="result_label_duration">0</td>
 										</tr>
 										<tr>
-											<td>Total Number of lanes</td>
+											<td style='font-weight:bold;'>Total Number of lanes</td>
 										</tr>
 										<tr>
 											<td id="result_label_lanes">0</td>
 										</tr>
 										<tr>
-											<td>Number of blocked lanes</td>
+											<td style='font-weight:bold;'>Number of blocked lanes</td>
 										</tr>
 										<tr>
 											<td id="result_label_blocked">0</td>
@@ -396,7 +412,7 @@
 								</div>
 								<div class="display_column_R">
 									<svg id="map">
-										<text id="Header" font-size="15px" font-weight="bold" fill="red" x="50%" y ="10%" dominant-baseline="middle" text-anchor="middle">Mean Queue Length</text>
+										<text id="Header" font-size="18px" font-weight="bold" fill="red" x="50%" y ="10%" dominant-baseline="middle" text-anchor="middle">Mean Queue Length</text>
 									</svg>
 								</div>
 							</div>
@@ -406,7 +422,7 @@
 				<div class="ui grid">
 					<div class="column" id="button-size">
 						<div class="one column row" id="button-row">
-							<button class="ui right floated blue button" id="Back-3" disabled>Back</button>
+							<button class="ui right floated blue button" id="Back-3">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
 						</div>
 					</div>
