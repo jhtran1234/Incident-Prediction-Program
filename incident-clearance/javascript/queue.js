@@ -206,8 +206,8 @@ function calculateResults(document) {
 		
 		document.getElementById("result_type_label_B").innerText = 'Estimated flow rate per lane (veh/hr/ln)';
 		document.getElementById("result_label_B").innerText = (V*100).toFixed()/100;;
-		document.getElementById('result_type_label_B').style.display = 'block';
-		document.getElementById('result_label_B').style.display = 'block';
+		document.getElementById('result_type_label_B').style.display = 'table-cell';
+		document.getElementById('result_label_B').style.display = 'table-cell';
 		document.getElementById('result_table').style.marginTop = '3%';
 	}
 
