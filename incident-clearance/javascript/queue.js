@@ -167,11 +167,13 @@ function calculateResults(document) {
 		V = document.getElementById('flow').value;
 		document.getElementById("result_label_A").innerText = V;
 		document.getElementById('result_table').style.marginTop = '15%';
+		document.getElementById('result_table').style.marginRight = 'auto';
 	}
 	else if(model['historical']){
 		V = document.getElementById('volume').value / L;
 		document.getElementById("result_label_A").innerText = document.getElementById('volume').value;
 		document.getElementById('result_table').style.marginTop = '15%';
+		document.getElementById('result_table').style.marginRight = 'auto';
 	}
 	else if(!model['historical']) {
 		V = document.getElementById('speed').value;
@@ -184,7 +186,7 @@ function calculateResults(document) {
 			V_upper = 2.6660 * V * Math.log(Math.pow(2*75/V, 1/0.09)-1) - 107.583
 			V_lower = 2.1844 * V * Math.log(Math.pow(2*75/V, 1/0.09)-1) - 7.583
 		}
-		else if(V > 48 && peak) {
+		else if(V > 48 && V <= 70 && peak) {
 			V_upper = Math.min(2000, 800+(70-V)*(1200/(70-58.1)));
 			V_lower = Math.max(200, 200+(70-V)*(1800/(70-41.9)));
 		}
@@ -209,13 +211,14 @@ function calculateResults(document) {
 		document.getElementById('result_type_label_B').style.display = 'table-cell';
 		document.getElementById('result_label_B').style.display = 'table-cell';
 		document.getElementById('result_table').style.marginTop = '3%';
+		document.getElementById('result_table').style.marginRight = '0px';
 	}
 
 	let q = (3*V*I/40 - 135*OL*I/L)/(1-9*V/200000)
 	let T = (q/(2200-V))/4.5;
 	let Q = q + 4.5*T*V;
 	
-	let mean = Math.exp(-19.8674) * Math.pow(Q, 0.2154) * Math.pow(L*V, 0.9320) * Math.pow(I*V, 0.5562) * Math.pow(I/OL, 0.4795) * Math.pow(V/OL, 1.6407);
+	let mean = Q < 0 ? 0 : Math.exp(-19.8674) * Math.pow(Q, 0.2154) * Math.pow(L*V, 0.9320) * Math.pow(I*V, 0.5562) * Math.pow(I/OL, 0.4795) * Math.pow(V/OL, 1.6407);
 	mean = mean * meters_to_miles;
 
 	draw_mean(mean);
@@ -225,62 +228,84 @@ function calculateResults(document) {
 }
 
 function printResults(){
+	var font_size = '16px';
+	var bar_width = 25;
+	var y_1 = 130;
+	var gap = 70;
+
 	// first label
 	newLine_1.setAttribute('id','line1');
 	newLine_1.setAttribute('stroke','red');
-	newLine_1.setAttribute('stroke-width','15');
-	newLine_1.setAttribute('y1','60');
-	newLine_1.setAttribute('y2','60');
+	newLine_1.setAttribute('stroke-width',bar_width);
+	newLine_1.setAttribute('y1',y_1);
+	newLine_1.setAttribute('y2',y_1);
 							
 	txtElem_1.setAttributeNS(null,"id","text1");
-	txtElem_1.setAttributeNS(null,"font-size","15px");
+	txtElem_1.setAttributeNS(null,"font-size",font_size);
 	txtElem_1.setAttributeNS(null,"font-weight","bold");
 	txtElem_1.setAttributeNS(null,"fill",'black');
-	txtElem_1.setAttributeNS(null,"y",65);
+	txtElem_1.setAttributeNS(null,"x", '50%');
+	txtElem_1.setAttributeNS(null,"y",y_1 - 25);
+	txtElem_1.setAttribute('dominant-baseline','middle');
+	txtElem_1.setAttribute('text-anchor','middle');
 				
 	txtElem2_1.setAttributeNS(null,"id","text2");
-	txtElem2_1.setAttributeNS(null,"font-size","15px");
+	txtElem2_1.setAttributeNS(null,"font-size",font_size);
 	txtElem2_1.setAttributeNS(null,"font-weight","bold");
 	txtElem2_1.setAttributeNS(null,"fill",'red');
-	txtElem2_1.setAttributeNS(null,"y",65);
+	txtElem2_1.setAttributeNS(null,"x", 300);
+	txtElem2_1.setAttributeNS(null,"y",y_1 - 25);
+	txtElem2_1.setAttribute('dominant-baseline','middle');
+
 	// second label
 	console.log(newLine_2);
 	newLine_2.setAttribute('id','line2');
 	newLine_2.setAttribute('stroke','red');
-	newLine_2.setAttribute('stroke-width','15');
-	newLine_2.setAttribute('y1','85');
-	newLine_2.setAttribute('y2','85');
+	newLine_2.setAttribute('stroke-width',bar_width);
+	newLine_2.setAttribute('y1',y_1 + gap);
+	newLine_2.setAttribute('y2',y_1 + gap);
 
 	txtElem_2.setAttributeNS(null,"id","text1_2");
-	txtElem_2.setAttributeNS(null,"font-size","15px");
+	txtElem_2.setAttributeNS(null,"font-size",font_size);
 	txtElem_2.setAttributeNS(null,"font-weight","bold");
 	txtElem_2.setAttributeNS(null,"fill",'black');
-	txtElem_2.setAttributeNS(null,"y",90);
+	txtElem_2.setAttributeNS(null,"x", '50%');
+	txtElem_2.setAttributeNS(null,"y",y_1 + gap - 25);
+	txtElem_2.setAttribute('dominant-baseline','middle');
+	txtElem_2.setAttribute('text-anchor','middle');
 
 	txtElem2_2.setAttributeNS(null,"id","text2_2");
-	txtElem2_2.setAttributeNS(null,"font-size","15px");
+	txtElem2_2.setAttributeNS(null,"font-size",font_size);
 	txtElem2_2.setAttributeNS(null,"font-weight","bold");
 	txtElem2_2.setAttributeNS(null,"fill",'red');
-	txtElem2_2.setAttributeNS(null,"y",90);	
+	txtElem2_2.setAttributeNS(null,"x", 300);
+	txtElem2_2.setAttributeNS(null,"y",y_1 + gap - 25);	
+	txtElem2_2.setAttribute('dominant-baseline','middle');
+
 	// third label
 	console.log(newLine_3);
 	newLine_3.setAttribute('id','line3');
 	newLine_3.setAttribute('stroke','red');
-	newLine_3.setAttribute('stroke-width','15');
-	newLine_3.setAttribute('y1','110');
-	newLine_3.setAttribute('y2','110');
+	newLine_3.setAttribute('stroke-width',bar_width);
+	newLine_3.setAttribute('y1',y_1 + 2*gap);
+	newLine_3.setAttribute('y2',y_1 + 2*gap);
 
 	txtElem_3.setAttributeNS(null,"id","text1_3");
-	txtElem_3.setAttributeNS(null,"font-size","15px");
+	txtElem_3.setAttributeNS(null,"font-size",font_size);
 	txtElem_3.setAttributeNS(null,"font-weight","bold");
 	txtElem_3.setAttributeNS(null,"fill",'black');
-	txtElem_3.setAttributeNS(null,"y",115);
+	txtElem_3.setAttributeNS(null,"x", '50%');
+	txtElem_3.setAttributeNS(null,"y",y_1 + 2*gap - 25);
+	txtElem_3.setAttribute('dominant-baseline','middle');
+	txtElem_3.setAttribute('text-anchor','middle');
 				
 	txtElem2_3.setAttributeNS(null,"id","text2_3");
-	txtElem2_3.setAttributeNS(null,"font-size","15px");
+	txtElem2_3.setAttributeNS(null,"font-size",font_size);
 	txtElem2_3.setAttributeNS(null,"font-weight","bold");
 	txtElem2_3.setAttributeNS(null,"fill",'red');
-	txtElem2_3.setAttributeNS(null,"y",115);
+	txtElem2_3.setAttributeNS(null,"x", 300);
+	txtElem2_3.setAttributeNS(null,"y",y_1 + 2*gap - 25);
+	txtElem2_3.setAttribute('dominant-baseline','middle');
 
 	txtElem_1.appendChild(inside_txt_1);
 	txtElem2_1.appendChild(percent_txt_1);
@@ -301,13 +326,17 @@ function printResults(){
 	$("#map").append(txtElem2_3);
 }
 
-function draw_mean(average_mean){
+function draw_mean(mean){
 	$("#Header").empty();
 	
-	average_mean = (average_mean*100).toFixed()/100;
-	document.getElementById('Header').textContent = 'Mean Queue Length = ' + average_mean + ' miles';
+	mean = (mean*100).toFixed()/100;
+	if(mean > 20){
+		document.getElementById('Header').textContent = 'Mean Queue Length = >20 miles';
+	}
+	else{
+		document.getElementById('Header').textContent = 'Mean Queue Length = ' + mean + ' miles';
+	}
 }
-
 // Used to draw the labels in the bottom right corner
 function drawSVG1(mean){
 	let min_bound = Math.max(mean - (1.282*430.4808*meters_to_miles), 0);
@@ -320,11 +349,15 @@ function drawSVG1(mean){
 	$("#line1").remove();
 	newLine_1.setAttribute('x1',x1);
 	newLine_1.setAttribute('x2',x2);
-	txtElem_1.setAttributeNS(null,"x", 10);
-	txtElem2_1.setAttributeNS(null,"x", 300);
 	$("#text1").empty();
 	$("#text2").empty();
-	inside_txt_1 = document.createTextNode(min_bound + '~' + max_bound + "mi");
+
+	if(mean > 20){
+		inside_txt_1 = document.createTextNode(">20 mi");
+	}
+	else{
+		inside_txt_1 = document.createTextNode(min_bound + ' ~ ' + max_bound + "mi");
+	}
 	percent_txt_1 = document.createTextNode("80%");
 }
 function drawSVG2(mean){
@@ -338,11 +371,15 @@ function drawSVG2(mean){
 	$("#line2").remove();
 	newLine_2.setAttribute('x1',x1);
 	newLine_2.setAttribute('x2',x2);
-	txtElem_2.setAttributeNS(null,"x", 10);
-	txtElem2_2.setAttributeNS(null,"x", 300);
 	$("#text1_2").empty();
 	$("#text2_2").empty();
-	inside_txt_2 = document.createTextNode(min_bound + '~' + max_bound + "mi");
+
+	if(mean > 20){
+		inside_txt_2 = document.createTextNode(">20 mi");
+	}
+	else{
+		inside_txt_2 = document.createTextNode(min_bound + ' ~ ' + max_bound + "mi");
+	}
 	percent_txt_2 = document.createTextNode("90%");
 }
 function drawSVG3(mean){
@@ -356,10 +393,14 @@ function drawSVG3(mean){
 	$("#line3").remove();
 	newLine_3.setAttribute('x1',x1);
 	newLine_3.setAttribute('x2',x2);
-	txtElem_3.setAttributeNS(null,"x", 10);
-	txtElem2_3.setAttributeNS(null,"x", 300);
 	$("#text1_3").empty();
 	$("#text2_3").empty();
-	inside_txt_3 = document.createTextNode(min_bound + '~' + max_bound + "mi");
+	
+	if(mean > 20){
+		inside_txt_3 = document.createTextNode(">20 mi");
+	}
+	else{
+		inside_txt_3 = document.createTextNode(min_bound + ' ~ ' + max_bound + "mi");
+	}
 	percent_txt_3 = document.createTextNode("95%");
 }

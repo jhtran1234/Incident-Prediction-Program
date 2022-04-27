@@ -175,11 +175,11 @@
 		}
 		.display_column_L {
 			float: left;
-			width: 40%;
+			width: 45%;
 		}
 		.display_column_R {
 			float: left;
-			width: 60%;
+			width: 55%;
 		}
 		.result_table {
 			background-color:#fcf4cc;
@@ -413,6 +413,32 @@
 								<div class="display_column_R">
 									<svg id="map">
 										<text id="Header" font-size="18px" font-weight="bold" fill="red" x="50%" y ="10%" dominant-baseline="middle" text-anchor="middle">Mean Queue Length</text>
+										
+										<defs>
+											<marker id="arrow" markerheight="10" markerunits="userSpaceOnUse" markerwidth="10" orient="auto" refx="0" refy="3">
+												<path d="M0,0 L0,6 L9,3 z" fill="#f00"></path>
+											</marker>
+											<marker id="Circle" markerheight="10" markerwidth="10" orient="auto" refx="5" refy="5">
+												<circle cx="5" cy="5" fill="dodgerblue" r="2"></circle>
+											</marker>
+											<marker id="Square" markerheight="10" markerwidth="10" orient="auto" refx="0" refy="3">
+												<path d="M 5,1 L 9,5 5,9 1,5 z" fill="#6a9100"></path>
+											</marker>
+										</defs>
+										<line marker-end="url(#Circle)" marker-start="url(#arrow)" stroke="#000" stroke-width="2" x1="0" x2="50" y1="60" y2="60"></line>
+										<text x="50" y="75" id="first_stop" style="font-size: 15px; font-weight:bold" dominant-baseline="middle" text-anchor="middle">
+											1 mi
+										</text>
+										<line marker-end="url(#Circle)" stroke="#000" stroke-width="2" x1="50" x2="150" y1="60" y2="60"></line>
+										<text x="150" y="75" id="second_stop" style="font-size: 15px; font-weight:bold" dominant-baseline="middle" text-anchor="middle">
+											3 mi
+										</text>
+										<line marker-end="url(#Circle)" stroke="#000" stroke-width="2" x1="150" x2="250" y1="60" y2="60"></line>
+										<text x="250" y="75" id="fourth_stop" style="font-size: 15px; font-weight:bold" dominant-baseline="middle" text-anchor="middle">
+											5 mi
+										</text>
+										<line marker-end="url(#arrow)" stroke="#000" stroke-width="2" x1="250" x2="340" y1="60" y2="60"></line>	
+										<line stroke="red" stroke-width="15" style="font-size: 17px"></line>
 									</svg>
 								</div>
 							</div>
