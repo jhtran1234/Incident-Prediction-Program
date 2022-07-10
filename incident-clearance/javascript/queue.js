@@ -215,11 +215,10 @@ function calculateResults(document) {
 		document.getElementById('result_table').style.marginRight = '0px';
 	}
 
-	let q = (3*V*I/40 - 135*OL*I/L)/(1-9*V/200000)
-	let T = (q/(2200-V))/4.5;
-	let Q = q + 4.5*T*V;
+	let q = (3*V*I/40 - 135*OL*I/L)/(1-13*V/200000);
+	let Q = q + q*V/(2200-V);
 	
-	let mean = Q < 0 ? 0 : Math.exp(-19.8674) * Math.pow(Q, 0.2154) * Math.pow(L*V, 0.9320) * Math.pow(I*V, 0.5562) * Math.pow(I/OL, 0.4795) * Math.pow(V/OL, 1.6407);
+	let mean = Q < 0 ? 0 : Math.pow(Q, 0.351659023) * Math.pow(I*V, 0.328558588) * Math.pow(V/OL, 0.311615);
 	mean = mean * meters_to_miles;
 
 	draw_mean(mean);
