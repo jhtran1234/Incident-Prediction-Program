@@ -24,6 +24,7 @@ var percent_txt_3;
 var txtElem3 = document.createElementNS('http://www.w3.org/2000/svg','text');
 var header_line;
 const meters_to_miles = 0.000621371192;
+const confidence_interval = 224;
 
 $(document).ready(function(){
 	$('#data_source_radio1').click(function() {
@@ -339,9 +340,9 @@ function draw_mean(mean){
 }
 // Used to draw the labels in the bottom right corner
 function drawSVG1(mean){
-	let min_bound = Math.max(mean - (1.282*430.4808*meters_to_miles), 0);
+	let min_bound = Math.max(mean - (1.282*confidence_interval*meters_to_miles), 0);
 	min_bound = (min_bound*100).toFixed()/100;
-	let max_bound = mean + (1.282*430.4808*meters_to_miles);
+	let max_bound = mean + (1.282*confidence_interval*meters_to_miles);
 	max_bound = (max_bound*100).toFixed()/100;
 	let x1 = min_bound * 50;
 	let x2 = Math.min(max_bound, 6) * 50;
@@ -361,9 +362,9 @@ function drawSVG1(mean){
 	percent_txt_1 = document.createTextNode("80%");
 }
 function drawSVG2(mean){
-	let min_bound = Math.max(mean - (1.645*430.4808*meters_to_miles), 0);
+	let min_bound = Math.max(mean - (1.645*confidence_interval*meters_to_miles), 0);
 	min_bound = (min_bound*100).toFixed()/100;
-	let max_bound = mean + (1.645*430.4808*meters_to_miles);
+	let max_bound = mean + (1.645*confidence_interval*meters_to_miles);
 	max_bound = (max_bound*100).toFixed()/100;
 	let x1 = min_bound * 50;
 	let x2 = Math.min(max_bound, 6) * 50;
@@ -383,9 +384,9 @@ function drawSVG2(mean){
 	percent_txt_2 = document.createTextNode("90%");
 }
 function drawSVG3(mean){
-	let min_bound = Math.max(mean - (1.960*430.4808*meters_to_miles), 0);
+	let min_bound = Math.max(mean - (1.960*confidence_interval*meters_to_miles), 0);
 	min_bound = (min_bound*100).toFixed()/100;
-	let max_bound = mean + (1.960*430.4808*meters_to_miles);
+	let max_bound = mean + (1.960*confidence_interval*meters_to_miles);
 	max_bound = (max_bound*100).toFixed()/100;
 	let x1 = min_bound * 50;
 	let x2 = Math.min(max_bound, 6) * 50;
