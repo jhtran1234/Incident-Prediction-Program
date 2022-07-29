@@ -1312,10 +1312,10 @@ function updateTime(){
 				drawSVG4("Average CT = 160 mins");
 			}
 			else if(model['collision'] == 'Weather Closure'){
-				drawSVG1(10, 140, 30, 150, "5~70", "60%");
-				drawSVG2(10, 180, 30, 190, "5~90", "70%");
-				drawSVG3(10, 240, 30, 250, "5~120", "80%");
-				drawSVG4("Average CT = 190 mins");
+				drawSVG1(10, 140, 59, 150, "5~70", "60%");
+				drawSVG2(10, 180, 79, 190, "5~90", "70%");
+				drawSVG3(10, 240, 106, 250, "5~120", "80%");
+				drawSVG4("Average CT = 100 mins");
 			}
 			else if(model['collision'] == 'Others'){
 				drawSVG1(0, 40, 10, 50, "<20", "65%");
