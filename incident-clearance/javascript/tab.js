@@ -148,11 +148,11 @@ $(document).ready(function() {
 	
 	// click radiocheck and update the summary
 	$("#checkbox-size input").click(updateSum);
-$("#checkbox-size1 input").click(updateSum);
+	$("#checkbox-size1 input").click(updateSum);
 	$("#checkbox-size select#t3_1").click(updateSum2);
-$("#checkbox-size1 select#t3_1").click(updateSum2);
+	$("#checkbox-size1 select#t3_1").click(updateSum2);
 	$("#checkbox-size select#t3_2").click(updateSum2);
-$("#checkbox-size1 select#t3_2").click(updateSum2);
+	$("#checkbox-size1 select#t3_2").click(updateSum2);
 	
 	// IV page dropdown
 	$("#checkbox-size1 select").click(updateSum2);
@@ -173,12 +173,12 @@ $("#checkbox-size1 select#t3_2").click(updateSum2);
 		$("#dropdown_direction_695 select").click(updateSum2);
 		$("#dropdown_exit_695 select").click(updateSum2);
 	}
-	/*else if (road == "i270") {
+	else if (road == "i270") {
 		// Location page dropdowns
 		$("#dropdown_location_270 select").click(updateSum2);
 		$("#dropdown_direction_270 select").click(updateSum2);
 		$("#dropdown_exit_270 select").click(updateSum2);
-	}*/
+	}
 	else if (road == "i70") {
 		$("#involved_vehicles_6").removeAttr("style"); // Displays SUV vehicle for picking
 		$("#iv9").removeAttr("style"); // Displays SUV vehicle for picking
@@ -201,22 +201,18 @@ $("#checkbox-size1 select#t3_2").click(updateSum2);
 		$("#involved_vehicles_6").removeAttr("style"); // Displays SUV vehicle
 		$("#iv9").removeAttr("style");
 	}
-	else {
-	}
 
 	// IV page dropdown
 	$("#checkbox-size select").click(updateTime);
-$("#checkbox-size1 select").click(updateTime);
+	$("#checkbox-size1 select").click(updateTime);
 	// click radiocheck and update the estimated time
 	$("#checkbox-size input").click(updateTime);
-$("#checkbox-size1 input").click(updateTime);
+	$("#checkbox-size1 input").click(updateTime);
 	$("#checkbox-size select#t3_1").click(updateTime);
-$("#checkbox-size1 select#t3_1").click(updateTime);
+	$("#checkbox-size1 select#t3_1").click(updateTime);
 	$("#checkbox-size select#t3_2").click(updateTime);
 	$("#checkbox-size1 select#t3_2").click(updateTime);
-	$("#Save-9").click(updateTime);
 
-	
 	$("button[name='save']").click(activeNext);
 
 	var radioValue1;
@@ -256,18 +252,12 @@ $("#checkbox-size1 select#t3_1").click(updateTime);
 	});	
 
 	$("#Next-4").click(function() {
-document.getElementById("showModel").setAttribute("style", "display:none");
-		 $('.ui.menu').find('.item').tab('change tab', '2');
-		
-	});	
-	// $("#Next-11").click(function() { // Handles Next button after a Non-Collision Incident
-	// });
-	
-	// iv tab's next button
+		document.getElementById("showModel").setAttribute("style", "display:none");
+		$('.ui.menu').find('.item').tab('change tab', '2');
+	});
+
 	$("#Next-5").click(function() {
-		
-			$('.ui.menu').find('.item').tab('change tab', '3');
-		
+		$('.ui.menu').find('.item').tab('change tab', '3');
 	});
 
 	/* 
@@ -298,25 +288,22 @@ document.getElementById("showModel").setAttribute("style", "display:none");
 		}
 	});
 	
-	$("#Next-12").click(function() {
-			$('.ui.menu').find('.item').tab('change tab', '11');
-});
+	$("#Next-7").click(function() {
+		$('.ui.menu').find('.item').tab('change tab', '11');
+	});
 	
 	// back button handler
 	$("#Back-2").click(function() {
 		$.tab('change tab', '1');
-		$("#Save-1").attr("disabled");
 	});
 	$("#Back-3").click(function() {
 		$.tab('change tab', '1-1');	
-		$("#Save-2").attr("disabled");
 	});
 	$("#Back-4").click(function() {
 		$.tab('change tab', '1-2');
 	});
 	$("#Back-1-4").click(function() {
 		$.tab('change tab', '1');
-		$("#Save-1").attr("disabled");
 	});
 	$("#Back-5").click(function() {
 		$('.ui.menu').find('.item').tab('change tab', '1');
@@ -558,45 +545,60 @@ function updateSum2() {
 		involved_car_s.forEach((checkbox) => {
 		car_values.push(checkbox.value);});
 	}
-	else {involved_car_s = ' ';}
+	else {
+		involved_car_s = ' ';
+	}
 	console.log(involved_car_s);
-	if (involved_truck != ' ') {involved_truck_s = document.querySelectorAll('input[name="dropbox2s"]:checked');
+	if (involved_truck != ' ') {
+		involved_truck_s = document.querySelectorAll('input[name="dropbox2s"]:checked');
 		involved_truck_s.forEach((checkbox) => {
-		truck_values.push(checkbox.value);
+			truck_values.push(checkbox.value);
 		});
 	}
-	else {involved_truck_s = ' ';}
+	else {
+		involved_truck_s = ' ';
+	}
 	console.log(involved_truck_s);
-	if (involved_bus != ' ') {involved_bus_s = document.querySelectorAll('input[name="dropbox3s"]:checked');
-involved_bus_s.forEach((checkbox) => {
-               bus_values.push(checkbox.value);
-            });}
-	else {involved_bus_s = ' ';}
+	if (involved_bus != ' ') {
+		involved_bus_s = document.querySelectorAll('input[name="dropbox3s"]:checked');
+		involved_bus_s.forEach((checkbox) => {
+			bus_values.push(checkbox.value);
+		});
+	}
+	else {
+		involved_bus_s = ' ';
+	}
 	console.log(involved_bus_s);
-	if (involved_pickup != ' ') {involved_pickup_s = document.querySelectorAll('input[name="dropbox7s"]:checked');
-involved_pickup_s.forEach((checkbox) => {
-               pickup_values.push(checkbox.value);
-            });
-}
-	else {involved_pickup_s = ' ';}
+	if (involved_pickup != ' ') {
+		involved_pickup_s = document.querySelectorAll('input[name="dropbox7s"]:checked');
+		involved_pickup_s.forEach((checkbox) => {
+			pickup_values.push(checkbox.value);
+		});
+	}
+	else {
+		involved_pickup_s = ' ';
+	}
 	console.log(involved_pickup_s);
-	if (involved_van != ' ') {involved_van_s = document.querySelectorAll('input[name="dropbox8s"]:checked');
-	involved_van_s.forEach((checkbox) => {
-               van_values.push(checkbox.value);
-            });
-
-}
-	else {involved_van_s = ' ';}
+	if (involved_van != ' ') {
+		involved_van_s = document.querySelectorAll('input[name="dropbox8s"]:checked');
+		involved_van_s.forEach((checkbox) => {
+			van_values.push(checkbox.value);
+		});
+	}
+	else {
+		involved_van_s = ' ';
+	}
 	console.log(involved_van_s);
-	if (involved_suv != ' ') {involved_suv_s = document.querySelectorAll('input[name="dropbox9s"]:checked');
-involved_suv_s.forEach((checkbox) => {
-               suv_values.push(checkbox.value);
-            });
-
-}
-	else {involved_suv_s = ' ';}
+	if (involved_suv != ' ') {
+		involved_suv_s = document.querySelectorAll('input[name="dropbox9s"]:checked');
+		involved_suv_s.forEach((checkbox) => {
+			suv_values.push(checkbox.value);
+		});
+	}
+	else {
+		involved_suv_s = ' ';
+	}
 	console.log(involved_suv_s);
-
 
 	num_car = Number($("#dropbox1 option:selected").text());
 	console.log(num_car);
@@ -685,41 +687,29 @@ involved_suv_s.forEach((checkbox) => {
 	num_responder = Number(num_chart) + Number(num_police) + Number(num_tow) + Number(num_fireboard) + Number(num_medical) + Number(num_others);
 	console.log(num_responder);
 
-
 	if (model['responder'] == 'First responder: CHART') {
 		val = chart_value;
 	}
 	else if (model['responder'] == 'First responder: POLICE') {
-		val = police_value ;}
-
+		val = police_value ;
+	}
 	else if (model['responder'] == 'First responder: TOW') {
 		val = tow_value;
 	}
 	else if (model['responder'] == 'First responder: FIREBOARD') {
-val = fireboard_value;
-		
+		val = fireboard_value;	
 	}
 	else if (model['responder'] == 'First responder: MEDICAL') {
-val = medical_value;
-		
+		val = medical_value;
 	}
 	else if (model['responder'] == 'First responder: Others') {
-val = others_value;
-		
+		val = others_value;
+	}
+	else {
+		val = ' ';
 	}
 
-else {val = ' ';}
-if ( val != ' ' && model['involved_veh'] != null)
-{if (involved_pedestrian + involved_cyclist + involved_motor == 0)
-	{
-		if (car_values.length +  truck_values.length +  bus_values.length +  pickup_values.length +  van_values.length +  suv_values.length != 0)
-
-		{$("#Save-5").removeAttr("disabled");}
-}
-else
-{$("#Save-5").removeAttr("disabled");}
-}	
-if (num_responder == 1) {
+	if (num_responder == 1) {
 		model['responder_number'] = chart_value + police_value + tow_value + fireboard_value + medical_value + others_value +'is responding.';
 	}
 	else if (num_responder > 1) {
@@ -727,6 +717,13 @@ if (num_responder == 1) {
 	}
 	else {
 		model['responder_number'] = null;
+	}
+
+	if (model['involved_veh'] != null && model['responder'] != null && model['responder_number'] != null) {
+		$("#Save-5").removeAttr("disabled");
+	}
+	else {
+		document.getElementById("Save-5").disabled = true;
 	}
 	
 	// location page: location, direction and exit (road specific)
@@ -794,7 +791,7 @@ if (num_responder == 1) {
 			model['exit'] = null;
 		}
 	}
-	/*else if (road == "i270") {
+	else if (road == "i270") {
 		location_choice = $("#dropdown_location_270 option:selected").text();
 		console.log(location_choice);
 
@@ -825,7 +822,7 @@ if (num_responder == 1) {
 		else {
 			model['exit'] = null;
 		}
-	}*/
+	}
 	else if (road == "i70") {
 		location_choice = $("#dropdown_location_70 option:selected").text();
 		console.log(location_choice);
@@ -936,7 +933,7 @@ if (num_responder == 1) {
 
 function getDate() {
 	// selecting the button and adding a click event
-	$("#Save-9").click(function() {
+	$("#Save-6").click(function() {
 		// alerting the value inside the textbox
 		var raw_date = $("#datepicker").datepicker("getDate");
 		date = ($.datepicker.formatDate("mm/dd/yy", raw_date));
@@ -1022,7 +1019,7 @@ function getDate() {
 }
 	
 function my_getTime() {
-	$("#Save-9").click(function() {
+	$("#Save-6").click(function() {
 	var time = timepickers.wickedpicker('time');	
 	time = time.replace(" ", "");
 	time = date +' ' + time;
@@ -5385,33 +5382,29 @@ function activeNext() {
 	if (this.id == 'Save-1') {
 		$("#Next-1").removeAttr("disabled");
 		$("#showModel").removeAttr("style");
-printSum();
-printTime();
-
+		printSum();
+		printTime();
 	}
-
 
 	else if (this.id == 'Save-2') {	
 		$("#Next-2").removeAttr("disabled");
-$("#showModel").removeAttr("style");
-printSum();
-printTime();
-
+		$("#showModel").removeAttr("style");
+		printSum();
+		printTime();
 	}
 	else if (this.id == 'Save-3') {
 		$("#Next-3").removeAttr("disabled");
-$("#showModel").removeAttr("style");
-printSum();
-printTime();
-
+		$("#showModel").removeAttr("style");
+		printSum();
+		printTime();
 	}
 	else if (this.id == 'Save-4') {
 		$("#Next-4").removeAttr("disabled");
-$("#showModel").removeAttr("style");
-printSum();
-printTime();
+		$("#showModel").removeAttr("style");
+		printSum();
+		printTime();
 
-// enables the tabs after the Next-4 button is selected to ensure that all
+		// enables the tabs after the Next-4 button is selected to ensure that all
 		// qualities are entered from the first tab
 		document.getElementById("data_tab_2").style = "font-size: 14px;";
 		document.getElementById("data_tab_3").style = "font-size: 14px;";
@@ -5435,9 +5428,8 @@ printTime();
 		else {
 			document.getElementById("location_95").style = "font-size: 14px;";
 		}
-}
-
-else if (this.id == 'Save-5') {
+	}
+	else if (this.id == 'Save-5') {
 		$("#boxheader").text("Estimated Clearance Time");
 		if (more_info) {moreInfoNeeded_updateTime();} // Indicates more info is needed.
 		if (all_info) {$("#boxheader").text("All information has been recorded.");}
@@ -5475,22 +5467,13 @@ else if (this.id == 'Save-5') {
 			alert("Please enter number of " + responder_type + " vehicles.");
 		}
 	}
-	
-else if (this.id == 'Save-7' || this.id == 'Save-7_495' || this.id == 'Save-7_695' || this.id == 'Save-7_70' || this.id == 'Save-7_29' || this.id == 'Save-7_cluster') {
-	
- 		 $("#Next-12").removeAttr("disabled");
-		
+	else if (this.id == 'Save-7' || this.id == 'Save-7_495' || this.id == 'Save-7_695' || this.id == 'Save-7_70' || this.id == 'Save-7_29' || this.id == 'Save-7_cluster') {
+ 		$("#Next-7").removeAttr("disabled");
 	}
-
-	
 	else if (this.id == 'Save-1-4') {
-		 $("#Next-11").removeAttr("disabled");
 		var radioValue4 = $("input[name='type']:checked").val();
 		console.log(radioValue4);
 	}
-		
-	
-	
 }
 
 /* 
