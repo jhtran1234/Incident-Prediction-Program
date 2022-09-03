@@ -314,7 +314,7 @@ document.getElementById("showModel").setAttribute("style", "display:none");
 	$("#Back-4").click(function(){
 		$.tab('change tab', '1-2');
 	});
-	$("#Back-11").click(function(){
+	$("#Back-1-4").click(function(){
 		$.tab('change tab', '1');
 		$("#Save-1").attr("disabled");
 	});
@@ -378,7 +378,7 @@ function updateSum(){
 	// type 4 for non-collision
 	else if(non_collision.includes(curr)){
 		model['collision'] = curr;
-		$("#Save-11").removeAttr("disabled");
+		$("#Save-1-4").removeAttr("disabled");
 	}
 	else if (Object.keys(responder).includes(curr)){
 		first_responder = curr;
@@ -5484,7 +5484,7 @@ else if(this.id == 'Save-7' || this.id == 'Save-7_495' || this.id == 'Save-7_695
 	}
 
 	
-	else if(this.id == 'Save-11'){
+	else if(this.id == 'Save-1-4'){
 		 $("#Next-11").removeAttr("disabled");
 		var radioValue4 = $("input[name='type']:checked").val();
 		console.log(radioValue4);
