@@ -327,32 +327,23 @@ document.getElementById("showModel").setAttribute("style", "display:none");
 	$("#Back-7").click(function(){
 		$('.ui.menu').find('.item').tab('change tab', '3');
 	});
-	$("#Back-8").click(function(){
-		$('.ui.menu').find('.item').tab('change tab', '4');
+	$("#Back-7_495").click(function(){
+		$('.ui.menu').find('.item').tab('change tab', '3');
 	});
-	$("#Back-9").click(function(){
-		$('.ui.menu').find('.item').tab('change tab', '5');
+	$("#Back-7_695").click(function(){
+		$('.ui.menu').find('.item').tab('change tab', '3');
 	});
-	$("#Back-10").click(function(){
-		$('.ui.menu').find('.item').tab('change tab', '6');
+	$("#Back-7_270").click(function(){
+		$('.ui.menu').find('.item').tab('change tab', '3');
 	});
-	$("#Back-10_495").click(function(){
-		$('.ui.menu').find('.item').tab('change tab', '6');
+	$("#Back-7_70").click(function(){
+		$('.ui.menu').find('.item').tab('change tab', '3');
 	});
-	$("#Back-10_695").click(function(){
-		$('.ui.menu').find('.item').tab('change tab', '6');
+	$("#Back-7_29").click(function(){
+		$('.ui.menu').find('.item').tab('change tab', '3');
 	});
-	$("#Back-10_270").click(function(){
-		$('.ui.menu').find('.item').tab('change tab', '6');
-	});
-	$("#Back-10_70").click(function(){
-		$('.ui.menu').find('.item').tab('change tab', '6');
-	});
-	$("#Back-10_29").click(function(){
-		$('.ui.menu').find('.item').tab('change tab', '6');
-	});
-	$("#Back-10_cluster").click(function(){
-		$('.ui.menu').find('.item').tab('change tab', '6');
+	$("#Back-7_cluster").click(function(){
+		$('.ui.menu').find('.item').tab('change tab', '3');
 	});
 });
 
@@ -413,35 +404,35 @@ function updateSum(){
 	else if (curr == "Prince George's"){
 		location_choice = curr;
 		model['location'] = location_choice;
-		$("#Save-10").removeAttr("disabled");
+		$("#Save-7").removeAttr("disabled");
 	}
 	else if (curr == 'Howard'){
 		location_choice = curr;
 		model['location'] = location_choice;
-		$("#Save-10").removeAttr("disabled");
+		$("#Save-7").removeAttr("disabled");
 	}
 	else if (curr == 'Baltimore city'){
 		location_choice = curr;
 		baltimoreCity = 1;
 		model['location'] = location_choice;
-		$("#Save-10").removeAttr("disabled");
+		$("#Save-7").removeAttr("disabled");
 	}
 	else if (curr == 'Baltimore'){
 		location_choice = curr;
 		model['location'] = location_choice;
-		$("#Save-10").removeAttr("disabled");
+		$("#Save-7").removeAttr("disabled");
 	}
 	else if (curr == 'Harford'){
 		location_choice = curr;
 		harford = 1
 		model['location'] = location_choice;
-		$("#Save-10").removeAttr("disabled");
+		$("#Save-7").removeAttr("disabled");
 	}
 	else if (curr == 'Cecil'){
 		location_choice = curr;
 		cecil = 1;
 		model['location'] = location_choice;
-		$("#Save-10").removeAttr("disabled");
+		$("#Save-7").removeAttr("disabled");
 	}
 
 	aux_lane = document.getElementById("b1").checked;
@@ -752,21 +743,21 @@ if (num_responder == 1){
 		
 		if (location_choice != "Location"){
 			model['location'] = location_choice;
-			$("#Save-10_495").removeAttr("disabled");
+			$("#Save-7_495").removeAttr("disabled");
 		}
 		else{
 			model['location'] = null;
 		}
 		if (direction != "Direction"){
 			model['direction'] = direction;
-			$("#Save-10_495").removeAttr("disabled");
+			$("#Save-7_495").removeAttr("disabled");
 		}
 		else{
 			model['direction'] = null;
 		}	
 		if (exit != "Exit"){
 			model['exit'] = exit;
-			$("#Save-10_495").removeAttr("disabled");
+			$("#Save-7_495").removeAttr("disabled");
 		}
 		else{
 			model['exit'] = null;
@@ -784,21 +775,21 @@ if (num_responder == 1){
 		
 		if (location_choice != "Location"){
 			model['location'] = location_choice;
-			$("#Save-10_695").removeAttr("disabled");
+			$("#Save-7_695").removeAttr("disabled");
 		}
 		else{
 			model['location'] = null;
 		}
 		if (direction != "Direction"){
 			model['direction'] = direction;
-			$("#Save-10_695").removeAttr("disabled");
+			$("#Save-7_695").removeAttr("disabled");
 		}
 		else{
 			model['direction'] = null;
 		}
 		if (exit != "Exit"){
 			model['exit'] = exit;
-			$("#Save-10_695").removeAttr("disabled");
+			$("#Save-7_695").removeAttr("disabled");
 		}
 		else{
 			model['exit'] = null;
@@ -816,21 +807,21 @@ if (num_responder == 1){
 		
 		if (location_choice != "Location"){
 			model['location'] = location_choice;
-			$("#Save-10_270").removeAttr("disabled");
+			$("#Save-7_270").removeAttr("disabled");
 		}
 		else{
 			model['location'] = null;
 		}
 		if (direction != "Direction"){
 			model['direction'] = direction;
-			$("#Save-10_270").removeAttr("disabled");
+			$("#Save-7_270").removeAttr("disabled");
 		}
 		else{
 			model['direction'] = null;
 		}
 		if (exit != "Exit"){
 			model['exit'] = exit;
-			$("#Save-10_270").removeAttr("disabled");
+			$("#Save-7_270").removeAttr("disabled");
 		}
 		else{
 			model['exit'] = null;
@@ -848,21 +839,21 @@ if (num_responder == 1){
 		
 		if (location_choice != "Location"){
 			model['location'] = location_choice;
-			$("#Save-10_70").removeAttr("disabled");
+			$("#Save-7_70").removeAttr("disabled");
 		}
 		else{
 			model['location'] = null;
 		}
 		if (direction != "Direction"){
 			model['direction'] = direction;
-			$("#Save-10_70").removeAttr("disabled");
+			$("#Save-7_70").removeAttr("disabled");
 		}
 		else{
 			model['direction'] = null;
 		}
 		if (exit != "Exit"){
 			model['exit'] = exit;
-			$("#Save-10_70").removeAttr("disabled");
+			$("#Save-7_70").removeAttr("disabled");
 		}
 		else{
 			model['exit'] = null;
@@ -880,21 +871,21 @@ if (num_responder == 1){
 		
 		if (location_choice != "Location"){
 			model['location'] = location_choice;
-			$("#Save-10_29").removeAttr("disabled");
+			$("#Save-7_29").removeAttr("disabled");
 		}
 		else{
 			model['location'] = null;
 		}
 		if (direction != "Direction"){
 			model['direction'] = direction;
-			$("#Save-10_29").removeAttr("disabled");
+			$("#Save-7_29").removeAttr("disabled");
 		}
 		else{
 			model['direction'] = null;
 		}
 		if (exit != "Exit"){
 			model['exit'] = exit;
-			$("#Save-10_29").removeAttr("disabled");
+			$("#Save-7_29").removeAttr("disabled");
 		}
 		else{
 			model['exit'] = null;
@@ -906,7 +897,7 @@ if (num_responder == 1){
 
 		if (location_choice != "Location"){
 			model['location'] = location_choice;
-			$("#Save-10_cluster").removeAttr("disabled");
+			$("#Save-7_cluster").removeAttr("disabled");
 
 			if(location_choice == "Washington DC Area"){document.getElementById("clusterimg").src = "images/DC.jpg";}
 			else if(location_choice == "Baltimore Area"){document.getElementById("clusterimg").src = "images/Baltimore.jpg";}
@@ -928,14 +919,14 @@ if (num_responder == 1){
 		console.log(exit);
 		if (direction != "Direction"){
 			model['direction'] = direction;
-			$("#Save-10").removeAttr("disabled");
+			$("#Save-7").removeAttr("disabled");
 		}
 		else{
 			model['direction'] = null;
 		}
 		if (exit != "Exit"){
 			model['exit'] = exit;
-			$("#Save-10").removeAttr("disabled");
+			$("#Save-7").removeAttr("disabled");
 		}
 		else{
 			model['exit'] = null;
@@ -5486,7 +5477,7 @@ else if(this.id == 'Save-5'){
 		}
 	}
 	
-else if(this.id == 'Save-10' || this.id == 'Save-10_495' || this.id == 'Save-10_695' || this.id == 'Save-10_70' || this.id == 'Save-10_29' || this.id == 'Save-10_cluster'){
+else if(this.id == 'Save-7' || this.id == 'Save-7_495' || this.id == 'Save-7_695' || this.id == 'Save-7_70' || this.id == 'Save-7_29' || this.id == 'Save-7_cluster'){
 	
  		 $("#Next-12").removeAttr("disabled");
 		
