@@ -63,6 +63,7 @@ var num_pedestrian;
 var num_cyclist;
 var num_motor;
 var num_total;	
+var val;
 
 var first_responder;
 var chart_value;
@@ -147,12 +148,15 @@ $(document).ready(function(){
 	
 	// click radiocheck and update the summary
 	$("#checkbox-size input").click(updateSum);
+$("#checkbox-size1 input").click(updateSum);
 	$("#checkbox-size select#t3_1").click(updateSum2);
+$("#checkbox-size1 select#t3_1").click(updateSum2);
 	$("#checkbox-size select#t3_2").click(updateSum2);
+$("#checkbox-size1 select#t3_2").click(updateSum2);
 	
 	// IV page dropdown
+	$("#checkbox-size1 select").click(updateSum2);
 	$("#checkbox-size select").click(updateSum2);
-
 	// displays different vehicles and location pages for different roads
 	if (road == "i495") {
 		$("#involved_vehicles_5").removeAttr("style"); // Displays VAN vehicle for picking
@@ -202,15 +206,17 @@ $(document).ready(function(){
 
 	// IV page dropdown
 	$("#checkbox-size select").click(updateTime);
-
+$("#checkbox-size1 select").click(updateTime);
 	// click radiocheck and update the estimated time
 	$("#checkbox-size input").click(updateTime);
+$("#checkbox-size1 input").click(updateTime);
 	$("#checkbox-size select#t3_1").click(updateTime);
+$("#checkbox-size1 select#t3_1").click(updateTime);
 	$("#checkbox-size select#t3_2").click(updateTime);
+	$("#checkbox-size1 select#t3_2").click(updateTime);
 	$("#Save-9").click(updateTime);
 
-	$("button[name='save']").click(printSum);
-	$("button[name='save']").click(printTime);
+	
 	$("button[name='save']").click(activeNext);
 
 	var radioValue1;
@@ -218,6 +224,8 @@ $(document).ready(function(){
 	
 	// next button handler	
 	$("#Next-1").click(function(){
+
+		
 		radioValue1 = $("input[name='incident']:checked").val();
 		if (radioValue1 == 'collision') {
 			$.tab('change tab', '1-1');
@@ -227,7 +235,10 @@ $(document).ready(function(){
 		}
 	});
 
+
 	$("#Next-2").click(function(){
+
+		
 		radioValue2 = $("input[name='blockage']:checked").val();
 		if (radioValue2 == 'travel') {
 			// change the content within the same tab
@@ -239,10 +250,13 @@ $(document).ready(function(){
 	});
 
 	$("#Next-3").click(function() {
+
+
 		$.tab('change tab', '1-3');
 	});	
 
 	$("#Next-4").click(function(){
+document.getElementById("showModel").setAttribute("style", "display:none");
 		 $('.ui.menu').find('.item').tab('change tab', '2');
 		
 	});	
@@ -251,27 +265,9 @@ $(document).ready(function(){
 	
 	// iv tab's next button
 	$("#Next-5").click(function(){
-		if (document.getElementById("dropbox1s").value != ' ' && num_car == 0){
-			alert("At least one vehicle should be involved when a situation is specified for a type.");
-		}
-		else if (document.getElementById("dropbox2s").value != ' ' && num_truck == 0){
-			alert("At least one vehicle should be involved when a situation is specified for a type.");
-		}
-		else if (document.getElementById("dropbox3s").value != ' ' && num_bus == 0){
-			alert("At least one vehicle should be involved when a situation is specified for a type.");
-		}
-		else if (document.getElementById("dropbox7s").value != ' ' && num_pickup == 0){
-			alert("At least one vehicle should be involved when a situation is specified for a type.");
-		}
-		else if (document.getElementById("dropbox8s").value != ' ' && num_van == 0){
-			alert("At least one vehicle should be involved when a situation is specified for a type.");
-		}
-		else if (document.getElementById("dropbox9s").value != ' ' && num_suv == 0){
-			alert("At least one vehicle should be involved when a situation is specified for a type.");
-		}
-		else {
+		
 			$('.ui.menu').find('.item').tab('change tab', '3');
-		}
+		
 	});
 
 	/* 
@@ -279,68 +275,33 @@ $(document).ready(function(){
 	 * Ensures that if a first responder is selected, the number of vehicles is > 0
 	 */
 	$("#Next-6").click(function(){
-		var responder_type;
-		if (model['responder'] == 'First responder: CHART' && (responder_type = "chart") && num_chart > 0) {
-			$('.ui.menu').find('.item').tab('change tab', '4');
-		}
-		else if (model['responder'] == 'First responder: POLICE' && (responder_type = "police") && num_police > 0) {
-			$('.ui.menu').find('.item').tab('change tab', '4');
-		}
-		else if (model['responder'] == 'First responder: TOW' && (responder_type = "tow") && num_tow > 0) {
-			$('.ui.menu').find('.item').tab('change tab', '4');
-		}
-		else if (model['responder'] == 'First responder: FIREBOARD' && (responder_type = "fireboard") && num_fireboard > 0) {
-			$('.ui.menu').find('.item').tab('change tab', '4');
-		}
-		else if (model['responder'] == 'First responder: MEDICAL' && (responder_type = "medical") && num_medical > 0) {
-			$('.ui.menu').find('.item').tab('change tab', '4');
-		}
-		else if (model['responder'] == 'First responder: Others' && (responder_type = "other") && num_others > 0) {
-			$('.ui.menu').find('.item').tab('change tab', '4');
-		}
-		else if (responder_type == null) {
-			alert("Please select a first responder.");
-		}
-		else {
-			alert("Please enter number of " + responder_type + " vehicles.");
-		}
-	});
-	
-	// center tab's next button
-	$("#Next-7").click(function(){
-		$('.ui.menu').find('.item').tab('change tab', '5');
-	});
-	
-	// p&h tab's next button
-	$("#Next-8").click(function(){
-		$('.ui.menu').find('.item').tab('change tab', '6');
-	});	
-	
-	// time tab's next button
-	$("#Next-9").click(function(){
 		if(road=="i495"){
-			$('.ui.menu').find('.item').tab('change tab', '8');
+			$('.ui.menu').find('.item').tab('change tab', '5');
 		}
 		else if(road=="i695"){
-			$('.ui.menu').find('.item').tab('change tab', '9');
+			$('.ui.menu').find('.item').tab('change tab', '6');
 		}
 		/*else if(road=="i270"){
-			$('.ui.menu').find('.item').tab('change tab', '10');
+			$('.ui.menu').find('.item').tab('change tab', '7');
 		}*/
 		else if(road=="i70"){
-			$('.ui.menu').find('.item').tab('change tab', '11');
+			$('.ui.menu').find('.item').tab('change tab', '8');
 		}
 		else if(road=="us29"){
-			$('.ui.menu').find('.item').tab('change tab', '12');
+			$('.ui.menu').find('.item').tab('change tab', '9');
 		}
 		else if(cluster1.includes(road) || cluster2.includes(road) || cluster3.includes(road) || cluster4.includes(road) || cluster5.includes(road) || cluster6.includes(road)){
-			$('.ui.menu').find('.item').tab('change tab', '13');
+			$('.ui.menu').find('.item').tab('change tab', '10');
 		}
 		else{
-			$('.ui.menu').find('.item').tab('change tab', '7');
-		}	
+			$('.ui.menu').find('.item').tab('change tab', '4');
+		}
 	});
-
+	
+	$("#Next-12").click(function(){
+			$('.ui.menu').find('.item').tab('change tab', '11');
+});
+	
 	// back button handler
 	$("#Back-2").click(function(){
 		$.tab('change tab', '1');
@@ -411,7 +372,9 @@ function updateSum(){
 	if(incident.includes(curr)){
 		model['incident'] = curr;
 		$("#Save-1").removeAttr("disabled");
+
 	}
+
 	else if (blockage.includes(curr)){
 		model['blockage'] = curr;
 		$("#Save-2").removeAttr("disabled");
@@ -436,14 +399,16 @@ function updateSum(){
 	else if (center_choice.includes(curr)){
 		center = curr;
 		model['center_choice'] = center;
-		$("#Save-7").removeAttr("disabled");
+		
 	}
 	// pavement
 	else if (pavement_choice.includes(curr)){
 		pavement = curr;
 		model['pavement_condition'] = curr + ' pavement condition';
-		$("#Save-8").removeAttr("disabled");
+		
 	}
+
+
 	// location i95
 	else if (curr == "Prince George's"){
 		location_choice = curr;
@@ -506,7 +471,8 @@ function updateSum(){
 	else if(toll_lane == false){
 		model['detail_blockage_3'] = null;
 	}
-	
+	if(model['center_choice'] == center && model['pavement_condition'] == pavement + ' pavement condition')
+{$("#Save-6").removeAttr("disabled");}
 	// hazmat
 	hazmat = document.getElementById("haz").checked;
 	console.log(hazmat);
@@ -585,25 +551,62 @@ function updateSum2(){
 	console.log(involved_cyclist);
 	involved_motor = document.getElementById("dropbox6").value;
 	console.log(involved_motor);
-	
-	if (involved_car != ' '){involved_car_s = document.getElementById("dropbox1s").value;}
+
+let car_values = [];
+	let truck_values = [];
+	let bus_values = [];
+	let pickup_values = [];
+	let van_values = [];
+	let suv_values = [];
+
+          
+	if (involved_car != ' '){involved_car_s = document.querySelectorAll('input[name="dropbox1s"]:checked');
+ involved_car_s.forEach((checkbox) => {
+               car_values.push(checkbox.value);
+            });
+
+}
 	else{involved_car_s = ' ';}
 	console.log(involved_car_s);
-	if (involved_truck != ' '){involved_truck_s = document.getElementById("dropbox2s").value;}
+	if (involved_truck != ' '){involved_truck_s = document.querySelectorAll('input[name="dropbox2s"]:checked');
+	involved_truck_s.forEach((checkbox) => {
+               truck_values.push(checkbox.value);
+            });
+}
 	else{involved_truck_s = ' ';}
 	console.log(involved_truck_s);
-	if (involved_bus != ' '){involved_bus_s = document.getElementById("dropbox3s").value;}
+	if (involved_bus != ' '){involved_bus_s = document.querySelectorAll('input[name="dropbox3s"]:checked');
+involved_bus_s.forEach((checkbox) => {
+               bus_values.push(checkbox.value);
+            });}
 	else{involved_bus_s = ' ';}
 	console.log(involved_bus_s);
-	if (involved_pickup != ' '){involved_pickup_s = document.getElementById("dropbox7s").value;}
+	if (involved_pickup != ' '){involved_pickup_s = document.querySelectorAll('input[name="dropbox7s"]:checked');
+involved_pickup_s.forEach((checkbox) => {
+               pickup_values.push(checkbox.value);
+            });
+}
 	else{involved_pickup_s = ' ';}
 	console.log(involved_pickup_s);
-	if (involved_van != ' '){involved_van_s = document.getElementById("dropbox8s").value;}
+	if (involved_van != ' '){involved_van_s = document.querySelectorAll('input[name="dropbox8s"]:checked');
+	involved_van_s.forEach((checkbox) => {
+               van_values.push(checkbox.value);
+            });
+
+}
 	else{involved_van_s = ' ';}
 	console.log(involved_van_s);
-	if (involved_suv != ' '){involved_suv_s = document.getElementById("dropbox9s").value;}
+	if (involved_suv != ' '){involved_suv_s = document.querySelectorAll('input[name="dropbox9s"]:checked');
+involved_suv_s.forEach((checkbox) => {
+               suv_values.push(checkbox.value);
+            });
+
+}
 	else{involved_suv_s = ' ';}
 	console.log(involved_suv_s);
+
+	
+	
 
 	num_car = Number($("#dropbox1 option:selected").text());
 	console.log(num_car);
@@ -630,7 +633,6 @@ function updateSum2(){
 		model['involved_veh'] = null;
 	}
 	else{
-		$("#Save-5").removeAttr("disabled");
 		model['involved_veh'] = "";
 
 		if (involved_car != ' '){
@@ -693,26 +695,41 @@ function updateSum2(){
 	num_responder = Number(num_chart) + Number(num_police) + Number(num_tow) + Number(num_fireboard) + Number(num_medical) + Number(num_others);
 	console.log(num_responder);
 
+
 	if(model['responder'] == 'First responder: CHART'){
-		if(chart_value != ' '){$("#Save-6").removeAttr("disabled");}
+		val = chart_value;
 	}
 	else if(model['responder'] == 'First responder: POLICE'){
-		if(police_value != ' '){$("#Save-6").removeAttr("disabled");}
-	}
+		val = police_value ;}
+
 	else if(model['responder'] == 'First responder: TOW'){
-		if(tow_value != ' '){$("#Save-6").removeAttr("disabled");}
+		val = tow_value;
 	}
 	else if(model['responder'] == 'First responder: FIREBOARD'){
-		if(fireboard_value != ' '){$("#Save-6").removeAttr("disabled");}
+val = fireboard_value;
+		
 	}
 	else if(model['responder'] == 'First responder: MEDICAL'){
-		if(medical_value != ' '){$("#Save-6").removeAttr("disabled");}
+val = medical_value;
+		
 	}
 	else if(model['responder'] == 'First responder: Others'){
-		if(others_value != ' '){$("#Save-6").removeAttr("disabled");}
+val = others_value;
+		
 	}
 
-	if (num_responder == 1){
+else {val = ' ';}
+if( val != ' ' && model['involved_veh'] != null)
+{if(involved_pedestrian + involved_cyclist + involved_motor == 0)
+	{
+		if(car_values.length +  truck_values.length +  bus_values.length +  pickup_values.length +  van_values.length +  suv_values.length != 0)
+
+		{$("#Save-5").removeAttr("disabled");}
+}
+else
+{$("#Save-5").removeAttr("disabled");}
+}	
+if (num_responder == 1){
 		model['responder_number'] = chart_value + police_value + tow_value + fireboard_value + medical_value + others_value +'is responding.';
 	}
 	else if (num_responder > 1){
@@ -5377,24 +5394,38 @@ function activeNext(){
 	
 	if(this.id == 'Save-1'){
 		$("#Next-1").removeAttr("disabled");
+		$("#showModel").removeAttr("style");
+printSum();
+printTime();
+
 	}
+
+
 	else if(this.id == 'Save-2'){	
 		$("#Next-2").removeAttr("disabled");
+$("#showModel").removeAttr("style");
+printSum();
+printTime();
+
 	}
 	else if(this.id == 'Save-3'){
 		$("#Next-3").removeAttr("disabled");
+$("#showModel").removeAttr("style");
+printSum();
+printTime();
+
 	}
 	else if(this.id == 'Save-4'){
 		$("#Next-4").removeAttr("disabled");
+$("#showModel").removeAttr("style");
+printSum();
+printTime();
 
-		// enables the tabs after the Next-4 button is selected to ensure that all
+// enables the tabs after the Next-4 button is selected to ensure that all
 		// qualities are entered from the first tab
 		document.getElementById("data_tab_2").style = "font-size: 14px;";
 		document.getElementById("data_tab_3").style = "font-size: 14px;";
-		document.getElementById("data_tab_4").style = "font-size: 14px;";
-		document.getElementById("data_tab_5").style = "font-size: 14px;";
-		document.getElementById("data_tab_6").style = "font-size: 14px;";
-
+		
 		// displays different vehicles and location pages for different roads
 		if (road == "i495") {
 			document.getElementById("location_495").style = "font-size: 14px;";
@@ -5414,30 +5445,14 @@ function activeNext(){
 		else{
 			document.getElementById("location_95").style = "font-size: 14px;";
 		}
-	}
-	else if(this.id == 'Save-5'){
+}
+
+else if(this.id == 'Save-5'){
 		$("#boxheader").text("Estimated Clearance Time");
 		if(more_info){moreInfoNeeded_updateTime();} // Indicates more info is needed.
 		if(all_info){$("#boxheader").text("All information has been recorded.");}
-
-		if (document.getElementById("dropbox1s").value != ' ' && num_car == 0){
-			alert("At least one vehicle should be involved when a situation is specified for a type.");
-		}
-		else if (document.getElementById("dropbox2s").value != ' ' && num_truck == 0){
-			alert("At least one vehicle should be involved when a situation is specified for a type.");
-		}
-		else if (document.getElementById("dropbox3s").value != ' ' && num_bus == 0){
-			alert("At least one vehicle should be involved when a situation is specified for a type.");
-		}
-		else if (document.getElementById("dropbox7s").value != ' ' && num_pickup == 0){
-			alert("At least one vehicle should be involved when a situation is specified for a type.");
-		}
-		else if (document.getElementById("dropbox8s").value != ' ' && num_van == 0){
-			alert("At least one vehicle should be involved when a situation is specified for a type.");
-		}
-		else {
-			$("#Next-5").removeAttr("disabled");
-		}
+		$("#Next-5").removeAttr("disabled");
+		
 	}
 	else if(this.id == 'Save-6'){
 		$("#boxheader").text("Estimated Clearance Time");
@@ -5470,35 +5485,22 @@ function activeNext(){
 			alert("Please enter number of " + responder_type + " vehicles.");
 		}
 	}
-	else if(this.id == 'Save-7'){
-		$("#boxheader").text("Estimated Clearance Time");
-		if(more_info){moreInfoNeeded_updateTime();}
-		if(all_info){$("#boxheader").text("All information has been recorded.");}
-		$("#Next-7").removeAttr("disabled");
+	
+else if(this.id == 'Save-10' || this.id == 'Save-10_495' || this.id == 'Save-10_695' || this.id == 'Save-10_70' || this.id == 'Save-10_29' || this.id == 'Save-10_cluster'){
+	
+ 		 $("#Next-12").removeAttr("disabled");
+		
 	}
-	else if(this.id == 'Save-8'){
-		$("#boxheader").text("Estimated Clearance Time");
-		if(more_info){moreInfoNeeded_updateTime();}
-		if(all_info){$("#boxheader").text("All information has been recorded.");}
-		$("#Next-8").removeAttr("disabled");
-	}
-	else if(this.id == 'Save-9'){
-		$("#boxheader").text("Estimated Clearance Time");
-		if(more_info){moreInfoNeeded_updateTime();}
-		if(all_info){$("#boxheader").text("All information has been recorded.");}
-		$("#Next-9").removeAttr("disabled");
-	}
-	else if(this.id == 'Save-10' || this.id == 'Save-10_495' || this.id == 'Save-10_695' 
-		|| this.id == 'Save-10_270' || this.id == 'Save-10_70' || this.id == 'Save-10_29' || this.id == 'Save-10_cluster'){
-		$("#boxheader").text("Estimated Clearance Time");
-		if(more_info){moreInfoNeeded_updateTime();}
-		if(all_info){$("#boxheader").text("All information has been recorded.");}
-	}
+
+	
 	else if(this.id == 'Save-11'){
-		// $("#Next-11").removeAttr("disabled");
+		 $("#Next-11").removeAttr("disabled");
 		var radioValue4 = $("input[name='type']:checked").val();
 		console.log(radioValue4);
 	}
+		
+	
+	
 }
 
 /* 

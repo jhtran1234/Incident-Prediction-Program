@@ -9,6 +9,7 @@
 	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<script type="text/javascript" src="lib/wickedpicker.min.js"></script>
 	<link rel="stylesheet" href="css/wickedpicker.css">
+
 	
 	<link href="semantic/dist/semantic.min.css" rel="stylesheet" type="text/css">
 	<script src="semantic/dist/semantic.min.js"></script>
@@ -37,19 +38,54 @@
 			height: 570px;
 		}
 
+		
+		#checkbox
+		{margin-left: 50px;
+		}
+
+		#c1 {
+            width: 20px;
+            height: 20px;
+        }
+
+		#c2 {
+            width: 20px;
+            height: 20px;
+        }
+		#c3 {
+            width: 20px;
+            height: 20px;
+        }
+
+		
+
+
 		#choice1 {
 			padding: 100px 100px 10px 150px;
 		}
 		#choice2 {
 			padding: 100px 150px 10px 200px;
 		}
-		#checkbox-size {
+		
+#checkbox-small-size {
+			width:780px;
+			height:100px;   
+		}
+#checkbox-size1 {
 			width:780px;
 			height:200px;   
 		}
+
+
+
+		#inv_veh{
+		width:120px
+		}
+		
 		#tab-size {
 			width:365px;
 			height:225px;
+	
 		}
 
 		#estimation {
@@ -77,31 +113,34 @@
 		}
 
 		.thumbnail_responder img {
-			height:100px;
+			height:70px;
 			width:122px;
 		}
 		.thumbnail_pavement img {
+			
 			height:100px;
 			width:115px;
 		}
 		.thumbnail_pavement{
+
 			border-style: dotted;
+
 		}
 		.thumbnail_hazmat{
 			border-style: dotted;
 		}
 		.thumbnail_iv img {
-			height: 35px;
+			height: 25px;
 		}
 		.thumbnail_iv_2 img {
 			height: 60px;
 			padding-top: 2px;
 		}
 		#center-choice-line {
-			width:  750px;
-			height: 100px;
-			padding-top: 130px;
-			padding-left: 20px;
+			width:  780px;
+			height: 40px;
+			
+			
 		}
 		#dropdown_responder_1 {
 			width: 73px;
@@ -130,11 +169,13 @@
 		}
 		#ph6 {
 			padding-left: 35px;
+			
 		}
 		#timepicker-tab {
 			padding-left: 190px;
 			padding-top: 40px;
 		}
+
 		#iv1 {
 			padding: 0px 20px 5px 20px;
 		}
@@ -173,35 +214,12 @@
 			padding-right: 2px;	
 		}
 
-		#involved_vehicles {
-			height: 20px;
-			text-align:center;
-			width:  750px;
-		}
-		#dropbox1s {
-			height: 32px;
-			width:  50px;
-		}
-		#dropbox2s {
-			height: 32px;
-			width:  50px;
-		}
-		#dropbox3s {
-			height: 32px;
-			width:  50px;
-		}
-		#dropbox7s {
-			height: 32px;
-			width:  50px;
-		}
-		#dropbox8s {
-			height: 32px;
-			width:  50px;
-		}
-		#dropbox9s {
-			height: 32px;
-			width:  50px;
-		}
+		
+
+		.dropbox-margin {
+		margin-left: 30px;
+}
+		
 
 		#dropbox1 {
 			height: 32px;
@@ -217,9 +235,11 @@
 		}
 		#dropbox5 {
 			height: 32px;
+			margin-left: 50px;
 		}
 		#dropbox6 {
 			height: 32px;
+			margin-left: 50px;
 		}
 		#dropbox7 {
 			height: 32px;
@@ -234,36 +254,13 @@
 			height: 32px;
 		}
 	
-		#involved_vehicles_1 {
+		
 			height: 20px;
 			padding: 0px 20px 0px 10px;
 			text-align:center;
 		}
-		#involved_vehicles_2 {
-			height: 20px;
-			padding: 0px 20px 0px 10px;
-			text-align:center;
-		}
-		#involved_vehicles_3 {
-			height: 20px;
-			padding: 0px 20px 0px 10px;
-			text-align:center;
-		}
-		#involved_vehicles_4 {
-			height: 20px;
-			padding: 0px 20px 0px 10px;
-			text-align:center;
-		}
-		#involved_vehicles_5 {
-			height: 20px;
-			padding: 0px 20px 0px 10px;
-			text-align:center;
-		}
-		#involved_vehicles_6 {
-			height: 20px;
-			padding: 0px 20px 0px 10px;
-			text-align:center;
-		}
+		
+		
 		#location_1 {
 			width: 100px;
 
@@ -329,6 +326,13 @@
 			border: white;
 		}
 
+
+		.ui-dropdown-s {
+		margin-left:50 px
+
+		}
+
+
 		#type1{
 			height: 20px;
 			padding: 30px 50px 10px 80px;
@@ -351,6 +355,13 @@
 			padding: 10px 50px 10px 160px;
 		}
 
+p { margin-top: 0;
+margin-bottom: 0; }
+ul { margin-top: 0; }
+
+.ui form {
+margin-bottom: 0;
+}
 		#type6{
 			height: 20px;
 			padding: 10px 50px 10px 180px;
@@ -376,9 +387,9 @@
 		}
 
 		label {
+			
 			display: inline-block;
 		}
-	
 	</style>
 	<title>Incident Clearance Time Prediction Program</title>
 </head>
@@ -390,46 +401,43 @@
 					Type
 				</b></div>
 				<div class="item" data-tab="2" id="data_tab_2" style="display: none; font-size: 14px;"><b>
-					Involved Vehicles
+					Involved Vehicles & Responders
 				</b></div>
 				<div class="item" data-tab="3" id="data_tab_3" style="display: none; font-size: 14px;"><b>
-					Responder
+					Center & Pavement & Time
 				</b></div>
-				<div class="item" data-tab="4" id="data_tab_4" style="display: none; font-size: 14px;"><b>
-					Center
-				</b></div>
-				<div class="item" data-tab="5" id="data_tab_5" style="display: none; font-size: 14px;"><b>
-					Pavement &amp; Hazmat
-				</b></div>
-				<div class="item" data-tab="6" id="data_tab_6" style="display: none; font-size: 14px;"><b>
-					Time
-				</b></div>
+				
 				<!--A different location tab with different map will appear with different hwy choices-->
-				<div class="item" data-tab="7" id="location_95" style="display: none; font-size: 14px;">
+				<div class="item" data-tab="4" id="location_95" style="display: none; font-size: 14px;">
 					<b>Location</b>
 				</div>
-				<div class="item" data-tab="8" id="location_495" style="display: none; font-size: 14px;">
+				<div class="item" data-tab="5" id="location_495" style="display: none; font-size: 14px;">
 					<b>Location</b>
 				</div>
-				<div class="item" data-tab="9" id="location_695" style="display: none; font-size: 14px;">
+				<div class="item" data-tab="6" id="location_695" style="display: none; font-size: 14px;">
 					<b>Location</b>
 				</div>
-				<div class="item" data-tab="10" id="location_270" style="display: none; font-size: 14px;">
+				<div class="item" data-tab="7" id="location_270" style="display: none; font-size: 14px;">
 					<b>Location</b>
 				</div>
-				<div class="item" data-tab="11" id="location_70" style="display: none; font-size: 14px;">
+				<div class="item" data-tab="8" id="location_70" style="display: none; font-size: 14px;">
 					<b>Location</b>
 				</div>
-				<div class="item" data-tab="12" id="location_29" style="display: none; font-size: 14px;">
+				<div class="item" data-tab="9" id="location_29" style="display: none; font-size: 14px;">
 					<b>Location</b>
 				</div>
-				<div class="item" data-tab="13" id="location_cluster" style="display: none; font-size: 14px;">
+				<div class="item" data-tab="10" id="location_cluster" style="display: none; font-size: 14px;">
 					<b>Location</b>
 				</div>
+				<div class="item" data-tab="11" id="data_tab_11" style="display: none; font-size: 14px;">
+					<b>Estimation clearance</b>
+				</div>
+
+
 			</div>
 			<div class="ui bottom attached tab segment active" data-tab="1">
 				<div class="ui grid">
-					<div class="one column row" id="checkbox-size">
+					<div class="one column row" id="checkbox-size1">
 						<div class="column">
 							<div class="ui form">
 								<div class="inline fields">
@@ -459,11 +467,10 @@
 						</div>
 					</div>
 				</div>
-			</div>
-
+</div>
 			<div class="ui bottom attached tab segment" data-tab="1-1">
 				<div class="ui grid">
-					<div class="one column row" id="checkbox-size">
+					<div class="one column row" id="checkbox-size1">
 						<div class="column">
 							<div class="ui form">
 								<div class="inline fields">
@@ -493,11 +500,11 @@
 						</div>
 					</div>
 				</div>
-			</div>
+</div>
 
 			<div class="ui bottom attached tab segment" data-tab="1-2">
 				<div class="ui grid">
-					<div class="one column row" id="checkbox-size">
+					<div class="one column row" id="checkbox-size1">
 						<div class="thumbnail_incident">
 							<img src="images/incidenttype_1.png" id="t2">
 							<img src="images/incidenttype_2.png">
@@ -535,11 +542,11 @@
 						</div>
 					</div>
 				</div>
-			</div>
+</div>
 
 			<div class="ui bottom attached tab segment" data-tab="1-3">
 				<div class="ui grid">
-					<div class="two column row" id="checkbox-size">
+					<div class="two column row" id="checkbox-size1">
 						<div class="column">
 							<img src="images/detail_lane.png" style="padding-left:30px; padding-top:30px;"> 
 						</div>
@@ -603,11 +610,11 @@
 						</div>
 					</div>
 				</div>
-			</div>
+</div>
 
 			<div class="ui bottom attached tab segment" data-tab="1-4">
 				<div class="ui grid">
-					<div class="one column row" id="checkbox-size">
+					<div class="one column row" id="checkbox-size1">
 						<div class="column">
 							<div class="ui form">
 								<div class="inline fields">
@@ -678,24 +685,20 @@
 						</div>
 					</div>
 				</div>
-			</div>
 
+</div>
 			<div class="ui bottom attached tab segment" data-tab="2">
 				<div class="ui grid">
-					<div class="one column row" id="checkbox-size">
-						<div class="thumbnail_iv">
-							<img src="images/pc.png" id="iv1"> 
-							<img src="images/truck.png" id="iv2">
-							<img src="images/bus.png" id="iv3">
-							<img src="images/pickup.jpg" id="iv7">
-							<img src="images/van.png" id="iv8" style="display: none">
-						</div>
-
-						<div class="ui form">
-							<div class="inline fields" id="involved_vehicles">								
-								<div class="field" id="involved_vehicles_1">
-									<!-- <label for="dropbox">Select:</label> -->
-									<label style="font-size: 18px;">Car</label><br>
+					<div class="one column row" id = "checkbox-size">
+						
+							<p style="font-weight:bold; font-size: 18px;">Involved Vehicles
+							<div class = "thumbnail_iv">
+							<img src="images/pc.png"></div></p>
+							
+							<div class="ui bulleted list" id = "involved_vehicles">
+        							<div class="item" id = "involved_vehicles_1">
+									
+								<label style="font-size: 15px;" id = "inv_veh">Car</label>
 									<select class="ui dropdown" id="dropbox1"> 
 										<option value=" ">0</option>
 										<option value="1 Car ">1</option>
@@ -705,16 +708,20 @@
 										<option value="5 Cars ">5</option>
 										<option value="6+ Cars ">6</option>
 									</select>
-											
-									<select class="ui dropdown" id="dropbox1s"> 
-										<option value=" ">None</option>
-										<option value="jack ">Jack-knifed</option>
-										<option value="over ">Overturned</option>
-										<option value="lost ">Lost Load</option>											  
-									</select>					</div>
-								<div class="field" id="involved_vehicles_2">
-									<label style="font-size: 18px;">Truck</label><br>
-									<select class="ui dropdown" id="dropbox2">
+									
+									
+ 										<label for = "over" id = "checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" name = "dropbox1s" value="over " id="dropbox1a"></label>
+   									 	<label for = "jack" id = "checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" name = "dropbox1s" value="jack " id="dropbox1b"></label>
+   										<label for = "lost" id = "checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" name = "dropbox1s" value="lost " id="dropbox1c"></label>		
+									
+									</div>
+		
+									
+									<div class="item" id = "involved_vehicles_2">
+									
+									<label style="font-size: 15px;" id = "inv_veh">Truck</label>
+									
+									<select class="ui dropdown" id="dropbox2"> 
 										<option value=" ">0</option>
 										<option value="1 Truck ">1</option>
 										<option value="2 Trucks ">2</option>
@@ -723,16 +730,16 @@
 										<option value="5 Trucks ">5</option>
 										<option value="6+ Trucks ">6</option>
 									</select>
+							
+
 										
-									<select class="ui dropdown" id="dropbox2s">
-										<option value=" ">None</option>
-										<option value="jack ">Jack-knifed</option>
-										<option value="over ">Overturned</option>
-										<option value="lost ">Lost Load</option>
-									</select>											
-								</div>
-								<div class="field" id="involved_vehicles_3">
-									<label style="font-size: 18px;">Bus</label><br>
+ 										<label for = "over" id = "checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" name = "dropbox2s" value="over " id=dropbox2a"></label>
+   									 	<label for = "jack" id = "checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" name = "dropbox2s" value="jack " id="dropbox2b"></label>
+   										<label for = "lost" id = "checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" name = "dropbox2s" value="lost " id="dropbox2c"></label>		
+													
+									</div>
+						<div class="item" id = "involved_vehicles_3">
+									<label style="font-size: 15px;" id = "inv_veh">Bus</label>
 									<select class="ui dropdown" id="dropbox3">
 										<option value=" ">0</option>
 										<option value="1 Bus ">1</option>
@@ -743,15 +750,15 @@
 										<option value="6+ Buses ">6</option>
 									</select>
 
-									<select class="ui dropdown" id="dropbox3s">
-										<option value=" ">None</option>
-										<option value="jack ">Jack-knifed</option>
-										<option value="over ">Overturned</option>
-										<option value="lost ">Lost Load</option>
-									</select>
-								</div>
-								<div class="field" id="involved_vehicles_4">
-									<label style="font-size: 18px;">Pickup</label><br>
+									
+ 										<label for = "over" id = "checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" name = "dropbox3s" value="over " id="dropbox3a"></label>
+   									 	<label for = "jack" id = "checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" name = "dropbox3s" value="jack " id="dropbox3b"></label>
+   										<label for = "lost" id = "checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" name = "dropbox3s" value="lost " id="dropbox3c"></label>		
+													
+									</div>
+
+<div class="item" id = "involved_vehicles_4">
+<label style="font-size: 15px;" id = "inv_veh">Pickup</label>
 									<select class="ui dropdown" id="dropbox7">
 										<option value=" ">0</option>
 										<option value="1 Pickup ">1</option>
@@ -761,45 +768,60 @@
 										<option value="5 Pickups ">5</option>
 										<option value="6+ Pickups ">6</option>
 									</select>
-									<select class="ui dropdown" id="dropbox7s">
-										<option value=" ">None</option>
-										<option value="jack ">Jack-knifed</option>
-										<option value="over ">Overturned</option>
-										<option value="lost ">Lost Load</option>
-									</select>
-								</div>
-								<div class="field" id="involved_vehicles_5" style="display: none">
-									<label style="font-size: 18px;">Van</label><br>
+
+									
+ 										<label for = "over" id = "checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" name = "dropbox7s" value="over " id="dropbox7a"></label>
+   									 	<label for = "jack" id = "checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" name = "dropbox7s" value="jack " id="dropbox7b"></label>
+   										<label for = "lost" id = "checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" name = "dropbox7s" value="lost " id="dropbox7c"></label>		
+													
+									
+</div>
+<div class="item" id = "involved_vehicles_5" style="display: none">
+								
+									<label style="font-size: 15px;" id = "inv_veh">Van</label>
 									<select class="ui dropdown" id="dropbox8">
 										<option value=" ">0</option>
-										<option value="1 Van ">1</option>
+							
+			<option value="1 Van ">1</option>
 										<option value="2 Vans ">2</option>
 										<option value="3 Vans ">3</option>
 										<option value="4 Vans ">4</option>
 										<option value="5 Vans ">5</option>
 										<option value="6+ Vans ">6</option>
 									</select>
-									<select class="ui dropdown" id="dropbox8s">
-										<option value=" ">None</option>
-										<option value="jack ">Jack-knifed</option>
-										<option value="over ">Overturned</option>
-										<option value="lost ">Lost Load</option>
-									</select>
-								</div>							
-							</div>
-						</div>	
 
-						<div class="thumbnail_iv_2">
-							<img src="images/ped.png" id="iv4">
-							<img src="images/cyclist.png" id="iv5">
-							<img src="images/motor.png" id="iv6">
-							<img src="images/suv.png" id="iv9" style="display: none">
-						</div>
-							
-						<div class="ui form">
-							<div class="inline fields" id="involved_vehicles">
-								<div class="field" id="involved_vehicles_1">
-									<label style="font-size: 18px;">Pedestrian</label><br>
+										
+ 										<label for = "over" id = "checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" name = "dropbox8s" value="over " id="dropbox8a"></label>
+   									 	<label for = "jack" id = "checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" name = "dropbox8s" value="jack " id="dropbox8b"></label>
+   										<label for = "lost" id = "checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" name = "dropbox8s" value="lost " id="dropbox8c"></label>		
+										
+											
+								
+</div>
+									<div class="item" id = "involved_vehicles_6" style="display: none">
+									
+									<label style="font-size: 15px;" id = "inv_veh">SUV</label>
+									<select class="ui dropdown" id="dropbox9">
+										<option value=" ">0</option>
+										<option value="1 SUV ">1</option>
+										<option value="2 SUVs ">2</option>
+										<option value="3 SUVs ">3</option>
+										<option value="4 SUVs ">4</option>
+										<option value="5 SUVs ">5</option>
+										<option value="6+ SUVs ">6</option>
+								</select>
+
+										
+ 										<label for = "over" id = "checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" name = "dropbox9s" value="over " id="dropbox9a"></label>
+   									 	<label for = "jack" id = "checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" name = "dropbox9s" value="jack " id="dropbox9b"></label>
+   										<label for = "lost" id = "checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" name = "dropbox9s" value="lost " id="dropbox9c"></label>		
+										
+											
+									
+</div>
+
+<div class="item" id = "involved_vehicles_7">
+									<li><label style="font-size: 15px;" id = "inv_veh">Pedestrian</label>
 									<select class="ui dropdown" id="dropbox4"> 
 										<option value=" ">0</option>
 										<option value="1 Pedestrian ">1</option>
@@ -809,9 +831,10 @@
 										<option value="5 Pedestrians ">5</option>
 										<option value="6+ Pedestrians ">6</option>
 									</select>
-								</div>
-								<div class="field" id="involved_vehicles_2">
-									<label style="font-size: 18px;">Cyclist</label><br>
+
+								
+
+									<label style="font-size: 15px;" id = "checkbox">Cyclist</label>
 									<select class="ui dropdown" id="dropbox5"> 
 										<option value=" ">0</option>
 										<option value="1 Cyclist ">1</option>
@@ -821,9 +844,9 @@
 										<option value="5 Cyclists ">5</option>
 										<option value="6+ Cyclists ">6</option>
 									</select>											
-								</div>
-								<div class="field" id="involved_vehicles_3">
-									<label style="font-size: 18px;">Motorcyclist</label><br>
+							
+								
+									<label style="font-size: 15px;" id = "checkbox">Motorcyclist</label>
 									<select class="ui dropdown" id="dropbox6"> 
 										<option value=" ">0</option>
 										<option value="1 Motorcyclist ">1</option>
@@ -833,45 +856,11 @@
 										<option value="5 Motorcyclists ">5</option>
 										<option value="6+ Motorcyclists ">6</option>
 									</select>
+								
 								</div>
-								<div class="field" id="involved_vehicles_6" style="display: none">
-									<label style="font-size: 18px;">SUV</label><br>
-									<select class="ui dropdown" id="dropbox9">
-										<option value=" ">0</option>
-										<option value="1 SUV ">1</option>
-										<option value="2 SUVs ">2</option>
-										<option value="3 SUVs ">3</option>
-										<option value="4 SUVs ">4</option>
-										<option value="5 SUVs ">5</option>
-										<option value="6+ SUVs ">6</option>
-									</select>
-									<select class="ui dropdown" id="dropbox9s">
-										<option value=" ">None</option>
-										<option value="jack ">Jack-knifed</option>
-										<option value="over ">Overturned</option>
-										<option value="lost ">Lost Load</option>
-									</select>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>	
-				<div class="ui grid">
-					<div class="column" id="button-size">
-						<div class="one column row" id="button-row">
-							<button class="ui right floated blue button" id="Next-5" disabled="disabled" name="next">Next</button> 
-							<button class="ui right floated blue button" id="Save-5" disabled="disabled" name="save">Save</button>
-							<button class="ui right floated blue button" id="Back-5">Back</button>
-							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
-						</div>
-					</div>
+</div>
 
-				</div>
-			</div>
-			
-			<div class="ui bottom attached tab segment" data-tab="3">
-				<div class="ui grid">
-					<div class="one column row" id="checkbox-size">
+							
 					<p style="font-weight:bold; font-size: 18px;">First Responder and # of responders</p>
 						<div class="thumbnail_responder">
 							<img src="images/responder_1.jpg">
@@ -882,8 +871,8 @@
 							<img src="images/responder_6.png">
 						</div>
 						<div class="ui form">
-							<div class="inline fields">
-								<div class="field" id="responder-chart">
+							<div class="inline fields"  style = "margin-bottom:0px;">
+								<div class="field" id="responder-chart" style = "height:35px">
 									<div class="ui radio checkbox" >
 										<input name="frequency" type="radio" value="CHART"> <label style="padding-left: 0.5cm; font-size: 18px;"><b>CHART</b></label>
 										<select class="ui dropdown" id="dropdown_responder_1">
@@ -900,7 +889,7 @@
 										</select>
 									</div>
 								</div>
-								<div class="field" id="responder-police">
+								<div class="field" id="responder-police" style = "height:35px" >
 									<div class="ui radio checkbox">
 										<input name="frequency" type="radio" value="POLICE"> <label style="padding-left: 0.5cm; font-size: 18px;"><b>POLICE</b></label>
 										<select class="ui dropdown" id="dropdown_responder_2">
@@ -917,7 +906,7 @@
 										</select>											
 									</div>
 								</div>
-								<div class="field" id="responder-tow">
+								<div class="field" id="responder-tow" style = "height:35px">
 									<div class="ui radio checkbox">
 										<input name="frequency" type="radio" value="TOW"> <label style="padding-left: 0.5cm; font-size: 18px;"><b>TOW</b></label>
 										<select class="ui dropdown" id="dropdown_responder_3">
@@ -934,7 +923,7 @@
 										</select>
 									</div>
 								</div>
-								<div class="field" id="responder-fireboard">
+								<div class="field" id="responder-fireboard" style = "height:35px">
 									<div class="ui radio checkbox" >
 										<input name="frequency" type="radio" value="FIREBOARD"> <label style="padding-left: 0.5cm; font-size: 18px;"><b>FIREBOARD</b></label>
 										<select class="ui dropdown" id="dropdown_fireboard">
@@ -951,7 +940,7 @@
 										</select>
 									</div>
 								</div>
-								<div class="field" id="responder-medical">
+								<div class="field" id="responder-medical" style = "height:35px">
 									<div class="ui radio checkbox">
 										<input name="frequency" type="radio" value="MEDICAL"> <label style="padding-left: 0.5cm; font-size: 18px;"><b>MEDICAL</b></label>
 										<select class="ui dropdown" id="dropdown_responder_5">
@@ -968,7 +957,7 @@
 										</select>
 									</div>
 								</div>
-								<div class="field" id="responder-other">
+								<div class="field" id="responder-other" style = "height:35px" >
 									<div class="ui radio checkbox">
 										<input name="frequency" type="radio" value="OTHERS"> <label style="padding-left: 0.5cm; font-size: 18px;"><b>OTHERS</b></label>
 										<select class="ui dropdown" id="dropdown_responder_6">
@@ -989,12 +978,14 @@
 						</div>
 					</div>
 				</div>
-				<div class="ui grid">	
-					<div class="column" id="button-size">
+				
+					
+				<div class="ui grid">
+					<div class="column" >
 						<div class="one column row" id="button-row">
-							<button class="ui right floated blue button" id="Next-6" disabled="disabled" name="next">Next</button> 
-							<button class="ui right floated blue button" id="Save-6" disabled="disabled" name="save">Save</button>
-							<button class="ui right floated blue button" id="Back-6">Back</button>
+							<button class="ui right floated blue button" id="Next-5" disabled="disabled" name="next">Next</button> 
+							<button class="ui right floated blue button" id="Save-5" disabled="disabled" name="save">Save</button>
+							<button class="ui right floated blue button" id="Back-5">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
 						</div>
 					</div>
@@ -1002,68 +993,57 @@
 				</div>
 			</div>
 			
-			<div class="ui bottom attached tab segment" data-tab="4">
-				<div class="ui grid">
-					<div class="one column row" id="checkbox-size">
-						<p style="font-weight:bold; font-size: 18px;">Select an operation center.</p>
-						<div class="ui form">
-							<div class="inline fields" id="center-choice-line">
-								<div class="field">
-									<div class="ui radio checkbox" >
-										<input name="frequency" type="radio"> <label style="padding-left: 0.7cm; font-size: 20px;"><b>AOC</b></label>
-									</div>
-								</div>
-								<div class="field">
-									<div class="ui radio checkbox">
-										<input name="frequency" type="radio"> <label style="padding-left: 0.7cm; font-size: 20px;"><b>SOC</b></label>											
-									</div>
-								</div>
-								<div class="field">
-									<div class="ui radio checkbox">
-										<input name="frequency" type="radio"> <label style="padding-left: 0.7cm; font-size: 20px;"><b>TOC3</b></label>											
-									</div>
-								</div>
-								<div class="field">
-									<div class="ui radio checkbox">
-										<input name="frequency" type="radio"> <label style="padding-left: 0.7cm; font-size: 20px;"><b>TOC4</b></label>
-									</div>
-								</div>
-								<div class="field">
-									<div class="ui radio checkbox">
-										<input name="frequency" type="radio"> <label style="padding-left: 0.7cm; font-size: 20px;"><b>TOC5</b></label>
-									</div>
-								</div>
-								<div class="field">
-									<div class="ui radio checkbox">
-										<input name="frequency" type="radio"> <label style="padding-left: 0.7cm; font-size: 20px;"><b>TOC7</b></label>
-									</div>
-								</div>
-								<div class="field">
-									<div class="ui radio checkbox">
-										<input name="frequency" type="radio"> <label style="padding-left: 0.7cm; font-size: 20px;"><b>Other</b></label>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="ui grid">	
-					<div class="column" id="button-size">
-						<div class="one column row" id="button-row">
-							<button class="ui right floated blue button" id="Next-7" disabled="disabled" name="next">Next</button> 
-							<button class="ui right floated blue button" id="Save-7" disabled="disabled" name="save">Save</button>
-							<button class="ui right floated blue button" id="Back-7">Back</button>
-							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
-						</div>
-					</div>
-				</div>
-			</div>
+		
 			
-			<div class="ui bottom attached tab segment" data-tab="5">
+			<div class="ui bottom attached tab segment" data-tab="3">
 				<div class="ui grid">
-					<div class="one column row" id="checkbox-size">
-						<p style="font-weight:bold; font-size: 18px;">Please indicate the pavement condition and whether hazmat is involved.</p>
+					<div class="one column row" id = "checkbox-size">
+						
+						<div class="ui form" >
+							<p style="font-weight:bold; font-size: 18px;">Operation Center</p>
+									<div class = "column">
+										<div class="inline fields">
+								<div class="field" style = "height:20px;">
+									<div class="ui radio checkbox" id = "check">
+										<input name="frequency1" type="radio"> <label style="padding-left: 0.7cm; font-size: 20px;"><b>AOC</b></label>
+									</div>
+								</div>
+								<div class="field" style = "height:20px;">
+									<div class="ui radio checkbox">
+										<input name="frequency1" type="radio"> <label style="padding-left: 0.7cm; font-size: 20px;"><b>SOC</b></label>											
+									</div>
+								</div>
+								<div class="field" style = "height:20px;">
+									<div class="ui radio checkbox">
+										<input name="frequency1" type="radio"> <label style="padding-left: 0.7cm; font-size: 20px;"><b>TOC3</b></label>											
+									</div>
+								</div>
+								<div class="field" style = "height:20px;">
+									<div class="ui radio checkbox">
+										<input name="frequency1" type="radio"> <label style="padding-left: 0.7cm; font-size: 20px;"><b>TOC4</b></label>
+									</div>
+								</div>
+								<div class="field" style = "height:20px;">
+									<div class="ui radio checkbox">
+										<input name="frequency1" type="radio"> <label style="padding-left: 0.7cm; font-size: 20px;"><b>TOC5</b></label>
+									</div>
+								</div>
+								<div class="field" style = "height:20px;">
+									<div class="ui radio checkbox">
+										<input name="frequency1" type="radio"> <label style="padding-left: 0.7cm; font-size: 20px;"><b>Other</b></label>
+</div>
+</div>
+</div>
+<div class = "inline fields" style = "height:30px">
+
+ <label style="font-weight:bold; font-size: 18px;"> Pavement & Hazmat </label>      
+			
+</div>
+		</div>
+		</div>
+						
+						                                              
+						
 						<div class="thumbnail_pavement">
 							<img src="images/ph1.png" id="ph1">
 							<img src="images/ph2.png" id="ph2">
@@ -1072,84 +1052,84 @@
 							<img src="images/ph5.png" id="ph5">
 						</div>
 						<div class="thumbnail_hazmat">
-							<img src="images/ph6.png" id="ph6">
+							<img src="images/ph6.png" id = "ph6">
 						</div>	
-						<div class="ui form">
-							<div class="inline fields">
-								<div class="field">
-									<div class="ui radio checkbox">
-										<input name="frequency" type="radio"> <label style="padding-left: 0.7cm; font-size: 20px;"><b>Dry</b></label>
+
+						
+							
+
+<div class = "ui form">
+						<div class="inline fields" style = "margin-bottom:0px;" >
+								<div class="field" style = "height:20px">
+
+									<div class="ui radio checkbox" id = "new">
+
+										<input name="frequency" type="radio"> <label style="padding-left: 0.7cm; font-size: 15px;"><b>Dry</b></label>
 									</div>
 								</div>
-								<div class="field">
+								<div class="field" style = "height:20px">
 									<div class="ui radio checkbox">
-										<input name="frequency" type="radio"> <label style="padding-left: 0.7cm; font-size: 20px;"><b>Wet</b></label>											
+										<input name="frequency" type="radio"> <label style="padding-left: 0.7cm; font-size: 15px;"><b>Wet</b></label>											
 									</div>
 								</div>
-								<div class="field">
+								<div class="field" style = "height:20px">
 									<div class="ui radio checkbox">
-										<input name="frequency" type="radio"> <label style="padding-left: 0.7cm; font-size: 20px;"><b>Snow/Ice</b></label>											
+										<input name="frequency" type="radio"> <label style="padding-left: 0.7cm; font-size: 15px;"><b>Snow/Ice</b></label>											
 									</div>
 								</div>
-								<div class="field">
+								<div class="field" style = "height:20px">
 									<div class="ui radio checkbox" style="margin-right:20px;">
-										<input name="frequency" type="radio"> <label style="padding-left: 0.7cm; font-size: 20px;"><b>Chemical wet</b></label>
+										<input name="frequency" type="radio"> <label style="padding-left: 0.7cm; font-size: 15px;"><b>Chemical wet</b></label>
 									</div>
 								</div>	
-								<div class="field">
+								<div class="field" style = "height:20px">
 									<div class="ui radio checkbox" style="margin-right:40px;">
-										<input name="frequency" type="radio"> <label style="padding-left: 0.7cm; font-size: 20px;"><b>Unspecified</b></label>
+										<input name="frequency" type="radio"> <label style="padding-left: 0.7cm; font-size: 15px;"><b>Unspecified</b></label>
 									</div>
 								</div>
 
-								<div class="field">
+								<div class="field" style = "height:20px">
 									<div class="ui checkbox" style="margin-left:10px;">
-										<input type="checkbox" name="example" id="haz"><label style="padding-left: 0.7cm; font-size: 20px;"><b>Hazmat</b></label>
+										<input type="checkbox" name="example" id="haz"><label style="padding-left: 0.7cm; font-size: 15px;"><b>Hazmat</b></label>
 									</div>
-								</div>	
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="ui grid">	
-					<div class="column" id="button-size">
-						<div class="one column row" id="button-row">
-							<button class="ui right floated blue button" id="Next-8" disabled="disabled" name="next">Next</button>
-							<button class="ui right floated blue button" id="Save-8" disabled="disabled" name="save">Save</button>
-							<button class="ui right floated blue button" id="Back-8">Back</button>
-							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="ui bottom attached tab segment" data-tab="6">
-				<!-- <input type="datetime-local" id="date"/> -->
-				<div class="ui grid">
-					<div class="one column row" id="checkbox-size">
+								</div>
+</div>	
+
+			</div>		
+						<br>
+<br>
+<p style="font-weight:bold; font-size: 18px;">Time</p>
+
 						<div id="timepicker-tab">
 							<input id="datepicker" type="text" style="font-size:20px; font-weight:bold;"><p style="display: inline;" class="name" id="weekend"></p>
 							<input type="text" name="timepicker" class="timepicker" id="timepicker" style="font-size:20px; font-weight:bold;">
-						</div>
-					</div>
-				</div>	
-					
+						
+			
+</div>
+</div>
+</div>
+
+
 				<div class="ui grid">	
-					<div class="column" id="button-size">
+					<div class="column" >
 						<div class="one column row" id="button-row">
-							<button class="ui right floated blue button" id="Next-9" disabled="disabled" name="next">Next</button> 
-							<button class="ui right floated blue button" id="Save-9"  name="save">Save</button>
-							<button class="ui right floated blue button" id="Back-9">Back</button>
+							<button class="ui right floated blue button" id="Next-6" disabled="disabled" name="next">Next</button> 
+							<button class="ui right floated blue button" id="Save-6" disabled="disabled" name="save">Save</button>
+							<button class="ui right floated blue button" id="Back-6">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
 						</div>
 					</div>
-				</div>	
+				</div>
 			</div>
+			
+			
+			
 			<!-- I-95 Location Tab -->
-			<div class="ui bottom attached tab segment" data-tab="7">
+			<div class="ui bottom attached tab segment" data-tab="4">
 				<div class="ui grid">
 					<div class="one column row" id="checkbox-size">
-						<div class="">
-							<img src="images/location_map_95.png"> 
+						<div class="column">
+							<img src="images/location_map_95.png" height="300px" > 
 						</div>
 						<div class="ui form" id="location_form">
 							<div class="inline fields">
@@ -1196,7 +1176,7 @@
 									<option value="Noinfo">No Information</option>
 								</select> 
 							</label>
-							<label for="dropdown_exit">
+							<label for="dropdown_exit" >
 								<!-- Exit<br> -->
 								<select class="ui dropdown" id="dropdown_exit" style="font-size:16px; font-weight:bold;">
 									<option value="">Exit</option>
@@ -1209,11 +1189,10 @@
 						</div>
 					</div>
 				</div>
-				<div class="ui grid">	
+				<div class="ui grid" style = "margin-top:30px;">	
 					<div class="column" id="button-size">
 						<div class="one column row" id="button-row">
-							<!-- <button class="ui right floated blue button" id="Next-10" disabled="disabled">Next</button>  -->
-							<button class="ui right floated blue button" id="Queue" onClick="parent.location='queue.html'">Queue Prediction</button>
+							 <button class="ui right floated blue button" id="Next-12" disabled="disabled" name="next">Next</button> 
 							<button class="ui right floated blue button" id="Save-10" disabled="disabled" name="save">Save</button>
 							<button class="ui right floated blue button" id="Back-10">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
@@ -1222,11 +1201,11 @@
 				</div>
 			</div>
 			<!-- I-495 Location Tab -->
-			<div class="ui bottom attached tab segment" data-tab="8">
+			<div class="ui bottom attached tab segment" data-tab="5">
 				<div class="ui grid">
 					<div class="two column row" id="checkbox-size">
 						<div class="column">
-							<img src="images/location_map_495.png" height="250px" style="padding-left:30px;">
+							<img src="images/location_map_495.png" height="400px" style="padding-left:30px;">
 						</div>
 
 						<div class="column">
@@ -1259,8 +1238,7 @@
 				<div class="ui grid">	
 					<div class="column" id="button-size">
 						<div class="one column row" id="button-row">
-							<!-- <button class="ui right floated blue button" id="Next-10" disabled="disabled">Next</button>  -->
-							<button class="ui right floated blue button" id="Queue" onClick="parent.location='queue.html'">Queue Prediction</button>
+							<button class="ui right floated blue button" id="Next-12" disabled="disabled" name="next">Next</button> 
 							<button class="ui right floated blue button" id="Save-10_495" disabled="disabled" name="save">Save</button>
 							<button class="ui right floated blue button" id="Back-10_495">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
@@ -1269,11 +1247,11 @@
 				</div>
 			</div>
 			<!-- I-695 Location Tab -->
-			<div class="ui bottom attached tab segment" data-tab="9">
+			<div class="ui bottom attached tab segment" data-tab="6">
 				<div class="ui grid">
 					<div class="two column row" id="checkbox-size">
 						<div class="column">
-							<img src="images/location_map_695.png" height="250px" style="padding-left:50px;">  
+							<img src="images/location_map_695.png" height="350px" style="padding-left:50px;">  
 						</div>
 
 						<div class="column">
@@ -1307,8 +1285,7 @@
 				<div class="ui grid">	
 					<div class="column" id="button-size">
 						<div class="one column row" id="button-row">
-							<!-- <button class="ui right floated blue button" id="Next-10" disabled="disabled">Next</button>  -->
-							<button class="ui right floated blue button" id="Queue" onClick="parent.location='queue.html'">Queue Prediction</button>
+							<button class="ui right floated blue button" id="Next-12" disabled="disabled" name="next">Next</button> 
 							<button class="ui right floated blue button" id="Save-10_695" disabled="disabled" name="save">Save</button>
 							<button class="ui right floated blue button" id="Back-10_695">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
@@ -1317,11 +1294,11 @@
 				</div>
 			</div>
 			<!-- I-270 Location Tab -->
-			<div class="ui bottom attached tab segment" data-tab="10">
+			<div class="ui bottom attached tab segment" data-tab="7">
 				<div class="ui grid">
 					<div class="one column row" id="checkbox-size">
-						<div class="">
-							<img src="images/location_map_270.png" width="745px"> 
+						<div class="column">
+							<img src="images/location_map_270.png" height="350px" style="padding-left:50px;"> 
 						</div>		
 						<div class = "ui form" id="exit_form">
 							<label for="dropdown_location" style="padding-left:75px;">
@@ -1367,8 +1344,7 @@
 				<div class="ui grid">	
 					<div class="column" id="button-size">
 						<div class="one column row" id="button-row">
-							<!-- <button class="ui right floated blue button" id="Next-10" disabled="disabled">Next</button>  -->
-							<button class="ui right floated blue button" id="Queue" onClick="parent.location='queue.html'">Queue Prediction</button>
+							<button class="ui right floated blue button" id="Next-12" disabled="disabled" name="next">Next</button>
 							<button class="ui right floated blue button" id="Save-10_270" disabled="disabled" name="save">Save</button>
 							<button class="ui right floated blue button" id="Back-10_270">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
@@ -1377,11 +1353,11 @@
 				</div>
 			</div>
 			<!-- I-70 Location Tab -->
-			<div class="ui bottom attached tab segment" data-tab="11">
+			<div class="ui bottom attached tab segment" data-tab="8">
 				<div class="ui grid">
 					<div class="one column row" id="checkbox-size">
-						<div class="">
-							<img src="images/location_map_70.jpg" width="745px"> 
+						<div class="column">
+							<img src="images/location_map_70.jpg" height="350px" style="padding-left:50px;"> 
 						</div>		
 						<div class = "ui form" id="exit_form">
 							<label for="dropdown_location" style="padding-left:75px;">
@@ -1416,8 +1392,7 @@
 				<div class="ui grid">
 					<div class="column" id="button-size">
 						<div class="one column row" id="button-row">
-							<!-- <button class="ui right floated blue button" id="Next-10" disabled="disabled">Next</button>  -->
-							<button class="ui right floated blue button" id="Queue" onClick="parent.location='queue.html'">Queue Prediction</button>
+							<button class="ui right floated blue button" id="Next-12" disabled="disabled" name="next">Next</button> 
 							<button class="ui right floated blue button" id="Save-10_70" disabled="disabled" name="save">Save</button>
 							<button class="ui right floated blue button" id="Back-10_70">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button>
@@ -1426,11 +1401,11 @@
 				</div>
 			</div>
 			<!-- US-29 Location Tab -->
-			<div class="ui bottom attached tab segment" data-tab="12">
+			<div class="ui bottom attached tab segment" data-tab="9">
 				<div class="ui grid">
 					<div class="one column row" id="checkbox-size">
-						<div class="">
-							<img src="images/location_map_29.png" width="745px">
+						<div class="column">
+							<img src="images/location_map_29.png" height="350px" style="padding-left:50px;">
 						</div>
 						<div class = "ui form" id="exit_form">
 							<label for="dropdown_location" style="padding-left:75px;" >
@@ -1463,8 +1438,7 @@
 				<div class="ui grid">
 					<div class="column" id="button-size">
 						<div class="one column row" id="button-row">
-							<!-- <button class="ui right floated blue button" id="Next-10" disabled="disabled">Next</button>  -->
-							<button class="ui right floated blue button" id="Queue" onClick="parent.location='queue.html'">Queue Prediction</button>
+							 <button class="ui right floated blue button" id="Next-12" disabled="disabled" name="next">Next</button>
 							<button class="ui right floated blue button" id="Save-10_29" disabled="disabled" name="save">Save</button>
 							<button class="ui right floated blue button" id="Back-10_29">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button>
@@ -1473,11 +1447,11 @@
 				</div>
 			</div>
 			<!-- Clusters Location Tab -->
-			<div class="ui bottom attached tab segment" data-tab="13">
+			<div class="ui bottom attached tab segment" data-tab="10">
 				<div class="ui grid">
 					<div class="two column row" id="checkbox-size">
 						<div class="column">
-							<img src="images/dcbal.png" id="clusterimg" height="250px" style="padding-left:30px;">
+							<img src="images/dcbal.png" id="clusterimg" height="400px" style="padding-left:50px;">
 						</div>
 						<div class="column">
 							<select class="ui dropdown" id="dropdown_location_cluster" style="font-size:16px; font-weight:bold;">
@@ -1493,8 +1467,7 @@
 				<div class="ui grid">	
 					<div class="column" id="button-size">
 						<div class="one column row" id="button-row">
-							<!-- <button class="ui right floated blue button" id="Next-10" disabled="disabled">Next</button>  -->
-							<button class="ui right floated blue button" id="Queue" onClick="parent.location='queue.html'">Queue Prediction</button>
+							<button class="ui right floated blue button" id="Next-12" disabled="disabled" name="next">Next</button> 
 							<button class="ui right floated blue button" id="Save-10_cluster" disabled="disabled" name="save">Save</button>
 							<button class="ui right floated blue button" id="Back-10_cluster">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
@@ -1502,8 +1475,22 @@
 					</div>
 				</div>
 			</div>
-			<div class="ui grid">
-				<div class="two column row" id="row-size">
+
+<div class="ui bottom attached tab segment" data-tab="11">
+
+<div class="ui grid">	
+					<div class="column" id="button-size">
+						<div class="one column row" id="button-row">
+							<button class="ui right floated blue button" id="Queue" onClick="parent.location='queue.html'">Queue Prediction</button>
+</div>
+</div>
+</div>
+</div>
+			
+
+
+	<div class="ui grid" id = "showModel" style="display: none">
+				<div class="two column row" >
 					<div class="column">
 						<div class="ui segment"  id="tab-size" style="background-color:#fcf4cc;">
 							<div class="ui top attached tabular menu">
