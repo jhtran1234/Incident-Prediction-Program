@@ -34,18 +34,18 @@ $(document).ready(function() {
 	$('#data_source_radio2').click(function() {
 		$("#secondary_radios").show();
 		document.getElementById("Save-1").disabled = true;
-		if($('#historical_radio1').prop('checked') || $('#historical_radio2').prop('checked')) {
+		if ($('#historical_radio1').prop('checked') || $('#historical_radio2').prop('checked')) {
 			document.getElementById("Save-1").disabled = false;
 		}
 	});
 	$('#secondary_radios').click(function() {
-		if($('#historical_radio1').prop('checked') || $('#historical_radio2').prop('checked')) {
+		if ($('#historical_radio1').prop('checked') || $('#historical_radio2').prop('checked')) {
 			$("#Save-1").removeAttr("disabled");
 		}
 	});
 	
 	$("input").change(function() {
-		if(document.getElementById("duration").value > 0 &&
+		if (document.getElementById("duration").value > 0 &&
 		document.getElementById("lanes").value > 0 &&
 		document.getElementById("open").value > 0 &&
 		(!model['real-time'] || document.getElementById("flow").value > 0) &&
@@ -64,7 +64,7 @@ $(document).ready(function() {
 		document.getElementById('result_type_label_B').style.display = 'none';
 		document.getElementById('result_label_B').style.display = 'none';
 
-		if($('#data_source_radio1').prop('checked')) {
+		if ($('#data_source_radio1').prop('checked')) {
 			model['real-time'] = true;
 			$('#real_time_label').show();
 			$('#real_time_inputs').show();
@@ -77,8 +77,8 @@ $(document).ready(function() {
 
 			document.getElementById('result_type_label').innerText = "Flow rate per lane (veh/hr/ln)";
 		}
-		else if($('#data_source_radio2').prop('checked')) {
-			if($('#historical_radio1').prop('checked')) {
+		else if ($('#data_source_radio2').prop('checked')) {
+			if ($('#historical_radio1').prop('checked')) {
 				model['real-time'] = false;
 				model['historical'] = true;
 				$('#historical_label').show();
@@ -92,7 +92,7 @@ $(document).ready(function() {
 
 				document.getElementById('result_type_label').innerText = "Historical volume (veh/hr)";
 			}
-			else if($('#historical_radio2').prop('checked')) {
+			else if ($('#historical_radio2').prop('checked')) {
 				model['real-time'] = false;
 				model['historical'] = false;
 				$('#speed_label').show();
@@ -106,13 +106,13 @@ $(document).ready(function() {
 				
 				document.getElementById('result_type_label').innerText = "Speed (mph), Peak hour";
 			}
-			else{
+			else {
 				alert("Error, please reselect data source.");
 				document.getElementById("Save-1").disabled = true;
 				document.getElementById("Next-1").disabled = true;
 			}
 		}
-		else{
+		else {
 			alert("Error, please reselect data source.");
 			document.getElementById("Save-1").disabled = true;
 			document.getElementById("Next-1").disabled = true;
@@ -143,9 +143,9 @@ $(document).ready(function() {
 });
 
 function getRadioValue(radios) {
-	for(var i = 0; i < radios.length; i++) {
-		if(radios[i].type="radio") {
-			if(radios[i].checked) {
+	for (var i = 0; i < radios.length; i++) {
+		if (radios[i].type="radio") {
+			if (radios[i].checked) {
 				return radios[i].value;
 			}
 		}
@@ -164,34 +164,34 @@ function calculateResults(document) {
 	document.getElementById("result_label_blocked").innerText = Math.max(L - OL, 0);
 
 	let V = null;
-	if(model['real-time']) {
+	if (model['real-time']) {
 		V = document.getElementById('flow').value;
 		document.getElementById("result_label_A").innerText = V;
 		document.getElementById('result_table').style.marginTop = '15%';
 		document.getElementById('result_table').style.marginRight = 'auto';
 	}
-	else if(model['historical']) {
+	else if (model['historical']) {
 		V = document.getElementById('volume').value / L;
 		document.getElementById("result_label_A").innerText = document.getElementById('volume').value;
 		document.getElementById('result_table').style.marginTop = '15%';
 		document.getElementById('result_table').style.marginRight = 'auto';
 	}
-	else if(!model['historical']) {
+	else if (!model['historical']) {
 		V = document.getElementById('speed').value;
 		document.getElementById("result_label_A").innerText = V + ", " + getRadioValue(document.getElementsByName('peak'));
 
 		let V_upper, V_lower;
 		let peak = getRadioValue(document.getElementsByName('peak')) == 'Yes' ? true : false;
 
-		if(V < 42) {
+		if (V < 42) {
 			V_upper = 2.6660 * V * Math.log(Math.pow(2*75/V, 1/0.09)-1) - 107.583
 			V_lower = 2.1844 * V * Math.log(Math.pow(2*75/V, 1/0.09)-1) - 7.583
 		}
-		else if(V > 48 && V <= 70 && peak) {
+		else if (V > 48 && V <= 70 && peak) {
 			V_upper = Math.min(2000, 800+(70-V)*(1200/(70-58.1)));
 			V_lower = Math.max(200, 200+(70-V)*(1800/(70-41.9)));
 		}
-		else if(V > 48) {
+		else if (V > 48) {
 			V_upper = 435;
 			V_lower = 435;
 		}
@@ -330,10 +330,10 @@ function draw_mean(mean) {
 	$("#Header").empty();
 	
 	mean = (mean*100).toFixed()/100;
-	if(mean > 20) {
+	if (mean > 20) {
 		document.getElementById('Header').textContent = 'Mean Queue Length = >20 miles';
 	}
-	else{
+	else {
 		document.getElementById('Header').textContent = 'Mean Queue Length = ' + mean + ' miles';
 	}
 }
@@ -352,10 +352,10 @@ function drawSVG1(mean) {
 	$("#text1").empty();
 	$("#text2").empty();
 
-	if(mean > 20) {
+	if (mean > 20) {
 		inside_txt_1 = document.createTextNode(">20 mi");
 	}
-	else{
+	else {
 		inside_txt_1 = document.createTextNode(min_bound + ' ~ ' + max_bound + "mi");
 	}
 	percent_txt_1 = document.createTextNode("80%");
@@ -375,10 +375,10 @@ function drawSVG2(mean) {
 	$("#text1_2").empty();
 	$("#text2_2").empty();
 
-	if(mean > 20) {
+	if (mean > 20) {
 		inside_txt_2 = document.createTextNode(">20 mi");
 	}
-	else{
+	else {
 		inside_txt_2 = document.createTextNode(min_bound + ' ~ ' + max_bound + "mi");
 	}
 	percent_txt_2 = document.createTextNode("90%");
@@ -398,10 +398,10 @@ function drawSVG3(mean) {
 	$("#text1_3").empty();
 	$("#text2_3").empty();
 	
-	if(mean > 20) {
+	if (mean > 20) {
 		inside_txt_3 = document.createTextNode(">20 mi");
 	}
-	else{
+	else {
 		inside_txt_3 = document.createTextNode(min_bound + ' ~ ' + max_bound + "mi");
 	}
 	percent_txt_3 = document.createTextNode("95%");
