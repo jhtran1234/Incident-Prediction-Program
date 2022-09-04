@@ -344,10 +344,6 @@
 			border: white;
 		}
 
-		.ui-dropdown-s {
-			margin-left: 50 px
-		}
-
 		#type1 {
 			height: 20px;
 			padding: 30px 50px 10px 80px;
@@ -457,7 +453,7 @@
 					<b>Location</b>
 				</div>
 				<div class="item" data-tab="11" id="data_tab_11" style="display: none; font-size: 14px;">
-					<b>Estimation clearance</b>
+					<b>Estimation</b>
 				</div>
 			</div>
 			<div class="ui bottom attached tab segment active" data-tab="1">
@@ -732,9 +728,9 @@
 									<option value="5 Cars ">5</option>
 									<option value="6+ Cars ">6</option>
 								</select>
-								<label for = "over" id = "checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" name = "dropbox1s" value="over " id="dropbox1a"></label>
-								<label for = "jack" id = "checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" name = "dropbox1s" value="jack " id="dropbox1b"></label>
-								<label for = "lost" id = "checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" name = "dropbox1s" value="lost " id="dropbox1c"></label>		
+								<label for="over" id="checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" name = "dropbox1s" value="over " id="dropbox1a"></label>
+								<label for="jack" id="checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" name = "dropbox1s" value="jack " id="dropbox1b"></label>
+								<label for="lost" id="checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" name = "dropbox1s" value="lost " id="dropbox1c"></label>		
 							
 							</div>
 							<div class="item" id = "involved_vehicles_2">
@@ -748,7 +744,7 @@
 									<option value="5 Trucks ">5</option>
 									<option value="6+ Trucks ">6</option>
 								</select>
-								<label for = "over" id = "checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" name = "dropbox2s" value="over " id=dropbox2a"></label>
+								<label for = "over" id = "checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" name = "dropbox2s" value="over " id="dropbox2a"></label>
 								<label for = "jack" id = "checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" name = "dropbox2s" value="jack " id="dropbox2b"></label>
 								<label for = "lost" id = "checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" name = "dropbox2s" value="lost " id="dropbox2c"></label>		
 							</div>
@@ -763,9 +759,9 @@
 									<option value="5 Buses ">5</option>
 									<option value="6+ Buses ">6</option>
 								</select>
-								<label for = "over" id = "checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" name = "dropbox3s" value="over " id="dropbox3a"></label>
-								<label for = "jack" id = "checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" name = "dropbox3s" value="jack " id="dropbox3b"></label>
-								<label for = "lost" id = "checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" name = "dropbox3s" value="lost " id="dropbox3c"></label>		
+								<label for = "over" id = "checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" name = "dropbox3s" value="over " id="over"></label>
+								<label for = "jack" id = "checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" name = "dropbox3s" value="jack " id="jack"></label>
+								<label for = "lost" id = "checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" name = "dropbox3s" value="lost " id="lost"></label>		
 							</div>
 
 							<div class="item" id = "involved_vehicles_4">
@@ -1163,7 +1159,7 @@
 				<div class="ui grid" style = "margin-top:30px;">	
 					<div class="column" id="button-size">
 						<div class="one column row" id="button-row">
-							 <button class="ui right floated blue button" id="Next-7" disabled="disabled" name="next">Next</button> 
+							<button class="ui right floated blue button" id="Next-7" disabled="disabled" name="next">Next</button> 
 							<button class="ui right floated blue button" id="Save-7" disabled="disabled" name="save">Save</button>
 							<button class="ui right floated blue button" id="Back-7">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
@@ -1209,7 +1205,7 @@
 				<div class="ui grid">	
 					<div class="column" id="button-size">
 						<div class="one column row" id="button-row">
-							<button class="ui right floated blue button" id="Next-7" disabled="disabled" name="next">Next</button> 
+							<button class="ui right floated blue button" id="Next-7_495" disabled="disabled" name="next">Next</button> 
 							<button class="ui right floated blue button" id="Save-7_495" disabled="disabled" name="save">Save</button>
 							<button class="ui right floated blue button" id="Back-7_495">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
@@ -1256,7 +1252,7 @@
 				<div class="ui grid">	
 					<div class="column" id="button-size">
 						<div class="one column row" id="button-row">
-							<button class="ui right floated blue button" id="Next-7" disabled="disabled" name="next">Next</button> 
+							<button class="ui right floated blue button" id="Next-7_695" disabled="disabled" name="next">Next</button> 
 							<button class="ui right floated blue button" id="Save-7_695" disabled="disabled" name="save">Save</button>
 							<button class="ui right floated blue button" id="Back-7_695">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
@@ -1305,8 +1301,7 @@
 									<option value="ExitXX">Exit XX</option>
 									<option value="ExitYY">Exit YY</option>
 									<option value="ExitZZ">Exit ZZ</option>
-									<option value="Exitothers">Other Exits</option>									
-									
+									<option value="Exitothers">Other Exits</option>
 								</select>
 							</label>
 						</div>
@@ -1315,7 +1310,7 @@
 				<div class="ui grid">	
 					<div class="column" id="button-size">
 						<div class="one column row" id="button-row">
-							<button class="ui right floated blue button" id="Next-7" disabled="disabled" name="next">Next</button>
+							<button class="ui right floated blue button" id="Next-7_270" disabled="disabled" name="next">Next</button>
 							<button class="ui right floated blue button" id="Save-7_270" disabled="disabled" name="save">Save</button>
 							<button class="ui right floated blue button" id="Back-7_270">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
@@ -1363,7 +1358,7 @@
 				<div class="ui grid">
 					<div class="column" id="button-size">
 						<div class="one column row" id="button-row">
-							<button class="ui right floated blue button" id="Next-7" disabled="disabled" name="next">Next</button> 
+							<button class="ui right floated blue button" id="Next-7_70" disabled="disabled" name="next">Next</button> 
 							<button class="ui right floated blue button" id="Save-7_70" disabled="disabled" name="save">Save</button>
 							<button class="ui right floated blue button" id="Back-7_70">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button>
@@ -1409,7 +1404,7 @@
 				<div class="ui grid">
 					<div class="column" id="button-size">
 						<div class="one column row" id="button-row">
-							 <button class="ui right floated blue button" id="Next-7" disabled="disabled" name="next">Next</button>
+							<button class="ui right floated blue button" id="Next-7_29" disabled="disabled" name="next">Next</button>
 							<button class="ui right floated blue button" id="Save-7_29" disabled="disabled" name="save">Save</button>
 							<button class="ui right floated blue button" id="Back-7_29">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button>
@@ -1438,7 +1433,7 @@
 				<div class="ui grid">	
 					<div class="column" id="button-size">
 						<div class="one column row" id="button-row">
-							<button class="ui right floated blue button" id="Next-7" disabled="disabled" name="next">Next</button> 
+							<button class="ui right floated blue button" id="Next-7_cluster" disabled="disabled" name="next">Next</button> 
 							<button class="ui right floated blue button" id="Save-7_cluster" disabled="disabled" name="save">Save</button>
 							<button class="ui right floated blue button" id="Back-7_cluster">Back</button>
 							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
@@ -1448,16 +1443,19 @@
 			</div>
 
 			<div class="ui bottom attached tab segment" data-tab="11">
-
 				<div class="ui grid">	
 					<div class="column" id="button-size">
+
 						<div class="one column row" id="button-row">
+							<button class="ui right floated blue button" id="Back-11">Back</button>
+							<button class="ui right floated blue button" id="Home" onClick="parent.location='incident.html'">Home</button> 
 							<button class="ui right floated blue button" id="Queue" onClick="parent.location='queue.html'">Queue Prediction</button>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="ui grid" id = "showModel" style="display: none">
+
+			<div class="ui grid" id="showModel" style="display: none">
 				<div class="two column row" >
 					<div class="column">
 						<div class="ui segment"  id="tab-size" style="background-color:#fcf4cc;">

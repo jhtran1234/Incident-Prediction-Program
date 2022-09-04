@@ -220,8 +220,6 @@ $(document).ready(function() {
 	
 	// next button handler	
 	$("#Next-1").click(function() {
-
-		
 		radioValue1 = $("input[name='incident']:checked").val();
 		if (radioValue1 == 'collision') {
 			$.tab('change tab', '1-1');
@@ -231,10 +229,7 @@ $(document).ready(function() {
 		}
 	});
 
-
 	$("#Next-2").click(function() {
-
-		
 		radioValue2 = $("input[name='blockage']:checked").val();
 		if (radioValue2 == 'travel') {
 			// change the content within the same tab
@@ -246,8 +241,6 @@ $(document).ready(function() {
 	});
 
 	$("#Next-3").click(function() {
-
-
 		$.tab('change tab', '1-3');
 	});	
 
@@ -289,6 +282,22 @@ $(document).ready(function() {
 	});
 	
 	$("#Next-7").click(function() {
+
+		$('.ui.menu').find('.item').tab('change tab', '11');
+	});
+	$("#Next-7_495").click(function() {
+		$('.ui.menu').find('.item').tab('change tab', '11');
+	});
+	$("#Next-7_695").click(function() {
+		$('.ui.menu').find('.item').tab('change tab', '11');
+	});
+	$("#Next-7_70").click(function() {
+		$('.ui.menu').find('.item').tab('change tab', '11');
+	});
+	$("#Next-7_29").click(function() {
+		$('.ui.menu').find('.item').tab('change tab', '11');
+	});
+	$("#Next-7_cluster").click(function() {
 		$('.ui.menu').find('.item').tab('change tab', '11');
 	});
 	
@@ -330,6 +339,10 @@ $(document).ready(function() {
 		$('.ui.menu').find('.item').tab('change tab', '3');
 	});
 	$("#Back-7_cluster").click(function() {
+		$('.ui.menu').find('.item').tab('change tab', '3');
+	});
+	
+	$("#Back-11").click(function() {
 		$('.ui.menu').find('.item').tab('change tab', '3');
 	});
 });
@@ -5429,6 +5442,10 @@ function activeNext() {
 			document.getElementById("location_95").style = "font-size: 14px;";
 		}
 	}
+	else if (this.id == 'Save-1-4') {
+		var radioValue4 = $("input[name='type']:checked").val();
+		console.log(radioValue4);
+	}
 	else if (this.id == 'Save-5') {
 		$("#boxheader").text("Estimated Clearance Time");
 		if (more_info) {moreInfoNeeded_updateTime();} // Indicates more info is needed.
@@ -5467,12 +5484,33 @@ function activeNext() {
 			alert("Please enter number of " + responder_type + " vehicles.");
 		}
 	}
-	else if (this.id == 'Save-7' || this.id == 'Save-7_495' || this.id == 'Save-7_695' || this.id == 'Save-7_70' || this.id == 'Save-7_29' || this.id == 'Save-7_cluster') {
+	else if (this.id == 'Save-7') {
+		$("#data_tab_11").removeAttr("style");
  		$("#Next-7").removeAttr("disabled");
 	}
-	else if (this.id == 'Save-1-4') {
-		var radioValue4 = $("input[name='type']:checked").val();
-		console.log(radioValue4);
+	else if (this.id == 'Save-7_495') {
+		$("#data_tab_11").removeAttr("style");
+ 		$("#Next-7_495").removeAttr("disabled");
+	}
+	else if (this.id == 'Save-7_695') {
+		$("#data_tab_11").removeAttr("style");
+ 		$("#Next-7_695").removeAttr("disabled");
+	}
+	else if (this.id == 'Save-7_270') {
+		$("#data_tab_11").removeAttr("style");
+ 		$("#Next-7_270").removeAttr("disabled");
+	}
+	else if (this.id == 'Save-7_70') {
+		$("#data_tab_11").removeAttr("style");
+ 		$("#Next-7_70").removeAttr("disabled");
+	}
+	else if (this.id == 'Save-7_29') {
+		$("#data_tab_11").removeAttr("style");
+ 		$("#Next-7_29").removeAttr("disabled");
+	}
+	else if (this.id == 'Save-7_cluster') {
+		$("#data_tab_11").removeAttr("style");
+ 		$("#Next-7_cluster").removeAttr("disabled");
 	}
 }
 
