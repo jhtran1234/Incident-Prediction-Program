@@ -278,14 +278,14 @@ $(document).ready(function() {
 		$('.ui.menu').find('.item').tab('change tab', '2');
 	});
 
-	$("#Next-5").click(function() {
-		$('.ui.menu').find('.item').tab('change tab', '3');
-	});
-
 	/* 
 	 * Responder tab's next button
 	 * Ensures that if a first responder is selected, the number of vehicles is > 0
 	 */
+	$("#Next-5").click(function() {
+		$('.ui.menu').find('.item').tab('change tab', '3');
+	});
+
 	$("#Next-6").click(function() {
 		if (road=="i495") {
 			$('.ui.menu').find('.item').tab('change tab', '5');
@@ -371,6 +371,10 @@ $(document).ready(function() {
 		$('.ui.menu').find('.item').tab('change tab', '3');
 	});
 	
+	/**
+	 * Back button handler for results page.
+	 * Need to make logic to redirect the back button to the correct location page.
+	 */
 	$("#Back-11").click(function() {
 		$('.ui.menu').find('.item').tab('change tab', '3');
 	});
@@ -752,7 +756,17 @@ function updateSum2() {
 	}
 
 	if (model['involved_veh'] != null && model['responder'] != null && model['responder_number'] != null) {
-		$("#Save-5").removeAttr("disabled");
+		if (model['responder'] == 'First responder: CHART' && num_chart > 0
+			|| model['responder'] == 'First responder: POLICE' && num_police > 0
+			|| model['responder'] == 'First responder: TOW' && num_tow > 0
+			|| model['responder'] == 'First responder: FIREBOARD' && num_fireboard > 0
+			|| model['responder'] == 'First responder: MEDICAL' && num_medical > 0
+			|| model['responder'] == 'First responder: Others' && num_others > 0) {
+			$("#Save-5").removeAttr("disabled");
+		}
+		else {
+			document.getElementById("Save-5").disabled = true;
+		}
 	}
 	else {
 		document.getElementById("Save-5").disabled = true;
