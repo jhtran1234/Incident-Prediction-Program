@@ -266,14 +266,7 @@ $(document).ready(function() {
 	});
 
 	$("#Next-2").click(function() {
-		radioValue2 = $("input[name='blockage']:checked").val();
-		if (radioValue2 == 'travel') {
-			// change the content within the same tab
-			$.tab('change tab', '1-2');
-		}
-		if (radioValue2 == 'shoulder') {
-			$.tab('change tab', '1-2');
-		}
+		$.tab('change tab', '1-2');
 	});
 
 	$("#Next-3").click(function() {
@@ -1124,7 +1117,7 @@ function printSum() {
 	$("#summary").empty();
 	for (var key in model) {
 		if (model[key] != null) {
-		$("#summary").append('<div style="font-size: 15px""><b>'+model[key]+'<b></div>');
+			$("#summary").append('<div style="font-size: 15px""><b>'+model[key]+'<b></div>');
 		}
 	}
 }
