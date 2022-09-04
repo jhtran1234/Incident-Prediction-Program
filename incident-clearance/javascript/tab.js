@@ -218,6 +218,17 @@ $(document).ready(function() {
 	var radioValue1;
 	var radioValue2;
 	
+	// tabs handler	for summary box
+	$("#data_tab_1").click(function() {
+		document.getElementById("showModel").setAttribute("style", "display: flex");
+	});
+	$("#data_tab_2").click(function() {
+		document.getElementById("showModel").setAttribute("style", "display: none");
+	});
+	$("#data_tab_3").click(function() {
+		document.getElementById("showModel").setAttribute("style", "display: none");
+	});
+	
 	// next button handler	
 	$("#Next-1").click(function() {
 		radioValue1 = $("input[name='incident']:checked").val();
