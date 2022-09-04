@@ -74,7 +74,8 @@
 		}
 
 		#inv_veh {
-			width: 120px
+			width: 120px;
+			margin-left: 40px;
 		}
 
 		#tab-size {
@@ -620,7 +621,6 @@
 						</div>
 					</div>
 				</div>
-
 				<div class="ui grid">
 					<div class="column" id="button-size">
 						<div class="one column row" id="button-row">
@@ -709,16 +709,15 @@
 			
 			<div class="ui bottom attached tab segment" data-tab="2">
 				<div class="ui grid">
-					<div class="one column row" id = "checkbox-size">
+					<div class="one column row" id="checkbox-size" style="padding-left: 10px;">
 						<p style="font-weight:bold; font-size: 18px;">Involved Vehicles
 						<div class = "thumbnail_iv">
 							<img src="images/pc.png">
 						</div></p>
 							
-						<div class="ui bulleted list" id = "involved_vehicles">
-							<div class="item" id = "involved_vehicles_1">
-								
-								<label style="font-size: 15px;" id = "inv_veh">Car</label>
+						<div class="ui list" id="involved_vehicles">
+							<div class="item" id="involved_vehicles_1">
+								<label style="font-size: 15px;" id="inv_veh">Car</label>
 								<select class="ui dropdown" id="dropbox1"> 
 									<option value=" ">0</option>
 									<option value="1 Car ">1</option>
@@ -730,11 +729,10 @@
 								</select>
 								<label for="over" id="checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" name = "dropbox1s" value="over " id="dropbox1a"></label>
 								<label for="jack" id="checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" name = "dropbox1s" value="jack " id="dropbox1b"></label>
-								<label for="lost" id="checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" name = "dropbox1s" value="lost " id="dropbox1c"></label>		
-							
+								<label for="lost" id="checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" name = "dropbox1s" value="lost " id="dropbox1c"></label>
 							</div>
-							<div class="item" id = "involved_vehicles_2">
-								<label style="font-size: 15px;" id = "inv_veh">Truck</label>
+							<div class="item" id="involved_vehicles_2">
+								<label style="font-size: 15px;" id="inv_veh">Truck</label>
 								<select class="ui dropdown" id="dropbox2"> 
 									<option value=" ">0</option>
 									<option value="1 Truck ">1</option>
@@ -749,7 +747,7 @@
 								<label for = "lost" id = "checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" name = "dropbox2s" value="lost " id="dropbox2c"></label>		
 							</div>
 							<div class="item" id = "involved_vehicles_3">
-								<label style="font-size: 15px;" id = "inv_veh">Bus</label>
+								<label style="font-size: 15px;" id="inv_veh">Bus</label>
 								<select class="ui dropdown" id="dropbox3">
 									<option value=" ">0</option>
 									<option value="1 Bus ">1</option>
@@ -759,13 +757,13 @@
 									<option value="5 Buses ">5</option>
 									<option value="6+ Buses ">6</option>
 								</select>
-								<label for = "over" id = "checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" name = "dropbox3s" value="over " id="over"></label>
-								<label for = "jack" id = "checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" name = "dropbox3s" value="jack " id="jack"></label>
-								<label for = "lost" id = "checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" name = "dropbox3s" value="lost " id="lost"></label>		
+								<label for = "over" id = "checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" name = "dropbox3s" value="over " id="dropbox3a"></label>
+								<label for = "jack" id = "checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" name = "dropbox3s" value="jack " id="dropbox3b"></label>
+								<label for = "lost" id = "checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" name = "dropbox3s" value="lost " id="dropbox3c"></label>
 							</div>
 
 							<div class="item" id = "involved_vehicles_4">
-								<label style="font-size: 15px;" id = "inv_veh">Pickup</label>
+								<label style="font-size: 15px;" id="inv_veh">Pickup</label>
 								<select class="ui dropdown" id="dropbox7">
 									<option value=" ">0</option>
 									<option value="1 Pickup ">1</option>
@@ -778,11 +776,9 @@
 								<label for = "over" id = "checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" name = "dropbox7s" value="over " id="dropbox7a"></label>
 								<label for = "jack" id = "checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" name = "dropbox7s" value="jack " id="dropbox7b"></label>
 								<label for = "lost" id = "checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" name = "dropbox7s" value="lost " id="dropbox7c"></label>		
-												
-								
 							</div>
 							<div class="item" id = "involved_vehicles_5" style="display: none">
-								<label style="font-size: 15px;" id = "inv_veh">Van</label>
+								<label style="font-size: 15px;" id="inv_veh">Van</label>
 								<select class="ui dropdown" id="dropbox8">
 									<option value=" ">0</option>
 									<option value="1 Van ">1</option>
@@ -797,7 +793,7 @@
 								<label for = "lost" id = "checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" name = "dropbox8s" value="lost " id="dropbox8c"></label>		
 							</div>
 							<div class="item" id = "involved_vehicles_6" style="display: none">
-								<label style="font-size: 15px;" id = "inv_veh">SUV</label>
+								<label style="font-size: 15px;" id="inv_veh">SUV</label>
 								<select class="ui dropdown" id="dropbox9">
 									<option value=" ">0</option>
 									<option value="1 SUV ">1</option>
@@ -812,7 +808,7 @@
 								<label for = "lost" id = "checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" name = "dropbox9s" value="lost " id="dropbox9c"></label>		
 							</div>
 							<div class="item" id = "involved_vehicles_7">
-								<li><label style="font-size: 15px;" id = "inv_veh">Pedestrian</label>
+								<li><label style="font-size: 15px;" id="inv_veh">Pedestrian</label>
 								<select class="ui dropdown" id="dropbox4"> 
 									<option value=" ">0</option>
 									<option value="1 Pedestrian ">1</option>
@@ -1463,7 +1459,7 @@
 									Summary
 								</div>
 							</div>
-							<div id="summary" style="height:80%; overflow-y:auto;">
+							<div id="summary" style="height:75%; overflow-y:auto;">
 							</div>
 						</div>
 					</div>

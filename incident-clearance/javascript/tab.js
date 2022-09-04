@@ -149,6 +149,7 @@ $(document).ready(function() {
 	// click radiocheck and update the summary
 	$("#checkbox-size input").click(updateSum);
 	$("#checkbox-size1 input").click(updateSum);
+	$("#checkbox-size input").click(updateSum2);
 	$("#checkbox-size select#t3_1").click(updateSum2);
 	$("#checkbox-size1 select#t3_1").click(updateSum2);
 	$("#checkbox-size select#t3_2").click(updateSum2);
@@ -228,6 +229,30 @@ $(document).ready(function() {
 	$("#data_tab_3").click(function() {
 		document.getElementById("showModel").setAttribute("style", "display: none");
 	});
+	$("#data_tab_4").click(function() {
+		document.getElementById("showModel").setAttribute("style", "display: none");
+	});
+	$("#data_tab_5").click(function() {
+		document.getElementById("showModel").setAttribute("style", "display: none");
+	});
+	$("#data_tab_6").click(function() {
+		document.getElementById("showModel").setAttribute("style", "display: none");
+	});
+	$("#data_tab_7").click(function() {
+		document.getElementById("showModel").setAttribute("style", "display: none");
+	});
+	$("#data_tab_8").click(function() {
+		document.getElementById("showModel").setAttribute("style", "display: none");
+	});
+	$("#data_tab_9").click(function() {
+		document.getElementById("showModel").setAttribute("style", "display: none");
+	});
+	$("#data_tab_10").click(function() {
+		document.getElementById("showModel").setAttribute("style", "display: none");
+	});
+	$("#data_tab_11").click(function() {
+		document.getElementById("showModel").setAttribute("style", "display: none");
+	});
 	
 	// next button handler	
 	$("#Next-1").click(function() {
@@ -293,7 +318,6 @@ $(document).ready(function() {
 	});
 	
 	$("#Next-7").click(function() {
-
 		$('.ui.menu').find('.item').tab('change tab', '11');
 	});
 	$("#Next-7_495").click(function() {
@@ -375,9 +399,7 @@ function updateSum() {
 	if (incident.includes(curr)) {
 		model['incident'] = curr;
 		$("#Save-1").removeAttr("disabled");
-
 	}
-
 	else if (blockage.includes(curr)) {
 		model['blockage'] = curr;
 		$("#Save-2").removeAttr("disabled");
@@ -529,14 +551,6 @@ function updateSum2() {
 	total_lane = Number(travel_drop) + Number(shoulder_drop);
 	console.log(total_lane);
 	// IV page
-	
-	if (involved_car != ' ') {
-		model['involved_veh'] += involved_car;
-		if (involved_car_s != ' ') {model['involved_veh'] += '(:' + involved_car_s + ') ';}
-	}
-	else {
-		involved_car_s = ' ';
-	}
 	
 	involved_car = document.getElementById("dropbox1").value;
 	console.log(involved_car);	
@@ -5407,27 +5421,19 @@ function activeNext() {
 	if (this.id == 'Save-1') {
 		$("#Next-1").removeAttr("disabled");
 		$("#showModel").removeAttr("style");
-		printSum();
-		printTime();
 	}
 
 	else if (this.id == 'Save-2') {	
 		$("#Next-2").removeAttr("disabled");
 		$("#showModel").removeAttr("style");
-		printSum();
-		printTime();
 	}
 	else if (this.id == 'Save-3') {
 		$("#Next-3").removeAttr("disabled");
 		$("#showModel").removeAttr("style");
-		printSum();
-		printTime();
 	}
 	else if (this.id == 'Save-4') {
 		$("#Next-4").removeAttr("disabled");
 		$("#showModel").removeAttr("style");
-		printSum();
-		printTime();
 
 		// enables the tabs after the Next-4 button is selected to ensure that all
 		// qualities are entered from the first tab
@@ -5463,7 +5469,6 @@ function activeNext() {
 		if (more_info) {moreInfoNeeded_updateTime();} // Indicates more info is needed.
 		if (all_info) {$("#boxheader").text("All information has been recorded.");}
 		$("#Next-5").removeAttr("disabled");
-		
 	}
 	else if (this.id == 'Save-6') {
 		$("#boxheader").text("Estimated Clearance Time");
@@ -5524,6 +5529,8 @@ function activeNext() {
 		$("#data_tab_11").removeAttr("style");
  		$("#Next-7_cluster").removeAttr("disabled");
 	}
+	printSum();
+	printTime();
 }
 
 /* 
