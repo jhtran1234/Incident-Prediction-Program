@@ -245,7 +245,7 @@ $(document).ready(function() {
 	});	
 
 	$("#Next-4").click(function() {
-		document.getElementById("showModel").setAttribute("style", "display:none");
+		document.getElementById("showModel").setAttribute("style", "display: none");
 		$('.ui.menu').find('.item').tab('change tab', '2');
 	});
 
@@ -315,6 +315,7 @@ $(document).ready(function() {
 		$.tab('change tab', '1');
 	});
 	$("#Back-5").click(function() {
+		$("#showModel").removeAttr("style");
 		$('.ui.menu').find('.item').tab('change tab', '1');
 	});
 	$("#Back-6").click(function() {
