@@ -766,10 +766,12 @@ function updateSum2() {
 		}
 		else {
 			document.getElementById("Save-5").disabled = true;
+			document.getElementById("Next-5").disabled = true;
 		}
 	}
 	else {
 		document.getElementById("Save-5").disabled = true;
+		document.getElementById("Next-5").disabled = true;
 	}
 	
 	// location page: location, direction and exit (road specific)

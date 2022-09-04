@@ -9,6 +9,7 @@
 	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<script src="lib/wickedpicker.min.js"></script>
 	<link rel="stylesheet" href="css/wickedpicker.css">
+	<link rel="stylesheet" href="css/tab.css">
 
 	<link href="semantic/dist/semantic.min.css" rel="stylesheet" type="text/css">
 	<script src="semantic/dist/semantic.min.js"></script>
@@ -16,405 +17,8 @@
 	<!--tab.js is the script that runs in the background-->
 	<script src="javascript/tab.js"></script>
 	
-	<link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
+	<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
 
-	<style>
-		body {
-			background-color: #d1d2d3;
-		}
-
-		#container {
-			width: 800px;
-			height: 600px;
-			border-style: solid;
-			border-color: #6186aa;
-			border-width: 25px 5px 5px 5px;
-		}
-
-		#form-size {
-			width: 790px;
-			height: 570px;
-		}
-
-		#checkbox {
-			margin-left: 50px;
-		}
-
-		#c1 {
-			width: 20px;
-			height: 20px;
-		}
-
-		#c2 {
-			width: 20px;
-			height: 20px;
-		}
-
-		#c3 {
-			width: 20px;
-			height: 20px;
-		}
-
-		#choice1 {
-			padding: 100px 100px 10px 150px;
-		}
-
-		#choice2 {
-			padding: 100px 150px 10px 200px;
-		}
-
-		#checkbox-small-size {
-			width: 780px;
-			height: 100px;
-		}
-
-		#checkbox-size1 {
-			width: 780px;
-			height: 200px;
-		}
-
-		#inv_veh {
-			width: 120px;
-			margin-left: 40px;
-		}
-
-		#tab-size {
-			width: 365px;
-			height: 225px;
-		}
-
-		#estimation {
-			width: 300px;
-			height: 200px;
-		}
-
-		label.type {
-			width: 180px;
-		}
-
-		.field {
-			position: relative;
-			float: left;
-			width: 135px;
-			height: 100px;
-			background-position: 50% 50%;
-			background-repeat: no-repeat;
-			background-size: cover;
-		}
-
-		.thumbnail_incident img {
-			height: 120px;
-			width: 240px;
-		}
-
-		.thumbnail_responder img {
-			height: 70px;
-			width: 122px;
-		}
-
-		.thumbnail_pavement img {
-			height: 100px;
-			width: 115px;
-		}
-
-		.thumbnail_pavement {
-			border-style: dotted;
-		}
-
-		.thumbnail_hazmat {
-			border-style: dotted;
-		}
-
-		.thumbnail_iv img {
-			height: 25px;
-		}
-
-		.thumbnail_iv_2 img {
-			height: 60px;
-			padding-top: 2px;
-		}
-
-		#center-choice-line {
-			width: 780px;
-			height: 40px;
-		}
-
-		#dropdown_responder_1 {
-			width: 73px;
-			height: 32px;
-		}
-
-		#dropdown_responder_2 {
-			width: 73px;
-			height: 32px;
-		}
-
-		#dropdown_responder_3 {
-			width: 73px;
-			height: 32px;
-		}
-
-		#dropdown_responder_5 {
-			width: 73px;
-			height: 32px;
-		}
-
-		#dropdown_responder_6 {
-			width: 73px;
-			height: 32px;
-		}
-
-		#dropdown_fireboard {
-			width: 73px;
-			height: 32px;
-		}
-
-		#ph6 {
-			padding-left: 35px;
-		}
-
-		#timepicker-tab {
-			padding-left: 190px;
-			padding-top: 40px;
-		}
-
-		#iv1 {
-			padding: 0px 20px 5px 20px;
-		}
-
-		#iv2 {
-			padding: 0px 20px 5px 30px;
-		}
-
-		#iv3 {
-			padding: 0px 20px 5px 30px;
-		}
-
-		#iv4 {
-			padding: 15px 40px 0px 35px;
-		}
-
-		#iv5 {
-			padding: 15px 20px 0px 30px;
-		}
-
-		#iv6 {
-			padding: 15px 20px 0px 50px;
-		}
-
-		#iv7 {
-			padding: 0px 20px 5px 30px;
-		}
-
-		#iv8 {
-			padding: 0px 20px 5px 30px;
-		}
-
-		#iv9 {
-			padding: 0px 0px 0px 0px;
-		}
-
-		#responder-tow {
-			padding-right: 5px;
-		}
-
-		#responder-fireboard {
-			padding-right: 2px;
-		}
-
-		#responder-medical {
-			padding-right: 2px;
-		}
-
-		.dropbox-margin {
-			margin-left: 30px;
-		}
-
-		#dropbox1 {
-			height: 32px;
-		}
-
-		#dropbox2 {
-			height: 32px;
-		}
-
-		#dropbox3 {
-			height: 32px;
-		}
-
-		#dropbox4 {
-			height: 32px;
-		}
-
-		#dropbox5 {
-			height: 32px;
-			margin-left: 50px;
-		}
-
-		#dropbox6 {
-			height: 32px;
-			margin-left: 50px;
-		}
-
-		#dropbox7 {
-			height: 32px;
-		}
-
-		#dropbox8 {
-			height: 32px;
-		}
-
-		#dropbox9 {
-			height: 32px;
-		}
-
-		#dropbox {
-			height: 32px;
-		}
-
-		#location_1 {
-			width: 100px;
-			padding-left: 10px;
-		}
-
-		#location_2 {
-			width: 95px;
-		}
-
-		#location_3 {
-			width: 95px;
-		}
-
-		#location_6 {
-			padding-left: 50px;
-		}
-
-		#t3_1 {
-			width: 73px;
-			height: 32px;
-		}
-
-		#t3_2 {
-			width: 73px;
-			height: 32px;
-		}
-
-		#t2 {
-			padding-left: 80px;
-		}
-
-		#t2_1 {
-			height: 20px;
-			padding: 0px 20px 0px 100px;
-		}
-
-		#t2_2 {
-			height: 20px;
-			padding: 0px 20px 0px 200px;
-		}
-
-		#t2_3 {
-			height: 20px;
-			padding: 0px 20px 0px 190px;
-		}
-
-		#d2 {
-			width: 360px;
-			height: 20px;
-		}
-
-		#row-size {
-			width: 750px;
-			height: 200px;
-		}
-
-		.ui-dialog {
-			background: white;
-		}
-
-		.ui-dialog .ui-dialog-content {
-			background: white;
-		}
-
-		.ui-widget {
-			background: white;
-		}
-
-		.ui-dialog .ui-dialog-titlebar {
-			background: white;
-			border: white;
-		}
-
-		#type1 {
-			height: 20px;
-			padding: 30px 50px 10px 80px;
-		}
-
-		#type2 {
-			height: 20px;
-			padding: 30px 50px 10px 160px;
-		}
-
-		#type3 {
-			height: 20px;
-			padding: 30px 50px 10px 180px;
-		}
-
-		#type4 {
-			height: 20px;
-			padding: 10px 50px 10px 80px;
-		}
-
-		#type5 {
-			height: 20px;
-			padding: 10px 50px 10px 160px;
-		}
-
-		p {
-			margin-top: 0;
-			margin-bottom: 0;
-		}
-
-		ul {
-			margin-top: 0;
-		}
-
-		.ui form {
-			margin-bottom: 0;
-		}
-
-		#type6 {
-			height: 20px;
-			padding: 10px 50px 10px 180px;
-		}
-
-		#type7 {
-			height: 20px;
-			padding: 10px 50px 10px 80px;
-		}
-
-		#type8 {
-			height: 20px;
-			padding: 10px 50px 10px 160px;
-		}
-
-		#type9 {
-			height: 20px;
-			padding: 10px 50px 10px 180px;
-		}
-
-		#location_form {
-			height: 10px;
-		}
-
-		#exit_form {
-			height: 15px;
-		}
-
-		label {
-			display: inline-block;
-		}
-	</style>
 	<title>Incident Clearance Time Prediction Program</title>
 </head>
 <body>
@@ -710,8 +314,8 @@
 			<div class="ui bottom attached tab segment" data-tab="2">
 				<div class="ui grid">
 					<div class="one column row" id="checkbox-size" style="padding-left: 10px;">
-						<p style="font-weight:bold; font-size: 18px;">Involved Vehicles
-						<div class = "thumbnail_iv">
+						<p class="inv_veh_label">Involved Vehicles
+						<div class="thumbnail_iv">
 							<img src="images/pc.png">
 						</div></p>
 							
@@ -727,9 +331,9 @@
 									<option value="5 Cars ">5</option>
 									<option value="6+ Cars ">6</option>
 								</select>
-								<label for="over" id="checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" name = "dropbox1s" value="over " id="dropbox1a"></label>
-								<label for="jack" id="checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" name = "dropbox1s" value="jack " id="dropbox1b"></label>
-								<label for="lost" id="checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" name = "dropbox1s" value="lost " id="dropbox1c"></label>
+								<label for="over" id="checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" class="inv_veh_box" name="dropbox1s" value="over " id="dropbox1a"></label>
+								<label for="jack" id="checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" class="inv_veh_box" name="dropbox1s" value="jack " id="dropbox1b"></label>
+								<label for="lost" id="checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" class="inv_veh_box" name="dropbox1s" value="lost " id="dropbox1c"></label>
 							</div>
 							<div class="item" id="involved_vehicles_2">
 								<label style="font-size: 15px;" id="inv_veh">Truck</label>
@@ -742,11 +346,11 @@
 									<option value="5 Trucks ">5</option>
 									<option value="6+ Trucks ">6</option>
 								</select>
-								<label for = "over" id = "checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" name = "dropbox2s" value="over " id="dropbox2a"></label>
-								<label for = "jack" id = "checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" name = "dropbox2s" value="jack " id="dropbox2b"></label>
-								<label for = "lost" id = "checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" name = "dropbox2s" value="lost " id="dropbox2c"></label>		
+								<label for="over" id="checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" class="inv_veh_box" name="dropbox2s" value="over " id="dropbox2a"></label>
+								<label for="jack" id="checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" class="inv_veh_box" name="dropbox2s" value="jack " id="dropbox2b"></label>
+								<label for="lost" id="checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" class="inv_veh_box" name="dropbox2s" value="lost " id="dropbox2c"></label>		
 							</div>
-							<div class="item" id = "involved_vehicles_3">
+							<div class="item" id="involved_vehicles_3">
 								<label style="font-size: 15px;" id="inv_veh">Bus</label>
 								<select class="ui dropdown" id="dropbox3">
 									<option value=" ">0</option>
@@ -757,12 +361,12 @@
 									<option value="5 Buses ">5</option>
 									<option value="6+ Buses ">6</option>
 								</select>
-								<label for = "over" id = "checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" name = "dropbox3s" value="over " id="dropbox3a"></label>
-								<label for = "jack" id = "checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" name = "dropbox3s" value="jack " id="dropbox3b"></label>
-								<label for = "lost" id = "checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" name = "dropbox3s" value="lost " id="dropbox3c"></label>
+								<label for="over" id="checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" class="inv_veh_box" name="dropbox3s" value="over " id="dropbox3a"></label>
+								<label for="jack" id="checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" class="inv_veh_box" name="dropbox3s" value="jack " id="dropbox3b"></label>
+								<label for="lost" id="checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" class="inv_veh_box" name="dropbox3s" value="lost " id="dropbox3c"></label>
 							</div>
 
-							<div class="item" id = "involved_vehicles_4">
+							<div class="item" id="involved_vehicles_4">
 								<label style="font-size: 15px;" id="inv_veh">Pickup</label>
 								<select class="ui dropdown" id="dropbox7">
 									<option value=" ">0</option>
@@ -773,11 +377,11 @@
 									<option value="5 Pickups ">5</option>
 									<option value="6+ Pickups ">6</option>
 								</select>
-								<label for = "over" id = "checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" name = "dropbox7s" value="over " id="dropbox7a"></label>
-								<label for = "jack" id = "checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" name = "dropbox7s" value="jack " id="dropbox7b"></label>
-								<label for = "lost" id = "checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" name = "dropbox7s" value="lost " id="dropbox7c"></label>		
+								<label for="over" id="checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" class="inv_veh_box" name="dropbox7s" value="over " id="dropbox7a"></label>
+								<label for="jack" id="checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" class="inv_veh_box" name="dropbox7s" value="jack " id="dropbox7b"></label>
+								<label for="lost" id="checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" class="inv_veh_box" name="dropbox7s" value="lost " id="dropbox7c"></label>		
 							</div>
-							<div class="item" id = "involved_vehicles_5" style="display: none">
+							<div class="item" id="involved_vehicles_5" style="display: none">
 								<label style="font-size: 15px;" id="inv_veh">Van</label>
 								<select class="ui dropdown" id="dropbox8">
 									<option value=" ">0</option>
@@ -788,11 +392,11 @@
 									<option value="5 Vans ">5</option>
 									<option value="6+ Vans ">6</option>
 								</select>
-								<label for = "over" id = "checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" name = "dropbox8s" value="over " id="dropbox8a"></label>
-								<label for = "jack" id = "checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" name = "dropbox8s" value="jack " id="dropbox8b"></label>
-								<label for = "lost" id = "checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" name = "dropbox8s" value="lost " id="dropbox8c"></label>		
+								<label for="over" id="checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" class="inv_veh_box" name="dropbox8s" value="over " id="dropbox8a"></label>
+								<label for="jack" id="checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" class="inv_veh_box" name="dropbox8s" value="jack " id="dropbox8b"></label>
+								<label for="lost" id="checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" class="inv_veh_box" name="dropbox8s" value="lost " id="dropbox8c"></label>		
 							</div>
-							<div class="item" id = "involved_vehicles_6" style="display: none">
+							<div class="item" id="involved_vehicles_6" style="display: none">
 								<label style="font-size: 15px;" id="inv_veh">SUV</label>
 								<select class="ui dropdown" id="dropbox9">
 									<option value=" ">0</option>
@@ -803,11 +407,11 @@
 									<option value="5 SUVs ">5</option>
 									<option value="6+ SUVs ">6</option>
 								</select>
-								<label for = "over" id = "checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" name = "dropbox9s" value="over " id="dropbox9a"></label>
-								<label for = "jack" id = "checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" name = "dropbox9s" value="jack " id="dropbox9b"></label>
-								<label for = "lost" id = "checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" name = "dropbox9s" value="lost " id="dropbox9c"></label>		
+								<label for="over" id="checkbox" style="font-size: 15px;">Over-turned<input type="checkbox" class="inv_veh_box" name="dropbox9s" value="over " id="dropbox9a"></label>
+								<label for="jack" id="checkbox" style="font-size: 15px;">Jack-knifed<input type="checkbox" class="inv_veh_box" name="dropbox9s" value="jack " id="dropbox9b"></label>
+								<label for="lost" id="checkbox" style="font-size: 15px;">Lost-load<input type="checkbox" class="inv_veh_box" name="dropbox9s" value="lost " id="dropbox9c"></label>		
 							</div>
-							<div class="item" id = "involved_vehicles_7">
+							<div class="item" id="involved_vehicles_7">
 								<li><label style="font-size: 15px;" id="inv_veh">Pedestrian</label>
 								<select class="ui dropdown" id="dropbox4"> 
 									<option value=" ">0</option>
@@ -818,7 +422,7 @@
 									<option value="5 Pedestrians ">5</option>
 									<option value="6+ Pedestrians ">6</option>
 								</select>
-								<label style="font-size: 15px;" id = "checkbox">Cyclist</label>
+								<label style="font-size: 15px;" id="checkbox">Cyclist</label>
 								<select class="ui dropdown" id="dropbox5"> 
 									<option value=" ">0</option>
 									<option value="1 Cyclist ">1</option>
@@ -828,7 +432,7 @@
 									<option value="5 Cyclists ">5</option>
 									<option value="6+ Cyclists ">6</option>
 								</select>											
-								<label style="font-size: 15px;" id = "checkbox">Motorcyclist</label>
+								<label style="font-size: 15px;" id="checkbox">Motorcyclist</label>
 								<select class="ui dropdown" id="dropbox6"> 
 									<option value=" ">0</option>
 									<option value="1 Motorcyclist ">1</option>
@@ -850,8 +454,8 @@
 							<img src="images/responder_6.png">
 						</div>
 						<div class="ui form">
-							<div class="inline fields"  style = "margin-bottom:0px;">
-								<div class="field" id="responder-chart" style = "height:35px">
+							<div class="inline fields"  style="margin-bottom:0px;">
+								<div class="field" id="responder-chart" style="height:35px">
 									<div class="ui radio checkbox" >
 										<input name="frequency" type="radio" value="CHART"> <label style="padding-left: 0.5cm; font-size: 18px;"><b>CHART</b></label>
 										<select class="ui dropdown" id="dropdown_responder_1">
@@ -868,7 +472,7 @@
 										</select>
 									</div>
 								</div>
-								<div class="field" id="responder-police" style = "height:35px" >
+								<div class="field" id="responder-police" style="height:35px" >
 									<div class="ui radio checkbox">
 										<input name="frequency" type="radio" value="POLICE"> <label style="padding-left: 0.5cm; font-size: 18px;"><b>POLICE</b></label>
 										<select class="ui dropdown" id="dropdown_responder_2">
@@ -885,7 +489,7 @@
 										</select>											
 									</div>
 								</div>
-								<div class="field" id="responder-tow" style = "height:35px">
+								<div class="field" id="responder-tow" style="height:35px">
 									<div class="ui radio checkbox">
 										<input name="frequency" type="radio" value="TOW"> <label style="padding-left: 0.5cm; font-size: 18px;"><b>TOW</b></label>
 										<select class="ui dropdown" id="dropdown_responder_3">
@@ -902,7 +506,7 @@
 										</select>
 									</div>
 								</div>
-								<div class="field" id="responder-fireboard" style = "height:35px">
+								<div class="field" id="responder-fireboard" style="height:35px">
 									<div class="ui radio checkbox" >
 										<input name="frequency" type="radio" value="FIREBOARD"> <label style="padding-left: 0.5cm; font-size: 18px;"><b>FIREBOARD</b></label>
 										<select class="ui dropdown" id="dropdown_fireboard">
@@ -919,7 +523,7 @@
 										</select>
 									</div>
 								</div>
-								<div class="field" id="responder-medical" style = "height:35px">
+								<div class="field" id="responder-medical" style="height:35px">
 									<div class="ui radio checkbox">
 										<input name="frequency" type="radio" value="MEDICAL"> <label style="padding-left: 0.5cm; font-size: 18px;"><b>MEDICAL</b></label>
 										<select class="ui dropdown" id="dropdown_responder_5">
@@ -936,7 +540,7 @@
 										</select>
 									</div>
 								</div>
-								<div class="field" id="responder-other" style = "height:35px" >
+								<div class="field" id="responder-other" style="height:35px" >
 									<div class="ui radio checkbox">
 										<input name="frequency" type="radio" value="OTHERS"> <label style="padding-left: 0.5cm; font-size: 18px;"><b>OTHERS</b></label>
 										<select class="ui dropdown" id="dropdown_responder_6">
@@ -971,43 +575,43 @@
 			
 			<div class="ui bottom attached tab segment" data-tab="3">
 				<div class="ui grid">
-					<div class="one column row" id = "checkbox-size">
+					<div class="one column row" id="checkbox-size">
 						<div class="ui form" >
 							<p style="font-weight:bold; font-size: 18px;">Operation Center</p>
-							<div class = "column">
+							<div class="column">
 								<div class="inline fields">
-									<div class="field" style = "height:20px;">
-										<div class="ui radio checkbox" id = "check">
+									<div class="field" style="height:20px;">
+										<div class="ui radio checkbox" id="check">
 											<input name="frequency1" type="radio"> <label style="padding-left: 0.7cm; font-size: 20px;"><b>AOC</b></label>
 										</div>
 									</div>
-									<div class="field" style = "height:20px;">
+									<div class="field" style="height:20px;">
 										<div class="ui radio checkbox">
 											<input name="frequency1" type="radio"> <label style="padding-left: 0.7cm; font-size: 20px;"><b>SOC</b></label>											
 										</div>
 									</div>
-									<div class="field" style = "height:20px;">
+									<div class="field" style="height:20px;">
 										<div class="ui radio checkbox">
 											<input name="frequency1" type="radio"> <label style="padding-left: 0.7cm; font-size: 20px;"><b>TOC3</b></label>											
 										</div>
 									</div>
-									<div class="field" style = "height:20px;">
+									<div class="field" style="height:20px;">
 										<div class="ui radio checkbox">
 											<input name="frequency1" type="radio"> <label style="padding-left: 0.7cm; font-size: 20px;"><b>TOC4</b></label>
 										</div>
 									</div>
-									<div class="field" style = "height:20px;">
+									<div class="field" style="height:20px;">
 										<div class="ui radio checkbox">
 											<input name="frequency1" type="radio"> <label style="padding-left: 0.7cm; font-size: 20px;"><b>TOC5</b></label>
 										</div>
 									</div>
-									<div class="field" style = "height:20px;">
+									<div class="field" style="height:20px;">
 										<div class="ui radio checkbox">
 											<input name="frequency1" type="radio"> <label style="padding-left: 0.7cm; font-size: 20px;"><b>Other</b></label>
 										</div>
 									</div>
 								</div>
-								<div class = "inline fields" style = "height:30px">
+								<div class="inline fields" style="height:30px">
 									<label style="font-weight:bold; font-size: 18px;"> Pavement & Hazmat </label>      
 								</div>
 							</div>
@@ -1020,43 +624,43 @@
 							<img src="images/ph5.png" id="ph5">
 						</div>
 						<div class="thumbnail_hazmat">
-							<img src="images/ph6.png" id = "ph6">
+							<img src="images/ph6.png" id="ph6">
 						</div>	
 
 						
 							
 
-						<div class = "ui form">
-							<div class="inline fields" style = "margin-bottom:0px;" >
-								<div class="field" style = "height:20px">
+						<div class="ui form">
+							<div class="inline fields" style="margin-bottom:0px;" >
+								<div class="field" style="height:20px">
 
-									<div class="ui radio checkbox" id = "new">
+									<div class="ui radio checkbox" id="new">
 
 										<input name="frequency" type="radio"> <label style="padding-left: 0.7cm; font-size: 15px;"><b>Dry</b></label>
 									</div>
 								</div>
-								<div class="field" style = "height:20px">
+								<div class="field" style="height:20px">
 									<div class="ui radio checkbox">
 										<input name="frequency" type="radio"> <label style="padding-left: 0.7cm; font-size: 15px;"><b>Wet</b></label>											
 									</div>
 								</div>
-								<div class="field" style = "height:20px">
+								<div class="field" style="height:20px">
 									<div class="ui radio checkbox">
 										<input name="frequency" type="radio"> <label style="padding-left: 0.7cm; font-size: 15px;"><b>Snow/Ice</b></label>											
 									</div>
 								</div>
-								<div class="field" style = "height:20px">
+								<div class="field" style="height:20px">
 									<div class="ui radio checkbox" style="margin-right:20px;">
 										<input name="frequency" type="radio"> <label style="padding-left: 0.7cm; font-size: 15px;"><b>Chemical wet</b></label>
 									</div>
 								</div>	
-								<div class="field" style = "height:20px">
+								<div class="field" style="height:20px">
 									<div class="ui radio checkbox" style="margin-right:40px;">
 										<input name="frequency" type="radio"> <label style="padding-left: 0.7cm; font-size: 15px;"><b>Unspecified</b></label>
 									</div>
 								</div>
 
-								<div class="field" style = "height:20px">
+								<div class="field" style="height:20px">
 									<div class="ui checkbox" style="margin-left:10px;">
 										<input type="checkbox" name="example" id="haz"><label style="padding-left: 0.7cm; font-size: 15px;"><b>Hazmat</b></label>
 									</div>
@@ -1129,7 +733,7 @@
 							</div>
 						</div>
 
-						<div class = "ui form" id="exit_form" style="padding-top:50px">
+						<div class="ui form" id="exit_form" style="padding-top:50px">
 							<label for="dropdown_direction" style="padding-left:200px;">
 								<!-- Direction <br> -->
 								<select class="ui dropdown" id="dropdown_direction" style="font-size:16px; font-weight:bold;">
@@ -1152,7 +756,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="ui grid" style = "margin-top:30px;">	
+				<div class="ui grid" style="margin-top:30px;">	
 					<div class="column" id="button-size">
 						<div class="one column row" id="button-row">
 							<button class="ui right floated blue button" id="Next-7" disabled="disabled" name="next">Next</button> 
@@ -1168,7 +772,7 @@
 				<div class="ui grid">
 					<div class="two column row" id="checkbox-size">
 						<div class="column">
-							<img src="images/location_map_495.png" height="400px" style="padding-left:30px;">
+							<img src="images/location_map_495.png" height="400px">
 						</div>
 
 						<div class="column">
@@ -1263,7 +867,7 @@
 						<div class="column">
 							<img src="images/location_map_270.png" height="350px" style="padding-left:50px;"> 
 						</div>		
-						<div class = "ui form" id="exit_form">
+						<div class="ui form" id="exit_form">
 							<label for="dropdown_location" style="padding-left:75px;">
 								<!-- Location <br> -->
 								<select class="ui dropdown" id="dropdown_location_270" style="font-size:16px; font-weight:bold;">
@@ -1321,7 +925,7 @@
 						<div class="column">
 							<img src="images/location_map_70.jpg" height="350px" style="padding-left:50px;"> 
 						</div>		
-						<div class = "ui form" id="exit_form">
+						<div class="ui form" id="exit_form">
 							<label for="dropdown_location" style="padding-left:75px;">
 								<!-- Location <br> -->
 								<select class="ui dropdown" id="dropdown_location_70" style="font-size:16px; font-weight:bold;">
@@ -1369,7 +973,7 @@
 						<div class="column">
 							<img src="images/location_map_29.png" height="350px" style="padding-left:50px;">
 						</div>
-						<div class = "ui form" id="exit_form">
+						<div class="ui form" id="exit_form">
 							<label for="dropdown_location" style="padding-left:75px;" >
 								<!-- Location <br> -->
 								<select class="ui dropdown" id="dropdown_location_29" style="font-size:16px; font-weight:bold;">

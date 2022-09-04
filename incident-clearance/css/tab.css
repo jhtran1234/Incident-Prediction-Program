@@ -1,0 +1,408 @@
+body {
+    background-color: #d1d2d3;
+}
+
+p {
+    margin: 0 !important;
+}
+
+#container {
+    width: 800px;
+    height: 600px;
+    border-style: solid;
+    border-color: #6186aa;
+    border-width: 25px 5px 5px 5px;
+}
+
+#form-size {
+    width: 790px;
+    height: 570px;
+}
+
+#checkbox {
+    margin-left: 50px;
+}
+
+#c1 {
+    width: 20px;
+    height: 20px;
+}
+
+#c2 {
+    width: 20px;
+    height: 20px;
+}
+
+#c3 {
+    width: 20px;
+    height: 20px;
+}
+
+#choice1 {
+    padding: 100px 100px 10px 150px;
+}
+
+#choice2 {
+    padding: 100px 150px 10px 200px;
+}
+
+#checkbox-small-size {
+    width: 780px;
+    height: 100px;
+}
+
+#checkbox-size1 {
+    width: 780px;
+    height: 200px;
+}
+
+.inv_veh_label {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#inv_veh {
+    width: 120px;
+    margin-left: 40px;
+}
+
+#tab-size {
+    width: 365px;
+    height: 225px;
+}
+
+#estimation {
+    width: 300px;
+    height: 200px;
+}
+
+label.type {
+    width: 180px;
+}
+
+.field {
+    position: relative;
+    float: left;
+    width: 135px;
+    height: 100px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.thumbnail_incident img {
+    height: 120px;
+    width: 240px;
+}
+
+.thumbnail_responder img {
+    height: 70px;
+    width: 122px;
+}
+
+.thumbnail_pavement img {
+    height: 100px;
+    width: 115px;
+}
+
+.thumbnail_pavement {
+    border-style: dotted;
+}
+
+.thumbnail_hazmat {
+    border-style: dotted;
+}
+
+.thumbnail_iv img {
+    height: 25px;
+}
+
+.thumbnail_iv_2 img {
+    height: 60px;
+    padding-top: 2px;
+}
+
+#center-choice-line {
+    width: 780px;
+    height: 40px;
+}
+
+#dropdown_responder_1 {
+    width: 73px;
+    height: 32px;
+}
+
+#dropdown_responder_2 {
+    width: 73px;
+    height: 32px;
+}
+
+#dropdown_responder_3 {
+    width: 73px;
+    height: 32px;
+}
+
+#dropdown_responder_5 {
+    width: 73px;
+    height: 32px;
+}
+
+#dropdown_responder_6 {
+    width: 73px;
+    height: 32px;
+}
+
+#dropdown_fireboard {
+    width: 73px;
+    height: 32px;
+}
+
+#ph6 {
+    padding-left: 35px;
+}
+
+#timepicker-tab {
+    padding-left: 190px;
+    padding-top: 40px;
+}
+
+#iv1 {
+    padding: 0px 20px 5px 20px;
+}
+
+#iv2 {
+    padding: 0px 20px 5px 30px;
+}
+
+#iv3 {
+    padding: 0px 20px 5px 30px;
+}
+
+#iv4 {
+    padding: 15px 40px 0px 35px;
+}
+
+#iv5 {
+    padding: 15px 20px 0px 30px;
+}
+
+#iv6 {
+    padding: 15px 20px 0px 50px;
+}
+
+#iv7 {
+    padding: 0px 20px 5px 30px;
+}
+
+#iv8 {
+    padding: 0px 20px 5px 30px;
+}
+
+#iv9 {
+    padding: 0px 0px 0px 0px;
+}
+
+.inv_veh_box {
+    margin-left: 20px;
+}
+
+#responder-tow {
+    padding-right: 5px;
+}
+
+#responder-fireboard {
+    padding-right: 2px;
+}
+
+#responder-medical {
+    padding-right: 2px;
+}
+
+.dropbox-margin {
+    margin-left: 30px;
+}
+
+#dropbox1 {
+    height: 32px;
+}
+
+#dropbox2 {
+    height: 32px;
+}
+
+#dropbox3 {
+    height: 32px;
+}
+
+#dropbox4 {
+    height: 32px;
+}
+
+#dropbox5 {
+    height: 32px;
+    margin-left: 50px;
+}
+
+#dropbox6 {
+    height: 32px;
+    margin-left: 50px;
+}
+
+#dropbox7 {
+    height: 32px;
+}
+
+#dropbox8 {
+    height: 32px;
+}
+
+#dropbox9 {
+    height: 32px;
+}
+
+#dropbox {
+    height: 32px;
+}
+
+#location_1 {
+    width: 100px;
+    padding-left: 10px;
+}
+
+#location_2 {
+    width: 95px;
+}
+
+#location_3 {
+    width: 95px;
+}
+
+#location_6 {
+    padding-left: 50px;
+}
+
+#t3_1 {
+    width: 73px;
+    height: 32px;
+}
+
+#t3_2 {
+    width: 73px;
+    height: 32px;
+}
+
+#t2 {
+    padding-left: 80px;
+}
+
+#t2_1 {
+    height: 20px;
+    padding: 0px 20px 0px 100px;
+}
+
+#t2_2 {
+    height: 20px;
+    padding: 0px 20px 0px 200px;
+}
+
+#t2_3 {
+    height: 20px;
+    padding: 0px 20px 0px 190px;
+}
+
+#d2 {
+    width: 360px;
+    height: 20px;
+}
+
+#row-size {
+    width: 750px;
+    height: 200px;
+}
+
+.ui-dialog {
+    background: white;
+}
+
+.ui-dialog .ui-dialog-content {
+    background: white;
+}
+
+.ui-widget {
+    background: white;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    background: white;
+    border: white;
+}
+
+#type1 {
+    height: 20px;
+    padding: 30px 50px 10px 80px;
+}
+
+#type2 {
+    height: 20px;
+    padding: 30px 50px 10px 160px;
+}
+
+#type3 {
+    height: 20px;
+    padding: 30px 50px 10px 180px;
+}
+
+#type4 {
+    height: 20px;
+    padding: 10px 50px 10px 80px;
+}
+
+#type5 {
+    height: 20px;
+    padding: 10px 50px 10px 160px;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+ul {
+    margin-top: 0;
+}
+
+.ui form {
+    margin-bottom: 0;
+}
+
+#type6 {
+    height: 20px;
+    padding: 10px 50px 10px 180px;
+}
+
+#type7 {
+    height: 20px;
+    padding: 10px 50px 10px 80px;
+}
+
+#type8 {
+    height: 20px;
+    padding: 10px 50px 10px 160px;
+}
+
+#type9 {
+    height: 20px;
+    padding: 10px 50px 10px 180px;
+}
+
+#location_form {
+    height: 10px;
+}
+
+#exit_form {
+    height: 15px;
+}
+
+label {
+    display: inline-block;
+}
