@@ -454,7 +454,7 @@
 							<img src="images/responder_6.png">
 						</div>
 						<div class="ui form">
-							<div class="inline fields"  style="margin-bottom:0px;">
+							<div class="inline fields" style="margin-bottom:0px;">
 								<div class="field" id="responder-chart" style="height:35px">
 									<div class="ui radio checkbox" >
 										<input name="frequency" type="radio" value="CHART"> <label style="padding-left: 0.5cm; font-size: 18px;"><b>CHART</b></label>
@@ -575,9 +575,10 @@
 			
 			<div class="ui bottom attached tab segment" data-tab="3">
 				<div class="ui grid">
-					<div class="one column row" id="checkbox-size">
-						<div class="ui form" >
+					<div class="one column row" id="checkbox-size" style="height: 433.587px; padding-left: 10px;">
+						<div class="ui form">
 							<p style="font-weight:bold; font-size: 18px;">Operation Center</p>
+							<br>
 							<div class="column">
 								<div class="inline fields">
 									<div class="field" style="height:20px;">
@@ -612,7 +613,7 @@
 									</div>
 								</div>
 								<div class="inline fields" style="height:30px">
-									<label style="font-weight:bold; font-size: 18px;"> Pavement & Hazmat </label>      
+									<label style="font-weight:bold; font-size: 18px;"> Pavement & Hazmat </label>
 								</div>
 							</div>
 						</div>
@@ -627,15 +628,10 @@
 							<img src="images/ph6.png" id="ph6">
 						</div>	
 
-						
-							
-
 						<div class="ui form">
 							<div class="inline fields" style="margin-bottom:0px;" >
 								<div class="field" style="height:20px">
-
 									<div class="ui radio checkbox" id="new">
-
 										<input name="frequency" type="radio"> <label style="padding-left: 0.7cm; font-size: 15px;"><b>Dry</b></label>
 									</div>
 								</div>
@@ -659,7 +655,6 @@
 										<input name="frequency" type="radio"> <label style="padding-left: 0.7cm; font-size: 15px;"><b>Unspecified</b></label>
 									</div>
 								</div>
-
 								<div class="field" style="height:20px">
 									<div class="ui checkbox" style="margin-left:10px;">
 										<input type="checkbox" name="example" id="haz"><label style="padding-left: 0.7cm; font-size: 15px;"><b>Hazmat</b></label>
@@ -677,8 +672,6 @@
 						</div>
 					</div>
 				</div>
-
-
 				<div class="ui grid">	
 					<div class="column" >
 						<div class="one column row" id="button-row">
@@ -696,11 +689,11 @@
 				<div class="ui grid">
 					<div class="one column row" id="checkbox-size">
 						<div class="column">
-							<img src="images/location_map_95.png" height="300px" > 
+							<img src="images/location_map_95.png" width="auto"> 
 						</div>
 						<div class="ui form" id="location_form">
 							<div class="inline fields">
-								<div class="field"  id="location_1">
+								<div class="field" id="location_1">
 									<div class="ui radio checkbox" style="font-weight:bold">
 										<input name="frequency" type="radio" > <label><b>Prince George's</b></label>
 									</div>
@@ -733,9 +726,9 @@
 							</div>
 						</div>
 
-						<div class="ui form" id="exit_form" style="padding-top:50px">
+						<div class="ui form" id="exit_form">
 							<label for="dropdown_direction" style="padding-left:200px;">
-								<!-- Direction <br> -->
+								<!-- Direction -->
 								<select class="ui dropdown" id="dropdown_direction" style="font-size:16px; font-weight:bold;">
 									<option value="">Direction</option>
 									<option value="North">North</option>
@@ -744,7 +737,7 @@
 								</select> 
 							</label>
 							<label for="dropdown_exit" >
-								<!-- Exit<br> -->
+								<!-- Exits -->
 								<select class="ui dropdown" id="dropdown_exit" style="font-size:16px; font-weight:bold;">
 									<option value="">Exit</option>
 									<option value="Exit49">Exit 49</option>
@@ -756,7 +749,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="ui grid" style="margin-top:30px;">	
+				<div class="ui grid">	
 					<div class="column" id="button-size">
 						<div class="one column row" id="button-row">
 							<button class="ui right floated blue button" id="Next-7" disabled="disabled" name="next">Next</button> 
@@ -818,7 +811,7 @@
 				<div class="ui grid">
 					<div class="two column row" id="checkbox-size">
 						<div class="column">
-							<img src="images/location_map_695.png" height="350px" style="padding-left:50px;">  
+							<img src="images/location_map_695.png" height="350px">
 						</div>
 
 						<div class="column">
@@ -865,7 +858,7 @@
 				<div class="ui grid">
 					<div class="one column row" id="checkbox-size">
 						<div class="column">
-							<img src="images/location_map_270.png" height="350px" style="padding-left:50px;"> 
+							<img src="images/location_map_270.png" height="350px"> 
 						</div>		
 						<div class="ui form" id="exit_form">
 							<label for="dropdown_location" style="padding-left:75px;">
@@ -923,7 +916,7 @@
 				<div class="ui grid">
 					<div class="one column row" id="checkbox-size">
 						<div class="column">
-							<img src="images/location_map_70.jpg" height="350px" style="padding-left:50px;"> 
+							<img src="images/location_map_70.jpg" height="350px"> 
 						</div>		
 						<div class="ui form" id="exit_form">
 							<label for="dropdown_location" style="padding-left:75px;">
@@ -1068,7 +1061,7 @@
 						</div>
 					</div>
 					<div class="column">
-						<div class="ui segment" id="tab-size"  style="background-color:#fcf4cc;">
+						<div class="ui segment" id="tab-size" style="background-color:#fcf4cc;">
 							<div class="ui top attached tabular menu">
 								<div class="item" style="font-size:16px; font-weight:bold; padding-left:1px">
 									<h id="boxheader">Estimated Clearance Time</h>

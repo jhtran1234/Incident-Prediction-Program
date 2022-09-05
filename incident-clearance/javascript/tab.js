@@ -162,7 +162,7 @@ $(document).ready(function() {
 	if (road == "i495") {
 		$("#involved_vehicles_5").removeAttr("style"); // Displays VAN vehicle for picking
 		$("#iv8").removeAttr("style"); // Displays VAN vehicle for picking
-		
+
 		// Location page dropdowns
 		$("#dropdown_location_495 select").click(updateSum2);
 		$("#dropdown_direction_495 select").click(updateSum2);
@@ -229,25 +229,25 @@ $(document).ready(function() {
 	$("#data_tab_3").click(function() {
 		document.getElementById("showModel").setAttribute("style", "display: none");
 	});
-	$("#data_tab_4").click(function() {
+	$("#location_95").click(function() {
 		document.getElementById("showModel").setAttribute("style", "display: none");
 	});
-	$("#data_tab_5").click(function() {
+	$("#location_495").click(function() {
 		document.getElementById("showModel").setAttribute("style", "display: none");
 	});
-	$("#data_tab_6").click(function() {
+	$("#location_695").click(function() {
 		document.getElementById("showModel").setAttribute("style", "display: none");
 	});
-	$("#data_tab_7").click(function() {
+	$("#location_270").click(function() {
 		document.getElementById("showModel").setAttribute("style", "display: none");
 	});
-	$("#data_tab_8").click(function() {
+	$("#location_70").click(function() {
 		document.getElementById("showModel").setAttribute("style", "display: none");
 	});
-	$("#data_tab_9").click(function() {
+	$("#location_29").click(function() {
 		document.getElementById("showModel").setAttribute("style", "display: none");
 	});
-	$("#data_tab_10").click(function() {
+	$("#location_cluster").click(function() {
 		document.getElementById("showModel").setAttribute("style", "display: none");
 	});
 	$("#data_tab_11").click(function() {
