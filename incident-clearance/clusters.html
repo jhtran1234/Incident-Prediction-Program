@@ -212,7 +212,11 @@
 		<div class="column" id="button-row">
 			<div class="one column row" id="button-row">
 				<button class="ui right floated blue button" id="Next" onclick='nextPage()' disabled>Next</button>
+				<button class="ui right floated blue button" id="Back" onclick='backPage()'>Back</button>
 				<script type="text/javascript">
+					function backPage() {
+						parent.location = 'highway_type.html';
+					}
 					function nextPage() {
 						let roads = ['md122', 'md168', 'md702', 'md85', 'us1', 'md200', 'md295', 'md648', 'i895', 'i83', 'i395', 'i81', 'us15', 'us301', 'us40', 'us50', 'i270', 'i795', 'i97', 'i195', 'i295', 'md10', 'md100', 'md3', 'others'];
 						var selected_road;
