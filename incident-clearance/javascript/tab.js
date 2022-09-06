@@ -217,7 +217,6 @@ $(document).ready(function() {
 	$("button[name='save']").click(activeNext);
 
 	var radioValue1;
-	var radioValue2;
 	
 	// tabs handler	for summary box
 	$("#data_tab_1").click(function() {
@@ -250,7 +249,7 @@ $(document).ready(function() {
 	$("#location_cluster").click(function() {
 		document.getElementById("showModel").setAttribute("style", "display: none");
 	});
-	$("#data_tab_11").click(function() {
+	$("#results_tab").click(function() {
 		document.getElementById("showModel").setAttribute("style", "display: flex");
 	});
 	
@@ -5469,6 +5468,7 @@ function activeNext() {
 		// qualities are entered from the first tab
 		document.getElementById("data_tab_2").style = "font-size: 14px;";
 		document.getElementById("data_tab_3").style = "font-size: 14px;";
+		document.getElementById("results_tab").style = "font-size: 14px;";
 		
 		// displays different vehicles and location pages for different roads
 		if (road == "i495") {
@@ -5530,31 +5530,31 @@ function activeNext() {
 		}
 	}
 	else if (this.id == 'Save-7') {
-		$("#data_tab_11").removeAttr("style");
+		$("#results_tab").removeAttr("style");
  		$("#Next-7").removeAttr("disabled");
 	}
 	else if (this.id == 'Save-7_495') {
-		$("#data_tab_11").removeAttr("style");
+		$("#results_tab").removeAttr("style");
  		$("#Next-7_495").removeAttr("disabled");
 	}
 	else if (this.id == 'Save-7_695') {
-		$("#data_tab_11").removeAttr("style");
+		$("#results_tab").removeAttr("style");
  		$("#Next-7_695").removeAttr("disabled");
 	}
 	else if (this.id == 'Save-7_270') {
-		$("#data_tab_11").removeAttr("style");
+		$("#results_tab").removeAttr("style");
  		$("#Next-7_270").removeAttr("disabled");
 	}
 	else if (this.id == 'Save-7_70') {
-		$("#data_tab_11").removeAttr("style");
+		$("#results_tab").removeAttr("style");
  		$("#Next-7_70").removeAttr("disabled");
 	}
 	else if (this.id == 'Save-7_29') {
-		$("#data_tab_11").removeAttr("style");
+		$("#results_tab").removeAttr("style");
  		$("#Next-7_29").removeAttr("disabled");
 	}
 	else if (this.id == 'Save-7_cluster') {
-		$("#data_tab_11").removeAttr("style");
+		$("#results_tab").removeAttr("style");
  		$("#Next-7_cluster").removeAttr("disabled");
 	}
 	printSum();
