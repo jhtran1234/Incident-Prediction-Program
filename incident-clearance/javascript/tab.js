@@ -382,6 +382,7 @@ $(document).ready(function() {
 	 */
 	$("#Back-11").click(function() {
 		$('.ui.menu').find('.item').tab('change tab', '3');
+		document.getElementById("showModel").setAttribute("style", "display: none");
 	});
 });
 
