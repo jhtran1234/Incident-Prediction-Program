@@ -195,6 +195,12 @@ $(document).ready(function() {
 
 		$("#involved_vehicles_6").removeAttr("style"); // Displays SUV vehicle
 		$("#iv9").removeAttr("style");
+
+		document.querySelectorAll('.thumbnail_responder img').forEach((img) => {
+			img.style.width = "48.8px";
+			img.style.height = "28px";
+			img.style.marginLeft = "9px";
+		});
 	}
 
 	// IV page dropdown
