@@ -1421,8 +1421,8 @@ function updateTime() {
 			}
 		}
 
-		if (model['incident']!= null && model["involved_veh"]!= null && model["responder"]!= null && model["center_choice"]!= null &&
-		model["pavement_condition"]!=null && model["hour_time"]!= null && (model["location"]!=null || model["exit"]!=null)) {	
+		if (model['incident'] != null && model["involved_veh"] != null && model["responder"] != null && model["center_choice"] != null &&
+		model["pavement_condition"] != null && model["hour_time"] != null && (model["location"] != null || model["exit"] != null)) {
 			if (model['incident'] == 'Collision incident') {
 				if (model['blockage']=='Travel lane blockage') {
 					if (model['collision']=='Fatality') {
@@ -1796,8 +1796,8 @@ function updateTime() {
 			}
 		}
 
-		if (model['incident']!= null && model["involved_veh"]!= null && model["responder"]!= null && model["center_choice"]!= null &&
-		model["pavement_condition"]!=null && model["hour_time"]!= null && (model["location"]!=null || model["exit"]!=null)) {
+		if (model['incident'] != null && model["involved_veh"] != null && model["responder"] != null && model["center_choice"] != null &&
+		model["pavement_condition"] != null && model["hour_time"] != null && (model["location"] != null || model["exit"] != null)) {
 			if (model['incident'] == 'Collision incident') {
 				if (model['blockage']=='Travel lane blockage') { // For CF Cases, only 1 and 2 exist for i695
 					if (model['collision']=='Fatality') {
@@ -2152,8 +2152,8 @@ function updateTime() {
 			}	
 		}
 
-		if (model['incident']!= null && model["involved_veh"]!= null && model["responder"]!= null && model["center_choice"]!= null &&
-		model["pavement_condition"]!=null && model["hour_time"]!= null && (model["location"]!=null || model["exit"]!=null)) {
+		if (model['incident'] != null && model["involved_veh"] != null && model["responder"] != null && model["center_choice"] != null &&
+		model["pavement_condition"] != null && model["hour_time"] != null && (model["location"] != null || model["exit"] != null)) {
 			if (model['incident'] == 'Collision incident') {
 				if (model['blockage']=='Travel lane blockage') {
 					if (model['collision']=='Fatality') {
@@ -2469,8 +2469,8 @@ function updateTime() {
 			}	
 		}
 
-		if (model['incident']!= null && model["involved_veh"]!= null && model["responder"]!= null && model["center_choice"]!= null &&
-		model["pavement_condition"]!=null && model["hour_time"]!= null && (model["location"]!=null || model["exit"]!=null)) {
+		if (model['incident'] != null && model["involved_veh"] != null && model["responder"] != null && model["center_choice"] != null &&
+		model["pavement_condition"] != null && model["hour_time"] != null && (model["location"] != null || model["exit"] != null)) {
 			if (model['incident'] == 'Collision incident') {
 				if (model['blockage']=='Travel lane blockage') {
 					if (model['collision']=='Fatality') {
@@ -2765,7 +2765,7 @@ function updateTime() {
 			}	
 		}
 
-		if (![model['incident'], model["involved_veh"], model["responder"], model["center_choice"], model["pavement_condition"], model["hour_time"]].includes(null) && (model["location"]!=null || model["exit"]!=null)) {
+		if (![model['incident'], model["involved_veh"], model["responder"], model["center_choice"], model["pavement_condition"], model["hour_time"]].includes(null) && (model["location"] != null || model["exit"] != null)) {
 			if (model['incident'] == 'Collision incident') {
 				if (model['blockage']=='Travel lane blockage') {
 					if (model['collision']=='Fatality') {
@@ -3089,7 +3089,7 @@ function updateTime() {
 			}	
 		}
 
-		if (![model['incident'], model["involved_veh"], model["responder"], model["center_choice"], model["pavement_condition"], model["hour_time"]].includes(null) && (model["location"]!=null || model["exit"]!=null)) {
+		if (![model['incident'], model["involved_veh"], model["responder"], model["center_choice"], model["pavement_condition"], model["hour_time"]].includes(null) && (model["location"] != null || model["exit"] != null)) {
 			if (model['incident'] == 'Collision incident') {
 				if (model['blockage']=='Travel lane blockage') {
 					if (model['collision']=='Fatality') {
@@ -3483,7 +3483,7 @@ function updateTime() {
 			}	
 		}
 
-		if (![model['incident'], model["involved_veh"], model["responder"], model["center_choice"], model["pavement_condition"], model["hour_time"]].includes(null) && (model["location"]!=null || model["exit"]!=null)) {
+		if (![model['incident'], model["involved_veh"], model["responder"], model["center_choice"], model["pavement_condition"], model["hour_time"]].includes(null) && (model["location"] != null || model["exit"] != null)) {
 			if (model['incident'] == 'Collision incident') {
 				if (model['blockage']=='Travel lane blockage') {
 					if (model['collision']=='Fatality') {
@@ -3895,7 +3895,7 @@ function updateTime() {
 			}	
 		}
 
-		if (![model['incident'], model["involved_veh"], model["responder"], model["center_choice"], model["pavement_condition"], model["hour_time"]].includes(null) && (model["location"]!=null || model["exit"]!=null)) {
+		if (![model['incident'], model["involved_veh"], model["responder"], model["center_choice"], model["pavement_condition"], model["hour_time"]].includes(null) && (model["location"] != null || model["exit"] != null)) {
 			if (model['incident'] == 'Collision incident') {
 				if (model['blockage']=='Travel lane blockage') {
 					if (model['collision']=='Fatality') {
@@ -4249,7 +4249,7 @@ function updateTime() {
 			}	
 		}
 
-		if (![model['incident'], model["involved_veh"], model["responder"], model["center_choice"], model["pavement_condition"], model["hour_time"]].includes(null) && (model["location"]!=null || model["exit"]!=null)) {
+		if (![model['incident'], model["involved_veh"], model["responder"], model["center_choice"], model["pavement_condition"], model["hour_time"]].includes(null) && (model["location"] != null || model["exit"] != null)) {
 			if (model['incident'] == 'Collision incident') {
 				if (model['blockage']=='Travel lane blockage') {
 					if (model['collision']=='Fatality') {
@@ -4585,7 +4585,7 @@ function updateTime() {
 			}	
 		}
 
-		if (![model['incident'], model["involved_veh"], model["responder"], model["center_choice"], model["pavement_condition"], model["hour_time"]].includes(null) && (model["location"]!=null || model["exit"]!=null)) {
+		if (![model['incident'], model["involved_veh"], model["responder"], model["center_choice"], model["pavement_condition"], model["hour_time"]].includes(null) && (model["location"] != null || model["exit"] != null)) {
 			if (model['incident'] == 'Collision incident') {
 				if (model['blockage']=='Travel lane blockage') {
 					if (model['collision']=='Fatality') {
@@ -5007,8 +5007,8 @@ function updateTime() {
 			}
 		}
 
-		if (model['incident']!= null && model["involved_veh"]!= null && model["responder"]!= null && model["center_choice"]!= null &&
-		model["pavement_condition"]!=null && model["hour_time"]!= null && (model["location"]!=null || model["exit"]!=null)) {	
+		if (model['incident'] != null && model["involved_veh"] != null && model["responder"] != null && model["center_choice"] != null &&
+		model["pavement_condition"] != null && model["hour_time"] != null && (model["location"] != null || model["exit"] != null)) {	
 			if ((model['blockage']=='Travel lane blockage') && ((hazmat == true) && ((truck_hazards.includes('over ')) || (num_responder >= 10) || (num_chart >= 3))) ) {
 				drawSVG1(240, 300, 250, 310, ">=120", "90%");
 				drawSVG2(0, 0, 0, 0, "", "");
@@ -5442,8 +5442,8 @@ function drawSVG4(average_time) {
 function activeNext() {
 	var more_info = true; // Boolean whether or not "More info needed" message is displayed
 	var all_info = false; // Indicates if all information has been collected in the model
-	if (model['incident']!= null && model["involved_veh"]!= null && model["responder"]!= null && model["center_choice"]!= null &&
-		model["pavement_condition"]!=null && model["hour_time"]!= null && (model["location"] != null || model['exit'] != null)) {
+	if (model['incident'] != null && model["involved_veh"] != null && model["responder"] != null && model["center_choice"] != null &&
+		model["pavement_condition"] != null && model["hour_time"] != null && (model["location"] != null || model['exit'] != null)) {
 		more_info = false;
 		all_info = true;
 	}
@@ -5496,13 +5496,11 @@ function activeNext() {
 	}
 	else if (this.id == 'Save-5') {
 		$("#boxheader").text("Estimated Clearance Time");
-		if (more_info) {moreInfoNeeded_updateTime();} // Indicates more info is needed.
 		if (all_info) {$("#boxheader").text("All information has been recorded.");}
 		$("#Next-5").removeAttr("disabled");
 	}
 	else if (this.id == 'Save-6') {
 		$("#boxheader").text("Estimated Clearance Time");
-		if (more_info) {moreInfoNeeded_updateTime();}
 		if (all_info) {$("#boxheader").text("All information has been recorded.");}
 
 		var responder_type;
@@ -7227,8 +7225,4 @@ function CF_case4() {
 		drawSVG3(72, 288, 92, 298, "120~480", "100%");
 		drawSVG4("Average CT = 350 mins");
 	}
-}
-
-function moreInfoNeeded_updateTime() {
-	$("#boxheader").text("More inputs are needed for accurate estimation.");
 }
