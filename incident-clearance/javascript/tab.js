@@ -174,12 +174,6 @@ $(document).ready(function() {
 		$("#dropdown_direction_695 select").click(updateSum2);
 		$("#dropdown_exit_695 select").click(updateSum2);
 	}
-	else if (road == "i270") {
-		// Location page dropdowns
-		$("#dropdown_location_270 select").click(updateSum2);
-		$("#dropdown_direction_270 select").click(updateSum2);
-		$("#dropdown_exit_270 select").click(updateSum2);
-	}
 	else if (road == "i70") {
 		$("#involved_vehicles_6").removeAttr("style"); // Displays SUV vehicle for picking
 		$("#iv9").removeAttr("style"); // Displays SUV vehicle for picking
@@ -237,9 +231,6 @@ $(document).ready(function() {
 	$("#location_695").click(function() {
 		document.getElementById("showModel").setAttribute("style", "display: none");
 	});
-	$("#location_270").click(function() {
-		document.getElementById("showModel").setAttribute("style", "display: none");
-	});
 	$("#location_70").click(function() {
 		document.getElementById("showModel").setAttribute("style", "display: none");
 	});
@@ -291,9 +282,6 @@ $(document).ready(function() {
 		}
 		else if (road=="i695") {
 			$('.ui.menu').find('.item').tab('change tab', '6');
-		}
-		else if (road=="i270") {
-			$('.ui.menu').find('.item').tab('change tab', '7');
 		}
 		else if (road=="i70") {
 			$('.ui.menu').find('.item').tab('change tab', '8');
@@ -363,9 +351,7 @@ $(document).ready(function() {
 	$("#Back-7_695").click(function() {
 		$('.ui.menu').find('.item').tab('change tab', '3');
 	});
-	$("#Back-7_270").click(function() {
-		$('.ui.menu').find('.item').tab('change tab', '3');
-	});
+	
 	$("#Back-7_70").click(function() {
 		$('.ui.menu').find('.item').tab('change tab', '3');
 	});
@@ -854,38 +840,6 @@ function updateSum2() {
 		if (exit != "Exit") {
 			model['exit'] = exit;
 			$("#Save-7_695").removeAttr("disabled");
-		}
-		else {
-			model['exit'] = null;
-		}
-	}
-	else if (road == "i270") {
-		location_choice = $("#dropdown_location_270 option:selected").text();
-		console.log(location_choice);
-
-		direction = $("#dropdown_direction_270 option:selected").text();
-		console.log(direction);
-	
-		exit = $("#dropdown_exit_270 option:selected").text();
-		console.log(exit);
-		
-		if (location_choice != "Location") {
-			model['location'] = location_choice;
-			$("#Save-7_270").removeAttr("disabled");
-		}
-		else {
-			model['location'] = null;
-		}
-		if (direction != "Direction") {
-			model['direction'] = direction;
-			$("#Save-7_270").removeAttr("disabled");
-		}
-		else {
-			model['direction'] = null;
-		}
-		if (exit != "Exit") {
-			model['exit'] = exit;
-			$("#Save-7_270").removeAttr("disabled");
 		}
 		else {
 			model['exit'] = null;
@@ -5541,10 +5495,6 @@ function activeNext() {
 	else if (this.id == 'Save-7_695') {
 		$("#results_tab").removeAttr("style");
  		$("#Next-7_695").removeAttr("disabled");
-	}
-	else if (this.id == 'Save-7_270') {
-		$("#results_tab").removeAttr("style");
- 		$("#Next-7_270").removeAttr("disabled");
 	}
 	else if (this.id == 'Save-7_70') {
 		$("#results_tab").removeAttr("style");
