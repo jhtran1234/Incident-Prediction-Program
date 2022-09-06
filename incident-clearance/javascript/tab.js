@@ -1,9 +1,9 @@
 "use strict";
 
-var model = {"incident": null,"blockage": null,"collision":null, "detail_blockage_1":null,"detail_blockage_2":null,"detail_blockage_3":null,
- "number_travel":null,"number_shoulder":null, "involved_veh": null, "responder": null, "responder_number": null, "center_choice": null,
- "pavement_condition":null, "hazmat_condition":null, "season_time": null, "hour_time": null, "weekend_time":null, "holiday_time":null, "location":null, "direction":null,
- "exit":null};
+var model = {"incident": null,"blockage": null,"collision": null, "detail_blockage_1": null,"detail_blockage_2": null,"detail_blockage_3": null,
+ "number_travel": null,"number_shoulder": null, "involved_veh": null, "responder": null, "responder_number": null, "center_choice": null,
+ "pavement_condition": null, "hazmat_condition": null, "season_time": null, "hour_time": null, "weekend_time": null, "holiday_time": null, "location": null, "direction": null,
+ "exit": null};
 // first label initialization
 var newLine_1 = document.createElementNS('http://www.w3.org/2000/svg','line');
 var txtElem_1 = document.createElementNS('http://www.w3.org/2000/svg','text');
@@ -251,7 +251,7 @@ $(document).ready(function() {
 		document.getElementById("showModel").setAttribute("style", "display: none");
 	});
 	$("#data_tab_11").click(function() {
-		document.getElementById("showModel").setAttribute("style", "display: none");
+		document.getElementById("showModel").setAttribute("style", "display: flex");
 	});
 	
 	// next button handler	
@@ -293,9 +293,9 @@ $(document).ready(function() {
 		else if (road=="i695") {
 			$('.ui.menu').find('.item').tab('change tab', '6');
 		}
-		/*else if (road=="i270") {
+		else if (road=="i270") {
 			$('.ui.menu').find('.item').tab('change tab', '7');
-		}*/
+		}
 		else if (road=="i70") {
 			$('.ui.menu').find('.item').tab('change tab', '8');
 		}
@@ -312,21 +312,27 @@ $(document).ready(function() {
 	
 	$("#Next-7").click(function() {
 		$('.ui.menu').find('.item').tab('change tab', '11');
+		showModel();
 	});
 	$("#Next-7_495").click(function() {
 		$('.ui.menu').find('.item').tab('change tab', '11');
+		showModel();
 	});
 	$("#Next-7_695").click(function() {
 		$('.ui.menu').find('.item').tab('change tab', '11');
+		showModel();
 	});
 	$("#Next-7_70").click(function() {
 		$('.ui.menu').find('.item').tab('change tab', '11');
+		showModel();
 	});
 	$("#Next-7_29").click(function() {
 		$('.ui.menu').find('.item').tab('change tab', '11');
+		showModel();
 	});
 	$("#Next-7_cluster").click(function() {
 		$('.ui.menu').find('.item').tab('change tab', '11');
+		showModel();
 	});
 	
 	// back button handler
@@ -379,6 +385,10 @@ $(document).ready(function() {
 		$('.ui.menu').find('.item').tab('change tab', '3');
 	});
 });
+
+function showModel() {
+	document.getElementById("showModel").setAttribute("style", "display: flex");
+}
 
 // updates the model whenever a radio button is selected
 function updateSum() {
@@ -527,7 +537,6 @@ function updateSum2() {
 	}
 
 	shoulder_drop = document.getElementById("t3_2").value;
-	
 	console.log(shoulder_drop);	
 	if (shoulder_drop == 0) {
 		model['number_shoulder'] = null;
@@ -547,8 +556,8 @@ function updateSum2() {
 	
 	total_lane = Number(travel_drop) + Number(shoulder_drop);
 	console.log(total_lane);
-	// IV page
-	
+
+	// Involved Vehicles page
 	involved_car = document.getElementById("dropbox1").value;
 	console.log(involved_car);	
 	involved_truck = document.getElementById("dropbox2").value;
